@@ -1,0 +1,67 @@
+:root {
+  --color-background: #e5e5e5;
+  --color-primary: #4a4a4a;
+  --color-text: #1a1a1a;
+  --color-subtext: #8a8a8a;
+  --color-accent: #008080;
+  --color-divider: #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1a1a1a;
+    --color-primary: #4a4a4a;
+    --color-text: #e5e5e5;
+    --color-subtext: #8a8a8a;
+    --color-accent: #008080;
+    --color-divider: #333333;
+  }
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  text-shadow: none;
+}
+
+html {
+  background: var(--color-primary);
+  color: var(--color-text);
+  color-scheme: light dark;
+  font:
+    100%/1.5 -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    "Noto Sans JP",
+    "Yu Gothic",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+#viewport {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+  position: relative;
+  z-index: 0;
+}
+
+main {
+  background: var(--color-background);
+  flex-grow: 1;
+  padding: 2em;
+}

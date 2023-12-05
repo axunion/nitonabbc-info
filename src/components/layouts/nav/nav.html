@@ -1,0 +1,119 @@
+<template>
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideOut {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    :host {
+      display: none;
+    }
+
+    :host(.open) {
+      display: block;
+    }
+
+    nav {
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      background: #00000080;
+      inset: 0;
+      overflow-y: scroll;
+      position: fixed;
+      z-index: 1111;
+    }
+
+    :host(.open) nav {
+      animation: fadeIn 0.4s forwards;
+    }
+
+    :host(.open) nav.closing {
+      animation: fadeOut 0.4s forwards;
+    }
+
+    ul {
+      background: var(--color-background);
+      bottom: 0;
+      box-sizing: border-box;
+      flex-direction: column;
+      margin: 0;
+      max-width: 600px;
+      padding: 2em;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 75%;
+    }
+
+    :host(.open) ul {
+      animation: slideIn 0.4s forwards;
+    }
+
+    :host(.open) .closing ul {
+      animation: slideOut 0.4s forwards;
+    }
+
+    li {
+      border-bottom: var(--color-divider) solid 1px;
+      padding: 1em;
+    }
+
+    button {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      margin: 0;
+      outline: 0;
+      padding: 0;
+    }
+
+    button:hover {
+      color: var(--color-accent);
+    }
+  </style>
+
+  <nav>
+    <ul>
+      <li><a href="#"># Target</a></li>
+      <li><button type="button" class="dialog-button">Dialog</button></li>
+    </ul>
+  </nav>
+</template>

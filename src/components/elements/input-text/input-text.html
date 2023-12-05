@@ -1,0 +1,34 @@
+<template>
+  <style>
+    input {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--color-text);
+      border: currentColor solid 1px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: var(--color-primary);
+      font: inherit;
+      line-height: normal;
+      margin: 0;
+      outline: 0;
+      padding: 0.5em 1em;
+      text-align: inherit;
+      width: 100%;
+    }
+
+    input:disabled {
+      background: var(--color-subtext);
+      color: var(--color-text);
+      cursor: default;
+    }
+
+    input:hover:not(:disabled),
+    input:focus-within {
+      border-color: var(--color-accent);
+      box-shadow: var(--color-accent) 0 0 0 1px;
+    }
+  </style>
+
+  <input type="text" />
+</template>
