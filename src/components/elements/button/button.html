@@ -1,0 +1,59 @@
+<template>
+  <style>
+    button {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: 0;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      height: 100%;
+      line-height: normal;
+      margin: 0;
+      outline: 0;
+      padding: 0.5em 0;
+      text-align: center;
+      transition: background-color 0.1s;
+      width: 100%;
+    }
+
+    button:hover {
+      color: var(--color-subtext);
+    }
+
+    button:disabled {
+      color: var(--color-subtext);
+      cursor: not-allowed;
+    }
+
+    :host([variant="outlined"]) button {
+      border: currentColor solid 1px;
+    }
+
+    :host([variant="outlined"]) button:hover,
+    :host([variant="outlined"]) button:disabled {
+      background: var(--color-subtext);
+    }
+
+    :host([variant="filled"]) button {
+      background: var(--color-accent);
+      border: var(--color-accent) solid 1px;
+      color: var(--color-text);
+    }
+
+    :host([variant="filled"]) button:hover {
+      background: var(--color-subtext);
+      border-color: var(--color-subtext);
+    }
+
+    :host([variant="filled"]) button:disabled {
+      background: var(--color-prymary);
+      border-color: var(--color-prymary);
+    }
+  </style>
+
+  <button type="button"><slot></slot></button>
+</template>
