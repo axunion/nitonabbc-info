@@ -62,7 +62,7 @@ export class InputTextComponent extends BaseElement {
 
     if (name === "type" && newValue) {
       const type = InputTypes.includes(newValue) ? newValue : inputTypeDefault;
-      this.#input?.setAttribute(name, type);
+      this.#input.setAttribute(name, type);
     } else if (booleanAttributes.includes(name)) {
       if (newValue !== null) {
         this.#input.setAttribute(name, "");
@@ -75,7 +75,7 @@ export class InputTextComponent extends BaseElement {
   }
 
   get value(): string {
-    return this.#input?.value || "";
+    return this.#input?.value ?? "";
   }
 
   checkValidity(): boolean {

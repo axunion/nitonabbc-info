@@ -1,0 +1,30 @@
+<template>
+  <style>
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    div {
+      align-items: center;
+      background: #00000080;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      position: fixed;
+      z-index: 1111;
+    }
+
+    svg {
+      animation: rotate 1s linear infinite;
+      height: 40px;
+      stroke: currentColor;
+    }
+  </style>
+
+  <div><svg-icon name="loader-3-line"></svg-icon></div>
+</template>
