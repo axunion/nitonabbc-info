@@ -1,18 +1,28 @@
 <template>
   <style>
+    label {
+      color: var(--color-subtext);
+      display: block;
+      padding: 1.5em 0 0;
+    }
+
+    label > div {
+      position: relative;
+    }
+
     input {
       appearance: none;
       -webkit-appearance: none;
-      background: var(--color-text);
-      border: currentColor solid 1px;
-      border-radius: 4px;
+      background: none;
+      border: 0;
+      border-bottom: var(--color-divider) solid 1px;
       box-sizing: border-box;
-      color: var(--color-primary);
+      color: inherit;
       font: inherit;
       line-height: normal;
       margin: 0;
       outline: 0;
-      padding: 0.5em 1em;
+      padding: 1em;
       text-align: inherit;
       width: 100%;
     }
@@ -24,11 +34,31 @@
     }
 
     input:hover:not(:disabled),
-    input:focus-within {
-      border-color: var(--color-accent);
-      box-shadow: var(--color-accent) 0 0 0 1px;
+    input:focus-within,
+    input:not(:placeholder-shown) {
+      border-color: var(--color-subtext);
+      color: var(--color-text);
+    }
+
+    input ~ .title {
+      bottom: 1em;
+      left: 1em;
+      line-height: 1;
+      position: absolute;
+      transition: 0.4s;
+    }
+
+    input:focus ~ .title,
+    input:not(:placeholder-shown) ~ .title {
+      bottom: 100%;
+      font-size: 75%;
     }
   </style>
 
-  <input type="text" />
+  <label>
+    <div>
+      <input type="text" />
+      <span class="title"><slot></slot></span>
+    </div>
+  </label>
 </template>

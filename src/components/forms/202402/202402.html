@@ -1,0 +1,106 @@
+<template>
+  <style>
+    :host {
+      display: block;
+    }
+
+    @media screen and (min-width: 768px) {
+      :host {
+        padding: 8vh;
+      }
+    }
+
+    form {
+      margin: auto;
+      max-width: 400px;
+      padding: 2em;
+    }
+
+    h1 {
+      font-size: 125%;
+      font-weight: normal;
+      letter-spacing: 1px;
+      margin: 1em 0;
+      text-align: center;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      justify-content: flex-start;
+      margin: 2em 0;
+    }
+
+    .column {
+      display: flex;
+      gap: 1em;
+    }
+
+    .column > span {
+      flex-basis: 100%;
+    }
+
+    .submit {
+      color: var(--color-primary);
+      height: 3em;
+      margin: 3em 0;
+    }
+  </style>
+
+  <form>
+    <h1>京葉地区青年交わり会参加申込</h1>
+
+    <section>
+      <div>
+        <input-text-component
+          name="church"
+          type="text"
+          maxlength="128"
+          pattern=""
+          required
+          >教会名</input-text-component
+        >
+      </div>
+
+      <div>
+        <input-text-component
+          name="name"
+          type="text"
+          maxlength="128"
+          pattern=""
+          required
+          >氏名</input-text-component
+        >
+      </div>
+
+      <div class="column">
+        <span>
+          <input-text-component
+            name="kana"
+            type="text"
+            maxlength="128"
+            pattern=""
+            required
+            >年齢</input-text-component
+          >
+        </span>
+
+        <span>
+          <input-text-component
+            name="kana"
+            type="text"
+            maxlength="128"
+            pattern=""
+            required
+            >性別</input-text-component
+          >
+        </span>
+      </div>
+    </section>
+
+    <div class="submit">
+      <button-component variant="outlined">送信</button-component>
+    </div>
+  </form>
+</template>
