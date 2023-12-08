@@ -1,30 +1,59 @@
 <template>
   <style>
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
+    @keyframes gradient {
+      0% {
+        background-color: #f0566e;
       }
-      to {
-        transform: rotate(360deg);
+      20% {
+        background-color: #f0d956;
+      }
+      40% {
+        background-color: #56f08c;
+      }
+      60% {
+        background-color: #56baf0;
+      }
+      80% {
+        background-color: #d956f0;
+      }
+      100% {
+        background-color: #f0566e;
+      }
+    }
+
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-24px);
       }
     }
 
     div {
       align-items: center;
+      backdrop-filter: blur(2px);
       background: #00000080;
       display: flex;
+      display: none;
       inset: 0;
       justify-content: center;
       position: fixed;
       z-index: 1111;
     }
 
-    svg {
-      animation: rotate 1s linear infinite;
-      height: 40px;
-      stroke: currentColor;
+    span {
+      animation:
+        gradient 5s infinite,
+        bounce 1s infinite;
+      border-radius: 50%;
+      height: 24px;
+      width: 24px;
     }
   </style>
 
-  <div><svg-icon name="loader-3-line"></svg-icon></div>
+  <div>
+    <span></span>
+  </div>
 </template>
