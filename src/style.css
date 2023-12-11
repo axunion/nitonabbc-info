@@ -41,3 +41,7 @@ main {
   position: relative;
   z-index: 0;
 }
+
+.hidden {
+  display: none;
+}

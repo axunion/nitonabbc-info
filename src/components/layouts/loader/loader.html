@@ -1,33 +1,14 @@
 <template>
   <style>
-    @keyframes gradient {
-      0% {
-        background-color: #f0566e;
-      }
-      20% {
-        background-color: #f0d956;
-      }
-      40% {
-        background-color: #56f08c;
-      }
-      60% {
-        background-color: #56baf0;
-      }
-      80% {
-        background-color: #d956f0;
-      }
-      100% {
-        background-color: #f0566e;
-      }
-    }
-
     @keyframes bounce {
       0%,
       100% {
-        transform: translateY(0);
+        background: var(--color-primary);
+        transform: scale(1, 0.9) translateY(0);
       }
-      30% {
-        transform: translateY(-24px);
+      40% {
+        background: var(--color-accent);
+        transform: scale(1) translateY(-200%);
       }
     }
 
@@ -36,7 +17,6 @@
       backdrop-filter: blur(2px);
       background: #00000080;
       display: flex;
-      display: none;
       inset: 0;
       justify-content: center;
       position: fixed;
@@ -44,9 +24,7 @@
     }
 
     span {
-      animation:
-        gradient 5s infinite,
-        bounce 1s infinite;
+      animation: bounce 1s infinite;
       border-radius: 50%;
       height: 24px;
       width: 24px;
