@@ -1,21 +1,27 @@
 <template>
   <style>
+    label {
+      display: block;
+      padding: 1.5em 0 0;
+    }
+
     select {
       appearance: none;
       -webkit-appearance: none;
-      background: var(--color-text);
-      border: currentColor solid 1px;
-      border-radius: 4px;
+      background: none;
+      border: 0;
       box-sizing: border-box;
-      color: var(--color-primary);
+      color: inherit;
       display: block;
       font: inherit;
       line-height: normal;
       outline: 0;
-      padding: 0.5em 1em;
+      padding: 1em;
       width: 100%;
     }
   </style>
 
-  <select></select>
+  <label>
+    <select></select>
+  </label>
 </template>
