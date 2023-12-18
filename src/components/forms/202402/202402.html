@@ -1,124 +1,100 @@
 <template>
-  <style>
-    :host {
-      display: block;
-    }
-
-    @media screen and (min-width: 768px) {
-      :host {
-        padding: 8vh;
-      }
-    }
-
-    form {
-      margin: auto;
-      max-width: 400px;
-      padding: 2em;
-    }
-
-    h1 {
-      font-size: 125%;
-      font-weight: normal;
-      letter-spacing: 1px;
-      margin: 1em 0;
-      text-align: center;
-    }
-
-    .date {
-      color: var(--color-subtext);
-      font-size: 90%;
-      margin: 1em 0;
-      text-align: right;
-    }
-
-    .date span::after {
-      content: ":";
-      margin: 0 0.5em;
-    }
-
-    section {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      justify-content: flex-start;
-      margin: 2em 0;
-    }
-
-    .input {
-      border-bottom: var(--color-divider) solid 1px;
-    }
-
-    .column {
-      display: flex;
-      gap: 1em;
-    }
-
-    .column > span {
-      flex-basis: 100%;
-    }
-
-    .submit {
-      color: var(--color-primary);
-      height: 4em;
-      margin: 4em 0;
-    }
-  </style>
-
   <form>
     <h1>京葉地区青年交わり会参加申込</h1>
 
     <div class="date"><span>開催日</span>2024年2月25日</div>
 
     <section>
-      <div class="input">
-        <input-text-component
-          name="church"
-          type="text"
-          maxlength="128"
-          pattern=""
-          required
-          >教会名</input-text-component
-        >
-      </div>
+      <label class="input-label">
+        <div>
+          <input
+            type="text"
+            name="church"
+            maxlength="128"
+            pattern=""
+            placeholder=""
+            required
+          />
+          <span class="title">教会名</span>
+        </div>
+      </label>
 
-      <div class="input">
-        <input-text-component
-          name="name"
-          type="text"
-          maxlength="128"
-          pattern=""
-          required
-          >氏名</input-text-component
-        >
-      </div>
+      <label class="input-label">
+        <div>
+          <input
+            type="text"
+            name="church"
+            maxlength="128"
+            pattern=""
+            placeholder=""
+            required
+          />
+          <span class="title">氏名</span>
+        </div>
+      </label>
 
       <div class="column">
-        <span class="input">
-          <input-text-component
-            name="kana"
-            type="text"
-            maxlength="128"
-            pattern=""
-            required
-            >年齢</input-text-component
-          >
+        <span>
+          <label class="input-label">
+            <div>
+              <input
+                type="text"
+                name="church"
+                maxlength="128"
+                pattern=""
+                placeholder=""
+                required
+              />
+              <span class="title">年齢</span>
+            </div>
+          </label>
         </span>
 
-        <span class="input">
-          <input-text-component
-            name="kana"
-            type="text"
-            maxlength="128"
-            pattern=""
-            required
-            >性別</input-text-component
-          >
+        <span>
+          <label class="input-label">
+            <div>
+              <input
+                type="text"
+                name="church"
+                maxlength="128"
+                pattern=""
+                placeholder=""
+                required
+              />
+              <span class="title">性別</span>
+            </div>
+          </label>
         </span>
       </div>
+
+      <label class="input-label">
+        <div class="column">
+          <span>
+            <div class="radio">
+              <input type="radio" name="church" checked required />
+              <span class="symbol">非教会員</span>
+            </div>
+          </span>
+
+          <span>
+            <div class="radio">
+              <input type="radio" name="church" required />
+              <span class="symbol">教会員</span>
+            </div>
+          </span>
+
+          <span>
+            <div class="radio">
+              <input type="radio" name="church" required />
+              <span class="symbol">指導者</span>
+            </div>
+          </span>
+        </div>
+      </label>
     </section>
 
     <div class="submit">
-      <button-component variant="outlined">送信</button-component>
+      <button class="button-outlined">送信</button>
     </div>
   </form>
 </template>

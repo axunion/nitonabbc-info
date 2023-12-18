@@ -42,6 +42,209 @@ main {
   z-index: 0;
 }
 
+@media screen and (min-width: 768px) {
+  main {
+    padding: 8vh;
+  }
+}
+
+h1 {
+  font-size: 125%;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 1em 0;
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: flex-start;
+  margin: 2em 0;
+}
+
+form {
+  margin: auto;
+  max-width: 400px;
+  padding: 2em;
+}
+
+/* Layout
+----------------------------------------------------------------------------- */
+
 .hidden {
   display: none;
+}
+
+.column {
+  display: flex;
+  gap: 1em;
+}
+
+.column > span {
+  flex-basis: 100%;
+}
+
+.date {
+  color: var(--color-subtext);
+  font-size: 90%;
+  margin: 1em 0;
+  text-align: right;
+}
+
+.date span::after {
+  content: ":";
+  margin: 0 0.5em;
+}
+
+.submit {
+  color: var(--color-primary);
+  height: 4em;
+  margin: 4em 0;
+}
+
+/* Form
+----------------------------------------------------------------------------- */
+
+input,
+optgroup,
+select,
+textarea {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+.input-label {
+  border-bottom: var(--color-divider) solid 1px;
+  color: var(--color-subtext);
+  display: block;
+  padding: 1.5em 0 0;
+}
+
+.input-label > div {
+  position: relative;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  line-height: normal;
+  padding: 1em;
+  text-align: inherit;
+  width: 100%;
+}
+
+input[type="text"]:disabled {
+  background: var(--color-subtext);
+  color: var(--color-text);
+  cursor: default;
+}
+
+input[type="text"]:hover:not(:disabled),
+input[type="text"]:focus-within,
+input[type="text"]:not(:placeholder-shown) {
+  color: var(--color-text);
+}
+
+input[type="text"] ~ .title {
+  bottom: 1em;
+  left: 1em;
+  line-height: 1;
+  position: absolute;
+  transition: 0.4s;
+}
+
+input[type="text"]:focus ~ .title,
+input[type="text"]:not(:placeholder-shown) ~ .title {
+  bottom: 100%;
+  font-size: 75%;
+}
+
+.radio {
+  cursor: default;
+  display: inline-block;
+  padding: 1em 0;
+  position: relative;
+}
+
+.radio > .symbol::before {
+  background: var(--color-text);
+  border: var(--color-text) solid 2px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: "";
+  cursor: pointer;
+  display: inline-block;
+  height: 14px;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
+  width: 14px;
+}
+
+.radio > :checked + .symbol::before {
+  background: var(--color-primary);
+}
+
+/* Button
+----------------------------------------------------------------------------- */
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  height: 100%;
+  line-height: normal;
+  margin: 0;
+  outline: 0;
+  padding: 0.5em 0;
+  text-align: center;
+  transition: background-color 0.15s;
+  width: 100%;
+}
+
+button:disabled {
+  color: var(--color-subtext);
+  cursor: not-allowed;
+}
+
+.button-outlined {
+  border: currentColor solid 1px;
+  border-radius: 3em;
+}
+
+.button-outlined:hover,
+.button-outlined:disabled {
+  box-shadow: 0 0 0.5em currentColor;
+}
+
+.button-filled {
+  background: var(--color-accent);
+  border: var(--color-accent) solid 1px;
+  color: var(--color-text);
+}
+
+.button-filled:hover {
+  background: var(--color-subtext);
+  border-color: var(--color-subtext);
+}
+
+.button-filled:disabled {
+  background: var(--color-prymary);
+  border-color: var(--color-prymary);
 }
