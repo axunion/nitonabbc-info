@@ -1,7 +1,6 @@
 import "./style.css";
 import * as elements from "@/components/elements";
 import * as layouts from "@/components/layouts";
-import * as forms from "@/components/forms";
 import { loaderState } from "@/store";
 
 // -----------------------------------------------------------------------------
@@ -15,7 +14,6 @@ interface CustomElement extends CustomElementConstructor {
 const components: CustomElement[] = [
   ...Object.values(elements),
   ...Object.values(layouts),
-  ...Object.values(forms),
 ];
 
 for (const component of components) {
@@ -35,5 +33,23 @@ if (loaderComponent) {
     } else {
       loaderComponent.classList.add("hidden");
     }
+  });
+}
+
+// -----------------------------------------------------------------------------
+// Form
+// -----------------------------------------------------------------------------
+
+const form = document.querySelector("form") as HTMLFormElement;
+
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+
+    loaderState.update(() => true);
+    loaderState.update(() => false);
   });
 }
