@@ -48,6 +48,11 @@ main {
   }
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 h1 {
   font-size: 125%;
   font-weight: normal;
