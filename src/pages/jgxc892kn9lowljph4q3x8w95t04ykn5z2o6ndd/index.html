@@ -9,98 +9,56 @@
   </head>
   <body>
     <main>
+      <h1>京葉地区青年交わり会参加申込</h1>
+      <div class="date"><span>開催日</span>2024年2月25日</div>
+
       <form>
-        <h1>京葉地区青年交わり会参加申込</h1>
+        <label class="input-text">
+          <span class="title">教会名</span>
+          <input type="text" name="church" maxlength="128" required />
+        </label>
 
-        <div class="date"><span>開催日</span>2024年2月25日</div>
+        <label class="input-text">
+          <span class="title">氏名</span>
+          <input type="text" name="name" maxlength="128" required />
+        </label>
 
-        <section>
-          <label class="input-label">
-            <div>
-              <input
-                type="text"
-                name="church"
-                maxlength="128"
-                placeholder=""
-                required
-              />
-              <span class="title">教会名</span>
-            </div>
+        <label class="input-text">
+          <span class="title">年齢</span>
+          <input type="text" name="age" maxlength="128" required />
+        </label>
+
+        <div class="radio-group">
+          <label class="radio">
+            <input type="radio" name="gender" checked required />
+            <span class="text">男性</span>
           </label>
 
-          <label class="input-label">
-            <div>
-              <input
-                type="text"
-                name="name"
-                maxlength="128"
-                placeholder=""
-                required
-              />
-              <span class="title">氏名</span>
-            </div>
+          <label class="radio">
+            <input type="radio" name="gender" required />
+            <span class="text">女性</span>
+          </label>
+        </div>
+
+        <div class="radio-group">
+          <label class="radio">
+            <input type="radio" name="status" checked required />
+            <span class="text">非教会員</span>
           </label>
 
-          <div class="column">
-            <span>
-              <label class="input-label">
-                <div>
-                  <input
-                    type="text"
-                    name="age"
-                    maxlength="128"
-                    placeholder=""
-                    required
-                  />
-                  <span class="title">年齢</span>
-                </div>
-              </label>
-            </span>
-
-            <span>
-              <label class="input-label">
-                <div>
-                  <input
-                    type="text"
-                    name="gender"
-                    maxlength="128"
-                    placeholder=""
-                    required
-                  />
-                  <span class="title">性別</span>
-                </div>
-              </label>
-            </span>
-          </div>
-
-          <label class="input-label">
-            <div class="column">
-              <span>
-                <div class="radio">
-                  <input type="radio" name="status" checked required />
-                  <span class="symbol">非教会員</span>
-                </div>
-              </span>
-
-              <span>
-                <div class="radio">
-                  <input type="radio" name="status" required />
-                  <span class="symbol">教会員</span>
-                </div>
-              </span>
-
-              <span>
-                <div class="radio">
-                  <input type="radio" name="status" required />
-                  <span class="symbol">指導者</span>
-                </div>
-              </span>
-            </div>
+          <label class="radio">
+            <input type="radio" name="status" required />
+            <span class="text">教会員</span>
           </label>
-        </section>
+
+          <label class="radio">
+            <input type="radio" name="status" required />
+            <span class="text">指導者</span>
+          </label>
+        </div>
 
         <div class="submit">
-          <button class="button-outlined">送信</button>
+          <button class="button-filled">送信</button>
         </div>
       </form>
     </main>

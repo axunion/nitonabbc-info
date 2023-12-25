@@ -1,22 +1,21 @@
 :root {
-  --color-background: #282928;
-  --color-background-light: #313331;
-  --color-primary: #f0566e;
-  --color-text: #e1e6e1;
+  --color-background: #e1e6e1;
+  --color-primary: #566df0;
+  --color-text: #282928;
   --color-subtext: #7d807d;
-  --color-accent: #f0d956;
+  --color-accent: #f0566e;
   --color-divider: #4b4d4b;
 }
 
 ::selection {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: var(--color-background);
   text-shadow: none;
 }
 
 html {
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--color-text);
+  color: var(--color-background);
   font:
     100%/1.5 -apple-system,
     BlinkMacSystemFont,
@@ -37,15 +36,16 @@ body {
 }
 
 main {
+  background: var(--color-background);
+  color: var(--color-text);
+  box-sizing: border-box;
+  max-width: 480px;
+  margin: auto;
+  min-height: 100vh;
   min-width: 320px;
+  padding: 2em;
   position: relative;
   z-index: 0;
-}
-
-@media screen and (min-width: 768px) {
-  main {
-    padding: 8vh;
-  }
 }
 
 a {
@@ -61,22 +61,16 @@ h1 {
   text-align: center;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  justify-content: flex-start;
-  margin: 2em 0;
-}
-
-form {
-  margin: auto;
-  max-width: 400px;
-  padding: 2em;
-}
-
 /* Layout
 ----------------------------------------------------------------------------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: flex-start;
+  margin: 3em 0 0;
+}
 
 .hidden {
   display: none;
@@ -124,80 +118,70 @@ textarea {
   color: inherit;
   font-family: inherit;
   font-size: 100%;
-  line-height: 1.5;
+  line-height: normal;
   margin: 0;
   outline: 0;
   padding: 0;
-}
-
-.input-label {
-  border-bottom: var(--color-divider) solid 1px;
-  color: var(--color-subtext);
-  display: block;
-  padding: 1.5em 0 0;
-}
-
-.input-label > div {
-  position: relative;
-}
-
-input[type="text"] {
-  box-sizing: border-box;
-  line-height: normal;
-  padding: 1em;
   text-align: inherit;
+}
+
+.input-text {
+  align-items: end;
+  border-bottom: var(--color-subtext) solid 1px;
+  display: flex;
+  padding: 1em;
+}
+
+.input-text > .title {
+  color: var(--color-subtext);
+  flex: 0 0 25%;
+  font-size: 75%;
+}
+
+.input-text > input[type="text"] {
+  font-size: 125%;
   width: 100%;
 }
 
-input[type="text"]:disabled {
+.input-text > input[type="text"]:disabled {
   background: var(--color-subtext);
   color: var(--color-text);
   cursor: default;
 }
 
-input[type="text"]:hover:not(:disabled),
-input[type="text"]:focus-within,
-input[type="text"]:not(:placeholder-shown) {
-  color: var(--color-text);
-}
-
-input[type="text"] ~ .title {
-  bottom: 1em;
-  left: 1em;
-  line-height: 1;
-  position: absolute;
-  transition: 0.4s;
-}
-
-input[type="text"]:focus ~ .title,
-input[type="text"]:not(:placeholder-shown) ~ .title {
-  bottom: 100%;
-  font-size: 75%;
+.radio-group {
+  background: #00000020;
+  border: var(--color-subtext) solid 1px;
+  border-radius: 0.5em;
+  display: flex;
+  overflow: hidden;
 }
 
 .radio {
-  cursor: default;
-  display: inline-block;
-  padding: 1em 0;
-  position: relative;
-}
-
-.radio > .symbol::before {
-  background: var(--color-text);
-  border: var(--color-text) solid 2px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  content: "";
+  color: var(--color-subtext);
   cursor: pointer;
-  display: inline-block;
-  height: 14px;
-  margin: 0 0.5em 0 0;
-  vertical-align: middle;
-  width: 14px;
+  flex: 0 1 100%;
 }
 
-.radio > :checked + .symbol::before {
-  background: var(--color-primary);
+.radio + .radio {
+  border-left: var(--color-subtext) solid 1px;
+}
+
+.radio > input[type="radio"] {
+  display: none;
+}
+
+.radio > .text {
+  color: var(--color-subtext);
+  display: block;
+  padding: 1em;
+  position: relative;
+  text-align: center;
+}
+
+.radio > :checked + .text {
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 /* Button
@@ -224,32 +208,21 @@ button {
 }
 
 button:disabled {
-  color: var(--color-subtext);
+  color: var(--color-text);
   cursor: not-allowed;
 }
 
 .button-outlined {
   border: currentColor solid 1px;
-  border-radius: 3em;
-}
-
-.button-outlined:hover,
-.button-outlined:disabled {
-  box-shadow: 0 0 0.5em currentColor;
 }
 
 .button-filled {
-  background: var(--color-accent);
-  border: var(--color-accent) solid 1px;
-  color: var(--color-text);
-}
-
-.button-filled:hover {
-  background: var(--color-subtext);
-  border-color: var(--color-subtext);
+  background: var(--color-primary);
+  border: var(--color-primary) solid 1px;
+  color: var(--color-background);
 }
 
 .button-filled:disabled {
-  background: var(--color-prymary);
-  border-color: var(--color-prymary);
+  background: var(--color-subtext);
+  border-color: var(--color-subtext);
 }
