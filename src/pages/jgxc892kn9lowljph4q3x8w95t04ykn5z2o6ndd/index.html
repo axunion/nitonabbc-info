@@ -25,34 +25,41 @@
 
         <label class="input-text">
           <span class="title">年齢</span>
-          <input type="text" name="age" maxlength="128" required />
+          <input
+            type="text"
+            name="age"
+            maxlength="2"
+            title="数字2桁を入力してください"
+            pattern="^[1-9][0-9]?$"
+            required
+          />
         </label>
 
         <div class="radio-group">
           <label class="radio">
-            <input type="radio" name="gender" checked required />
+            <input type="radio" name="gender" checked />
             <span class="text">男性</span>
           </label>
 
           <label class="radio">
-            <input type="radio" name="gender" required />
+            <input type="radio" name="gender" />
             <span class="text">女性</span>
           </label>
         </div>
 
         <div class="radio-group">
           <label class="radio">
-            <input type="radio" name="status" checked required />
+            <input type="radio" name="status" checked />
             <span class="text">非教会員</span>
           </label>
 
           <label class="radio">
-            <input type="radio" name="status" required />
+            <input type="radio" name="status" />
             <span class="text">教会員</span>
           </label>
 
           <label class="radio">
-            <input type="radio" name="status" required />
+            <input type="radio" name="status" />
             <span class="text">指導者</span>
           </label>
         </div>
