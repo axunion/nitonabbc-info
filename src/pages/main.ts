@@ -1,4 +1,3 @@
-import "./style.css";
 import * as elements from "@/components/elements";
 import * as layouts from "@/components/layouts";
 import { loaderState } from "@/store";

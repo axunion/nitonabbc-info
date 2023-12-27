@@ -27,6 +27,7 @@ export default defineConfig({
   },
   build: {
     target: "es2015",
+    outDir: "../../dist",
     emptyOutDir: true,
     rollupOptions: {
       input: buildFileList(resolve(__dirname, "src/pages")),

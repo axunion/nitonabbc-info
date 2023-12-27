@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <title>Form</title>
+    <link rel="stylesheet" href="/style.css" />
+    <title>京葉地区青年交わり会参加申込</title>
   </head>
   <body>
     <main>
@@ -37,29 +38,29 @@
 
         <div class="radio-group">
           <label class="radio">
-            <input type="radio" name="gender" checked />
+            <input type="radio" name="gender" value="1" checked />
             <span class="text">男性</span>
           </label>
 
           <label class="radio">
-            <input type="radio" name="gender" />
+            <input type="radio" name="gender" value="2" />
             <span class="text">女性</span>
           </label>
         </div>
 
         <div class="radio-group">
           <label class="radio">
-            <input type="radio" name="status" checked />
-            <span class="text">非教会員</span>
-          </label>
-
-          <label class="radio">
-            <input type="radio" name="status" />
+            <input type="radio" name="status" value="1" checked />
             <span class="text">教会員</span>
           </label>
 
           <label class="radio">
-            <input type="radio" name="status" />
+            <input type="radio" name="status" value="2" />
+            <span class="text">非教会員</span>
+          </label>
+
+          <label class="radio">
+            <input type="radio" name="status" value="3" />
             <span class="text">指導者</span>
           </label>
         </div>
@@ -73,6 +74,6 @@
     <dialog-component class="hidden"></dialog-component>
     <loader-component class="hidden"></loader-component>
 
-    <script type="module" src="../main.ts"></script>
+    <script type="module" src="/main.ts"></script>
   </body>
 </html>
