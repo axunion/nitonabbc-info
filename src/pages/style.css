@@ -15,7 +15,6 @@
 
 html {
   background: var(--color-text);
-  color: var(--color-background);
   font:
     100%/1.5 -apple-system,
     BlinkMacSystemFont,
@@ -35,19 +34,6 @@ body {
   margin: 0;
 }
 
-main {
-  background: var(--color-background);
-  color: var(--color-text);
-  box-sizing: border-box;
-  max-width: 480px;
-  margin: auto;
-  min-height: 100vh;
-  min-width: 320px;
-  padding: 2em;
-  position: relative;
-  z-index: 0;
-}
-
 a {
   color: inherit;
   text-decoration: inherit;
@@ -64,12 +50,26 @@ h1 {
 /* Layout
 ----------------------------------------------------------------------------- */
 
+main {
+  background: var(--color-background);
+  color: var(--color-text);
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 480px;
+  min-height: 100vh;
+  min-width: 320px;
+  padding: 2em;
+  position: relative;
+  z-index: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
   gap: 2em;
   justify-content: flex-start;
-  margin: 3em 0 0;
+  margin: 3em auto;
+  max-width: 400px;
 }
 
 .hidden {
@@ -100,7 +100,7 @@ form {
 .submit {
   color: var(--color-primary);
   height: 4em;
-  margin: 4em 0;
+  padding: 1em 0 0;
 }
 
 /* Form
@@ -116,9 +116,7 @@ textarea {
   background: transparent;
   border: 0;
   color: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  line-height: normal;
+  font: inherit;
   margin: 0;
   outline: 0;
   padding: 0;
@@ -129,7 +127,7 @@ textarea {
   align-items: end;
   border-bottom: var(--color-subtext) solid 1px;
   display: flex;
-  padding: 1em;
+  padding: 0.5em 1em;
 }
 
 .input-text > .title {
@@ -198,10 +196,9 @@ button {
   cursor: pointer;
   font: inherit;
   height: 100%;
-  line-height: normal;
   margin: 0;
   outline: 0;
-  padding: 0.5em 0;
+  padding: 0;
   text-align: center;
   transition: background-color 0.15s;
   width: 100%;
