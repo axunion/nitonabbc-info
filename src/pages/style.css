@@ -166,7 +166,8 @@ textarea {
 }
 
 .radio > input[type="radio"] {
-  display: none;
+  opacity: 0;
+  position: absolute;
 }
 
 .radio > .text {
