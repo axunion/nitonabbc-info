@@ -1,21 +1,11 @@
-import * as elements from "@/components/elements";
-import * as layouts from "@/components/layouts";
+import * as components from "@/components";
 import { loaderState } from "@/store";
 
 // -----------------------------------------------------------------------------
 // Custom Element
 // -----------------------------------------------------------------------------
 
-interface CustomElement extends CustomElementConstructor {
-  componentName: string;
-}
-
-const components: CustomElement[] = [
-  ...Object.values(elements),
-  ...Object.values(layouts),
-];
-
-for (const component of components) {
+for (const component of [...Object.values(components)]) {
   customElements.define(component.componentName, component);
 }
 
