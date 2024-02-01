@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  target?: string;
+}
+
+const { href, target } = Astro.props;
+const linkProps = {
+  href,
+  ...(target && { target }),
+};
+---
+
+<a class="link" rel="noopener noreferrer" {...linkProps}><slot /></a>
+
+<style>
+  .link {
+    background: var(--color-primary);
+    border-radius: 0.5em;
+    color: var(--color-background);
+    display: block;
+    margin: 1em 0;
+    padding: 1em;
+    text-align: center;
+  }
+</style>
