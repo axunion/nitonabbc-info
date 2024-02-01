@@ -1,6 +1,19 @@
 ---
 import Layout from "../../../layouts/InfoLayout.astro";
 import ButtonLink from "../../../components/ButtonLink.astro";
+import EventDetailTable from "../../../components/EventDetailTable.astro";
+
+const eventDetails = {
+  caption: "記",
+  rows: [
+    ["日時", "2024年2月25日（日）15:30 - 18:00"],
+    ["会場", "辺田町内会館 つどいの館（駐車場有）"],
+    ["講師", "堺希望伝道師（葛西BBC）"],
+    ["参加費", "無料"],
+    ["懇親会", "1500円（終了後に希望者のみ）"],
+    ["申込期限", "2024年2月18日（日）"],
+  ],
+};
 ---
 
 <Layout title="京葉地区合同青年会のご案内">
@@ -21,34 +34,7 @@ import ButtonLink from "../../../components/ButtonLink.astro";
       </p>
     </div>
 
-    <table>
-      <caption> 記</caption>
-
-      <tr>
-        <th>日時</th>
-        <td>2024年2月25日（日）15:30 - 18:00</td>
-      </tr>
-      <tr>
-        <th>会場</th>
-        <td>辺田町内会館 つどいの館（駐車場有）</td>
-      </tr>
-      <tr>
-        <th>講師</th>
-        <td>堺希望伝道師（葛西BBC）</td>
-      </tr>
-      <tr>
-        <th>参加費</th>
-        <td>無料</td>
-      </tr>
-      <tr>
-        <th>懇親会</th>
-        <td>1500円（終了後に希望者のみ）</td>
-      </tr>
-      <tr>
-        <th>申込期限</th>
-        <td>2024年2月18日（日）</td>
-      </tr>
-    </table>
+    <EventDetailTable {...eventDetails} />
 
     <hr />
 
