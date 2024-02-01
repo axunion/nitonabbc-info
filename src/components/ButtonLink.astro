@@ -8,13 +8,14 @@ const { href, target } = Astro.props;
 const linkProps = {
   href,
   ...(target && { target }),
+  rel: "noopener noreferrer",
 };
 ---
 
-<a class="link" rel="noopener noreferrer" {...linkProps}><slot /></a>
+<a {...linkProps}><slot /></a>
 
 <style>
-  .link {
+  a {
     background: var(--color-primary);
     border-radius: 0.5em;
     color: var(--color-background);
