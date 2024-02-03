@@ -5,17 +5,14 @@ interface Props {
 }
 
 const { href, target } = Astro.props;
-const linkProps = {
-  href,
-  ...(target && { target }),
-  rel: "noopener noreferrer",
-};
 ---
 
-<a {...linkProps}><slot /></a>
+<a class="a" href={href} target={target ?? ""} rel="noopener noreferrer"
+  ><slot /></a
+>
 
 <style>
-  a {
+  .a {
     background: var(--color-primary);
     border-radius: 0.5em;
     color: var(--color-background);
