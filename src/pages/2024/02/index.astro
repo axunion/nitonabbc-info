@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/InfoLayout.astro";
 import ButtonLink from "../../../components/ButtonLink.astro";
 import EventDetailTable from "../../../components/EventDetailTable.astro";
+import MapFrame from "../../../components/MapFrame.astro";
 
 const eventDetails = {
   caption: "記",
@@ -73,13 +74,11 @@ const eventDetails = {
           〒266-0007 千葉県千葉市緑区辺田町2024-1 辺田町内会館 つどいの館
         </span>
 
-        <iframe
-          class="mobile"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1622.6749047559663!2d140.17995532199188!3d35.569756844227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60229bc01aa9b51d%3A0x4eca36d4487bef98!2z6L6655Sw55S65YaF5Lya6aSoIOOBpOOBqeOBhOOBrumkqA!5e0!3m2!1sja!2sjp!4v1700900318499!5m2!1sja!2sjp"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="mobile">
+          <MapFrame
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1622.6749047559663!2d140.17995532199188!3d35.569756844227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60229bc01aa9b51d%3A0x4eca36d4487bef98!2z6L6655Sw55S65YaF5Lya6aSoIOOBpOOBqeOBhOOBrumkqA!5e0!3m2!1sja!2sjp!4v1700900318499!5m2!1sja!2sjp"
+          />
+        </div>
       </dd>
 
       <dt>お問い合わせ</dt>
