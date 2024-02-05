@@ -1,0 +1,74 @@
+:root {
+  --color-background: #ebebeb;
+  --color-primary: #566df0;
+  --color-text: #282928;
+  --color-subtext: #7d807d;
+  --color-accent: #f0566e;
+  --color-divider: #4b4d4b;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+  text-shadow: none;
+}
+
+html {
+  background: var(--color-background);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
+    "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 80px 40px;
+}
+
+p {
+  font-feature-settings: "palt";
+  letter-spacing: 0.1em;
+  margin: 1em 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+strong {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+hr {
+  border: 0;
+  margin: 1em 0;
+}
+
+@media (max-width: 768px), print {
+  body {
+    padding: 2em;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  html {
+    background: none;
+    font-size: 10pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
