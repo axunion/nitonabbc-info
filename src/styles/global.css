@@ -26,7 +26,6 @@ html {
 
 body {
   margin: 0;
-  padding: 80px 40px;
 }
 
 p {
@@ -52,23 +51,4 @@ img {
 hr {
   border: 0;
   margin: 1em 0;
-}
-
-@media (max-width: 768px), print {
-  body {
-    padding: 2em;
-  }
-}
-
-@media print {
-  @page {
-    margin: 0;
-  }
-
-  html {
-    background: none;
-    font-size: 10pt;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
 }
