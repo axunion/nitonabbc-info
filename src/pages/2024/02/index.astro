@@ -111,6 +111,10 @@ const eventDetails = {
 </Layout>
 
 <style>
+  body {
+    padding: 80px 40px;
+  }
+
   #paper {
     background: white;
     border-radius: 2px;
@@ -184,6 +188,10 @@ const eventDetails = {
   }
 
   @media (max-width: 768px), print {
+    body {
+      padding: 2em;
+    }
+
     #paper {
       background: none;
       box-shadow: none;
@@ -223,6 +231,13 @@ const eventDetails = {
   @media print {
     @page {
       margin: 0;
+    }
+
+    html {
+      background: none;
+      font-size: 10pt;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
     }
 
     .print {
