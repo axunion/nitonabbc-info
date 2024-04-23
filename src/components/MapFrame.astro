@@ -1,7 +1,7 @@
 ---
-interface Props {
+type Props = {
   src: string;
-}
+};
 
 const { src } = Astro.props;
 ---
@@ -11,7 +11,9 @@ const { src } = Astro.props;
   src={src}
   allowfullscreen=""
   loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"></iframe>
+  referrerpolicy="no-referrer-when-downgrade"
+>
+</iframe>
 
 <style>
   .iframe {
