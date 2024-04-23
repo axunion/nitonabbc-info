@@ -1,8 +1,8 @@
 ---
-interface Props {
+type Props = {
   caption: string;
   rows: { th: string; td: string }[];
-}
+};
 
 const { caption, rows } = Astro.props;
 ---
