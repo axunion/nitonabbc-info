@@ -3,25 +3,129 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="2025 第56回JBBF全国青年フェローシップキャンプ">
-  <div id="paper">
-    <header>
-      <h1>2025 第56回JBBF全国青年フェローシップキャンプ</h1>
-    </header>
+  <header class="header">
+    <h1 class="h1">
+      <small>2025 第56回</small><br />
+      JBBF全国青年フェローシップキャンプ
+    </h1>
+  </header>
 
-    <main></main>
+  <main class="main">
+    <section class="theme">
+      <div>
+        <h2 class="head">テーマ</h2>
+        <p class="text">起きよ。輝け。</p>
+        <small class="verse">イザヤ 60:1</small>
+      </div>
+    </section>
+  </main>
 
-    <footer><small>主催：仁戸名聖書バプテスト教会</small></footer>
-  </div>
+  <footer class="footer">
+    <small>主催：仁戸名聖書バプテスト教会</small>
+  </footer>
 </Layout>
 
 <style>
+  :root {
+    --color-background: #000000;
+    --color-primary: #566df0;
+    --color-text: #808080;
+    --color-subtext: #7d807d;
+    --color-accent: #f0566e;
+    --color-divider: #4b4d4b;
+  }
+
   body {
-    padding: 80px 40px;
+    transition: background-color 1s ease-out;
+  }
+
+  body.light {
+    background: #ffffff;
+    transition: background-color 1s ease-in;
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  .h1 {
+    font-size: 2vw;
+    margin: 0;
+  }
+
+  .theme {
+    align-items: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: center;
+    text-shadow: 0 0 40px white;
+  }
+
+  .theme .head {
+    font-size: small;
+    margin: 0;
+  }
+
+  .theme .text {
+    font-size: 2vw;
+    font-weight: bold;
+    margin: 8px 0;
+  }
+
+  .theme .text::before {
+    content: "『";
+    margin: 0 4px 0 0;
+  }
+
+  .theme .text::after {
+    content: "』";
+    margin: 0 0 0 4px;
+  }
+
+  .theme .verse {
+    display: block;
+    font-size: small;
+    font-style: normal;
+    text-align: right;
+  }
+
+  .footer {
+    padding: 4em 0;
+    text-align: center;
   }
 
   @media (max-width: 768px) {
-    body {
-      padding: 2em;
+    .h1 {
+      font-size: 18px;
+    }
+
+    .theme .text {
+      font-size: 24px;
     }
   }
 </style>
+
+<script>
+  const scrollTarget = document.querySelector(".theme");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          document.body.classList.add("light");
+        } else {
+          document.body.classList.remove("light");
+        }
+      });
+    },
+    { rootMargin: "-50% 0px" }
+  );
+
+  if (scrollTarget) {
+    observer.observe(scrollTarget);
+  }
+</script>

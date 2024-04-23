@@ -4,6 +4,7 @@ import ButtonLink from "@/components/ButtonLink.astro";
 import EventDetailTable from "@/components/EventDetailTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
 
+const title = "京葉地区合同青年会のご案内";
 const eventDetails = {
   caption: "記",
   rows: [
@@ -17,11 +18,14 @@ const eventDetails = {
 };
 ---
 
-<Layout title="京葉地区合同青年会のご案内">
+<Layout title={title}>
   <div id="paper">
     <header>
-      <h1>京葉地区合同青年会のご案内</h1>
-      <p>再開と復活<br />~さらなる導きに期待しよう~</p>
+      <h1>{title}</h1>
+      <p>
+        再開と復活<br />
+        ~さらなる導きに期待しよう~
+      </p>
 
       <div class="mobile img">
         <img src="/simple-resurrection-theme.webp" alt="" />
@@ -112,6 +116,7 @@ const eventDetails = {
 
 <style>
   body {
+    font-size: 14px;
     padding: 80px 40px;
   }
 
