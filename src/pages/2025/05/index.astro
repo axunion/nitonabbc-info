@@ -15,7 +15,7 @@ import Layout from "@/layouts/Layout.astro";
       <div>
         <h2 class="head">テーマ</h2>
         <p class="text">起きよ。輝け。</p>
-        <small class="verse">イザヤ 60:1</small>
+        <div class="verse">イザヤ 60:1</div>
       </div>
     </section>
   </main>
@@ -26,22 +26,14 @@ import Layout from "@/layouts/Layout.astro";
 </Layout>
 
 <style>
-  :root {
-    --color-background: #000000;
-    --color-primary: #566df0;
-    --color-text: #808080;
-    --color-subtext: #7d807d;
-    --color-accent: #f0566e;
-    --color-divider: #4b4d4b;
-  }
-
   body {
-    transition: background-color 1s ease-out;
+    background: black;
+    transition: background-color 1s;
   }
 
   body.light {
-    background: #ffffff;
-    transition: background-color 1s ease-in;
+    background: white;
+    transition: background-color 2s linear;
   }
 
   .header {
@@ -52,6 +44,7 @@ import Layout from "@/layouts/Layout.astro";
   }
 
   .h1 {
+    color: gray;
     font-size: 2vw;
     margin: 0;
   }
@@ -60,14 +53,15 @@ import Layout from "@/layouts/Layout.astro";
     align-items: center;
     color: black;
     display: flex;
-    flex-direction: column;
     height: 50vh;
     justify-content: center;
+    padding: 0 0 50vh;
     text-shadow: 0 0 40px white;
   }
 
   .theme .head {
     font-size: small;
+    font-weight: normal;
     margin: 0;
   }
 
@@ -88,9 +82,7 @@ import Layout from "@/layouts/Layout.astro";
   }
 
   .theme .verse {
-    display: block;
     font-size: small;
-    font-style: normal;
     text-align: right;
   }
 
@@ -111,7 +103,7 @@ import Layout from "@/layouts/Layout.astro";
 </style>
 
 <script>
-  const scrollTarget = document.querySelector(".theme");
+  const scrollTarget = document.querySelector(".main");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
