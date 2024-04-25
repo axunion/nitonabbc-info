@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
 import EventDetailTable from "@/components/EventDetailTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
+import hero from "./simple-resurrection-theme.webp";
+import qr202402 from "./qr-202402.png";
 
 const title = "京葉地区合同青年会のご案内";
 const eventDetails = {
@@ -28,7 +30,7 @@ const eventDetails = {
       </p>
 
       <div class="mobile img">
-        <img src="/simple-resurrection-theme.webp" alt="" />
+        <img src={hero.src} alt="" />
       </div>
     </header>
 
@@ -52,7 +54,7 @@ const eventDetails = {
           次の QR コードより、Web フォームからお申し込みください。<br />
           お1人づつお申し込みをお願いいたします。
           <span class="qr">
-            <img src="/qr-202402.png" alt="" />
+            <img src={qr202402.src} alt="" />
           </span>
         </dd>
         <dd class="mobile">
@@ -94,7 +96,7 @@ const eventDetails = {
           />
           <strong>参加コード:0333</strong>
           <span class="qr">
-            <img src="/qr-openchat.webp" alt="" />
+            <img src="/qr-openchat-keiyo.webp" alt="" />
           </span>
         </dd>
         <dd class="mobile">
