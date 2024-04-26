@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import lakeYamanaka from "./lake-yamanaka.webp";
 ---
 
 <Layout title="2025 第56回JBBF全国青年フェローシップキャンプ">
@@ -11,13 +12,13 @@ import Layout from "@/layouts/Layout.astro";
   </header>
 
   <main class="main">
-    <section class="theme">
-      <div>
+    <div class="block theme">
+      <section>
         <h2 class="head">テーマ</h2>
         <p class="text">起きよ。輝け。</p>
         <div class="verse">イザヤ 60:1</div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
@@ -50,23 +51,19 @@ import Layout from "@/layouts/Layout.astro";
   }
 
   .theme {
-    align-items: center;
     color: black;
-    display: flex;
-    height: 50vh;
-    justify-content: center;
-    padding: 0 0 50vh;
+    font-size: 3vw;
+    min-height: 50vh;
     text-shadow: 0 0 40px white;
   }
 
   .theme .head {
-    font-size: small;
+    font-size: 50%;
     font-weight: normal;
     margin: 0;
   }
 
   .theme .text {
-    font-size: 2vw;
     font-weight: bold;
     margin: 8px 0;
   }
@@ -82,7 +79,7 @@ import Layout from "@/layouts/Layout.astro";
   }
 
   .theme .verse {
-    font-size: small;
+    font-size: 50%;
     text-align: right;
   }
 
@@ -96,8 +93,8 @@ import Layout from "@/layouts/Layout.astro";
       font-size: 18px;
     }
 
-    .theme .text {
-      font-size: 24px;
+    .theme {
+      font-size: 32px;
     }
   }
 </style>
