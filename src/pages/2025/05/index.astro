@@ -4,7 +4,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
 ---
 
 <Layout title="2025 第56回JBBF全国青年フェローシップキャンプ">
-  <header class="header">
+  <header class="block header">
     <h1 class="h1">
       <small>2025 第56回</small><br />
       JBBF全国青年フェローシップキャンプ
@@ -14,9 +14,24 @@ import lakeYamanaka from "./lake-yamanaka.webp";
   <main class="main">
     <div class="block theme">
       <section>
-        <h2 class="head">テーマ</h2>
-        <p class="text">起きよ。輝け。</p>
-        <div class="verse">イザヤ 60:1</div>
+        <h2 class="theme-head">テーマ</h2>
+        <p class="theme-text">起きよ。輝け。</p>
+        <div class="theme-verse">イザヤ 60:1</div>
+      </section>
+    </div>
+
+    <div class="block info" style={`background-image:url(${lakeYamanaka.src})`}>
+      <section class="info-section">
+        <h2 class="info-head">日程</h2>
+        <p class="info-text">2025年5月5日（月）〜 5月7日（水）</p>
+      </section>
+
+      <section class="info-section">
+        <h2 class="info-head">会場</h2>
+        <p class="info-text">グリーンヒルズニューみなみ</p>
+        <p class="info-subtext">
+          〒401-0502<br />山梨県南都留郡山中湖村平野520-45
+        </p>
       </section>
     </div>
   </main>
@@ -37,11 +52,8 @@ import lakeYamanaka from "./lake-yamanaka.webp";
     transition: background-color 2s linear;
   }
 
-  .header {
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
+  .main {
+    font-size: 2vw;
   }
 
   .h1 {
@@ -54,41 +66,77 @@ import lakeYamanaka from "./lake-yamanaka.webp";
     color: black;
     font-size: 3vw;
     min-height: 50vh;
+    padding: 0 0 25vh;
     text-shadow: 0 0 40px white;
   }
 
-  .theme .head {
+  .theme-head {
     font-size: 50%;
     font-weight: normal;
     margin: 0;
   }
 
-  .theme .text {
+  .theme-text {
     font-weight: bold;
     margin: 8px 0;
   }
 
-  .theme .text::before {
+  .theme-text::before {
     content: "『";
     margin: 0 4px 0 0;
   }
 
-  .theme .text::after {
+  .theme-text::after {
     content: "』";
     margin: 0 0 0 4px;
   }
 
-  .theme .verse {
+  .theme-verse {
     font-size: 50%;
     text-align: right;
   }
 
+  .info {
+    background: center / cover;
+    color: white;
+  }
+
+  .info-section {
+    backdrop-filter: blur(10px);
+    background: #00000020;
+    margin: auto auto auto 0;
+    padding: 2em;
+  }
+
+  .info-section + .info-section {
+    margin: auto 0 auto auto;
+  }
+
+  .info-head {
+    font-size: 85%;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  .info-text {
+    margin: 0.25em 0;
+  }
+
+  .info-subtext {
+    font-size: 85%;
+    margin: 0;
+  }
+
   .footer {
-    padding: 4em 0;
+    padding: 25vh 0 10vh;
     text-align: center;
   }
 
   @media (max-width: 768px) {
+    .main {
+      font-size: 16px;
+    }
+
     .h1 {
       font-size: 18px;
     }
@@ -111,7 +159,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
         }
       });
     },
-    { rootMargin: "-50% 0px" }
+    { rootMargin: "0px 0px -50%" }
   );
 
   if (scrollTarget) {
