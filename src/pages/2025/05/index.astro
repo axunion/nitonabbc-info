@@ -1,9 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import lakeYamanaka from "./lake-yamanaka.webp";
+
+const head = `
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ起きよ！輝けイザヤ60:1" rel="stylesheet">
+`;
 ---
 
-<Layout title="2025 第56回JBBF全国青年フェローシップキャンプ">
+<Layout title="2025 第56回JBBF全国青年フェローシップキャンプ" head={head}>
   <header class="block header">
     <h1 class="h1">
       <small>2025 第56回</small><br />
@@ -15,7 +21,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
     <div class="block theme">
       <section>
         <h2 class="theme-head">テーマ</h2>
-        <p class="theme-text">起きよ。輝け。</p>
+        <p class="theme-text">起きよ！輝け！</p>
         <div class="theme-verse">イザヤ 60:1</div>
       </section>
     </div>
@@ -23,7 +29,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
     <div class="block info" style={`background-image:url(${lakeYamanaka.src})`}>
       <section class="info-section">
         <h2 class="info-head">日程</h2>
-        <p class="info-text">2025年5月5日（月）〜 5月7日（水）</p>
+        <p class="info-text">2025.5.5(mon) - 5.7(wed)</p>
       </section>
 
       <section class="info-section">
@@ -37,7 +43,8 @@ import lakeYamanaka from "./lake-yamanaka.webp";
   </main>
 
   <footer class="footer">
-    <small>主催：仁戸名聖書バプテスト教会</small>
+    <small>主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会</small><br />
+    <small>協力：市原聖書バプテスト教会</small>
   </footer>
 </Layout>
 
@@ -64,6 +71,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
 
   .theme {
     color: black;
+    font-family: "Yuji Syuku", serif;
     font-size: 3vw;
     min-height: 50vh;
     padding: 0 0 25vh;
@@ -77,7 +85,6 @@ import lakeYamanaka from "./lake-yamanaka.webp";
   }
 
   .theme-text {
-    font-weight: bold;
     margin: 8px 0;
   }
 
@@ -119,6 +126,7 @@ import lakeYamanaka from "./lake-yamanaka.webp";
   }
 
   .info-text {
+    font-size: 120%;
     margin: 0.25em 0;
   }
 
@@ -128,7 +136,8 @@ import lakeYamanaka from "./lake-yamanaka.webp";
   }
 
   .footer {
-    padding: 25vh 0 10vh;
+    font-size: 90%;
+    padding: 25vh 1em 10vh;
     text-align: center;
   }
 
