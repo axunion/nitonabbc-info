@@ -1,12 +1,14 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import lakeYamanaka from "./lake-yamanaka.webp";
+import lakeYamanaka from "./img/lake-yamanaka.webp";
 
 const head = `
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ起きよ！輝けイザヤ60:1" rel="stylesheet">
 `;
+
+const backgroundImage = `background-image: url(${lakeYamanaka.src})`;
 ---
 
 <Layout title="2025 第56回JBBF全国青年フェローシップキャンプ" head={head}>
@@ -26,7 +28,7 @@ const head = `
       </section>
     </div>
 
-    <div class="block info" style={`background-image:url(${lakeYamanaka.src})`}>
+    <div class="block info" style={backgroundImage}>
       <section class="info-section">
         <h2 class="info-head">日程</h2>
         <p class="info-text">2025.5.5(mon) - 5.7(wed)</p>
@@ -43,8 +45,10 @@ const head = `
   </main>
 
   <footer class="footer">
-    <small>主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会</small><br />
-    <small>協力：市原聖書バプテスト教会</small>
+    <small class="footer-text">
+      主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会<br />
+      協力：市原聖書バプテスト教会
+    </small>
   </footer>
 </Layout>
 
@@ -74,7 +78,7 @@ const head = `
     font-family: "Yuji Syuku", serif;
     font-size: 3vw;
     min-height: 50vh;
-    padding: 0 0 25vh;
+    padding: 0 0 40vh;
     text-shadow: 0 0 40px white;
   }
 
@@ -136,9 +140,12 @@ const head = `
   }
 
   .footer {
-    font-size: 90%;
     padding: 25vh 1em 10vh;
     text-align: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
   }
 
   @media (max-width: 768px) {
