@@ -3,8 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
 import EventDetailTable from "@/components/EventDetailTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
+// import hero from "./creating-fellowship-through.webp";
 
 const title = "京葉地区一泊お泊まり会のご案内";
+const titleEn = "Keiyo Area Overnight Retreat Announcement";
 const eventDetails = {
   caption: "記",
   rows: [
@@ -18,84 +20,102 @@ const eventDetails = {
 ---
 
 <Layout title={title}>
-  <header>
-    <h1>{title}</h1>
-    <p>みことばによる交わり 使徒17:11</p>
+  <div class="block">
+    <header>
+      <h1>{title}<br />{titleEn}</h1>
+      <p>みことばによる交わり - 使徒17:11</p>
+      <p>Fellowship through the Word - Acts 17:11</p>
 
-    <div class="img">
-      <!-- <img src={hero.src} alt="" /> -->
-    </div>
-  </header>
+      <div class="img">
+        <!-- <img src={hero.src} alt="" /> -->
+      </div>
+    </header>
+  </div>
 
   <main>
-    <p>
-      主の御名を賛美します。京葉地区一泊お泊まり会へのご案内を申し上げます。
-    </p>
-    <p>
-      この時間を通じて、互いに励まし合い、信仰の旅路において共に成長していくことを心から願っています。主に在りて。
-    </p>
-
-    <EventDetailTable {...eventDetails} />
-
     <section>
-      <h2>スケジュール</h2>
-      <h3>プログラム詳細</h3>
-      <h3>レクリエーション</h3>
-      <h3>テーマ別集会</h3>
+      <p>
+        主の御名を賛美いたします。京葉地区での一泊お泊まり会を開催いたしますことをご案内申し上げます。
+      </p>
+      <p>
+        この集まりを通じて、信仰の仲間と共に深い交流を持ち、主の愛に満ちた時間を過ごすことができるよう願っています。信仰の深まりと互いの愛を育む素晴らしい時間を共有できることを楽しみにしております。どうぞご参加ください。主に在りて。
+      </p>
+      <hr />
+      <p>
+        We praise the name of the Lord. We are pleased to announce that we will
+        be hosting an overnight retreat in the Keiyo area.
+      </p>
+      <p>
+        Through this gathering, we hope to have deep fellowship with our fellow
+        believers and spend a time filled with the love of the Lord. We look
+        forward to sharing a wonderful time where our faith deepens and our
+        mutual love grows. Please join us. In the Lord.
+      </p>
     </section>
 
     <section>
-      <h2>申し込み</h2>
-      <h3>申し込み方法</h3>
-      <p>
-        次のリンクより、Web
-        フォームからお申し込みください。お1人づつお申し込みをお願いいたします。
-        <ButtonLink
-          href="https://form.nitonabbc.org/#/entry/2024/02"
-          target="_blank"
-        >
-          参加申し込み
-        </ButtonLink>
-      </p>
-      <h3>申込期限</h3>
+      <EventDetailTable {...eventDetails} />
     </section>
 
     <section>
-      <h2>その他の情報</h2>
-      <h3>アクセス</h3>
-      <div>
-        <MapFrame
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
-        />
-      </div>
-      <h3>持ち物</h3>
-      <h3>お問い合わせ</h3>
+      <h2>スケジュール - Schedule</h2>
+      <h3>プログラム詳細 - Program Details</h3>
+      <h3>レクリエーション - Recreation</h3>
+      <h3>テーマ別集会 - Thematic Meetings</h3>
+    </section>
+
+    <section>
+      <h2>申し込み - Application</h2>
+      <h3>申し込み方法 - Application Method</h3>
       <p>
-        次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
-        <strong>参加コード：0333</strong>
-        <ButtonLink
-          href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
-          target="_blank"
-        >
-          LINE オープンチャット
-        </ButtonLink>
+        次のリンクより、Webフォームからお申し込みください。お1人づつお申し込みをお願いいたします。
       </p>
+      <p>
+        Please apply using the web form from the following link. Please apply
+        individually.
+      </p>
+      <ButtonLink
+        href="https://form.nitonabbc.org/#/entry/2024/09"
+        target="_blank"
+      >
+        参加申し込み - Apply Now
+      </ButtonLink>
+
+      <h3>申込期限 - Application Deadline</h3>
+      <p>2024年8月4日(日)</p>
+      <p>August 4, 2024 (Sunday)</p>
     </section>
   </main>
 
-  <footer><small>担当：仁戸名聖書バプテスト教会</small></footer>
+  <section>
+    <h2>その他の情報 - Additional Information</h2>
+    <h3>アクセス - Access</h3>
+    <MapFrame
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
+    />
+
+    <h3>持ち物 - What to Bring</h3>
+
+    <h3>お問い合わせ - Contact Information</h3>
+    <p>
+      次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
+      <strong>参加コード：0333</strong>
+      <ButtonLink
+        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+        target="_blank"
+      >
+        LINE オープンチャット
+      </ButtonLink>
+    </p>
+  </section>
 </Layout>
+
+<footer><small>担当：仁戸名聖書バプテスト教会</small></footer>
 
 <style>
   header {
     padding: 1.5em;
     text-align: center;
-  }
-
-  header > .img {
-    height: 250px;
-    margin: auto;
-    width: 250px;
   }
 
   h1 {
@@ -115,14 +135,27 @@ const eventDetails = {
   }
 
   main {
-    font-size: 14px;
+    padding: 5vh 0;
+  }
+
+  section {
     margin: auto;
-    max-width: 800px;
+    max-width: 600px;
     padding: 1.5em;
+  }
+
+  p {
+    line-height: 2;
   }
 
   footer {
     padding: 4em 0;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      font-size: 14px;
+    }
   }
 </style>
