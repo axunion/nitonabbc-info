@@ -3,10 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
 import EventDetailTable from "@/components/EventDetailTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
-// import hero from "./creating-fellowship-through.webp";
+import hero from "./hero.webp?url";
 
 const title = "京葉地区一泊お泊まり会のご案内";
-const titleEn = "Keiyo Area Overnight Retreat Announcement";
 const eventDetails = {
   caption: "記",
   rows: [
@@ -20,20 +19,21 @@ const eventDetails = {
 ---
 
 <Layout title={title}>
-  <div class="block">
-    <header>
-      <h1>{title}<br />{titleEn}</h1>
-      <p>みことばによる交わり - 使徒17:11</p>
-      <p>Fellowship through the Word - Acts 17:11</p>
-
-      <div class="img">
-        <!-- <img src={hero.src} alt="" /> -->
-      </div>
+  <div class="welcome block">
+    <header class="header">
+      <h1>
+        {title}<br />
+        Keiyo Area Overnight Retreat Announcement
+      </h1>
     </header>
+    <div class="theme">
+      <p>みことばによる交わり<br />- 使徒17:11 -</p>
+      <p>Fellowship through the Word<br />- Acts 17:11 -</p>
+    </div>
   </div>
 
-  <main>
-    <section>
+  <main class="main">
+    <section class="section">
       <p>
         主の御名を賛美いたします。京葉地区での一泊お泊まり会を開催いたしますことをご案内申し上げます。
       </p>
@@ -53,18 +53,18 @@ const eventDetails = {
       </p>
     </section>
 
-    <section>
+    <section class="section">
       <EventDetailTable {...eventDetails} />
     </section>
 
-    <section>
+    <section class="section">
       <h2>スケジュール - Schedule</h2>
       <h3>プログラム詳細 - Program Details</h3>
       <h3>レクリエーション - Recreation</h3>
       <h3>テーマ別集会 - Thematic Meetings</h3>
     </section>
 
-    <section>
+    <section class="section">
       <h2>申し込み - Application</h2>
       <h3>申し込み方法 - Application Method</h3>
       <p>
@@ -87,7 +87,7 @@ const eventDetails = {
     </section>
   </main>
 
-  <section>
+  <section class="section">
     <h2>その他の情報 - Additional Information</h2>
     <h3>アクセス - Access</h3>
     <MapFrame
@@ -110,22 +110,39 @@ const eventDetails = {
   </section>
 </Layout>
 
-<footer><small>担当：仁戸名聖書バプテスト教会</small></footer>
+<footer class="footer"><small>担当：仁戸名聖書バプテスト教会</small></footer>
 
-<style>
-  header {
-    padding: 1.5em;
+<style define:vars={{ hero: `url(${hero})` }}>
+  .welcome {
+    background: var(--hero) no-repeat center center / cover;
+    font-family: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
     text-align: center;
+  }
+
+  .header {
+    color: white;
+    margin: 10vh auto 0;
+    text-shadow: 0 -1px darkgreen;
+  }
+
+  .theme {
+    background: #ffffff40;
+    border-radius: 50%;
+    color: darkolivegreen;
+    font-size: 125%;
+    font-weight: bold;
+    margin: auto;
+    padding: 80px 40px;
+    text-shadow: 0 -1px white;
   }
 
   h1 {
-    font-size: 125%;
-    margin: 1em 0;
-    text-align: center;
+    font-size: 100%;
+    margin: 0;
   }
 
   h2 {
-    font-size: 110%;
+    font-size: 100%;
     margin: 1em 0;
   }
 
@@ -134,21 +151,18 @@ const eventDetails = {
     margin: 1em 0;
   }
 
-  main {
+  .main {
     padding: 5vh 0;
   }
 
-  section {
+  .section {
+    line-height: 2;
     margin: auto;
     max-width: 600px;
     padding: 1.5em;
   }
 
-  p {
-    line-height: 2;
-  }
-
-  footer {
+  .footer {
     padding: 4em 0;
     text-align: center;
   }
