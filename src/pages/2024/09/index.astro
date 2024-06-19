@@ -35,21 +35,20 @@ const eventDetails = {
   <main class="main">
     <section class="section">
       <p>
-        主の御名を賛美いたします。京葉地区での一泊お泊まり会を開催いたしますことをご案内申し上げます。
+        主の御名を賛美いたします。京葉地区での一泊お泊まり会の開催をご案内申し上げます。
       </p>
       <p>
-        この集まりを通じて、信仰の仲間と共に深い交流を持ち、主の愛に満ちた時間を過ごすことができるよう願っています。信仰の深まりと互いの愛を育む素晴らしい時間を共有できることを楽しみにしております。どうぞご参加ください。主に在りて。
+        この集まりを通じて、信仰の仲間と共に深い交流を持ち、主の愛に満ちた時間を過ごせることを願っています。どうぞご参加ください。主に在りて。
       </p>
       <hr />
       <p>
-        We praise the name of the Lord. We are pleased to announce that we will
-        be hosting an overnight retreat in the Keiyo area.
+        Praise be to the name of the Lord. We are pleased to announce the
+        holding of an overnight gathering in the Keiyo area.
       </p>
       <p>
-        Through this gathering, we hope to have deep fellowship with our fellow
-        believers and spend a time filled with the love of the Lord. We look
-        forward to sharing a wonderful time where our faith deepens and our
-        mutual love grows. Please join us. In the Lord.
+        Through this gathering, we hope to have deep fellowship with fellow
+        believers and spend a time filled with the Lord's love. Please join us.
+        In the Lord.
       </p>
     </section>
 
@@ -121,19 +120,23 @@ const eventDetails = {
 
   .header {
     color: white;
-    margin: 10vh auto 0;
-    text-shadow: 0 -1px darkgreen;
+    line-height: 2;
+    margin: 10vh auto auto;
+    text-shadow:
+      0 0 3px darkgreen,
+      0 0 5px darkgreen,
+      0 0 8px darkgreen;
   }
 
   .theme {
-    background: #ffffff40;
-    border-radius: 50%;
-    color: darkolivegreen;
+    background: linear-gradient(to right, #00640080, #556b2f80, #2e8b5780);
+    border-radius: 5px;
+    color: white;
     font-size: 125%;
     font-weight: bold;
-    margin: auto;
-    padding: 80px 40px;
-    text-shadow: 0 -1px white;
+    margin: auto auto 10vh;
+    padding: 0 1.5em;
+    text-shadow: 0 1px black;
   }
 
   h1 {
@@ -167,9 +170,9 @@ const eventDetails = {
     text-align: center;
   }
 
-  @media (max-width: 768px) {
-    main {
-      font-size: 14px;
+  @media (min-width: 1200px) {
+    .welcome {
+      font-size: 1.5vw;
     }
   }
 </style>
