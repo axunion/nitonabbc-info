@@ -1,34 +1,30 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
-import EventDetailTable from "@/components/EventDetailTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
 import hero from "./_hero.webp?url";
 
-const title = "京葉地区一泊お泊まり会のご案内";
-const eventDetails = {
-  caption: "記",
-  rows: [
-    { th: "日時", td: "2024年9月22日(日) 〜 23日(月・祝)" },
-    { th: "会場", td: "BumB 東京スポーツ文化館" },
-    { th: "講師", td: "高木拓哉伝道師(滝山BBC)" },
-    { th: "参加費", td: "22歳以下 7000円、一般 8000円" },
-    { th: "申込期限", td: "2024年8月4日(日)" },
-  ],
+const ja = {
+  title: "京葉地区一泊お泊まり会のご案内",
+  theme: "みことばによる交わり",
+  verse: " 使徒17:11 -",
+};
+
+const en = {
+  title: "Keiyo Area Overnight Retreat Announcement",
+  theme: "Fellowship through the Word",
+  verse: "- Acts 17:11 -",
 };
 ---
 
-<Layout title={title}>
-  <div class="welcome block">
+<Layout title={ja.title}>
+  <div class="welcome block" style={{ backgroundImage: `url(${hero})` }}>
     <header class="header">
-      <h1>
-        {title}<br />
-        Keiyo Area Overnight Retreat Announcement
-      </h1>
+      <h1 class="h1">{ja.title}<br />{en.title}</h1>
     </header>
     <div class="theme">
-      <p>みことばによる交わり<br />- 使徒17:11 -</p>
-      <p>Fellowship through the Word<br />- Acts 17:11 -</p>
+      <p>{ja.theme}<br />{ja.verse}</p>
+      <p>{en.theme}<br />{en.verse}</p>
     </div>
   </div>
 
@@ -40,7 +36,6 @@ const eventDetails = {
       <p>
         この集まりを通じて、信仰の仲間と共に深い交流を持ち、主の愛に満ちた時間を過ごせることを願っています。どうぞご参加ください。主に在りて。
       </p>
-      <hr />
       <p>
         Praise be to the name of the Lord. We are pleased to announce the
         holding of an overnight gathering in the Keiyo area.
@@ -52,20 +47,48 @@ const eventDetails = {
       </p>
     </section>
 
-    <section class="section">
-      <EventDetailTable {...eventDetails} />
+    <section class="section center">
+      <h2 class="head-1">概要<br /><em>Event Overview</em></h2>
+
+      <h3 class="head-2">日時<br /><em>Date and Time</em></h3>
+      <p>2024年9月22日(日) 〜 23日(月・祝)</p>
+      <p>
+        <span class="no-wrap">September 22, 2024 (Sun)</span>
+        <span class="no-wrap">
+          - September 23, 2024 (Mon, Public Holiday)
+        </span>
+      </p>
+
+      <h3 class="head-2">会場<br /><em>Venue</em></h3>
+      <p>BumB 東京スポーツ文化館</p>
+      <p>BumB Tokyo Sports Culture Center</p>
+
+      <h3 class="head-2">講師<br /><em>Speaker</em></h3>
+      <p>滝山聖書バプテスト教会 高木拓哉伝道師</p>
+      <p>
+        Takagi Takuya, Evangelist from
+        <span class="no-wrap">Takiyama Bible Baptist Church</span>
+      </p>
+
+      <h3 class="head-2">参加費<br /><em>Participation Fee</em></h3>
+      <p>22歳以下: 7,000円、 一般: 8,000円</p>
+      <p>Ages 22 and under: ¥7,000, General: ¥8,000</p>
     </section>
 
     <section class="section">
-      <h2>スケジュール - Schedule</h2>
-      <h3>プログラム詳細 - Program Details</h3>
-      <h3>レクリエーション - Recreation</h3>
-      <h3>テーマ別集会 - Thematic Meetings</h3>
+      <h2 class="head-1">スケジュール<br /><em>Schedule</em></h2>
+
+      <h3 class="head-2">プログラム詳細<br /><em>Program Details</em></h3>
+
+      <h3 class="head-2">レクリエーション<br /><em>Recreation</em></h3>
+
+      <h3 class="head-2">テーマ別集会<br /><em>Thematic Meetings</em></h3>
     </section>
 
     <section class="section">
-      <h2>申し込み - Application</h2>
-      <h3>申し込み方法 - Application Method</h3>
+      <h2 class="head-1">申し込み<br /><em>Application</em></h2>
+
+      <h3 class="head-2">申し込み方法<br /><em>Application Method</em></h3>
       <p>
         次のリンクより、Webフォームからお申し込みください。お1人づつお申し込みをお願いいたします。
       </p>
@@ -80,41 +103,42 @@ const eventDetails = {
         参加申し込み - Apply Now
       </ButtonLink>
 
-      <h3>申込期限 - Application Deadline</h3>
+      <h3 class="head-2">申込期限<br /><em>Application Deadline</em></h3>
       <p>2024年8月4日(日)</p>
       <p>August 4, 2024 (Sunday)</p>
     </section>
+
+    <section class="section">
+      <h2 class="head-1">その他の情報<br />Additional Information</h2>
+
+      <h3 class="head-2">アクセス<br /><em>Access</em></h3>
+      <MapFrame
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
+      />
+
+      <h3 class="head-2">持ち物<br /><em>What to Bring</em></h3>
+
+      <h3 class="head-2">お問い合わせ<br /><em>Contact Information</em></h3>
+      <p>
+        次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
+        <strong>参加コード：0333</strong>
+        <ButtonLink
+          href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+          target="_blank"
+        >
+          LINE オープンチャット
+        </ButtonLink>
+      </p>
+    </section>
   </main>
-
-  <section class="section">
-    <h2>その他の情報 - Additional Information</h2>
-    <h3>アクセス - Access</h3>
-    <MapFrame
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
-    />
-
-    <h3>持ち物 - What to Bring</h3>
-
-    <h3>お問い合わせ - Contact Information</h3>
-    <p>
-      次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
-      <strong>参加コード：0333</strong>
-      <ButtonLink
-        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
-        target="_blank"
-      >
-        LINE オープンチャット
-      </ButtonLink>
-    </p>
-  </section>
 </Layout>
 
 <footer class="footer"><small>担当：仁戸名聖書バプテスト教会</small></footer>
 
-<style define:vars={{ hero: `url(${hero})` }}>
+<style>
   .welcome {
-    background: var(--hero) no-repeat center center / cover;
-    font-family: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
+    background: var(--color-text) no-repeat center center / cover;
+    font-family: var(--font-serif);
     text-align: center;
   }
 
@@ -139,30 +163,19 @@ const eventDetails = {
     text-shadow: 0 1px black;
   }
 
-  h1 {
+  .h1 {
     font-size: 100%;
     margin: 0;
   }
 
-  h2 {
-    font-size: 100%;
-    margin: 1em 0;
-  }
-
-  h3 {
-    font-size: 100%;
-    margin: 1em 0;
-  }
-
   .main {
-    padding: 5vh 0;
+    margin: auto;
+    max-width: 600px;
+    padding: 0 1.5em;
   }
 
   .section {
-    line-height: 2;
-    margin: auto;
-    max-width: 600px;
-    padding: 1.5em;
+    margin: 10vh 0;
   }
 
   .footer {

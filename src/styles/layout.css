@@ -5,3 +5,30 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.hidden {
+  display: none;
+}
+
+.head-1 {
+  color: var(--color-primary);
+  font-size: 150%;
+  font-style: italic;
+  margin: 2em 0 1em;
+  text-align: center;
+}
+
+.head-2 {
+  font-size: 125%;
+  font-style: italic;
+  margin: 2em 0 1em;
+}
+
+.center {
+  text-align: center;
+}
+
+.no-wrap {
+  white-space: nowrap;
+  display: inline-block;
+}
