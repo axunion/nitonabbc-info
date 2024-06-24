@@ -1,19 +1,44 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
+import ScheduleTable from "@/components/ScheduleTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
 import hero from "./_hero.webp?url";
 
 const ja = {
   title: "京葉地区一泊お泊まり会のご案内",
-  theme: "みことばによる交わり",
-  verse: " 使徒17:11 -",
 };
 
 const en = {
   title: "Keiyo Area Overnight Retreat Announcement",
-  theme: "Fellowship through the Word",
-  verse: "- Acts 17:11 -",
+};
+
+const timetable1 = {
+  caption: "- 1日目 -",
+  rows: [
+    { th: "15:00", td: "受付開始" },
+    { th: "16:00-17:00", td: "開会式" },
+    { th: "17:30-18:30", td: "夕食" },
+    { th: "19:00-20:30", td: "集会" },
+    { th: "21:00-22:00", td: "交流会" },
+    { th: "22:00-23:00", td: "自由、入浴" },
+    { th: "23:00-24:00", td: "交流会" },
+    { th: "24:00", td: "就寝" },
+  ],
+};
+
+const timetable2 = {
+  caption: "- 2日目 -",
+  rows: [
+    { th: "6:30-7:00", td: "デボーション" },
+    { th: "7:00-8:00", td: "朝食" },
+    { th: "8:30-10:30", td: "レクリエーション" },
+    { th: "11:00-12:30", td: "集会" },
+    { th: "13:00-14:00", td: "昼食" },
+    { th: "14:30-16:00", td: "テーマ別集会" },
+    { th: "16:30-17:00", td: "閉会式" },
+    { th: "17:30", td: "解散" },
+  ],
 };
 ---
 
@@ -23,8 +48,8 @@ const en = {
       <h1 class="h1">{ja.title}<br />{en.title}</h1>
     </header>
     <div class="theme">
-      <p>{ja.theme}<br />{ja.verse}</p>
-      <p>{en.theme}<br />{en.verse}</p>
+      <p>みことばによる交わり<br />- 使徒17:11 -</p>
+      <p>Fellowship through the Word<br />- Acts 17:11 -</p>
     </div>
   </div>
 
@@ -52,37 +77,37 @@ const en = {
 
       <h3 class="head-2">日時<br /><em>Date and Time</em></h3>
       <p>
-        2024年9月22日(日) 〜 23日(月・祝)<br />
+        2024年9月22日(日) - 23日(月・祝)<br />
         Sep 22 (Sun) - Sep 23 (Mon, Holiday), 2024
       </p>
 
       <h3 class="head-2">会場<br /><em>Venue</em></h3>
       <p>
-        BumB 東京スポーツ文化館<br />
+        BumB 東京スポーツ文化館
+        <a href="https://www.ys-tokyobay.co.jp/index.html">🔗</a><br />
         BumB Tokyo Sports Culture Center
       </p>
 
       <h3 class="head-2">講師<br /><em>Speaker</em></h3>
       <p>
         滝山聖書バプテスト教会 高木拓哉伝道師<br />
-
         Takagi Takuya, Evangelist
         <span class="no-wrap">from Takiyama Bible Baptist Church</span>
       </p>
 
       <h3 class="head-2">参加費<br /><em>Participation Fee</em></h3>
       <p>
-        22歳以下: 7,000円、 一般: 8,000円<br />
-        Ages 22 and under: ¥7,000, General: ¥8,000
+        一般: 8,000円 / 22歳以下: 7,000円<br />
+        General: ¥8,000 / Under 22: ¥7,000
       </p>
     </section>
 
     <section class="section">
-      <h2 class="head-1">スケジュール<br /><em>Schedule</em></h2>
+      <h2 class="head-1">プログラム詳細<br /><em>Program Details</em></h2>
 
-      <h3 class="head-2">プログラム詳細<br /><em>Program Details</em></h3>
-
-      <h3 class="head-2">レクリエーション<br /><em>Recreation</em></h3>
+      <h3 class="head-2">タイムテーブル<br /><em>Timetable</em></h3>
+      <ScheduleTable {...timetable1} />
+      <ScheduleTable {...timetable2} />
 
       <h3 class="head-2">テーマ別集会<br /><em>Thematic Meetings</em></h3>
     </section>
@@ -92,11 +117,8 @@ const en = {
 
       <h3 class="head-2">申し込み方法<br /><em>Application Method</em></h3>
       <p>
-        次のリンクより、Webフォームからお申し込みください。お1人づつお申し込みをお願いいたします。
-      </p>
-      <p>
-        Please apply using the web form from the following link. Please apply
-        individually.
+        次のリンクより、Webフォームからお申し込みください。<br />
+        Please apply using the web form from the following link.
       </p>
       <ButtonLink
         href="https://form.nitonabbc.org/#/entry/2024/09"
@@ -106,8 +128,7 @@ const en = {
       </ButtonLink>
 
       <h3 class="head-2">申込期限<br /><em>Application Deadline</em></h3>
-      <p>2024年8月4日(日)</p>
-      <p>August 4, 2024 (Sunday)</p>
+      <p>2024年8月4日(日)<br />August 4, 2024 (Sunday)</p>
     </section>
 
     <section class="section">
@@ -179,7 +200,7 @@ const en = {
   }
 
   .section {
-    margin: 10vh 0;
+    margin: 15vh 0;
   }
 
   .footer {
