@@ -22,7 +22,7 @@ const { caption, rows } = Astro.props;
 <style>
   .table {
     border-collapse: collapse;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 100%;
   }
 
@@ -33,11 +33,12 @@ const { caption, rows } = Astro.props;
 
   .th {
     font-weight: normal;
-    padding: 0.25em 0;
-    text-align: left;
+    padding: 0.25em 0.5em;
+    text-align: right;
+    width: 50%;
   }
 
   .td {
-    padding: 0.25em 0;
+    padding: 0.25em 0.5em;
   }
 </style>
