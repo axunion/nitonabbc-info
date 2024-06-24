@@ -1,0 +1,43 @@
+---
+type Props = {
+  caption?: string;
+  rows: { th: string; td: string }[];
+};
+
+const { caption, rows } = Astro.props;
+---
+
+<table class="table">
+  {caption && <caption class="caption">{caption}</caption>}
+  {
+    rows.map(({ th, td }) => (
+      <tr>
+        <th class="th">{th}</th>
+        <td class="td">{td}</td>
+      </tr>
+    ))
+  }
+</table>
+
+<style>
+  .table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .caption {
+    font-weight: bold;
+    margin: 0 0 0.5em;
+  }
+
+  .th {
+    font-weight: normal;
+    padding: 0.25em 0;
+    text-align: left;
+  }
+
+  .td {
+    padding: 0.25em 0;
+  }
+</style>
