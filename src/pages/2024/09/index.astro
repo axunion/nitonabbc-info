@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
-import ScheduleTable from "@/components/ScheduleTable.astro";
+import TimeTable from "@/components/TimeTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
 import hero from "./_hero.webp?url";
 
@@ -14,29 +14,29 @@ const en = {
 };
 
 const timetable1 = {
-  caption: "- 1日目 -",
+  caption: "━ 1日目 ━",
   rows: [
     { th: "15:00", td: "受付開始" },
-    { th: "16:00-17:00", td: "開会式" },
-    { th: "17:30-18:30", td: "夕食" },
-    { th: "19:00-20:30", td: "集会" },
-    { th: "21:00-22:00", td: "交流会" },
-    { th: "22:00-23:00", td: "自由、入浴" },
-    { th: "23:00-24:00", td: "交流会" },
+    { th: "16:00", td: "開会式" },
+    { th: "17:30", td: "夕食" },
+    { th: "19:00", td: "集会" },
+    { th: "21:00", td: "交流会" },
+    { th: "22:00", td: "自由、入浴" },
+    { th: "23:00", td: "交流会" },
     { th: "24:00", td: "就寝" },
   ],
 };
 
 const timetable2 = {
-  caption: "- 2日目 -",
+  caption: "━ 2日目 ━",
   rows: [
-    { th: "6:30-7:00", td: "デボーション" },
-    { th: "7:00-8:00", td: "朝食" },
-    { th: "8:30-10:30", td: "レクリエーション" },
-    { th: "11:00-12:30", td: "集会" },
-    { th: "13:00-14:00", td: "昼食" },
-    { th: "14:30-16:00", td: "テーマ別集会" },
-    { th: "16:30-17:00", td: "閉会式" },
+    { th: "6:30", td: "デボーション" },
+    { th: "7:00", td: "朝食" },
+    { th: "8:30", td: "レクリエーション" },
+    { th: "11:00", td: "集会" },
+    { th: "13:00", td: "昼食" },
+    { th: "14:30", td: "テーマ別集会" },
+    { th: "16:30", td: "閉会式" },
     { th: "17:30", td: "解散" },
   ],
 };
@@ -106,8 +106,8 @@ const timetable2 = {
       <h2 class="head-1">プログラム詳細<br /><em>Program Details</em></h2>
 
       <h3 class="head-2">タイムテーブル<br /><em>Timetable</em></h3>
-      <ScheduleTable {...timetable1} />
-      <ScheduleTable {...timetable2} />
+      <TimeTable {...timetable1} />
+      <TimeTable {...timetable2} />
 
       <h3 class="head-2">テーマ別集会<br /><em>Thematic Meetings</em></h3>
     </section>
@@ -144,7 +144,7 @@ const timetable2 = {
       <h3 class="head-2">お問い合わせ<br /><em>Contact Information</em></h3>
       <p>
         次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
-        <strong>参加コード：0333</strong>
+        <strong>🔐 参加コード：0333</strong>
         <ButtonLink
           href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
           target="_blank"
