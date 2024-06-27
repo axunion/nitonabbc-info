@@ -110,16 +110,23 @@ const timetable2 = {
       <TimeTable {...timetable2} />
 
       <h3 class="head-2">テーマ別集会<br /><em>Thematic Meetings</em></h3>
+      <p>
+        今回は、5つのテーマに分かれた特別な集会を開催いたします。ご興味のあるテーマを選んで、どうぞ自由にご参加ください。各集会でお会いできるのを楽しみにしています！
+      </p>
+      <p>
+        We are excited to offer five special gatherings, each with its own
+        unique theme. Feel free to join any gathering that catches your
+        interest. We look forward to seeing you at the one you choose!
+      </p>
     </section>
 
     <section class="section">
       <h2 class="head-1">申し込み<br /><em>Application</em></h2>
 
       <h3 class="head-2">申し込み方法<br /><em>Application Method</em></h3>
-      <p>
-        次のリンクより、Webフォームからお申し込みください。<br />
-        Please apply using the web form from the following link.
-      </p>
+      <p>次のリンクより、Webフォームからお申し込みください。</p>
+      <p>Please apply using the web form from the following link.</p>
+
       <ButtonLink
         href="https://form.nitonabbc.org/#/entry/2024/09"
         target="_blank"
@@ -128,30 +135,52 @@ const timetable2 = {
       </ButtonLink>
 
       <h3 class="head-2">申込期限<br /><em>Application Deadline</em></h3>
-      <p>2024年8月4日(日)<br />August 4, 2024 (Sunday)</p>
+      <div class="notice">
+        <p><strong>2024年8月4日(日)<br />August 4, 2024 (Sunday)</strong></p>
+      </div>
     </section>
 
     <section class="section">
       <h2 class="head-1">その他の情報<br /><em>Additional Information</em></h2>
+
+      <h3 class="head-2">持ち物<br /><em>What to Bring</em></h3>
 
       <h3 class="head-2">アクセス<br /><em>Access</em></h3>
       <MapFrame
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
       />
 
-      <h3 class="head-2">持ち物<br /><em>What to Bring</em></h3>
+      <h3 class="head-2">駐車場<br /><em>Parking Information</em></h3>
 
       <h3 class="head-2">お問い合わせ<br /><em>Contact Information</em></h3>
       <p>
-        次のリンクより、LINE オープンチャットにてお問い合わせください。<br />
-        <strong>🔐 参加コード：0333</strong>
-        <ButtonLink
-          href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
-          target="_blank"
-        >
-          LINE オープンチャット
-        </ButtonLink>
+        ご質問やご不明な点がございましたら、LINE
+        オープンチャットを通じてお気軽にお問い合わせください。以下のリンクからオープンチャットにご参加いただけます。
       </p>
+      <p>
+        LINE
+        オープンチャットは、匿名で参加できるチャットサービスです。誰でも簡単に参加でき、質問や相談がしやすい環境が整っています。どうぞご利用ください。
+      </p>
+      <p>
+        If you have any questions or need further information about the upcoming
+        gatherings or any other activities, please feel free to contact us
+        through our LINE Open Chat. You can join the Open Chat via the following
+        link.
+      </p>
+      <p>
+        LINE Open Chat is a chat service that allows you to participate
+        anonymously. It’s easy for anyone to join and provides a convenient way
+        to ask questions and share your thoughts. We encourage you to take
+        advantage of this service for any inquiries or discussions.
+      </p>
+      <p><strong>🔐 参加コード：0333</strong></p>
+
+      <ButtonLink
+        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+        target="_blank"
+      >
+        LINE オープンチャット
+      </ButtonLink>
     </section>
   </main>
 </Layout>
@@ -193,7 +222,7 @@ const timetable2 = {
 
   .main {
     --color-primary: #2e8b57;
-    --color-accent: #6414cc;
+    --color-accent: #cc0074;
     margin: auto;
     max-width: 600px;
     padding: 0 1.5em;
