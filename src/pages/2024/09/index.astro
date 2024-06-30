@@ -83,10 +83,16 @@ const timetable2 = {
 
       <h3 class="head-2">会場<br /><em>Venue</em></h3>
       <p>
-        BumB 東京スポーツ文化館
-        <a href="https://www.ys-tokyobay.co.jp/index.html">🔗</a><br />
+        BumB 東京スポーツ文化館<br />
         BumB Tokyo Sports Culture Center
       </p>
+      <a
+        href="https://www.ys-tokyobay.co.jp/index.html"
+        target="_blank"
+        class="link"
+      >
+        Official website
+      </a>
 
       <h3 class="head-2">講師<br /><em>Speaker</em></h3>
       <p>
@@ -176,29 +182,56 @@ const timetable2 = {
       />
 
       <h3 class="head-2">駐車場<br /><em>Parking Information</em></h3>
+      <p>
+        施設には専用駐車場がありません。お車でお越しの際は、「夢の島公園第1駐車場（南）」をご利用いただけます。料金等の詳細は
+        <a
+          href="https://www.tokyo-park.or.jp/park/yumenoshima/#traffic"
+          target="_blank"
+          class="link"
+        >
+          公式の案内
+        </a>
+        をご確認ください。
+      </p>
+      <p>
+        The facility does not have a dedicated parking lot. If you are coming by
+        car, you can use the "Yumenoshima Park No.1 Parking Lot (South)". For
+        details on fees and other information, please refer to the official
+        guide on the
+        <a
+          href="https://www.tokyo-park.or.jp/park/yumenoshima/#traffic"
+          target="_blank"
+          class="link"
+        >
+          official website
+        </a>
+        .
+      </p>
 
       <h3 class="head-2">お問い合わせ<br /><em>Contact Information</em></h3>
       <p>
-        ご質問やご不明な点がございましたら、LINE
-        オープンチャットを通じてお気軽にお問い合わせください。以下のリンクからオープンチャットにご参加いただけます。
+        ご質問やご不明な点がございましたら、LINEオープンチャットからお気軽にお問い合わせください。以下のリンクからご参加いただけます。
       </p>
       <p>
-        LINE
-        オープンチャットは、自分のアカウントを公開することなく参加できるチャットサービスです。誰でも簡単に参加できますので、どうぞご利用ください。
+        LINEオープンチャットは、アカウントを公開せずに参加できるサービスです。簡単にご利用いただけますので、どうぞご利用ください。
       </p>
       <p>
-        If you have any questions or need further information about the upcoming
-        gatherings or any other activities, please feel free to contact us
-        through our LINE Open Chat. You can join the Open Chat via the following
-        link.
+        オープンチャットに参加するには、以下の参加コードをご使用ください。<br />
+        <strong>🔐 参加コード：0333</strong>
       </p>
       <p>
-        LINE Open Chat is a chat service that allows you to participate
-        anonymously. It’s easy for anyone to join and provides a convenient way
-        to ask questions and share your thoughts. We encourage you to take
-        advantage of this service for any inquiries or discussions.
+        If you have any questions or need further information, please feel free
+        to contact us via LINE Open Chat. You can join the chat using the link
+        below.
       </p>
-      <p><strong>🔐 参加コード：0333</strong></p>
+      <p>
+        LINE Open Chat allows you to participate without revealing your account.
+        It's easy to use, so please take advantage of this service.
+      </p>
+      <p>
+        To join the Open Chat, please use the following participation code:
+        <br /><strong>🔐 Participation Code: 0333</strong>
+      </p>
 
       <ButtonLink
         href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
@@ -240,11 +273,6 @@ const timetable2 = {
     text-shadow: 0 1px black;
   }
 
-  .h1 {
-    font-size: 100%;
-    margin: 0;
-  }
-
   .main {
     --color-primary: #2e8b57;
     --color-accent: #cc0074;
@@ -255,6 +283,11 @@ const timetable2 = {
 
   .section {
     margin: 15vh 0;
+  }
+
+  .h1 {
+    font-size: 100%;
+    margin: 0;
   }
 
   .h4 {

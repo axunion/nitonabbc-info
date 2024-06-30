@@ -43,3 +43,8 @@
   white-space: nowrap;
   display: inline-block;
 }
+
+.link {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
