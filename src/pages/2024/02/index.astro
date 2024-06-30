@@ -46,8 +46,6 @@ const eventDetails = {
 
       <EventDetailTable {...eventDetails} />
 
-      <hr />
-
       <dl>
         <dt>申し込み</dt>
         <dd class="print">
@@ -167,8 +165,12 @@ const eventDetails = {
     max-width: 70%;
   }
 
+  p {
+    line-height: 1.6;
+  }
+
   dl {
-    margin: 0;
+    margin: 1em 0;
   }
 
   dt {
@@ -197,6 +199,10 @@ const eventDetails = {
   @media (max-width: 768px), print {
     body {
       padding: 2em;
+    }
+
+    p {
+      line-height: 1.6;
     }
 
     #paper {
