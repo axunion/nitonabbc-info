@@ -52,7 +52,7 @@ a {
 }
 
 strong {
-  color: var(--color-accent);
+  font-weight: bolder;
 }
 
 em {
