@@ -1,6 +1,6 @@
 ---
 type Props = {
-  caption: string;
+  caption?: string;
   rows: { th: string; td: string }[];
 };
 
@@ -8,7 +8,7 @@ const { caption, rows } = Astro.props;
 ---
 
 <table class="table">
-  <caption class="caption">{caption}</caption>
+  {caption && <caption class="caption">{caption}</caption>}
   {
     rows.map(({ th, td }) => (
       <tr>
@@ -23,25 +23,24 @@ const { caption, rows } = Astro.props;
   .table {
     border-collapse: collapse;
     margin: 1em auto;
+    table-layout: fixed;
+    width: 100%;
   }
 
   .caption {
+    font-weight: bold;
     margin: 0 0 0.5em;
+    text-align: left;
   }
 
   .th {
-    font-weight: normal;
-    padding: 0.25em 0;
-    text-align: left;
-    vertical-align: top;
+    font-family: "Courier New", monospace;
+    padding: 0.25em 0.5em;
+    text-align: right;
+    width: 3em;
   }
 
   .td {
-    padding: 0.25em 0;
-  }
-
-  .td::before {
-    content: "：";
-    margin: 0 0.5em 0 0;
+    padding: 0.25em;
   }
 </style>
