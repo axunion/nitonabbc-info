@@ -1,0 +1,469 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ButtonLink from "@/components/ButtonLink.astro";
+import TimeTable from "@/components/TimeTable.astro";
+import MapFrame from "@/components/MapFrame.astro";
+import hero from "./_hero.webp?url";
+
+const ja = {
+  title: "京葉地区一泊お泊まり会のご案内",
+};
+
+const en = {
+  title: "Keiyo Area Retreat Announcement",
+};
+
+const timetable1 = {
+  caption: "Day 1",
+  rows: [
+    { th: "15:00", td: "受付開始 - Registration starts" },
+    { th: "16:00", td: "開会式 - Opening ceremony" },
+    { th: "17:30", td: "夕食 - Dinner" },
+    { th: "19:00", td: "集会 - Worship service" },
+    { th: "21:00", td: "交流会 - Fellowship time" },
+    { th: "22:00", td: "入浴 - Bathing" },
+    { th: "23:00", td: "交流会 - Fellowship time" },
+    { th: "24:00", td: "就寝 - Lights out" },
+  ],
+};
+
+const timetable2 = {
+  caption: "Day 2",
+  rows: [
+    { th: "6:30", td: "デボーション - Devotion" },
+    { th: "7:00", td: "朝食 - Breakfast" },
+    { th: "8:30", td: "レクリエーション - Recreation" },
+    { th: "11:00", td: "集会 - Worship service" },
+    { th: "13:00", td: "昼食 - Lunch" },
+    { th: "14:30", td: "テーマ別集会 - Themed sessions" },
+    { th: "16:30", td: "閉会式 - Closing ceremony" },
+    { th: "17:30", td: "解散 - Dismissal" },
+  ],
+};
+---
+
+<Layout title={ja.title}>
+  <div class="welcome block" style={{ backgroundImage: `url(${hero})` }}>
+    <header class="header">
+      <h1 class="h1">{ja.title}<br />{en.title}</h1>
+    </header>
+    <div class="theme">
+      <p>みことばによる交わり<br />- 使徒17:11 -</p>
+      <p>Fellowship through the Word<br />- Acts 17:11 -</p>
+    </div>
+  </div>
+
+  <main class="main">
+    <section class="section">
+      <p>
+        主の御名を賛美いたします。京葉地区での一泊お泊まり会の開催をご案内申し上げます。
+      </p>
+      <p>
+        この集まりを通じて、信仰の仲間と共に深い交流を持ち、主の愛に満ちた時間を過ごせることを願っています。どうぞご参加ください。主に在りて。
+      </p>
+      <p>
+        Praise be to the name of the Lord. We are pleased to announce the
+        holding of an overnight gathering in the Keiyo area.
+      </p>
+      <p>
+        Through this gathering, we hope to have deep fellowship with fellow
+        believers and spend a time filled with the Lord's love. Please join us.
+        In the Lord.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">概要<br /><span class="en">Event Overview</span></h2>
+
+      <h3 class="head-2">日時<br /><span class="en">Date and Time</span></h3>
+      <p>
+        2024年9月22日(日) - 23日(月・祝)<br />
+        Sep 22 (Sun) - Sep 23 (Mon, Holiday), 2024
+      </p>
+
+      <h3 class="head-2">会場<br /><span class="en">Venue</span></h3>
+      <p>
+        BumB 東京スポーツ文化館<br />
+        BumB Tokyo Sports Culture Center<br />
+        <a
+          href="https://www.ys-tokyobay.co.jp/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          Official website
+        </a>
+      </p>
+
+      <h3 class="head-2">講師<br /><span class="en">Speaker</span></h3>
+      <p>
+        滝山聖書バプテスト教会 高木拓哉伝道師<br />
+        Takagi Takuya, Evangelist
+        <span class="no-wrap">from Takiyama Bible Baptist Church</span>
+      </p>
+
+      <h3 class="head-2">
+        参加費<br /><span class="en">Participation Fee</span>
+      </h3>
+      <p>
+        一般: 8,000円 / 22歳以下: 7,000円<br />
+        General: ¥8,000 / Under 22: ¥7,000
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        講師紹介<br /><span class="en">Speaker Introduction</span>
+      </h2>
+
+      <h3 class="head-2">
+        高木拓哉伝道師<br /><span class="en">Evangelist Takuya Takagi</span>
+      </h3>
+      <p>
+        ミズーリ州カンザスシティにあるカルバリー大学で牧会伝道を学び、現在滝山教会で青年、小学科、スポーツミニストリーを担当。趣味はスポーツ全般、旅、温泉。２児の父。
+      </p>
+      <p>
+        Studied pastoral ministry at Calvary University in Kansas City,
+        Missouri. Currently serves at Takiyama Church, overseeing youth,
+        elementary school programs, and sports ministry. Hobbies include all
+        kinds of sports, traveling, and hot springs. Father of two.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        プログラム<br /><span class="en">Program</span>
+      </h2>
+
+      <h3 class="head-2">
+        タイムテーブル<br /><span class="en">Timetable</span>
+      </h3>
+      <TimeTable {...timetable1} />
+      <TimeTable {...timetable2} />
+
+      <h3 class="head-2">
+        交流会<br /><span class="en">Social Gathering</span>
+      </h3>
+      <p>
+        参加者同士の親睦を深めるための交流会を開催します。詳細は当日のお楽しみですが、皆様が楽しく過ごせるよう工夫した内容を準備しております。
+      </p>
+      <p>
+        We will be hosting a social gathering to foster closer relationships
+        among participants. While the details will be a surprise on the day, we
+        have prepared activities to ensure everyone has a great time. We look
+        forward to your participation!
+      </p>
+
+      <h3 class="head-2">
+        レクリエーション<br /><span class="en">Recreation</span>
+      </h3>
+
+      <h4 class="head-3">
+        スポーツ - <span class="en no-wrap">Sports</span>
+      </h4>
+      <p>
+        みんなで楽しく体を動かしたい方にぴったりのアクティビティを予定しています。内容は当日のお楽しみです！
+      </p>
+      <p>
+        For those who want to have fun and be active, we have planned an
+        exciting sports activity. The details will be a surprise on the day of
+        the event!
+      </p>
+
+      <h4 class="head-3">
+        周辺散策 - <span class="en no-wrap">Nearby Exploration</span>
+      </h4>
+      <p>
+        ゆっくりと過ごしたい方は、自由にお過ごしください。周辺には、夢の島熱帯植物館や都立第五福竜丸展示館といった施設があります。
+      </p>
+      <p>* 夢の島熱帯植物館は入場料が250円かかります。</p>
+      <p>
+        For those who prefer a relaxed pace, you have free time to explore the
+        area. Nearby, you can visit the Yumenoshima Tropical Greenhouse Dome and
+        the Daigo Fukuryu Maru Exhibition Hall.
+      </p>
+      <p>
+        * Please note that there is a 250 yen admission fee for the Yumenoshima
+        Tropical Greenhouse Dome.
+      </p>
+
+      <h3 class="head-2">
+        テーマ別集会<br /><span class="en">Thematic Meetings</span>
+      </h3>
+      <p>
+        今回は、5つのテーマに分かれた特別な集会を開催いたします。ご興味のあるテーマを選んでご参加ください。
+      </p>
+      <p>
+        We are excited to offer five special gatherings, each with its own
+        unique theme. Feel free to join any gathering that catches your
+        interest.
+      </p>
+
+      <h4 class="head-3">結婚 - <span class="en">Marriage</span></h4>
+      <p>
+        <strong>講師：上山師</strong><br />
+        神に祝福された結婚ができるようになる方法を学びます。異性と出会い、健全な交際を築くための具体的なアドバイスを提供します。結婚に対する疑問や不安にも答えます。
+      </p>
+      <p>
+        <b>Speaker: Pastor Kamiyama</b><br />
+        Learn how to have a marriage blessed by God. This session will provide practical
+        advice on meeting and dating potential partners, and will also address any
+        questions or concerns about marriage.
+      </p>
+
+      <h4 class="head-3">献身 - <span class="en">Devotion</span></h4>
+      <p>
+        <strong>講師：松山師</strong><br />
+        伝道者になるための備えについて詳しく学べます。献身の意味や必要なスキル、信仰の深め方について実践的な知識を提供します。伝道者としての使命感を育てます。
+      </p>
+      <p>
+        <strong>Speaker: Pastor Matsuyama</strong><br />
+        Understand what it takes to become an evangelist. This session will cover
+        the meaning of devotion, the necessary skills, and ways to deepen your faith.
+        It will also help you develop a sense of mission as an evangelist.
+      </p>
+
+      <h4 class="head-3">
+        仕事と教会生活 - <span class="en">Work and Church Life</span>
+      </h4>
+      <p>
+        <strong>講師：大木師</strong><br />
+        仕事と教会生活を両立させるためのヒントを学びます。重荷を神に委ねる方法や、職場での信仰の保ち方について具体的なアドバイスを提供します。日常生活での信仰の実践を深めます。
+      </p>
+      <p>
+        <strong>Speaker: Pastor Oki</strong><br />
+        Learn tips on how to balance work and church life. This session will provide
+        practical advice on how to entrust your burdens to God and maintain your
+        faith in the workplace. It will help you practice your faith in daily life.
+      </p>
+
+      <h4 class="head-3">礼拝 - <span class="en">Worship</span></h4>
+      <p>
+        <strong>講師：安藤師</strong><br />
+        喜び溢れる礼拝を実現するための方法を学びます。礼拝の意義や準備の仕方、心の持ち方について詳しく解説します。礼拝を通じて信仰を深め、神との絆を強めます。
+      </p>
+      <p>
+        <strong>Speaker: Pastor Ando</strong><br />
+        Learn how to have joyful and fulfilling worship. This session will explain
+        the significance of worship, how to prepare for it, and the right mindset.
+        It will help you deepen your faith and strengthen your bond with God through
+        worship.
+      </p>
+
+      <h4 class="head-3">日曜学校 - <span class="en">Sunday School</span></h4>
+      <p>
+        日ごろの悩みを分かち合い、意見交換できる座談会形式の集会です。日曜学校での経験や問題点を共有し、解決策を一緒に考えましょう。教師同士のネットワークも広がります。
+      </p>
+      <p>
+        This session is in the format of a roundtable discussion where you can
+        share your daily concerns and exchange ideas. It’s an opportunity to
+        discuss experiences and challenges in Sunday School, and to find
+        solutions together. Networking among teachers will also be encouraged.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">申し込み<br /><span class="en">Application</span></h2>
+
+      <h3 class="head-2">
+        申し込み方法<br /><span class="en">Application Method</span>
+      </h3>
+      <p>次のリンクより、Webフォームからお申し込みください。</p>
+      <p>Please apply using the web form from the following link.</p>
+
+      <ButtonLink
+        href="https://form.nitonabbc.org/#/entry/2024/09"
+        target="_blank"
+      >
+        参加申し込み - Apply Now
+      </ButtonLink>
+
+      <h3 class="head-2">
+        申込期限<br /><span class="en">Application Deadline</span>
+      </h3>
+      <div class="notice">
+        <p>
+          <strong class="strong">
+            2024年8月4日(日)<br />
+            August 4, 2024 (Sunday)
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        その他の情報<br /><span class="en">Additional Information</span>
+      </h2>
+
+      <h3 class="head-2">
+        部分参加<br /><span class="en">Participation Fees</span>
+      </h3>
+      <p>部分参加の場合は、利用した分の費用となります。</p>
+      <p>
+        For partial participation, you will be charged for the services you use.
+      </p>
+      <ul>
+        <li>夕食 - Dinner: ¥700</li>
+        <li>
+          宿泊 - Accommodation: ¥4500<br />
+          (22歳以下 - for those under 22: ¥3500)
+        </li>
+        <li>朝食 - Breakfast: ¥1400</li>
+        <li>昼食 - Lunch: ¥1400</li>
+      </ul>
+
+      <h3 class="head-2">持ち物<br /><span class="en">What to Bring</span></h3>
+      <p>
+        聖書、筆記用具、着替えなど、宿泊に必要なものをお持ちください。また、スポーツレクリエーションに参加される場合は、動きやすい靴と服装をご用意ください。
+      </p>
+      <p>
+        Please bring items necessary for your stay, such as a Bible, writing
+        materials, and a change of clothes. Additionally, if you plan to
+        participate in sports and recreational activities, please prepare
+        comfortable shoes and clothing.
+      </p>
+      <h4 class="head-3">
+        施設にあるもの - <span class="en">Available Facilities</span>
+      </h4>
+      <p>
+        WiFi、ドライヤー、ナイトウェアー、バスタオル、フェースタオル、歯ブラシ、ボディーソープ、シャンプー、リンス
+      </p>
+      <p>
+        WiFi, hair dryer, nightwear, bath towel, face towel, toothbrush, body
+        soap, shampoo, conditioner
+      </p>
+
+      <h3 class="head-2">アクセス<br /><span class="en">Access</span></h3>
+      <MapFrame
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
+      />
+
+      <h4 class="head-3">駐車場 - Parking Information</h4>
+      <p>
+        施設には専用駐車場がありません。お車でお越しの際は、「夢の島公園第1駐車場（南）」をご利用いただけます。料金等の詳細は
+        <a
+          href="https://www.tokyo-park.or.jp/park/yumenoshima/#traffic"
+          target="_blank"
+          class="link"
+        >
+          公式の案内
+        </a>
+        をご確認ください。
+      </p>
+      <p>
+        The facility does not have a dedicated parking lot. If you are coming by
+        car, you can use the "Yumenoshima Park No.1 Parking Lot (South)". For
+        details on fees and other information, please refer to the
+        <a
+          href="https://www.tokyo-park.or.jp/park/yumenoshima/#traffic"
+          target="_blank"
+          class="link"
+        >
+          official guide.
+        </a>
+      </p>
+
+      <h3 class="head-2">
+        お問い合わせ<br /><span class="en">Contact Information</span>
+      </h3>
+      <p>
+        ご質問やご不明な点がございましたら、LINEオープンチャットからお気軽にお問い合わせください。以下のリンクからご参加いただけます。
+      </p>
+      <p>
+        LINEオープンチャットは、アカウントを公開せずに参加できるサービスです。簡単にご利用いただけますので、どうぞご利用ください。
+      </p>
+      <p>
+        <strong class="strong">🔐 参加コード: 0333</strong>
+      </p>
+      <p>
+        If you have any questions or need further information, please feel free
+        to contact us via LINE Open Chat. You can join the chat using the link
+        below.
+      </p>
+      <p>
+        LINE Open Chat allows you to participate without revealing your account.
+        It's easy to use, so please take advantage of this service.
+      </p>
+      <p>
+        <strong class="strong">🔐 Participation Code: 0333</strong>
+      </p>
+
+      <ButtonLink
+        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+        target="_blank"
+      >
+        オープンチャット - Open Chat
+      </ButtonLink>
+    </section>
+  </main>
+
+  <footer class="footer"><small>担当：仁戸名聖書バプテスト教会</small></footer>
+</Layout>
+
+<style>
+  .welcome {
+    background: var(--color-text) no-repeat center center / cover;
+    font-family: var(--font-serif);
+    text-align: center;
+  }
+
+  .header {
+    color: white;
+    line-height: 2;
+    margin: 10vh auto auto;
+    text-shadow:
+      0 0 3px #2e8b57,
+      0 0 5px #2e8b57,
+      0 0 8px #2e8b57;
+  }
+
+  .theme {
+    background: linear-gradient(to right, #00640080, #556b2f80, #2e8b5780);
+    border-radius: 5px;
+    color: white;
+    font-size: 125%;
+    font-weight: bold;
+    margin: auto auto 10vh;
+    padding: 0 1.5em;
+    text-shadow: 0 1px black;
+  }
+
+  .main {
+    --color-primary: #2e8b57;
+    --color-accent: #cc0074;
+    margin: auto;
+    max-width: 600px;
+    padding: 0 1.5em;
+  }
+
+  .section {
+    margin: 15vh 0;
+  }
+
+  .h1 {
+    font-size: 100%;
+    margin: 0;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  .strong {
+    color: var(--color-accent);
+    font-weight: normal;
+  }
+
+  .footer {
+    padding: 4em 0;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
+    .welcome {
+      font-size: 1.5vw;
+    }
+  }
+</style>

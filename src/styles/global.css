@@ -5,6 +5,7 @@
   --color-subtext: #7d807d;
   --color-accent: #f0566e;
   --color-divider: #4b4d4b;
+  --font-serif: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
 }
 
 ::selection {
@@ -29,9 +30,19 @@ body {
   margin: 0;
 }
 
+hr {
+  border: 0;
+  margin: 2em 0;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
 p {
   font-feature-settings: "palt";
-  letter-spacing: 0.1em;
+  line-height: 1.8;
   margin: 1em 0;
 }
 
@@ -41,15 +52,10 @@ a {
 }
 
 strong {
-  color: var(--color-accent);
+  font-weight: bolder;
 }
 
-img {
-  max-width: 100%;
-  vertical-align: top;
-}
-
-hr {
-  border: 0;
-  margin: 1em 0;
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
 }
