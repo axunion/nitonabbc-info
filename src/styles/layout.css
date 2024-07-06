@@ -27,6 +27,13 @@
   padding: 0 0 0 1em;
 }
 
+.head-3 {
+  border-bottom: var(--color-primary) solid 1px;
+  border-image: linear-gradient(to right, var(--color-primary), transparent) 1;
+  font-size: 110%;
+  margin: 2em 0 1em;
+}
+
 .notice {
   border: var(--color-accent) solid 1px;
   border-radius: 0.5em;

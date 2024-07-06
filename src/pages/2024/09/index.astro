@@ -113,7 +113,26 @@ const timetable2 = {
 
     <section class="section">
       <h2 class="head-1">
-        プログラム詳細<br /><span class="en">Program Details</span>
+        講師紹介<br /><span class="en">Speaker Introduction</span>
+      </h2>
+
+      <h3 class="head-2">
+        高木拓哉伝道師<br /><span class="en">Evangelist Takuya Takagi</span>
+      </h3>
+      <p>
+        ミズーリ州カンザスシティにあるカルバリー大学で牧会伝道を学び、現在滝山教会で青年、小学科、スポーツミニストリーを担当。趣味はスポーツ全般、旅、温泉。２児の父。
+      </p>
+      <p>
+        Studied pastoral ministry at Calvary University in Kansas City,
+        Missouri. Currently serves at Takiyama Church, overseeing youth,
+        elementary school programs, and sports ministry. Hobbies include all
+        kinds of sports, traveling, and hot springs. Father of two.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        プログラム<br /><span class="en">Program</span>
       </h2>
 
       <h3 class="head-2">
@@ -123,12 +142,24 @@ const timetable2 = {
       <TimeTable {...timetable2} />
 
       <h3 class="head-2">
+        交流会<br /><span class="en">Social Gathering</span>
+      </h3>
+      <p>
+        参加者同士の親睦を深めるための交流会を開催します。詳細は当日のお楽しみですが、皆様が楽しく過ごせるよう工夫した内容を準備しております。
+      </p>
+      <p>
+        We will be hosting a social gathering to foster closer relationships
+        among participants. While the details will be a surprise on the day, we
+        have prepared activities to ensure everyone has a great time. We look
+        forward to your participation!
+      </p>
+
+      <h3 class="head-2">
         レクリエーション<br /><span class="en">Recreation</span>
       </h3>
 
-      <h4 class="h4">
-        スポーツレクリエーション -
-        <span class="en no-wrap">Sports Recreation</span>
+      <h4 class="head-3">
+        スポーツ - <span class="en no-wrap">Sports</span>
       </h4>
       <p>
         みんなで楽しく体を動かしたい方にぴったりのアクティビティを予定しています。内容は当日のお楽しみです！
@@ -139,14 +170,13 @@ const timetable2 = {
         the event!
       </p>
 
-      <h4 class="h4">
-        周辺散策 -
-        <span class="en no-wrap">Nearby Exploration</span>
+      <h4 class="head-3">
+        周辺散策 - <span class="en no-wrap">Nearby Exploration</span>
       </h4>
       <p>
         ゆっくりと過ごしたい方は、自由にお過ごしください。周辺には、夢の島熱帯植物館や都立第五福竜丸展示館といった施設があります。
       </p>
-      <p>* 夢の島熱帯植物館のみ入場料が250円かかります。</p>
+      <p>* 夢の島熱帯植物館は入場料が250円かかります。</p>
       <p>
         For those who prefer a relaxed pace, you have free time to explore the
         area. Nearby, you can visit the Yumenoshima Tropical Greenhouse Dome and
@@ -169,7 +199,7 @@ const timetable2 = {
         interest.
       </p>
 
-      <h4 class="h4">結婚 - <span class="en">Marriage</span></h4>
+      <h4 class="head-3">結婚 - <span class="en">Marriage</span></h4>
       <p>
         <strong>講師：上山師</strong><br />
         神に祝福された結婚ができるようになる方法を学びます。異性と出会い、健全な交際を築くための具体的なアドバイスを提供します。結婚に対する疑問や不安にも答えます。
@@ -181,7 +211,7 @@ const timetable2 = {
         questions or concerns about marriage.
       </p>
 
-      <h4 class="h4">献身 - <span class="en">Devotion</span></h4>
+      <h4 class="head-3">献身 - <span class="en">Devotion</span></h4>
       <p>
         <strong>講師：松山師</strong><br />
         伝道者になるための備えについて詳しく学べます。献身の意味や必要なスキル、信仰の深め方について実践的な知識を提供します。伝道者としての使命感を育てます。
@@ -193,7 +223,7 @@ const timetable2 = {
         It will also help you develop a sense of mission as an evangelist.
       </p>
 
-      <h4 class="h4">
+      <h4 class="head-3">
         仕事と教会生活 - <span class="en">Work and Church Life</span>
       </h4>
       <p>
@@ -207,7 +237,7 @@ const timetable2 = {
         faith in the workplace. It will help you practice your faith in daily life.
       </p>
 
-      <h4 class="h4">礼拝 - <span class="en">Worship</span></h4>
+      <h4 class="head-3">礼拝 - <span class="en">Worship</span></h4>
       <p>
         <strong>講師：安藤師</strong><br />
         喜び溢れる礼拝を実現するための方法を学びます。礼拝の意義や準備の仕方、心の持ち方について詳しく解説します。礼拝を通じて信仰を深め、神との絆を強めます。
@@ -220,7 +250,7 @@ const timetable2 = {
         worship.
       </p>
 
-      <h4 class="h4">日曜学校 - <span class="en">Sunday School</span></h4>
+      <h4 class="head-3">日曜学校 - <span class="en">Sunday School</span></h4>
       <p>
         日ごろの悩みを分かち合い、意見交換できる座談会形式の集会です。日曜学校での経験や問題点を共有し、解決策を一緒に考えましょう。教師同士のネットワークも広がります。
       </p>
@@ -252,7 +282,12 @@ const timetable2 = {
         申込期限<br /><span class="en">Application Deadline</span>
       </h3>
       <div class="notice">
-        <p><strong>2024年8月4日(日)<br />August 4, 2024 (Sunday)</strong></p>
+        <p>
+          <strong class="strong">
+            2024年8月4日(日)<br />
+            August 4, 2024 (Sunday)
+          </strong>
+        </p>
       </div>
     </section>
 
@@ -261,9 +296,26 @@ const timetable2 = {
         その他の情報<br /><span class="en">Additional Information</span>
       </h2>
 
+      <h3 class="head-2">
+        部分参加<br /><span class="en">Participation Fees</span>
+      </h3>
+      <p>部分参加の場合は、利用した分の費用となります。</p>
+      <p>
+        For partial participation, you will be charged for the services you use.
+      </p>
+      <ul>
+        <li>夕食 - Dinner: ¥700</li>
+        <li>
+          宿泊 - Accommodation: ¥4500<br />
+          (22歳以下 - for those under 22: ¥3500)
+        </li>
+        <li>朝食 - Breakfast: ¥1400</li>
+        <li>昼食 - Lunch: ¥1400</li>
+      </ul>
+
       <h3 class="head-2">持ち物<br /><span class="en">What to Bring</span></h3>
       <p>
-        聖書、筆記用具、着替えなど、宿泊に必要なものをお持ちください。また、スポーツレクリエーションに参加される場合は動きやすい靴と服装をご用意ください。
+        聖書、筆記用具、着替えなど、宿泊に必要なものをお持ちください。また、スポーツレクリエーションに参加される場合は、動きやすい靴と服装をご用意ください。
       </p>
       <p>
         Please bring items necessary for your stay, such as a Bible, writing
@@ -271,11 +323,12 @@ const timetable2 = {
         participate in sports and recreational activities, please prepare
         comfortable shoes and clothing.
       </p>
-      <h4 class="h4">施設に用意のあるもの</h4>
+      <h4 class="head-3">
+        施設にあるもの - <span class="en">Available Facilities</span>
+      </h4>
       <p>
         WiFi、ドライヤー、ナイトウェアー、バスタオル、フェースタオル、歯ブラシ、ボディーソープ、シャンプー、リンス
       </p>
-      <h4 class="h4">Items Provided by the Facility</h4>
       <p>
         WiFi, hair dryer, nightwear, bath towel, face towel, toothbrush, body
         soap, shampoo, conditioner
@@ -286,7 +339,7 @@ const timetable2 = {
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
       />
 
-      <h4 class="h4">駐車場 - Parking Information</h4>
+      <h4 class="head-3">駐車場 - Parking Information</h4>
       <p>
         施設には専用駐車場がありません。お車でお越しの際は、「夢の島公園第1駐車場（南）」をご利用いただけます。料金等の詳細は
         <a
@@ -321,8 +374,7 @@ const timetable2 = {
         LINEオープンチャットは、アカウントを公開せずに参加できるサービスです。簡単にご利用いただけますので、どうぞご利用ください。
       </p>
       <p>
-        オープンチャットに参加するには、以下の参加コードをご使用ください。<br />
-        <strong class="strong">🔐 参加コード：0333</strong>
+        <strong class="strong">🔐 参加コード: 0333</strong>
       </p>
       <p>
         If you have any questions or need further information, please feel free
@@ -334,15 +386,14 @@ const timetable2 = {
         It's easy to use, so please take advantage of this service.
       </p>
       <p>
-        To join the Open Chat, please use the following participation code:
-        <br /><strong class="strong">🔐 Participation Code: 0333</strong>
+        <strong class="strong">🔐 Participation Code: 0333</strong>
       </p>
 
       <ButtonLink
         href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
         target="_blank"
       >
-        LINE オープンチャット
+        オープンチャット - Open Chat
       </ButtonLink>
     </section>
   </main>
@@ -393,11 +444,6 @@ const timetable2 = {
   .h1 {
     font-size: 100%;
     margin: 0;
-  }
-
-  .h4 {
-    font-size: 100%;
-    margin: 2em 0 1em;
   }
 
   .en {
