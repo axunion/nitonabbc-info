@@ -55,7 +55,6 @@ strong {
   font-weight: bolder;
 }
 
-em {
-  font-family: var(--font-serif);
-  font-style: italic;
+small {
+  font-size: 85%;
 }
