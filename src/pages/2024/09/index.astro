@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
 import TimeTable from "@/components/TimeTable.astro";
 import MapFrame from "@/components/MapFrame.astro";
+import breakfastAllergenInformation from "./_Breakfast_Allergen_Information.pdf?url";
+import dinnerAllergenInformation from "./_Dinner_Allergy_Information.pdf?url";
 import hero from "./_hero.webp?url";
 import speaker from "./_speaker.webp?url";
 
@@ -31,8 +33,8 @@ const timetable1 = {
 const timetable2 = {
   caption: "Day 2",
   rows: [
-    { th: "6:30", td: "デボーション - Devotion" },
-    { th: "7:00", td: "朝食 - Breakfast" },
+    { th: "7:30", td: "デボーション - Devotion" },
+    { th: "8:00", td: "朝食 - Breakfast" },
     { th: "8:30", td: "レクリエーション - Recreation" },
     { th: "11:00", td: "集会 - Worship service" },
     { th: "13:00", td: "昼食 - Lunch" },
@@ -383,6 +385,43 @@ const timetable2 = {
       <p>
         WiFi, hair dryer, nightwear, bath towel, face towel, toothbrush, body
         soap, shampoo, conditioner
+      </p>
+
+      <h3 class="head-2">
+        食事アレルギー情報のご案内<br /><span class="en"
+          >Allergy Information</span
+        >
+      </h3>
+      <p>
+        施設より食事アレルギーについての情報が出ていますのでご確認ください。
+      </p>
+      <p>Please check the food allergy information provided by the facility.</p>
+      <h4 class="head-3">
+        1日目の夕食 - <span class="en">Dinner on Day 1</span>
+      </h4>
+      <p>
+        <a href={dinnerAllergenInformation} target="_blank" class="link">
+          夕食成分表 - Dinner Allergen Information
+        </a>
+      </p>
+      <h4 class="head-3">
+        2日目の朝食 - <span class="en">Breakfast on Day 2</span>
+      </h4>
+      <p>
+        <a href={breakfastAllergenInformation} target="_blank" class="link">
+          朝食成分表 - Breakfast Allergen Information
+        </a>
+      </p>
+      <h4 class="head-3">
+        2日目の昼食 - <span class="en">Lunch on Day 2</span>
+      </h4>
+      <p>
+        シェフのお任せメニューの為成分はございません。各お料理に8大アレルゲン表記をしておりますのでご注意してお召し上がり下さい。
+      </p>
+      <p>
+        As this is a chef's choice menu, detailed ingredient information is not
+        available. Please note that the eight major allergens are labeled for
+        each dish. Please exercise caution when dining.
       </p>
 
       <h3 class="head-2">アクセス<br /><span class="en">Access</span></h3>
