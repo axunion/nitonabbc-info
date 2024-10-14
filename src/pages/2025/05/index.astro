@@ -1,17 +1,32 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import lakeYamanaka from "./img/_lake-yamanaka.webp";
+import logo from "./img/logo.webp";
 
-const head = `
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ起きよ！輝けイザヤ60:1" rel="stylesheet">
-`;
+const linkTags = [
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossorigin: "",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ起きよ！輝けイザヤ60:1",
+  },
+];
 
 const backgroundImage = `background-image: url(${lakeYamanaka.src})`;
 ---
 
-<Layout title="2025 第56回JBBF全国青年フェローシップキャンプ" head={head}>
+<Layout
+  title="2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+  linkTags={linkTags}
+>
   <header class="block header">
     <h1 class="h1">
       <small>2025 第56回</small><br />
