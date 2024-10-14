@@ -2,12 +2,20 @@
 import "@/styles/global.css";
 import "@/styles/layout.css";
 
-type Props = {
-  title: string;
-  head?: string;
+type LinkTag = {
+  rel: string;
+  href: string;
+  type?: string;
+  sizes?: string;
 };
 
-const { title, head } = Astro.props;
+type Props = {
+  title: string;
+  favicon?: string;
+  linkTags?: LinkTag[];
+};
+
+const { title, favicon, linkTags } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,10 +25,10 @@ const { title, head } = Astro.props;
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={favicon || "/favicon.ico"} />
     <title>{title}</title>
 
-    {head && <Fragment set:html={head} />}
+    {linkTags && linkTags.map((linkTag) => <link {...linkTag} />)}
   </head>
   <body>
     <slot />
