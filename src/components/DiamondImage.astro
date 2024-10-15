@@ -1,0 +1,18 @@
+---
+type Props = {
+  src: string;
+  alt?: string;
+};
+
+const { src, alt } = Astro.props;
+---
+
+<img class="image" src={src} alt={alt} />
+
+<style>
+  .image {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    height: 100%;
+    width: 100%;
+  }
+</style>
