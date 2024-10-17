@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  src: ImageMetadata;
+  alt?: string;
+  shape?: "polygon" | "circle";
+};
+
+const { src, alt = "", shape = "polygon" } = Astro.props;
+---
+
+<Image
+  class={`image ${shape === "circle" ? "circle" : "polygon"}`}
+  src={src}
+  alt={alt}
+/>
+
+<style>
+  .image {
+    height: 100%;
+    min-height: auto;
+    min-width: auto;
+    width: auto;
+  }
+
+  .polygon {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+
+  .circle {
+    clip-path: circle(40%);
+  }
+</style>
