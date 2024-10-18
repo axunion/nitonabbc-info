@@ -4,17 +4,13 @@ import { Image } from "astro:assets";
 type Props = {
   src: ImageMetadata;
   alt?: string;
-  shape?: "polygon" | "circle";
+  shape?: "polygon" | "circle" | "ellipse";
 };
 
 const { src, alt = "", shape = "polygon" } = Astro.props;
 ---
 
-<Image
-  class={`image ${shape === "circle" ? "circle" : "polygon"}`}
-  src={src}
-  alt={alt}
-/>
+<Image class={`image ${shape}`} src={src} alt={alt} />
 
 <style>
   .image {
@@ -30,5 +26,9 @@ const { src, alt = "", shape = "polygon" } = Astro.props;
 
   .circle {
     clip-path: circle(40%);
+  }
+
+  .ellipse {
+    clip-path: ellipse(50% 50% at center);
   }
 </style>
