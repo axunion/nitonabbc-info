@@ -1,0 +1,48 @@
+<div class="content">
+  <div class="left">
+    <slot name="left" />
+  </div>
+  <div class="right">
+    <slot name="right" />
+  </div>
+</div>
+
+<style>
+  .content {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .left {
+    animation: slide-in-left 1s;
+    flex: 1;
+  }
+
+  .right {
+    animation: slide-in-right 1.5s;
+    flex: 1;
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
