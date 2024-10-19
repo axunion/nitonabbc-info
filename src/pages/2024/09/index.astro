@@ -46,7 +46,7 @@ const timetable2 = {
 ---
 
 <Layout title={ja.title}>
-  <div class="welcome block" style={{ backgroundImage: `url(${hero})` }}>
+  <div class="welcome" style={{ backgroundImage: `url(${hero})` }}>
     <header class="header">
       <h1 class="h1">{ja.title}<br />{en.title}</h1>
     </header>
@@ -493,8 +493,13 @@ const timetable2 = {
 
 <style>
   .welcome {
+    align-items: center;
     background: var(--color-text) no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
     font-family: var(--font-serif);
+    justify-content: center;
+    min-height: 100vh;
     text-align: center;
   }
 
@@ -536,6 +541,44 @@ const timetable2 = {
     margin: 0;
   }
 
+  .head-1 {
+    color: var(--color-primary);
+    font-size: 150%;
+    font-style: italic;
+    margin: 2em 0 1em;
+    position: relative;
+    text-align: center;
+  }
+
+  .head-2 {
+    border-left: var(--color-primary) solid 2px;
+    font-size: 125%;
+    font-style: italic;
+    margin: 2em 0 1em;
+    padding: 0 0 0 1em;
+  }
+
+  .head-3 {
+    border-bottom: var(--color-primary) solid 1px;
+    border-image: linear-gradient(to right, var(--color-primary), transparent) 1;
+    font-size: 110%;
+    margin: 2em 0 1em;
+    padding: 0 0.25em 0.25em;
+  }
+
+  .notice {
+    border: var(--color-accent) solid 1px;
+    border-radius: 0.5em;
+    margin: 1em 0;
+    padding: 0.5em;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 4em 0;
+    text-align: center;
+  }
+
   .en {
     font-family: var(--font-serif);
     font-style: italic;
@@ -545,9 +588,19 @@ const timetable2 = {
     color: var(--color-accent);
   }
 
-  .footer {
-    padding: 4em 0;
-    text-align: center;
+  .no-wrap {
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .link {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .compact {
+    font-size: 85%;
+    line-height: 1.5;
   }
 
   @media (min-width: 1200px) {
