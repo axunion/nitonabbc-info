@@ -4,20 +4,27 @@ import { Image } from "astro:assets";
 type Props = {
   src: ImageMetadata;
   alt?: string;
-  shape?: "polygon" | "circle" | "ellipse";
+  shape?: "rect" | "polygon" | "circle" | "ellipse";
 };
 
-const { src, alt = "", shape = "polygon" } = Astro.props;
+const { src, alt = "", shape = "rect" } = Astro.props;
 ---
 
-<Image class={`image ${shape}`} src={src} alt={alt} />
+<Image
+  src={src}
+  alt={alt}
+  class:list={["image", shape]}
+  aria-hidden={alt ? "false" : "true"}
+/>
 
 <style>
   .image {
     height: 100%;
-    min-height: auto;
-    min-width: auto;
-    width: auto;
+    object-fit: cover;
+  }
+
+  .rect {
+    border-radius: 12px;
   }
 
   .polygon {
