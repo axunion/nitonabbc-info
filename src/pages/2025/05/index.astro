@@ -45,8 +45,8 @@ const linkTags = [
       </div>
     </section>
 
-    <section class="animated-image">
-      <ClippedImage src={lakeYamanaka} alt="" />
+    <section class="image">
+      <Image src={lakeYamanaka} alt="" />
     </section>
 
     <section class="box">
@@ -131,7 +131,6 @@ const linkTags = [
   .main {
     margin: auto;
     max-width: 600px;
-    padding: 1em;
   }
 
   .footer {
@@ -162,6 +161,11 @@ const linkTags = [
   .theme-verse {
     font-size: 50%;
     text-align: right;
+  }
+
+  .image {
+    animation: filter-change 12s infinite;
+    height: 50vh;
   }
 
   .info-dl {
@@ -230,10 +234,6 @@ const linkTags = [
     100% {
       filter: none;
     }
-  }
-
-  .animated-image {
-    animation: filter-change 12s infinite;
   }
 </style>
 
