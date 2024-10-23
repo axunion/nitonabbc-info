@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
+import BlockLink from "@/components/BlockLink.astro";
 import logo from "./img/_logo.webp";
 import lakeYamanaka from "./img/_lake-yamanaka.webp";
-import minami1 from "./img/_minami-1.webp";
 
 const linkTags = [
   {
@@ -73,15 +73,19 @@ const linkTags = [
       </dl>
     </section>
 
-    <!-- <section>
+    <section>
       <ul class="link-list">
-        <li>
-          <a href="#" class="link-item">
-            <Image src={minami1} alt="" class="link-image" />
-          </a>
+        <li class="link-item">
+          <BlockLink href="#" ja="プロモーション映像" en="Introduction Clip" />
+        </li>
+        <li class="link-item">
+          <BlockLink href="#" ja="講師メッセージ" en="Speaker Message" />
+        </li>
+        <li class="link-item">
+          <BlockLink href="#" ja="施設紹介" en="Venue Information" />
         </li>
       </ul>
-    </section> -->
+    </section>
   </main>
 
   <footer class="footer">
@@ -123,11 +127,6 @@ const linkTags = [
     margin: 0;
   }
 
-  .main {
-    margin: auto;
-    max-width: 600px;
-  }
-
   .footer {
     font-size: 90%;
     padding: 25vh 1em 10vh;
@@ -160,7 +159,6 @@ const linkTags = [
 
   .image {
     animation: filter-change 12s infinite;
-    height: 50vh;
   }
 
   .info-dl {
@@ -188,30 +186,18 @@ const linkTags = [
 
   .link-list {
     list-style: none;
-    margin: 10vh auto;
-    padding: 1em;
+    margin: auto;
+    padding: 1.5em;
     max-width: 400px;
   }
 
   .link-item {
-    display: block;
+    color: var(--color-primary);
     margin: 1em 0;
   }
 
-  .link-image {
-    border-radius: 4px;
-    height: 120px;
-    object-fit: cover;
-  }
-
-  @media (max-width: 768px) {
-    .header-head {
-      font-size: 18px;
-    }
-
-    .theme {
-      font-size: 32px;
-    }
+  .link-item:nth-child(n + 3) {
+    color: var(--color-accent);
   }
 
   @keyframes filter-change {
@@ -229,6 +215,20 @@ const linkTags = [
     }
     100% {
       filter: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-head {
+      font-size: 18px;
+    }
+
+    .theme {
+      font-size: 32px;
+    }
+
+    .image {
+      height: 50vh;
     }
   }
 </style>
