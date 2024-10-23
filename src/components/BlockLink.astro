@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  href: string;
+  target?: string;
+  ja?: string;
+  en?: string;
+};
+
+const { href, target, ja = "", en = "" } = Astro.props;
+---
+
+<a class="a" href={href} target={target ?? ""} rel="noopener noreferrer">
+  <div class="ja">{ja}</div>
+  <div class="en">{en}</div>
+</a>
+
+<style>
+  .a {
+    border: currentColor solid 1px;
+    border-radius: 8px;
+    color: inherit;
+    display: block;
+    padding: 1em 1.5em;
+    position: relative;
+  }
+
+  .a::after {
+    border-bottom: currentColor 1px solid;
+    border-right: currentColor 1px solid;
+    bottom: 1em;
+    content: "";
+    height: 1em;
+    right: 1.5em;
+    position: absolute;
+    transform: skewX(50deg);
+    width: 25%;
+  }
+
+  .ja {
+    letter-spacing: 0.05em;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+</style>
