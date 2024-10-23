@@ -1,8 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
-import ClippedImage from "@/components/ClippedImage.astro";
-import SvgIcon from "@/components/SvgIcon.astro";
 import logo from "./img/_logo.webp";
 import lakeYamanaka from "./img/_lake-yamanaka.webp";
 import minami1 from "./img/_minami-1.webp";
@@ -52,18 +51,14 @@ const linkTags = [
     <section class="box">
       <dl class="info-dl">
         <dt class="info-dt">
-          <span class="info-icon">
-            <SvgIcon type="calender" />
-          </span>
+          <Icon name="mdi:calendar-month-outline" />
           Date
         </dt>
 
         <dd class="info-dd">2025.05.05 - 2025.05.07</dd>
 
         <dt class="info-dt">
-          <span class="info-icon">
-            <SvgIcon type="location" />
-          </span>
+          <Icon name="mdi:location-on-outline" />
           Location
         </dt>
 
@@ -173,17 +168,18 @@ const linkTags = [
   }
 
   .info-dt {
+    align-items: center;
     color: var(--color-primary);
+    display: flex;
     font-size: 1.25em;
     font-weight: normal;
+    gap: 0.2em;
     margin: 2em 0 0;
   }
 
-  .info-icon {
-    display: inline-block;
-    height: 1em;
-    vertical-align: -0.15em;
-    width: 1em;
+  .info-dt [data-icon] {
+    height: 1.2em;
+    width: 1.2em;
   }
 
   .info-dd {
