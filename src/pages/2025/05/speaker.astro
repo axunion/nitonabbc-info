@@ -1,0 +1,48 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import Header from "@/components/2025/05/Header.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="スピーカーメッセージ - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main">
+    <section>
+      <h2 class="h2">
+        講師紹介<br /><span class="en">Speaker Introduction</span>
+      </h2>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 75vh;
+    padding: 1em;
+  }
+
+  .h2 {
+    color: var(--color-primary);
+    font-size: 150%;
+    font-style: italic;
+    margin: 2em 0 1em;
+    position: relative;
+    text-align: center;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+</style>

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
 import BlockLink from "@/components/shared/BlockLink.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import lakeYamanaka from "@/assets/2025/05/lake-yamanaka.webp";
@@ -29,7 +30,7 @@ const linkTags = [
   linkTags={linkTags}
 >
   <header class="block">
-    <h1 class="header-head">
+    <h1 class="h1">
       <small>2025 第56回</small><br />
       JBBF全国青年フェローシップキャンプ
     </h1>
@@ -76,24 +77,23 @@ const linkTags = [
     <section>
       <ul class="link-list">
         <li class="link-item">
-          <BlockLink href="#" ja="プロモーション映像" en="Introduction Clip" />
+          <BlockLink
+            href="introduction-clip/"
+            ja="プロモーション映像"
+            en="Introduction Clip"
+          />
         </li>
         <li class="link-item">
-          <BlockLink href="#" ja="講師メッセージ" en="Speaker Message" />
+          <BlockLink href="speaker/" ja="講師紹介" en="Speaker Introduction" />
         </li>
         <li class="link-item">
-          <BlockLink href="#" ja="施設紹介" en="Venue Information" />
+          <BlockLink href="venue/" ja="施設紹介" en="Venue Information" />
         </li>
       </ul>
     </section>
   </main>
 
-  <footer class="footer">
-    <small>
-      主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会<br />
-      協力：市原聖書バプテスト教会
-    </small>
-  </footer>
+  <Footer />
 </Layout>
 
 <style>
@@ -121,16 +121,10 @@ const linkTags = [
     justify-content: center;
   }
 
-  .header-head {
+  .h1 {
     color: gray;
     font-size: 2vw;
     margin: 0;
-  }
-
-  .footer {
-    font-size: 90%;
-    padding: 25vh 1em 10vh;
-    text-align: center;
   }
 
   .theme {
@@ -219,7 +213,7 @@ const linkTags = [
   }
 
   @media (max-width: 768px) {
-    .header-head {
+    .h1 {
       font-size: 18px;
     }
 

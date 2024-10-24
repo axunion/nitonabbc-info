@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<header class="header">
+  <Image src={logo} alt="" width={40} height={40} />
+
+  <h1 class="h1">
+    <small>2025 第56回</small><br />
+    JBBF全国青年フェローシップキャンプ
+  </h1>
+</header>
+
+<style>
+  .header {
+    align-items: center;
+    display: flex;
+    gap: 0.5em;
+    padding: 1em;
+  }
+
+  .h1 {
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0;
+  }
+</style>
