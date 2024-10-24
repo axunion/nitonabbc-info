@@ -1,12 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import ButtonLink from "@/components/ButtonLink.astro";
-import TimeTable from "@/components/TimeTable.astro";
-import MapFrame from "@/components/MapFrame.astro";
-import breakfastAllergenInformation from "./_Breakfast_Allergen_Information.pdf?url";
-import dinnerAllergenInformation from "./_Dinner_Allergy_Information.pdf?url";
-import hero from "./_hero.webp?url";
-import speaker from "./_speaker.webp?url";
+import ButtonLink from "@/components/shared/ButtonLink.astro";
+import TimeTable from "@/components/shared/TimeTable.astro";
+import MapFrame from "@/components/shared/MapFrame.astro";
+import breakfastAllergenInformation from "@/assets/2024/09/Breakfast_Allergen_Information.pdf";
+import dinnerAllergenInformation from "@/assets/2024/09/Dinner_Allergy_Information.pdf";
+import hero from "@/assets/2024/09/hero.webp";
+import speaker from "@/assets/2024/09/speaker.webp";
 
 const ja = {
   title: "京葉地区一泊お泊まり会のご案内",
@@ -46,7 +46,7 @@ const timetable2 = {
 ---
 
 <Layout title={ja.title}>
-  <div class="welcome" style={{ backgroundImage: `url(${hero})` }}>
+  <div class="welcome" style={{ backgroundImage: `url(${hero.src})` }}>
     <header class="header">
       <h1 class="h1">{ja.title}<br />{en.title}</h1>
     </header>
@@ -122,7 +122,7 @@ const timetable2 = {
       <h3 class="head-2">
         高木拓哉伝道師<br /><span class="en">Evangelist Takuya Takagi</span>
       </h3>
-      <p><img src={speaker} alt="" /></p>
+      <p><img src={speaker.src} alt="" /></p>
 
       <p>
         「食欲の秋、スポーツの秋、交わりの秋、御言葉の秋。様々な秋を堪能できるこの京葉地区お泊り会。ともに御言葉の御言葉による御言葉のための熱い秋の交わりをしましょう。」
