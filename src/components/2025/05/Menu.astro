@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "@/components/shared/Button.astro";
+---
+
+<div class="menu">
+  <div class="top">
+    <Button>
+      <span class="close-button">
+        <Icon name="mdi:close" />
+      </span>
+    </Button>
+  </div>
+
+  <nav class="nav">
+    <ul class="ul">
+      <li class="li">
+        <a href="/2025/05/introduction-clip/" class="a">
+          <Icon name="mdi:movie-roll" />
+          <span>
+            プロモーション映像<br />
+            Introduction Clip
+          </span>
+        </a>
+      </li>
+      <li class="li">
+        <a href="/2025/05/speaker/" class="a">
+          <Icon name="mdi:lectern" />
+          <span>
+            講師紹介<br />
+            Speaker Introduction
+          </span>
+        </a>
+      </li>
+      <li class="li">
+        <a href="/2025/05/venueclip/" class="a">
+          <Icon name="mdi:hoop-house" />
+          <span>
+            施設紹介<br />
+            Venue Information
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .menu {
+    background: var(--color-primary);
+    color: var(--color-primary);
+    inset: 0;
+    padding: 1em 0.5em;
+    position: fixed;
+    transform: translateX(-100%);
+    transition:
+      color 0.4s,
+      transform 0.4s;
+  }
+
+  body.show-menu .menu {
+    color: var(--color-background);
+    transform: translateX(0);
+    transition:
+      color 0.4s 0.2s,
+      transform 0.4s;
+  }
+
+  .top {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .top [data-icon] {
+    height: 1.5em;
+    padding: 0.5em;
+    width: 1.5em;
+  }
+
+  .nav {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ul {
+    list-style: none;
+    margin: auto;
+    max-width: 80%;
+    padding: 1.5em;
+  }
+
+  .li {
+    line-height: 1.2;
+    margin: 3em 0;
+  }
+
+  .a {
+    align-items: center;
+    display: flex;
+    gap: 1em;
+  }
+
+  .a [data-icon] {
+    height: 2em;
+    width: 2em;
+  }
+</style>
+
+<script>
+  document.querySelector(".close-button")?.addEventListener("click", () => {
+    window.document.body.classList.toggle("show-menu");
+  });
+</script>

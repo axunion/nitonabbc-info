@@ -5,12 +5,16 @@ import Button from "@/components/shared/Button.astro";
 
 <header class="header">
   <h1 class="h1">
-    <small>2025 第56回</small><br />
-    JBBF全国青年フェローシップキャンプ
+    <a href="/2025/05/">
+      <small>2025 第56回</small><br />
+      JBBF全国青年フェローシップキャンプ
+    </a>
   </h1>
 
   <Button>
-    <Icon name="mdi:menu" />
+    <span class="menu-button">
+      <Icon name="mdi:menu" />
+    </span>
   </Button>
 </header>
 
@@ -36,3 +40,9 @@ import Button from "@/components/shared/Button.astro";
     width: 1.5em;
   }
 </style>
+
+<script>
+  document.querySelector(".menu-button")?.addEventListener("click", () => {
+    window.document.body.classList.toggle("show-menu");
+  });
+</script>
