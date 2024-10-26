@@ -1,15 +1,17 @@
 ---
-import { Image } from "astro:assets";
-import logo from "@/assets/2025/05/logo.webp";
+import { Icon } from "astro-icon/components";
+import Button from "@/components/shared/Button.astro";
 ---
 
 <header class="header">
-  <Image src={logo} alt="" width={40} height={40} />
-
   <h1 class="h1">
     <small>2025 第56回</small><br />
     JBBF全国青年フェローシップキャンプ
   </h1>
+
+  <Button>
+    <Icon name="mdi:menu" />
+  </Button>
 </header>
 
 <style>
@@ -17,7 +19,8 @@ import logo from "@/assets/2025/05/logo.webp";
     align-items: center;
     display: flex;
     gap: 0.5em;
-    padding: 1em;
+    justify-content: space-between;
+    padding: 1em 0.5em 1em 1.5em;
   }
 
   .h1 {
@@ -25,5 +28,11 @@ import logo from "@/assets/2025/05/logo.webp";
     font-weight: normal;
     line-height: 1.2;
     margin: 0;
+  }
+
+  .header [data-icon] {
+    height: 1.5em;
+    padding: 0.5em;
+    width: 1.5em;
   }
 </style>
