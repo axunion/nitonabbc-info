@@ -47,8 +47,8 @@ import Button from "@/components/shared/Button.astro";
 
 <style>
   .menu {
-    background: var(--color-primary);
-    color: var(--color-primary);
+    background: var(--color-text);
+    color: transparent;
     inset: 0;
     padding: 1em 0.5em;
     position: fixed;
@@ -58,8 +58,13 @@ import Button from "@/components/shared/Button.astro";
       transform 0.4s;
   }
 
+  body.show-menu {
+    overflow: hidden;
+  }
+
   body.show-menu .menu {
     color: var(--color-background);
+    text-shadow: 0 0 0.5em #ffffff80;
     transform: translateX(0);
     transition:
       color 0.4s 0.2s,
@@ -78,7 +83,6 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .nav {
-    align-items: center;
     display: flex;
     justify-content: center;
   }
