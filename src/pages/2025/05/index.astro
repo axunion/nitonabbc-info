@@ -47,55 +47,50 @@ const linkTags = [
 
     <section class="image">
       <Image src={lakeYamanaka} alt="" />
-    </section>
 
-    <section class="box">
-      <dl class="info-dl">
-        <dt class="info-dt">
-          <Icon name="mdi:calendar-month-outline" />
-          Date
-        </dt>
-
-        <dd class="info-dd">2025.05.05 - 2025.05.07</dd>
-
-        <dt class="info-dt">
-          <Icon name="mdi:location-on-outline" />
-          Location
-        </dt>
-
-        <dd class="info-dd">
-          グリーンヒルズニューみなみ<br />
-          GREEN HILL'S NEW MINAMI
-        </dd>
-        <dd class="info-dd">
-          <small>〒401-0502</small><br />
-          山梨県南都留郡山中湖村平野520-45
-        </dd>
-      </dl>
+      <div class="date">
+        <div>2025. 5. 5 <span class="week">MON</span></div>
+        <div>
+          <svg width="6" height="60" class="svg">
+            <line
+              x1="3"
+              y1="0"
+              x2="3"
+              y2="60"
+              stroke="currentColor"
+              stroke-width="1"></line>
+            <polygon points="0,55 6,55 3,60" fill="currentColor"></polygon>
+          </svg>
+        </div>
+        <div>2025. 5. 7 <span class="week">WED</span></div>
+      </div>
     </section>
 
     <section>
       <ul class="link-list">
         <li class="link-item">
-          <BlockLink
-            href="/2025/05/introduction-clip/"
-            ja="プロモーション映像"
-            en="Introduction Clip"
-          />
+          <BlockLink href="/2025/05/overview/">
+            <div class="en">Event Overview</div>
+            <div class="ja">概要</div>
+          </BlockLink>
         </li>
         <li class="link-item">
-          <BlockLink
-            href="/2025/05/speaker/"
-            ja="講師紹介"
-            en="Speaker Introduction"
-          />
+          <BlockLink href="/2025/05/clip/">
+            <div class="en">Introduction Clip</div>
+            <div class="ja">プロモーション映像</div>
+          </BlockLink>
         </li>
         <li class="link-item">
-          <BlockLink
-            href="/2025/05/venue/"
-            ja="施設紹介"
-            en="Venue Information"
-          />
+          <BlockLink href="/2025/05/speaker/">
+            <div class="en">Speaker Introduction</div>
+            <div class="ja">講師紹介</div>
+          </BlockLink>
+        </li>
+        <li class="link-item">
+          <BlockLink href="/2025/05/venue/">
+            <div class="en">Venue Information</div>
+            <div class="ja">施設紹介</div>
+          </BlockLink>
         </li>
       </ul>
     </section>
@@ -160,37 +155,37 @@ const linkTags = [
   }
 
   .image {
-    animation: filter-change 12s infinite;
+    position: relative;
   }
 
-  .info-dl {
-    margin: 10vh 0;
-  }
-
-  .info-dt {
+  .date {
     align-items: center;
-    color: var(--color-primary);
+    background: #00000080;
+    background: linear-gradient(#000000cc, #00000066);
+    color: white;
     display: flex;
-    font-size: 1.25em;
-    font-weight: normal;
-    gap: 0.2em;
-    margin: 2em 0 0;
+    flex-direction: column;
+    font-size: 4vw;
+    gap: 0.5em;
+    inset: 0;
+    justify-content: center;
+    position: absolute;
   }
 
-  .info-dt [data-icon] {
-    height: 1.2em;
-    width: 1.2em;
+  .week {
+    font-size: 40%;
   }
 
-  .info-dd {
-    margin: 0.5em 0;
+  .svg {
+    vertical-align: top;
   }
 
   .link-list {
+    font-size: 2vw;
     list-style: none;
-    margin: auto;
+    margin: 10vh auto;
     padding: 1.5em;
-    max-width: 400px;
+    max-width: 600px;
   }
 
   .link-item {
@@ -202,22 +197,13 @@ const linkTags = [
     color: var(--color-accent);
   }
 
-  @keyframes filter-change {
-    0% {
-      filter: none;
-    }
-    25% {
-      filter: brightness(125%);
-    }
-    50% {
-      filter: none;
-    }
-    75% {
-      filter: sepia(25%);
-    }
-    100% {
-      filter: none;
-    }
+  .ja {
+    letter-spacing: 0.05em;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-size: 120%;
   }
 
   @media (max-width: 768px) {
@@ -230,7 +216,16 @@ const linkTags = [
     }
 
     .image {
-      height: 50vh;
+      height: 100vh;
+    }
+
+    .date {
+      font-size: 40px;
+    }
+
+    .link-list {
+      font-size: 1rem;
+      max-width: 400px;
     }
   }
 </style>

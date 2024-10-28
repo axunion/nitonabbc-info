@@ -7,9 +7,9 @@ type Props = {
 const { href, target } = Astro.props;
 ---
 
-<a class="a" href={href} target={target ?? ""} rel="noopener noreferrer"
-  ><slot /></a
->
+<a class="a" href={href} target={target ?? ""} rel="noopener noreferrer">
+  <slot />
+</a>
 
 <style>
   .a {
