@@ -12,8 +12,7 @@ const { href, target, ja = "", en = "" } = Astro.props;
 ---
 
 <a class="a" href={href} target={target ?? ""} rel="noopener noreferrer">
-  <div class="ja">{ja}</div>
-  <div class="en">{en}</div>
+  <slot />
 </a>
 
 <style>
@@ -36,14 +35,5 @@ const { href, target, ja = "", en = "" } = Astro.props;
     position: absolute;
     transform: skewX(50deg);
     width: 25%;
-  }
-
-  .ja {
-    letter-spacing: 0.05em;
-  }
-
-  .en {
-    font-family: var(--font-serif);
-    font-style: italic;
   }
 </style>
