@@ -15,30 +15,32 @@ import Button from "@/components/shared/Button.astro";
   <nav class="nav">
     <ul class="ul">
       <li class="li">
-        <a href="/2025/05/introduction-clip/" class="a">
-          <Icon name="mdi:movie-roll" />
-          <span>
-            プロモーション映像<br />
-            Introduction Clip
-          </span>
+        <a href="/2025/05/overview/" class="a">
+          <Icon name="mdi:file-document-box-outline" />
+          <div>
+            <div class="en">Event Overview</div>
+            <div class="ja">概要</div>
+          </div>
         </a>
       </li>
+
       <li class="li">
         <a href="/2025/05/speaker/" class="a">
           <Icon name="mdi:lectern" />
-          <span>
-            講師紹介<br />
-            Speaker Introduction
-          </span>
+          <div>
+            <div class="en">Speaker Introduction</div>
+            <div class="ja">講師紹介</div>
+          </div>
         </a>
       </li>
+
       <li class="li">
         <a href="/2025/05/venueclip/" class="a">
           <Icon name="mdi:hoop-house" />
-          <span>
-            施設紹介<br />
-            Venue Information
-          </span>
+          <div>
+            <div class="en">Venue Information</div>
+            <div class="ja">施設紹介</div>
+          </div>
         </a>
       </li>
     </ul>
@@ -95,7 +97,6 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .li {
-    line-height: 1.2;
     margin: 3em 0;
   }
 
@@ -106,8 +107,17 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .a [data-icon] {
-    height: 2em;
-    width: 2em;
+    height: 2.5em;
+    width: 2.5em;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-size: 120%;
+  }
+
+  .ja {
+    letter-spacing: 0.05em;
   }
 </style>
 

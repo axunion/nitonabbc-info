@@ -1,0 +1,113 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="スピーカーメッセージ - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main">
+    <section>
+      <h2 class="h2">
+        <div class="en">Event Overview</div>
+        <div class="ja">概要</div>
+      </h2>
+
+      <h3 class="h3">
+        <Icon name="mdi:calendar-month-outline" />
+        Date - 日時
+      </h3>
+
+      <p>
+        2025年5月5日(月) - 7日(水) <br />
+        May 22 (Mon) - May 23 (Wed), 2025
+      </p>
+
+      <h3 class="h3">
+        <Icon name="mdi:location-on-outline" />
+        Venue - 会場
+      </h3>
+
+      <p>
+        グリーンヒルズニューみなみ<br />
+        GREEN HILL'S NEW MINAMI<br />
+        <a
+          class="link"
+          href="http://www.new-minami.co.jp/"
+          target="_blank"
+          rel="noopener noreferrer">Official website</a
+        >
+      </p>
+
+      <p>
+        <small>〒401-0502</small><br />
+        山梨県南都留郡山中湖村平野520-45
+      </p>
+
+      <h3 class="h3">
+        <Icon name="mdi:lectern" />
+        Speaker - 講師
+      </h3>
+
+      <p></p>
+
+      <h3 class="h3">
+        <Icon name="mdi:bag-suitcase-outline" />
+        What to Bring - 持ち物
+      </h3>
+
+      <p>
+        洗濯用洗剤・歯ブラシ・シャンプー、リンスの販売機はありますが、洗面用具・タオル・バスタオル・ドライヤーなどは各自で用意して下さい。
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  .main {
+    max-width: 600px;
+    margin: auto;
+    padding: 2em;
+  }
+
+  .h2 {
+    color: var(--color-primary);
+    font-size: 150%;
+    font-style: italic;
+    position: relative;
+    text-align: center;
+  }
+
+  .h3 {
+    color: var(--color-primary);
+    font-size: 125%;
+    font-weight: normal;
+    margin: 2em 0 1em;
+    text-indent: -0.15em;
+  }
+
+  .h3 [data-icon] {
+    height: 1.1em;
+    vertical-align: -0.2em;
+    width: 1.1em;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+  }
+
+  .link {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>
