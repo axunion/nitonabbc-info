@@ -15,7 +15,8 @@ import logo from "@/assets/2025/05/logo.webp";
   <main class="main">
     <section>
       <h2 class="h2">
-        講師紹介<br /><span class="en">Speaker Introduction</span>
+        <div class="en">Speaker Introduction</div>
+        <div class="ja">講師紹介</div>
       </h2>
     </section>
   </main>
@@ -26,25 +27,19 @@ import logo from "@/assets/2025/05/logo.webp";
 
 <style>
   .main {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 75vh;
-    padding: 1em;
+    max-width: 600px;
+    margin: auto;
+    padding: 2em;
   }
 
   .h2 {
     color: var(--color-primary);
-    font-size: 150%;
+    font-size: 125%;
     font-style: italic;
-    margin: 2em 0 1em;
-    position: relative;
     text-align: center;
   }
 
   .en {
     font-family: var(--font-serif);
-    font-style: italic;
   }
 </style>

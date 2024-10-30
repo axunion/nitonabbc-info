@@ -56,7 +56,10 @@ import logo from "@/assets/2025/05/logo.webp";
         Speaker - 講師
       </h3>
 
-      <p></p>
+      <p>
+        <small>香港コーナーストーンバプテスト教会牧師</small><br />
+        吉田正治宣教師
+      </p>
 
       <h3 class="h3">
         <Icon name="mdi:bag-suitcase-outline" />
@@ -82,18 +85,28 @@ import logo from "@/assets/2025/05/logo.webp";
 
   .h2 {
     color: var(--color-primary);
-    font-size: 150%;
+    font-size: 125%;
     font-style: italic;
-    position: relative;
     text-align: center;
   }
 
   .h3 {
     color: var(--color-primary);
-    font-size: 125%;
+    font-size: 115%;
     font-weight: normal;
-    margin: 2em 0 1em;
-    text-indent: -0.15em;
+    margin: 3em 0 1em;
+    padding: 0 0 0 1.5em;
+    position: relative;
+  }
+
+  .h3::before {
+    border-top: var(--color-primary) solid 1px;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 1em;
   }
 
   .h3 [data-icon] {
@@ -107,7 +120,7 @@ import logo from "@/assets/2025/05/logo.webp";
   }
 
   .link {
-    color: var(--color-primary);
+    color: var(--color-subtext);
     text-decoration: underline;
   }
 </style>
