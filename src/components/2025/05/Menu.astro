@@ -5,11 +5,11 @@ import Button from "@/components/shared/Button.astro";
 
 <div class="menu">
   <div class="top">
-    <Button>
-      <span class="close-button">
+    <span class="close-button">
+      <Button>
         <Icon name="mdi:close" />
-      </span>
-    </Button>
+      </Button>
+    </span>
   </div>
 
   <nav class="nav">
@@ -52,7 +52,7 @@ import Button from "@/components/shared/Button.astro";
     background: var(--color-text);
     color: transparent;
     inset: 0;
-    padding: 1em 0.5em;
+    padding: 0.5em;
     position: fixed;
     transform: translateX(-100%);
     transition:
@@ -78,7 +78,7 @@ import Button from "@/components/shared/Button.astro";
     justify-content: flex-end;
   }
 
-  .top [data-icon] {
+  .close-button [data-icon] {
     height: 1.5em;
     padding: 0.5em;
     width: 1.5em;
