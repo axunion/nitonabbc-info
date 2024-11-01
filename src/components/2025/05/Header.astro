@@ -4,35 +4,32 @@ import Button from "@/components/shared/Button.astro";
 ---
 
 <header class="header">
-  <div class="menu-button">
-    <Button>
-      <Icon name="mdi:menu" />
-    </Button>
-  </div>
-
   <h1 class="h1">
     <a href="/2025/05/">
       <small>2025 第56回</small><br />
       JBBF全国青年フェローシップキャンプ
     </a>
   </h1>
+
+  <div class="menu-button">
+    <Button>
+      <Icon name="mdi:menu" />
+    </Button>
+  </div>
 </header>
 
 <style>
   .header {
-    background: var(--color-text);
-    box-shadow: inset 0 0 4px var(--color-subtext);
-    box-sizing: border-box;
-    color: var(--color-background);
+    align-items: center;
     display: flex;
-    flex-direction: column;
-    height: 50vh;
-    padding: 0.5em;
-    position: relative;
+    justify-content: space-between;
+    padding: 0.5em 0.5em 0.5em 1em;
   }
 
-  .menu-button {
-    align-self: flex-end;
+  .h1 {
+    font-size: 90%;
+    line-height: 1.2;
+    margin: 0;
   }
 
   .menu-button [data-icon] {
@@ -41,72 +38,9 @@ import Button from "@/components/shared/Button.astro";
     vertical-align: top;
     width: 1.5em;
   }
-
-  .h1 {
-    align-self: center;
-    font-size: 150%;
-    line-height: 1.2;
-    margin: 15vh 0 0;
-    text-shadow: 0 0 40px var(--color-background);
-  }
-
-  @media (max-width: 768px) {
-    .h1 {
-      font-size: 100%;
-    }
-  }
 </style>
 
 <script>
-  const header = document.querySelector(".header");
-
-  if (header) {
-    const keyframes = [
-      { opacity: 0.1, transform: "translate(-50vw, 5vh)" },
-      { opacity: 0.5 },
-      { opacity: 0 },
-      { opacity: 0.5 },
-      { opacity: 0 },
-      { opacity: 0.5 },
-      { opacity: 0.1, transform: "translate(50vw, -5vh)" },
-    ];
-    const options = {
-      easing: "linear",
-      iterations: Infinity,
-    };
-
-    for (let i = 0; i < 31; i++) {
-      const bubble = document.createElement("div");
-      const opacity = Math.random() * 0.5;
-      const size = Math.random() * 8 + 4;
-      const x = Math.random() * 100;
-      const y = Math.random() * 100;
-      const delay = Math.random() * 1155;
-      const duration = Math.random() * 7429 + 20677;
-
-      const styles = {
-        background: `rgba(255, 255, 255, ${opacity})`,
-        borderRadius: "50%",
-        height: `${size}px`,
-        left: `${x}%`,
-        opacity: 0,
-        position: "absolute",
-        top: `${y}%`,
-        width: `${size}px`,
-      };
-      const options = {
-        delay,
-        duration,
-        easing: "linear",
-        iterations: Infinity,
-      };
-
-      Object.assign(bubble.style, styles);
-      bubble.animate(keyframes, { ...options, delay, duration });
-      header.appendChild(bubble);
-    }
-  }
-
   document.querySelector(".menu-button")?.addEventListener("click", () => {
     window.document.body.classList.toggle("show-menu");
   });

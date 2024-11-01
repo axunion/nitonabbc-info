@@ -1,14 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <footer class="footer">
-  <small>
-    主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会<br />
-    協力：市原聖書バプテスト教会
-  </small>
+  <a class="a" href="/2025/05/">
+    <Icon name="mdi:arrow-back-circle" />
+    <span>Back</span>
+  </a>
 </footer>
 
 <style>
   .footer {
-    font-size: 90%;
-    margin: 25vh 1em 10vh;
-    text-align: center;
+    margin: 10vh 0 0;
+    padding: 0.5em;
+  }
+
+  .a {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+  }
+
+  .a [data-icon] {
+    height: 2em;
+    padding: 0.5em;
+    vertical-align: top;
+    width: 2em;
   }
 </style>
