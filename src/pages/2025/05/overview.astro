@@ -13,8 +13,8 @@ import logo from "@/assets/2025/05/logo.webp";
 >
   <Header />
 
-  <main class="main">
-    <section>
+  <main class="main bubble">
+    <section class="section">
       <h2 class="h2">
         <div class="en">Event Overview</div>
         <div class="ja">概要</div>
@@ -57,7 +57,7 @@ import logo from "@/assets/2025/05/logo.webp";
       </h3>
 
       <p>
-        <small>香港コーナーストーンバプテスト教会牧師</small><br />
+        香港コーナーストーンバプテスト教会牧師<br />
         吉田正治宣教師
       </p>
 
@@ -76,43 +76,49 @@ import logo from "@/assets/2025/05/logo.webp";
   <Menu />
 </Layout>
 
+<script src="../../../scripts/bubble.ts"></script>
+
 <style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
   .main {
-    max-width: 600px;
-    margin: auto;
-    padding: 2em;
-  }
-
-  .h2 {
-    color: var(--color-primary);
-    font-size: 125%;
-    font-style: italic;
-    text-align: center;
-  }
-
-  .h3 {
-    color: var(--color-primary);
-    font-size: 115%;
-    font-weight: normal;
-    margin: 3em 0 1em;
-    padding: 0 0 0 1.5em;
+    overflow: hidden;
     position: relative;
   }
 
-  .h3::before {
-    border-top: var(--color-primary) solid 1px;
-    content: "";
-    display: block;
-    left: 0;
-    position: absolute;
-    top: 50%;
-    width: 1em;
+  .section {
+    max-width: 400px;
+    margin: auto;
+    padding: 0 2em;
+  }
+
+  .h2 {
+    color: white;
+    font-size: 150%;
+    font-style: italic;
+    margin: 10vh 0 0;
+    text-align: center;
+    text-shadow:
+      0 0 1em white,
+      0 0 3em white;
+  }
+
+  .h3 {
+    align-items: center;
+    color: white;
+    display: flex;
+    font-size: 140%;
+    font-weight: normal;
+    gap: 0.5em;
+    margin: 4em 0 0;
   }
 
   .h3 [data-icon] {
-    height: 1.1em;
-    vertical-align: -0.2em;
-    width: 1.1em;
+    height: 1.2em;
+    width: 1.2em;
   }
 
   .en {
@@ -120,7 +126,6 @@ import logo from "@/assets/2025/05/logo.webp";
   }
 
   .link {
-    color: var(--color-subtext);
     text-decoration: underline;
   }
 </style>
