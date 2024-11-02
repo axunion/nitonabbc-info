@@ -2,38 +2,40 @@
 import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
 import logo from "@/assets/2025/05/logo.webp";
 ---
 
 <Layout
-  title="スピーカーメッセージ - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  title="概要 - 2025 第56回JBBF全国青年フェローシップキャンプ"
   favicon={logo.src}
 >
   <Header />
 
   <main class="main bubble">
     <section class="section">
-      <h2 class="h2">
-        <div class="en">Event Overview</div>
-        <div class="ja">概要</div>
-      </h2>
+      <H2>
+        <span slot="en">Event Overview</span>
+        <span slot="ja">概要</span>
+      </H2>
 
-      <h3 class="h3">
+      <H3>
         <Icon name="mdi:calendar-month-outline" />
-        Date - 日時
-      </h3>
+        <span>Date - 日時</span>
+      </H3>
 
       <p>
         2025年5月5日(月) - 7日(水) <br />
         May 22 (Mon) - May 23 (Wed), 2025
       </p>
 
-      <h3 class="h3">
+      <H3>
         <Icon name="mdi:location-on-outline" />
-        Venue - 会場
-      </h3>
+        <span>Venue - 会場</span>
+      </H3>
 
       <p>
         グリーンヒルズニューみなみ<br />
@@ -51,20 +53,20 @@ import logo from "@/assets/2025/05/logo.webp";
         山梨県南都留郡山中湖村平野520-45
       </p>
 
-      <h3 class="h3">
+      <H3>
         <Icon name="mdi:lectern" />
-        Speaker - 講師
-      </h3>
+        <span>Speaker - 講師</span>
+      </H3>
 
       <p>
         香港コーナーストーンバプテスト教会牧師<br />
         吉田正治宣教師
       </p>
 
-      <h3 class="h3">
+      <H3>
         <Icon name="mdi:bag-suitcase-outline" />
-        What to Bring - 持ち物
-      </h3>
+        <span>What to Bring - 持ち物</span>
+      </H3>
 
       <p>
         洗濯用洗剤・歯ブラシ・シャンプー、リンスの販売機はありますが、洗面用具・タオル・バスタオル・ドライヤーなどは各自で用意して下さい。
@@ -93,36 +95,6 @@ import logo from "@/assets/2025/05/logo.webp";
     max-width: 400px;
     margin: auto;
     padding: 0 2em;
-  }
-
-  .h2 {
-    color: white;
-    font-size: 150%;
-    font-style: italic;
-    margin: 10vh 0 0;
-    text-align: center;
-    text-shadow:
-      0 0 1em white,
-      0 0 3em white;
-  }
-
-  .h3 {
-    align-items: center;
-    color: white;
-    display: flex;
-    font-size: 140%;
-    font-weight: normal;
-    gap: 0.5em;
-    margin: 4em 0 0;
-  }
-
-  .h3 [data-icon] {
-    height: 1.2em;
-    width: 1.2em;
-  }
-
-  .en {
-    font-family: var(--font-serif);
   }
 
   .link {
