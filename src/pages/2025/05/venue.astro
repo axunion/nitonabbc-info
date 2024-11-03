@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+import minami1 from "@/assets/2025/05/minami1.webp";
+import minami2 from "@/assets/2025/05/minami2.webp";
+// import minami3 from "@/assets/2025/05/minami3.webp";
+import haichizu from "@/assets/2025/05/haichizu.pdf";
+import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
+---
+
+<Layout
+  title="施設紹介 - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <section class="section">
+      <H2>
+        <span slot="en">Venue Information</span>
+        <span slot="ja">施設紹介</span>
+      </H2>
+
+      <H3>富士山麓・山中湖の自然に包まれた環境</H3>
+      <p>
+        グリーンヒルズニューみなみは、富士山麓の豊かな緑と澄んだ空気、山中湖の大自然に囲まれた最高のロケーションを誇ります。館内では自然と触れ合える体験学習も充実しており、ここでしか味わえない貴重なひとときをお楽しみいただけます。
+      </p>
+      <div class="image">
+        <Image src={minami1} alt="" />
+      </div>
+
+      <H3>様々な滞在スタイルに対応する充実の施設</H3>
+      <p>
+        多彩な目的でのご滞在に最適な環境と施設を提供しております。どなたも目的に集中して取り組めるよう整備されています。また、バーベキュー施設や多目的ホールも備え、オフタイムも楽しく過ごせる工夫が満載です。
+      </p>
+      <div class="image">
+        <Image src={minami2} alt="" />
+      </div>
+
+      <H3>案内図</H3>
+      <p>
+        <a
+          class="link"
+          href={haichizu}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="mdi:arrow-right-thin" />
+          施設配置図
+          <Icon name="mdi:file-pdf-box" />
+        </a>
+      </p>
+      <p>
+        <a
+          class="link"
+          href={syukuhakuHeimenzu}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="mdi:arrow-right-thin" />
+          宿泊棟平面図
+          <Icon name="mdi:file-pdf-box" />
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<script src="../../../scripts/bubble.ts"></script>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .image {
+    height: 50vh;
+    margin: 1em -1.5em;
+  }
+
+  .link {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.25em;
+    padding: 0 1em 0 0;
+  }
+
+  .link [data-icon] {
+    font-size: 1.5em;
+  }
+</style>
