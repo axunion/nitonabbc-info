@@ -10,7 +10,6 @@ import Menu from "@/components/2025/05/Menu.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import minami1 from "@/assets/2025/05/minami1.webp";
 import minami2 from "@/assets/2025/05/minami2.webp";
-// import minami3 from "@/assets/2025/05/minami3.webp";
 import haichizu from "@/assets/2025/05/haichizu.pdf";
 import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
 ---
@@ -30,7 +29,7 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
 
       <H3>富士山麓・山中湖の自然に包まれた環境</H3>
       <p>
-        グリーンヒルズニューみなみは、富士山麓の豊かな緑と澄んだ空気、山中湖の大自然に囲まれた最高のロケーションを誇ります。館内では自然と触れ合える体験学習も充実しており、ここでしか味わえない貴重なひとときをお楽しみいただけます。
+        グリーンヒルズニューみなみは、富士山麓の豊かな緑と澄んだ空気、山中湖の大自然に囲まれた最高のロケーションを誇ります。館内では、自然と触れ合う体験学習も充実しており、ここでしか味わえない貴重なひとときをお楽しみいただけます。
       </p>
       <div class="image">
         <Image src={minami1} alt="" />
@@ -44,7 +43,10 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
         <Image src={minami2} alt="" />
       </div>
 
-      <H3>案内図</H3>
+      <H3>
+        <Icon name="mdi:map-outline" />
+        <span>Guide map - 案内図</span>
+      </H3>
       <p>
         <a
           class="link"
@@ -53,7 +55,7 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
           rel="noopener noreferrer"
         >
           <Icon name="mdi:arrow-right-thin" />
-          施設配置図
+          Facility Layout - 施設配置図
           <Icon name="mdi:file-pdf-box" />
         </a>
       </p>
@@ -65,7 +67,7 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
           rel="noopener noreferrer"
         >
           <Icon name="mdi:arrow-right-thin" />
-          宿泊棟平面図
+          Floor Plan - 宿泊棟平面図
           <Icon name="mdi:file-pdf-box" />
         </a>
       </p>
@@ -97,7 +99,7 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
 
   .image {
     height: 50vh;
-    margin: 1em -1.5em;
+    margin: 5vh -1.5em;
   }
 
   .link {
@@ -108,6 +110,6 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
   }
 
   .link [data-icon] {
-    font-size: 1.5em;
+    font-size: 140%;
   }
 </style>
