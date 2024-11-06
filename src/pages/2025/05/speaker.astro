@@ -1,9 +1,14 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
 import logo from "@/assets/2025/05/logo.webp";
+import speaker from "@/assets/2025/05/speaker.webp";
 ---
 
 <Layout
@@ -13,11 +18,26 @@ import logo from "@/assets/2025/05/logo.webp";
   <Header />
 
   <main class="main">
-    <section>
-      <h2 class="h2">
-        <div class="en">Speaker Introduction</div>
-        <div class="ja">講師紹介</div>
-      </h2>
+    <section class="section">
+      <H2>
+        <span slot="en">Speaker Introduction</span>
+        <span slot="ja">講師紹介</span>
+      </H2>
+
+      <div class="speaker">
+        <Image src={speaker} alt="" width="0" height="0" />
+      </div>
+
+      <div class="title">
+        <h3 class="name">吉田正治<small>宣教師</small></h3>
+        <small>香港コーナーストーンバプテスト教会牧師</small>
+      </div>
+
+      <p>
+        &#12302;
+        2025年青年キャンプのメッセージを仰せつかりました、宣教師の吉田正治です。輝くような皆さんとご一緒できること、今からワクワクで待ちきれません!!皆さんがさらに輝きますように。力の限りお手伝いできますように。私のためにお祈りください。
+        &#12303;
+      </p>
     </section>
   </main>
 
@@ -26,20 +46,39 @@ import logo from "@/assets/2025/05/logo.webp";
 </Layout>
 
 <style>
-  .main {
-    max-width: 600px;
-    margin: auto;
-    padding: 2em;
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
   }
 
-  .h2 {
-    color: var(--color-primary);
-    font-size: 125%;
-    font-style: italic;
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 400px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .speaker {
+    background: var(--color-subtext);
+    border-radius: 50%;
+    height: 280px;
+    margin: 5vh auto;
+    padding: 40px 0 0;
+    overflow: hidden;
+    text-align: center;
+    width: 320px;
+  }
+
+  .title {
     text-align: center;
   }
 
-  .en {
-    font-family: var(--font-serif);
+  .name {
+    font-size: 125%;
+    margin: 0;
   }
 </style>
