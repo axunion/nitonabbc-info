@@ -44,7 +44,7 @@ const linkTags = [
     </section>
 
     <section class="image">
-      <Image src={lakeYamanaka} alt="" />
+      <Image src={lakeYamanaka} alt="" class="img" />
 
       <div class="date">
         <div>2025. 5. 5 <span class="week">MON</span></div>
@@ -156,6 +156,12 @@ const linkTags = [
 
   .image {
     position: relative;
+  }
+
+  .img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 
   .date {

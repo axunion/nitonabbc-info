@@ -15,8 +15,14 @@
 }
 
 html {
-  font: 100%/1.5 -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
-    "Noto Sans JP", "Yu Gothic", sans-serif;
+  font:
+    100%/1.5 -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    "Noto Sans JP",
+    "Yu Gothic",
+    sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
