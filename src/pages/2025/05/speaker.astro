@@ -7,8 +7,33 @@ import H2 from "@/components/2025/05/H2.astro";
 import H3 from "@/components/2025/05/H3.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
+import Bracket from "@/components/shared/Bracket.astro";
+import QAList from "@/components/shared/QAList.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import speaker from "@/assets/2025/05/speaker.webp";
+
+const list = [
+  { q: "出身地", a: "埼玉県戸田市生まれ、東京都板橋区育ち。" },
+  { q: "中学、高校の部活は？", a: "ひたすら帰宅部。" },
+  {
+    q: "前職、職歴",
+    a: "家庭用品の会社で2年半､ホテル関係の会社で3年と少し､同じ会社の貿易部門で1年と少し。合計約7年のサラリーマン生活。",
+  },
+  { q: "救われた年齢", a: "29歳。" },
+  { q: "教会へ行ったきっかけ", a: "先に救われた妹に連れられて。" },
+  {
+    q: "若い頃はどんな青年だった？",
+    a: "軽佻浮薄、外見と読書に明け暮れて、仕事は二の次。休日の楽しみは大型バイクでツーリング。",
+  },
+  {
+    q: "好きな賛美",
+    a: "賛美はほとんど全て好きで、甲乙付け難いですが、一曲選ぶとすれば､「ああ驚くべきイエスの愛よ」かな。",
+  },
+  { q: "好きな聖句", a: "マタイ 6:33 は私の生涯のみ言葉です。" },
+  { q: "好きな食べ物", a: "うどん、そば、桃。" },
+  { q: "趣味", a: "テレビスポーツ観戦。" },
+  { q: "休日の過ごし方", a: "妻とデート。" },
+];
 ---
 
 <Layout
@@ -33,11 +58,20 @@ import speaker from "@/assets/2025/05/speaker.webp";
         <small>香港コーナーストーンバプテスト教会牧師</small>
       </div>
 
-      <p>
-        &#12302;
-        2025年青年キャンプのメッセージを仰せつかりました、宣教師の吉田正治です。輝くような皆さんとご一緒できること、今からワクワクで待ちきれません!!皆さんがさらに輝きますように。力の限りお手伝いできますように。私のためにお祈りください。
-        &#12303;
-      </p>
+      <div class="message">
+        <Bracket>
+          2025年青年キャンプのメッセージを仰せつかりました、宣教師の吉田正治です。輝くような皆さんとご一緒できること、今からワクワクで待ちきれません!!皆さんがさらに輝きますように。力の限りお手伝いできますように。私のためにお祈りください。
+        </Bracket>
+      </div>
+    </section>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:account-box-outline" />
+        <span>Profile - プロフィール</span>
+      </H3>
+
+      <QAList list={list} />
     </section>
   </main>
 
@@ -57,7 +91,7 @@ import speaker from "@/assets/2025/05/speaker.webp";
   }
 
   .section {
-    max-width: 400px;
+    max-width: 600px;
     margin: auto;
     padding: 0 1.5em;
   }
@@ -80,5 +114,9 @@ import speaker from "@/assets/2025/05/speaker.webp";
   .name {
     font-size: 125%;
     margin: 0;
+  }
+
+  .message {
+    margin: 2em 0;
   }
 </style>
