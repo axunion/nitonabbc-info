@@ -22,7 +22,6 @@ if (parentElement) {
     const size = Math.random() * 8 + 4;
     const x = Math.random() * 100;
     const y = Math.random() * 100;
-    const delay = Math.random() * 1201;
     const duration = Math.random() * 70001 + 35023;
 
     const styles = {
@@ -35,10 +34,11 @@ if (parentElement) {
       position: "absolute",
       top: `${y}%`,
       width: `${size}px`,
+      zIndex: 0,
     };
 
     Object.assign(bubble.style, styles);
-    bubble.animate(keyframes, { ...options, delay, duration });
+    bubble.animate(keyframes, { ...options, duration });
     df.appendChild(bubble);
   }
 
