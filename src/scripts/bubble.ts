@@ -34,7 +34,7 @@ if (parentElement) {
       position: "absolute",
       top: `${y}%`,
       width: `${size}px`,
-      zIndex: 0,
+      zIndex: -1,
     };
 
     Object.assign(bubble.style, styles);
