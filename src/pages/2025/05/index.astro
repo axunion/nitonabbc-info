@@ -17,7 +17,7 @@ const linkTags = [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ『起きよ！輝け』イザヤ60:1",
+    href: "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ『起きよ！輝け』イザヤ60:1.25MON7WED",
   },
 ];
 ---
@@ -47,7 +47,7 @@ const linkTags = [
       <Image src={lakeYamanaka} alt="" class="img" />
 
       <div class="date">
-        <div>2025. 5. 5 <span class="week">MON</span></div>
+        <div>2025.5.5<span class="week">MON</span></div>
         <div>
           <svg width="6" height="40" class="svg">
             <line
@@ -60,7 +60,7 @@ const linkTags = [
             <polygon points="0,35 6,35 3,40" fill="currentColor"></polygon>
           </svg>
         </div>
-        <div>2025. 5. 7 <span class="week">WED</span></div>
+        <div>2025.5.7<span class="week">WED</span></div>
       </div>
     </section>
 
@@ -171,6 +171,7 @@ const linkTags = [
     color: white;
     display: flex;
     flex-direction: column;
+    font-family: "Yuji Syuku", serif;
     font-size: 4vw;
     gap: 1em;
     inset: 0;
@@ -181,6 +182,7 @@ const linkTags = [
 
   .week {
     font-size: 40%;
+    margin: 0 0 0 0.5em;
   }
 
   .svg {
