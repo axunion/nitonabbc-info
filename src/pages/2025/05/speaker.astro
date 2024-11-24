@@ -10,7 +10,8 @@ import Menu from "@/components/2025/05/Menu.astro";
 import Bracket from "@/components/shared/Bracket.astro";
 import QAList from "@/components/shared/QAList.astro";
 import logo from "@/assets/2025/05/logo.webp";
-import speaker from "@/assets/2025/05/speaker.webp";
+import speaker1 from "@/assets/2025/05/speaker1.webp";
+import speaker2 from "@/assets/2025/05/speaker2.webp";
 
 const list = [
   { q: "出身地", a: "埼玉県戸田市生まれ、東京都板橋区育ち。" },
@@ -50,7 +51,7 @@ const list = [
       </H2>
 
       <div class="speaker">
-        <Image src={speaker} alt="" width="0" height="0" />
+        <Image src={speaker1} alt="" />
       </div>
 
       <div class="title">
@@ -70,6 +71,8 @@ const list = [
         <Icon name="mdi:account-box-outline" />
         <span>Profile - プロフィール</span>
       </H3>
+
+      <Image src={speaker2} alt="" class="image" />
 
       <QAList list={list} />
     </section>
@@ -120,5 +123,11 @@ const list = [
 
   .message {
     margin: 2em 0;
+  }
+
+  .image {
+    border-radius: 8px;
+    display: block;
+    margin: 1em auto 2em;
   }
 </style>
