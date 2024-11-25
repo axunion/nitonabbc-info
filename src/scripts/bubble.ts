@@ -18,16 +18,19 @@ if (parentElement) {
 
   for (let i = 0; i < 31; i++) {
     const bubble = document.createElement("div");
-    const alpha = Math.random();
+    const r = Math.floor(Math.random() * 128) + 64;
+    const g = Math.floor(Math.random() * 128) + 64;
+    const b = Math.floor(Math.random() * 128) + 64;
+    const a = Math.floor(Math.random() * 50) + 25;
     const size = Math.random() * 8 + 4;
     const x = Math.random() * 100;
     const y = Math.random() * 100;
     const duration = Math.random() * 70001 + 35023;
 
     const styles = {
-      background: `rgba(255, 255, 255, ${alpha})`,
+      background: `rgba(${r} ${g} ${b} / ${a}%)`,
       borderRadius: "50%",
-      boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)",
+      boxShadow: `0 0 ${size}px rgba(${r} ${g} ${b} / 50%)`,
       height: `${size}px`,
       left: `${x}%`,
       opacity: 0,
