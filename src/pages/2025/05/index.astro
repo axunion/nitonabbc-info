@@ -64,7 +64,13 @@ const linkTags = [
       </div>
     </section>
 
-    <section class="dark">
+    <section class="video-container">
+      <video controls class="video">
+        <source src="/promotional.mp4" type="video/mp4" />
+      </video>
+    </section>
+
+    <section>
       <ul class="link-list">
         <li class="link-item">
           <BlockLink href="/2025/05/overview/">
@@ -97,7 +103,7 @@ const linkTags = [
     </section>
   </main>
 
-  <footer class="footer dark">
+  <footer class="footer">
     <small>
       主催：仁戸名聖書バプテスト教会・幕張聖書バプテスト教会<br />
       協力：市原聖書バプテスト教会
@@ -189,6 +195,16 @@ const linkTags = [
     vertical-align: top;
   }
 
+  .video-container {
+    margin: 10vh auto;
+    max-width: 600px;
+    padding: 1.5em;
+  }
+
+  .video {
+    width: 100%;
+  }
+
   .link-list {
     font-size: 2vw;
     list-style: none;
@@ -257,7 +273,7 @@ const linkTags = [
         }
       });
     },
-    { rootMargin: "0px 0px -50%" }
+    { rootMargin: "0px 0px -50%" },
   );
 
   if (scrollTarget) {
