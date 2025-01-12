@@ -5,6 +5,7 @@ import BlockLink from "@/components/shared/BlockLink.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import lakeYamanaka from "@/assets/2025/05/lake-yamanaka.webp";
 
+const MEDIA_PATH = import.meta.env.VITE_MEDIA_PATH;
 const linkTags = [
   {
     rel: "preconnect",
@@ -66,7 +67,10 @@ const linkTags = [
 
     <section class="video-container">
       <video controls class="video">
-        <source src="/promotional.mp4" type="video/mp4" />
+        <source
+          src=`${MEDIA_PATH}/youth-fellowship-camp-2025/promotional-720p.mp4`
+          type="video/mp4"
+        />
       </video>
     </section>
 
@@ -196,9 +200,9 @@ const linkTags = [
   }
 
   .video-container {
-    margin: 10vh auto;
-    max-width: 600px;
-    padding: 1.5em;
+    margin: auto;
+    max-width: 1280px;
+    padding: 10vh 0.5em 0;
   }
 
   .video {
