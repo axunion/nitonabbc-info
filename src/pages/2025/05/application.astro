@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="申し込み - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <section class="section">
+      <H2>
+        <span slot="en">Application Guide</span>
+        <span slot="ja">お申し込み</span>
+      </H2>
+
+      <H3>
+        <Icon name="mdi:google-spreadsheet" />
+        <span>申込書</span>
+      </H3>
+      <p>以下のページより、申込書を作成ください。</p>
+      <p>
+        <a
+          href="https://form.nitonabbc.org/apply/202505"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          2025 JBBF全国青年フェローシップキャンプ
+        </a>
+      </p>
+
+      <H3>
+        <Icon name="mdi:calendar-end-outline" />
+        <span>期限</span>
+      </H3>
+      <p>
+        申込書は
+        <strong class="deadline">4月6日</strong>
+        までにご入力をお願いいたします。
+      </p>
+      <p>
+        また、参加費は
+        <strong class="deadline">4月11日</strong>
+        までにお振込をいただけますよう、お願い申し上げます。
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<script src="../../../scripts/bubble.ts"></script>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 400px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .link {
+    text-decoration: underline;
+  }
+
+  .deadline {
+    text-decoration: underline;
+  }
+</style>
