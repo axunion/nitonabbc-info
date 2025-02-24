@@ -9,14 +9,17 @@ const { caption, rows } = Astro.props;
 
 <table class="table">
   {caption && <caption class="caption">{caption}</caption>}
-  {
-    rows.map(({ th, td }) => (
-      <tr>
-        <th class="th">{th}</th>
-        <td class="td">{td}</td>
-      </tr>
-    ))
-  }
+
+  <tbody>
+    {
+      rows.map(({ th, td }) => (
+        <tr>
+          <th class="th">{th}</th>
+          <td class="td">{td}</td>
+        </tr>
+      ))
+    }
+  </tbody>
 </table>
 
 <style>
@@ -28,6 +31,7 @@ const { caption, rows } = Astro.props;
   }
 
   .caption {
+    font-size: 110%;
     font-weight: bold;
     margin: 0 0 0.5em;
     text-align: left;
@@ -35,6 +39,7 @@ const { caption, rows } = Astro.props;
 
   .th {
     font-family: "Courier New", monospace;
+    letter-spacing: -0.05em;
     padding: 0.25em 0.5em;
     text-align: right;
     width: 3em;
