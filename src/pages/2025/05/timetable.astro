@@ -1,0 +1,100 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import TimeTable from "@/components/shared/TimeTable.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+
+const timetable1 = {
+  caption: "Day 1",
+  rows: [
+    { th: "14:00", td: "受付開始" },
+    { th: "15:00", td: "開会集会" },
+    { th: "16:00", td: "自由交わり" },
+    { th: "17:00", td: "キャンプ聖歌隊練習" },
+    { th: "18:00", td: "夕食" },
+    { th: "19:30", td: "第一集会" },
+    { th: "21:30", td: "入浴・デボーション" },
+    { th: "23:00", td: "自由交わり" },
+  ],
+};
+
+const timetable2 = {
+  caption: "Day 2",
+  rows: [
+    { th: "6:00", td: "起床・デボーション" },
+    { th: "6:30", td: "早天祈祷会" },
+    { th: "7:30", td: "朝食" },
+    { th: "8:45", td: "分科会" },
+    { th: "10:45", td: "レクリエーション" },
+    { th: "12:30", td: "昼食" },
+    { th: "14:00", td: "レクリエーション" },
+    { th: "16:00", td: "自由交わり" },
+    { th: "17:00", td: "キャンプ聖歌隊練習" },
+    { th: "18:00", td: "夕食" },
+    { th: "19:30", td: "第二集会" },
+    { th: "21:30", td: "入浴・デボーション" },
+    { th: "23:00", td: "自由交わり" },
+  ],
+};
+
+const timetable3 = {
+  caption: "Day 3",
+  rows: [
+    { th: "6:00", td: "起床・デボーション" },
+    { th: "6:30", td: "早天祈祷会" },
+    { th: "7:30", td: "朝食" },
+    { th: "9:00", td: "第三集会" },
+    { th: "11:30", td: "閉会集会" },
+    { th: "13:00", td: "昼食（お弁当）" },
+    { th: "14:00", td: "解散" },
+  ],
+};
+---
+
+<Layout
+  title="タイムテーブル - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <section class="section">
+      <H2>
+        <span slot="en">Timetable</span>
+        <span slot="ja">タイムテーブル</span>
+      </H2>
+
+      <div class="timetable">
+        <TimeTable {...timetable1} />
+        <TimeTable {...timetable2} />
+        <TimeTable {...timetable3} />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<script src="../../../scripts/bubble.ts"></script>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .section {
+    max-width: 300px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .timetable {
+    display: grid;
+    gap: 5vh;
+  }
+</style>
