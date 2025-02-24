@@ -1,0 +1,141 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+
+const list = [
+  {
+    theme: "結婚",
+    speaker: "栢下基従・検見川",
+    description:
+      "結婚したい人向け。聖書的な交際の仕方と聖書的な結婚の定義について",
+  },
+  {
+    theme: "献身",
+    speaker: "テイエイエン・滝山",
+    description:
+      "フルタイム献身について祈っている人、もしくはすでに献身しこれからの準備について祈っている人",
+  },
+  {
+    theme: "仕事と信仰生活",
+    speaker: "長江忠司・横浜",
+    description: "仕事と教会生活の両立に悩んでいる人",
+  },
+  {
+    theme: "個人伝道",
+    speaker: "佐藤一彦・太田",
+    description: "個人伝道の方法を知りたい人",
+  },
+  {
+    theme: "人間関係　職場・教会",
+    speaker: "上田廣行・名古屋",
+    description: "人間関係に悩んでいる人",
+  },
+  {
+    theme: "親子関係",
+    speaker: "谷井涙賀・ハレルヤ",
+    description: "親子関係に悩んでいる人",
+  },
+  {
+    theme: "進路",
+    speaker: "浜田献・清水",
+    description: "大学生や転職を検討している社会人",
+  },
+  {
+    theme: "青年会活性化",
+    speaker: "高木拓哉・滝山",
+    description: "青年伝道の方法と既存の青年会の活性化",
+  },
+  {
+    theme: "バプテストの特徴",
+    speaker: "三谷浩司・平塚",
+    description: "他教派との違いについて",
+  },
+  {
+    theme: "終末論",
+    speaker: "井口拓志・立川",
+    description: "初心者向けのザックリ解説。再臨までの時系列の説明も含む",
+  },
+  {
+    theme: "パレスチナ問題",
+    speaker: "上田平安・名古屋",
+    description: "世界情勢と聖書預言との関係",
+  },
+  {
+    theme: "日曜学校座談会",
+    speaker: "大木愛・滝山",
+    description: "日曜学校教師の座談会",
+  },
+];
+---
+
+<Layout
+  title="分科会 - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <section class="section">
+      <H2>
+        <span slot="en">Study Workshop</span>
+        <span slot="ja">分科会</span>
+      </H2>
+
+      {
+        list.map(({ theme, speaker, description }) => (
+          <div class="item">
+            <h3 class="theme">{theme}</h3>
+            <strong class="speaker">{speaker}</strong>
+            <p>{description}</p>
+          </div>
+        ))
+      }
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<script src="../../../scripts/bubble.ts"></script>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .section {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .item {
+    border: #ffffff80 solid 1px;
+    border-radius: 8px;
+    margin: 3em 0;
+    padding: 1em 1.5em;
+    position: relative;
+  }
+
+  .theme {
+    background: var(--color-text);
+    font-size: 110%;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0 0.5em;
+    position: absolute;
+    right: 1.5em;
+    top: -0.75em;
+  }
+
+  .speaker {
+    display: block;
+    margin: 1em 0;
+  }
+</style>
