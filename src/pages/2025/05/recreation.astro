@@ -1,0 +1,118 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="レクリエーション - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <section class="section">
+      <H2>
+        <span slot="en">Recreation</span>
+        <span slot="ja">レクリエーション</span>
+      </H2>
+
+      <H3>
+        <Icon name="mdi:tennis" />
+        <span>テニス</span>
+      </H3>
+      <p>
+        ガチ勢はガチ勢どうしで熱いバトルを！初心者も元テニス部が優しく教えてくれるので安心。
+      </p>
+
+      <H3>
+        <Icon name="mdi:badminton" />
+        <span>バドミントン</span>
+      </H3>
+      <p>シングルスや混合ダブルス、多彩な組み合わせで楽しくゲームができる。</p>
+
+      <H3>
+        <Icon name="mdi:badminton" />
+        <span>バドミントン</span>
+      </H3>
+      <p>シングルスや混合ダブルス、多彩な組み合わせで楽しくゲームができる。</p>
+
+      <H3>
+        <Icon name="mdi:basketball" />
+        <span>バスケットボール</span>
+      </H3>
+      <p>コートが2面あるので、男子女子に別れてゲームができる。</p>
+
+      <H3>
+        <Icon name="mdi:hiking" />
+        <span>ハイキング</span>
+      </H3>
+      <p>
+        初心者にも優しい90分の短めコース。富士山と山中湖を一望できる山中湖屈指の絶景スポットの展望台があなたを待っている。
+      </p>
+
+      <H3>
+        <Icon name="mdi:fishing" />
+        <span>山中湖釣り体験</span>
+      </H3>
+      <p>
+        釣り堀ではなく広大な山中湖で釣りができる。初心者もインストラクターが優しく教えてくれるので安心。釣り体験をしてみたい人におすすめ。手ぶらで参加できる。
+      </p>
+
+      <H3>
+        <Icon name="mdi:movie-roll" />
+        <span>映画</span>
+      </H3>
+      <p>
+        ゆっくりしたい人におすすめ。見終わった後はロビーカフェで感想を語り合える時間も。
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<script src="../../../scripts/bubble.ts"></script>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .section {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .item {
+    border: #ffffff80 solid 1px;
+    border-radius: 8px;
+    margin: 3em 0;
+    padding: 1em 1.5em;
+    position: relative;
+  }
+
+  .theme {
+    background: var(--color-text);
+    font-size: 110%;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0 0.5em;
+    position: absolute;
+    right: 1.5em;
+    top: -0.75em;
+  }
+
+  .speaker {
+    display: block;
+    margin: 1em 0;
+  }
+</style>
