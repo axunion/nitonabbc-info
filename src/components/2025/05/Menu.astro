@@ -60,14 +60,15 @@ import Button from "@/components/shared/Button.astro";
 <style>
   .menu {
     background: var(--color-text);
-    color: transparent;
+    color: var(--color-text);
     inset: 0;
     padding: 0.5em;
     position: fixed;
     transform: translateX(-100%);
     transition:
-      color 0.4s,
+      color 0.8s,
       transform 0.4s;
+    z-index: 11;
   }
 
   body.show-menu {
@@ -78,9 +79,6 @@ import Button from "@/components/shared/Button.astro";
     color: var(--color-background);
     text-shadow: 0 0 0.5em #ffffff80;
     transform: translateX(0);
-    transition:
-      color 0.4s 0.2s,
-      transform 0.4s;
   }
 
   .top {
@@ -108,6 +106,29 @@ import Button from "@/components/shared/Button.astro";
 
   .li {
     margin: 3em 0;
+    transform: translateX(-100%);
+    transition: ease-out 0.3s;
+  }
+
+  body.show-menu .li {
+    transform: translateX(0);
+  }
+
+  .li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .li:nth-child(4) {
+    --n: 4;
+    transition-delay: 0.4s;
   }
 
   .a {
@@ -118,17 +139,17 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .a [data-icon] {
-    height: 2.5em;
-    width: 2.5em;
+    height: 2em;
+    width: 2em;
   }
 
   .en {
     font-family: var(--font-serif);
-    font-size: 120%;
   }
 
   .ja {
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    margin: 0.1em 0 0;
   }
 </style>
 

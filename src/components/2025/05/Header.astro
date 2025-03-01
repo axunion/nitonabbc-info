@@ -21,9 +21,14 @@ import Button from "@/components/shared/Button.astro";
 <style>
   .header {
     align-items: center;
+    background: transparent;
+    backdrop-filter: blur(12px);
     display: flex;
     justify-content: space-between;
     padding: 0.5em 0.5em 0.5em 1em;
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   .h1 {
