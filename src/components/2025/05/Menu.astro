@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "@/components/shared/Button.astro";
+import navList from "@/assets/2025/05/navigation.json";
 ---
 
 <div class="menu">
@@ -14,45 +15,19 @@ import Button from "@/components/shared/Button.astro";
 
   <nav class="nav">
     <ul class="ul">
-      <li class="li">
-        <a href="/2025/05/overview/" class="a">
-          <Icon name="mdi:file-document-box-outline" />
-          <div>
-            <div class="en">Event Overview</div>
-            <div class="ja">概要</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/speaker/" class="a">
-          <Icon name="mdi:lectern" />
-          <div>
-            <div class="en">Speaker Introduction</div>
-            <div class="ja">講師紹介</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/venue/" class="a">
-          <Icon name="mdi:hoop-house" />
-          <div>
-            <div class="en">Venue Information</div>
-            <div class="ja">施設紹介</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/access/" class="a">
-          <Icon name="mdi:transportation" />
-          <div>
-            <div class="en">Access</div>
-            <div class="ja">アクセス</div>
-          </div>
-        </a>
-      </li>
+      {
+        navList.map(({ href, icon, en, ja }) => (
+          <li class="li">
+            <a href={href} class="a">
+              <Icon name={icon} />
+              <div>
+                <div class="en">{en}</div>
+                <div class="ja">{ja}</div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </div>
@@ -62,6 +37,7 @@ import Button from "@/components/shared/Button.astro";
     background: var(--color-text);
     color: var(--color-text);
     inset: 0;
+    overflow: auto;
     padding: 0.5em;
     position: fixed;
     transform: translateX(-100%);
@@ -84,6 +60,8 @@ import Button from "@/components/shared/Button.astro";
   .top {
     display: flex;
     justify-content: flex-end;
+    position: sticky;
+    top: 0;
   }
 
   .close-button [data-icon] {
@@ -99,15 +77,13 @@ import Button from "@/components/shared/Button.astro";
 
   .ul {
     list-style: none;
-    margin: auto;
-    max-width: 80%;
     padding: 1.5em;
   }
 
   .li {
-    margin: 3em 0;
+    margin: 0 0 3em;
     transform: translateX(-100%);
-    transition: ease-out 0.3s;
+    transition: ease-out 0.25s;
   }
 
   body.show-menu .li {
@@ -127,8 +103,23 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .li:nth-child(4) {
-    --n: 4;
     transition-delay: 0.4s;
+  }
+
+  .li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+
+  .li:nth-child(6) {
+    transition-delay: 0.6s;
+  }
+
+  .li:nth-child(7) {
+    transition-delay: 0.7s;
+  }
+
+  .li:nth-child(8) {
+    transition-delay: 0.8s;
   }
 
   .a {
@@ -145,6 +136,7 @@ import Button from "@/components/shared/Button.astro";
 
   .en {
     font-family: var(--font-serif);
+    font-size: 115%;
   }
 
   .ja {

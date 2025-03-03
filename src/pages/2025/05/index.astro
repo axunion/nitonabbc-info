@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import BlockLink from "@/components/shared/BlockLink.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import lakeYamanaka from "@/assets/2025/05/lake-yamanaka.webp";
+import navList from "@/assets/2025/05/navigation.json";
 
 const MEDIA_PATH = import.meta.env.VITE_MEDIA_PATH;
 const linkTags = [
@@ -29,7 +30,7 @@ const linkTags = [
   linkTags={linkTags}
 >
   <header class="block">
-    <h1 class="h1">
+    <h1 class="h1 gradient-text">
       <small>2025 第56回</small><br />
       JBBF全国青年フェローシップキャンプ
     </h1>
@@ -74,37 +75,20 @@ const linkTags = [
       </video>
     </section>
 
-    <section>
+    <section class="content">
       <h2 class="h2">Information</h2>
 
       <ul class="link-list">
-        <li class="link-item">
-          <BlockLink href="/2025/05/overview/">
-            <div class="en">Event Overview</div>
-            <div class="ja">概要</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/speaker/">
-            <div class="en">Speaker Introduction</div>
-            <div class="ja">講師紹介</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/venue/">
-            <div class="en">Venue Information</div>
-            <div class="ja">施設紹介</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/access/">
-            <div class="en">Access</div>
-            <div class="ja">アクセス</div>
-          </BlockLink>
-        </li>
+        {
+          navList.map(({ href, en, ja }) => (
+            <li class="link-item">
+              <BlockLink href={href}>
+                <div class="en">{en}</div>
+                <div class="ja">{ja}</div>
+              </BlockLink>
+            </li>
+          ))
+        }
       </ul>
     </section>
   </main>
@@ -136,7 +120,7 @@ const linkTags = [
     min-height: 100vh;
   }
 
-  .h1 {
+  .gradient-text {
     background-image: linear-gradient(
       to top right,
       #3f51b1,
@@ -150,11 +134,14 @@ const linkTags = [
     );
     background-clip: text;
     -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .h1 {
     color: gray;
     font-size: clamp(18px, 2vw, 40px);
     margin: 0;
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
   }
 
   .theme {
@@ -217,6 +204,7 @@ const linkTags = [
   }
 
   .video-container {
+    background: white;
     padding: 0.5em;
   }
 
@@ -224,29 +212,28 @@ const linkTags = [
     width: 100%;
   }
 
+  .content {
+    background: var(--color-text);
+    color: var(--color-background);
+    padding: 5vh 0 0;
+  }
+
   .h2 {
     font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 3vw, 80px);
+    font-size: clamp(2rem, 3vw, 80px);
     font-style: italic;
-    margin: 15vh 0 10vh;
+    margin: 5vh 0;
     text-align: center;
   }
 
   .link-list {
+    display: grid;
     font-size: clamp(1rem, 2vw, 40px);
+    gap: 1em;
     list-style: none;
     margin: auto;
-    padding: 0 1.5em;
     max-width: 600px;
-  }
-
-  .link-item {
-    color: var(--color-primary);
-    margin: 1em 0;
-  }
-
-  .link-item:nth-child(n + 3) {
-    color: var(--color-accent);
+    padding: 0 1.5em;
   }
 
   .en {
@@ -259,8 +246,10 @@ const linkTags = [
   }
 
   .footer {
+    background: var(--color-text);
+    color: var(--color-background);
     font-size: 90%;
-    margin: 25vh 1em 10vh;
+    padding: 25vh 1em 10vh;
     text-align: center;
   }
 
@@ -272,7 +261,7 @@ const linkTags = [
 </style>
 
 <script>
-  const scrollTarget = document.querySelector(".main");
+  const theme = document.querySelector(".theme");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -286,7 +275,7 @@ const linkTags = [
     { rootMargin: "0px 0px -50%" }
   );
 
-  if (scrollTarget) {
-    observer.observe(scrollTarget);
+  if (theme) {
+    observer.observe(theme);
   }
 </script>
