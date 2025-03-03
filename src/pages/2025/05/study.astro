@@ -100,7 +100,7 @@ const list = [
           list.map(({ theme, speaker, description }) => (
             <li class="item">
               <h3 class="theme">{theme}</h3>
-              {/* <strong class="speaker">{speaker}</strong> */}
+              <strong class="speaker">{speaker}</strong>
               <p class="description">{description}</p>
             </li>
           ))
@@ -154,10 +154,8 @@ const list = [
   }
 
   .speaker {
-    border-bottom: #ffffff80 solid 1px;
     display: block;
-    margin: 0.5em 0 1.5em;
-    padding: 0 0.5em 0.5em;
+    margin: 0.5em 0;
     text-align: right;
     white-space: pre-line;
   }
