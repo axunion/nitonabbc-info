@@ -16,12 +16,12 @@ import logo from "@/assets/2025/05/logo.webp";
   <Header />
 
   <main class="main bubble">
-    <section class="section">
-      <H2>
-        <span slot="en">Recreation</span>
-        <span slot="ja">レクリエーション</span>
-      </H2>
+    <H2>
+      <span slot="en">Recreation</span>
+      <span slot="ja">レクリエーション</span>
+    </H2>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:tennis" />
         <span>テニス</span>
@@ -29,7 +29,9 @@ import logo from "@/assets/2025/05/logo.webp";
       <p>
         ガチ勢同士が真剣勝負を繰り広げる！初心者も元テニス部出身のインストラクターが丁寧にサポートするので、安心してプレイできます。
       </p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:badminton" />
         <span>バドミントン</span>
@@ -38,7 +40,9 @@ import logo from "@/assets/2025/05/logo.webp";
         シングルスや混合ダブルスなど、多彩な組み合わせで楽しく競技を楽しめます。
       </p>
       <p>※ ラケットは各自ご持参ください</p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:basketball" />
         <span>バスケットボール</span>
@@ -46,7 +50,9 @@ import logo from "@/assets/2025/05/logo.webp";
       <p>
         コートが2面あるため、男女に分かれてゲームが可能。バスケット好きの方も、最近プレイできていない方も、共に汗を流して盛り上がりましょう！
       </p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:hiking" />
         <span>ハイキング</span>
@@ -54,7 +60,9 @@ import logo from "@/assets/2025/05/logo.webp";
       <p>
         初心者にも優しい90分のショートコース。富士山と山中湖を一望できる、山中湖屈指の絶景スポットへ。足腰を動かしながら、心も体もリフレッシュしませんか？
       </p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:fishing" />
         <span>山中湖釣り体験</span>
@@ -63,7 +71,9 @@ import logo from "@/assets/2025/05/logo.webp";
         釣り堀ではなく、広大な山中湖で本格的な釣りを体験。初心者も安心のインストラクターが、優しく丁寧に教えます。釣り体験をしてみたい方におすすめ。手ぶらで気軽に参加できます。
       </p>
       <p>※ 別途料金2500円が必要です</p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:movie-roll" />
         <span>動画鑑賞</span>
@@ -78,12 +88,15 @@ import logo from "@/assets/2025/05/logo.webp";
   <Menu />
 </Layout>
 
-<script src="../../../scripts/bubble.ts"></script>
-
 <style>
   body {
     background: var(--color-text);
     color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
   }
 
   .section {
@@ -116,3 +129,5 @@ import logo from "@/assets/2025/05/logo.webp";
     margin: 1em 0;
   }
 </style>
+
+<script src="../../../scripts/bubble.ts"></script>
