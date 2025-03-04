@@ -44,16 +44,16 @@ const list = [
   <Header />
 
   <main class="main bubble">
+    <H2>
+      <span slot="en">Speaker Introduction</span>
+      <span slot="ja">講師紹介</span>
+    </H2>
+
+    <div class="speaker-image">
+      <Image src={speaker1} alt="" />
+    </div>
+
     <section class="section">
-      <H2>
-        <span slot="en">Speaker Introduction</span>
-        <span slot="ja">講師紹介</span>
-      </H2>
-
-      <div class="speaker">
-        <Image src={speaker1} alt="" />
-      </div>
-
       <div class="title">
         <h3 class="name">吉田正治<small>宣教師</small></h3>
         <small>香港コーナーストーンバプテスト教会牧師</small>
@@ -82,8 +82,6 @@ const list = [
   <Menu />
 </Layout>
 
-<script src="../../../scripts/bubble.ts"></script>
-
 <style>
   body {
     background: var(--color-text);
@@ -101,7 +99,7 @@ const list = [
     padding: 0 1.5em;
   }
 
-  .speaker {
+  .speaker-image {
     background: var(--color-subtext);
     border-radius: 50%;
     height: 280px;
@@ -131,3 +129,5 @@ const list = [
     margin: 1em auto 2em;
   }
 </style>
+
+<script src="../../../scripts/bubble.ts"></script>

@@ -22,12 +22,12 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
   <Header />
 
   <main class="main bubble">
-    <section class="section">
-      <H2>
-        <span slot="en">Venue Information</span>
-        <span slot="ja">施設紹介</span>
-      </H2>
+    <H2>
+      <span slot="en">Venue Information</span>
+      <span slot="ja">施設紹介</span>
+    </H2>
 
+    <section class="section">
       <H3>富士山麓・山中湖の自然に包まれた環境</H3>
       <p>
         グリーンヒルズニューみなみは、富士山麓の豊かな緑と澄んだ空気、山中湖の大自然に囲まれた最高のロケーションを誇ります。ここでしか味わえない貴重なひとときをお楽しみいただけます。
@@ -35,7 +35,9 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
       <div class="image">
         <Image src={minami1} alt="" />
       </div>
+    </section>
 
+    <section class="section">
       <H3>様々な滞在スタイルに対応する充実の施設</H3>
       <p>
         多彩な目的でのご滞在に最適な環境と施設を提供しております。どなたも目的に集中して取り組めるよう整備されています。オフタイムも楽しく過ごせる工夫が満載です。
@@ -43,7 +45,9 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
       <div class="image">
         <Image src={minami2} alt="" />
       </div>
+    </section>
 
+    <section class="section">
       <H3>富士山と満点の星空を眺める癒しの露天風呂</H3>
       <p>
         疲れた体を癒すひとときに、ゆったりとお湯に浸かり寛いでください。竹垣越しに富士山を望み、夜には満天の星空を眺めながら贅沢な入浴が楽しめます。
@@ -51,7 +55,9 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
       <div class="image">
         <Image src={minami3} alt="" />
       </div>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:map-outline" />
         <span>案内図</span>
@@ -86,8 +92,6 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
   <Menu />
 </Layout>
 
-<script src="../../../scripts/bubble.ts"></script>
-
 <style>
   body {
     background: var(--color-text);
@@ -120,3 +124,5 @@ import syukuhakuHeimenzu from "@/assets/2025/05/syukuhaku_heimenzu.pdf";
     font-size: 150%;
   }
 </style>
+
+<script src="../../../scripts/bubble.ts"></script>
