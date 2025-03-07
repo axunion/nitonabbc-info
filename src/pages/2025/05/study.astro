@@ -83,23 +83,21 @@ const list = [
   <Header />
 
   <main class="main bubble">
-    <section class="section">
-      <H2>
-        <span slot="en">Study Workshop</span>
-        <span slot="ja">分科会</span>
-      </H2>
+    <H2>
+      <span slot="en">Study Workshop</span>
+      <span slot="ja">分科会</span>
+    </H2>
 
-      <ul class="list">
-        {
-          list.map(({ theme, speaker, description }) => (
-            <li class="item">
-              <h3 class="theme">{theme}</h3>
-              <strong class="speaker">{speaker}</strong>
-              <p class="description">{description}</p>
-            </li>
-          ))
-        }
-      </ul>
+    <section class="section">
+      {
+        list.map(({ theme, speaker, description }) => (
+          <section class="item">
+            <h3 class="theme">{theme}</h3>
+            <strong class="speaker">{speaker}</strong>
+            <p class="description">{description}</p>
+          </section>
+        ))
+      }
     </section>
   </main>
 
@@ -120,14 +118,8 @@ const list = [
 
   .section {
     max-width: 600px;
-    margin: auto;
+    margin: 15vh auto;
     padding: 0 1.5em;
-  }
-
-  .list {
-    list-style: none;
-    margin: 15vh 0;
-    padding: 0;
   }
 
   .item {
