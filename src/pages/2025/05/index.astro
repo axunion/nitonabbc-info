@@ -76,8 +76,6 @@ const linkTags = [
     </section>
 
     <section class="content">
-      <h2 class="h2 gradient-text">Information</h2>
-
       <ul class="link-list">
         {
           navList.map(({ href, en, ja }) => (
@@ -216,15 +214,7 @@ const linkTags = [
   .content {
     background: var(--color-text);
     color: var(--color-background);
-    padding: 5vh 0;
-  }
-
-  .h2 {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 4vw, 60px);
-    font-style: italic;
-    margin: 5vh 0;
-    text-align: center;
+    padding: 10vh 0;
   }
 
   .link-list {
@@ -241,7 +231,7 @@ const linkTags = [
     text-shadow: 0 0 0.5em currentColor;
   }
 
-  .link-item:nth-child(n + 6) {
+  .link-item:nth-child(n + 8) {
     color: #e6d8b3;
   }
 
