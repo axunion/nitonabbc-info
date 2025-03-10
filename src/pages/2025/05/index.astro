@@ -116,6 +116,7 @@ const linkTags = [
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100svh;
   }
 
   .gradient-text {
@@ -146,8 +147,6 @@ const linkTags = [
     color: black;
     font-family: "Yuji Syuku", serif;
     font-size: clamp(32px, 3vw, 64px);
-    min-height: 50vh;
-    padding: 0 0 40vh;
     text-shadow: 0 0 40px white;
   }
 
@@ -214,7 +213,7 @@ const linkTags = [
   .content {
     background: var(--color-text);
     color: var(--color-background);
-    padding: 10vh 0;
+    padding: 80px 0;
   }
 
   .link-list {
@@ -248,13 +247,14 @@ const linkTags = [
     background: var(--color-text);
     color: var(--color-background);
     font-size: 90%;
-    padding: 25vh 1em 10vh;
+    padding: 40px 1em;
     text-align: center;
   }
 
   @media (max-width: 768px) {
     .date-container {
       height: 100vh;
+      height: 100svh;
     }
   }
 </style>

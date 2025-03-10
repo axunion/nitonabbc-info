@@ -40,10 +40,9 @@ import navList from "@/assets/2025/05/navigation.json";
     overflow: auto;
     padding: 0.5em;
     position: fixed;
+    text-shadow: 0 0 0.5em #ffffff80;
     transform: translateX(-100%);
-    transition:
-      color 0.8s,
-      transform 0.4s;
+    transition: 0.4s;
     z-index: 11;
   }
 
@@ -53,7 +52,6 @@ import navList from "@/assets/2025/05/navigation.json";
 
   body.show-menu .menu {
     color: var(--color-background);
-    text-shadow: 0 0 0.5em #ffffff80;
     transform: translateX(0);
   }
 
