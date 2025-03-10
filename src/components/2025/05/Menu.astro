@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "@/components/shared/Button.astro";
+import navList from "@/assets/2025/05/navigation.json";
 ---
 
 <div class="menu">
@@ -14,45 +15,19 @@ import Button from "@/components/shared/Button.astro";
 
   <nav class="nav">
     <ul class="ul">
-      <li class="li">
-        <a href="/2025/05/overview/" class="a">
-          <Icon name="mdi:file-document-box-outline" />
-          <div>
-            <div class="en">Event Overview</div>
-            <div class="ja">概要</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/speaker/" class="a">
-          <Icon name="mdi:lectern" />
-          <div>
-            <div class="en">Speaker Introduction</div>
-            <div class="ja">講師紹介</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/venue/" class="a">
-          <Icon name="mdi:hoop-house" />
-          <div>
-            <div class="en">Venue Information</div>
-            <div class="ja">施設紹介</div>
-          </div>
-        </a>
-      </li>
-
-      <li class="li">
-        <a href="/2025/05/access/" class="a">
-          <Icon name="mdi:transportation" />
-          <div>
-            <div class="en">Access</div>
-            <div class="ja">アクセス</div>
-          </div>
-        </a>
-      </li>
+      {
+        navList.map(({ href, icon, en, ja }) => (
+          <li class="li">
+            <a href={href} class="a">
+              <Icon name={icon} />
+              <div>
+                <div class="en">{en}</div>
+                <div class="ja">{ja}</div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </div>
@@ -60,14 +35,16 @@ import Button from "@/components/shared/Button.astro";
 <style>
   .menu {
     background: var(--color-text);
-    color: transparent;
+    color: var(--color-text);
     inset: 0;
+    overflow: auto;
     padding: 0.5em;
     position: fixed;
     transform: translateX(-100%);
     transition:
-      color 0.4s,
+      color 0.8s,
       transform 0.4s;
+    z-index: 11;
   }
 
   body.show-menu {
@@ -78,14 +55,13 @@ import Button from "@/components/shared/Button.astro";
     color: var(--color-background);
     text-shadow: 0 0 0.5em #ffffff80;
     transform: translateX(0);
-    transition:
-      color 0.4s 0.2s,
-      transform 0.4s;
   }
 
   .top {
     display: flex;
     justify-content: flex-end;
+    position: sticky;
+    top: 0;
   }
 
   .close-button [data-icon] {
@@ -101,13 +77,54 @@ import Button from "@/components/shared/Button.astro";
 
   .ul {
     list-style: none;
-    margin: auto;
-    max-width: 80%;
     padding: 1.5em;
   }
 
   .li {
-    margin: 3em 0;
+    margin: 0 0 3em;
+    transform: translateX(-100%);
+    transition: ease-out 0.25s;
+    transition-delay: calc(0.05s * var(--n, 0));
+  }
+
+  body.show-menu .li {
+    transform: translateX(0);
+  }
+
+  .li:nth-child(1) {
+    --n: 1;
+  }
+
+  .li:nth-child(2) {
+    --n: 2;
+  }
+
+  .li:nth-child(3) {
+    --n: 3;
+  }
+
+  .li:nth-child(4) {
+    --n: 4;
+  }
+
+  .li:nth-child(5) {
+    --n: 5;
+  }
+
+  .li:nth-child(6) {
+    --n: 6;
+  }
+
+  .li:nth-child(7) {
+    --n: 7;
+  }
+
+  .li:nth-child(8) {
+    --n: 8;
+  }
+
+  .li:nth-child(9) {
+    --n: 9;
   }
 
   .a {
@@ -118,17 +135,18 @@ import Button from "@/components/shared/Button.astro";
   }
 
   .a [data-icon] {
-    height: 2.5em;
-    width: 2.5em;
+    height: 2em;
+    width: 2em;
   }
 
   .en {
     font-family: var(--font-serif);
-    font-size: 120%;
+    font-size: 115%;
   }
 
   .ja {
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    margin: 0.1em 0 0;
   }
 </style>
 

@@ -2,11 +2,9 @@
 type Props = {
   href: string;
   target?: string;
-  ja?: string;
-  en?: string;
 };
 
-const { href, target, ja = "", en = "" } = Astro.props;
+const { href, target } = Astro.props;
 ---
 
 <a class="a" href={href} target={target ?? ""} rel="noopener noreferrer">

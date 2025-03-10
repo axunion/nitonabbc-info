@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import BlockLink from "@/components/shared/BlockLink.astro";
 import logo from "@/assets/2025/05/logo.webp";
 import lakeYamanaka from "@/assets/2025/05/lake-yamanaka.webp";
+import navList from "@/assets/2025/05/navigation.json";
 
 const MEDIA_PATH = import.meta.env.VITE_MEDIA_PATH;
 const linkTags = [
@@ -29,7 +30,7 @@ const linkTags = [
   linkTags={linkTags}
 >
   <header class="block">
-    <h1 class="h1">
+    <h1 class="h1 gradient-text">
       <small>2025 第56回</small><br />
       JBBF全国青年フェローシップキャンプ
     </h1>
@@ -44,11 +45,11 @@ const linkTags = [
       </div>
     </section>
 
-    <section class="image">
+    <section class="date-container">
       <Image src={lakeYamanaka} alt="" class="img" />
 
       <div class="date">
-        <div>2025.5.5<span class="week">MON</span></div>
+        <time datetime="2025-05-05">2025.5.5<span class="week">MON</span></time>
         <div>
           <svg width="6" height="40" class="svg">
             <line
@@ -61,7 +62,7 @@ const linkTags = [
             <polygon points="0,35 6,35 3,40" fill="currentColor"></polygon>
           </svg>
         </div>
-        <div>2025.5.7<span class="week">WED</span></div>
+        <time datetime="2025-05-07">2025.5.7<span class="week">WED</span></time>
       </div>
     </section>
 
@@ -74,35 +75,18 @@ const linkTags = [
       </video>
     </section>
 
-    <section>
+    <section class="content">
       <ul class="link-list">
-        <li class="link-item">
-          <BlockLink href="/2025/05/overview/">
-            <div class="en">Event Overview</div>
-            <div class="ja">概要</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/speaker/">
-            <div class="en">Speaker Introduction</div>
-            <div class="ja">講師紹介</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/venue/">
-            <div class="en">Venue Information</div>
-            <div class="ja">施設紹介</div>
-          </BlockLink>
-        </li>
-
-        <li class="link-item">
-          <BlockLink href="/2025/05/access/">
-            <div class="en">Access</div>
-            <div class="ja">アクセス</div>
-          </BlockLink>
-        </li>
+        {
+          navList.map(({ href, en, ja }) => (
+            <li class="link-item">
+              <BlockLink href={href}>
+                <div class="en">{en}</div>
+                <div class="ja">{ja}</div>
+              </BlockLink>
+            </li>
+          ))
+        }
       </ul>
     </section>
   </main>
@@ -134,7 +118,7 @@ const linkTags = [
     min-height: 100vh;
   }
 
-  .h1 {
+  .gradient-text {
     background-image: linear-gradient(
       to top right,
       #3f51b1,
@@ -148,11 +132,14 @@ const linkTags = [
     );
     background-clip: text;
     -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .h1 {
     color: gray;
     font-size: clamp(18px, 2vw, 40px);
     margin: 0;
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
   }
 
   .theme {
@@ -179,7 +166,7 @@ const linkTags = [
     text-align: right;
   }
 
-  .image {
+  .date-container {
     position: relative;
   }
 
@@ -215,30 +202,37 @@ const linkTags = [
   }
 
   .video-container {
-    margin: auto;
-    max-width: 1280px;
-    padding: 10vh 0.5em 0;
+    background: white;
+    padding: 0.5em;
   }
 
   .video {
+    display: block;
     width: 100%;
   }
 
+  .content {
+    background: var(--color-text);
+    color: var(--color-background);
+    padding: 10vh 0;
+  }
+
   .link-list {
+    display: grid;
     font-size: clamp(1rem, 2vw, 40px);
+    gap: 1em;
     list-style: none;
-    margin: 10vh auto;
-    padding: 1.5em;
+    margin: auto;
     max-width: 600px;
+    padding: 0 1.5em;
   }
 
   .link-item {
-    color: var(--color-primary);
-    margin: 1em 0;
+    text-shadow: 0 0 0.5em currentColor;
   }
 
-  .link-item:nth-child(n + 3) {
-    color: var(--color-accent);
+  .link-item:nth-child(n + 8) {
+    color: #e6d8b3;
   }
 
   .en {
@@ -251,24 +245,22 @@ const linkTags = [
   }
 
   .footer {
+    background: var(--color-text);
+    color: var(--color-background);
     font-size: 90%;
-    margin: 25vh 1em 10vh;
+    padding: 25vh 1em 10vh;
     text-align: center;
   }
 
   @media (max-width: 768px) {
-    .image {
+    .date-container {
       height: 100vh;
-    }
-
-    .link-list {
-      max-width: 400px;
     }
   }
 </style>
 
 <script>
-  const scrollTarget = document.querySelector(".main");
+  const theme = document.querySelector(".theme");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -282,7 +274,7 @@ const linkTags = [
     { rootMargin: "0px 0px -50%" }
   );
 
-  if (scrollTarget) {
-    observer.observe(scrollTarget);
+  if (theme) {
+    observer.observe(theme);
   }
 </script>

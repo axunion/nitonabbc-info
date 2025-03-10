@@ -1,0 +1,56 @@
+[
+  {
+    "href": "/2025/05/overview/",
+    "icon": "mdi:file-document-box-outline",
+    "en": "Event Overview",
+    "ja": "概要"
+  },
+  {
+    "href": "/2025/05/speaker/",
+    "icon": "mdi:lectern",
+    "en": "Speaker Introduction",
+    "ja": "講師紹介"
+  },
+  {
+    "href": "/2025/05/timetable/",
+    "icon": "mdi:clock-time-two-outline",
+    "en": "Timetable",
+    "ja": "タイムテーブル"
+  },
+  {
+    "href": "/2025/05/study/",
+    "icon": "mdi:bookshelf",
+    "en": "Study Workshop",
+    "ja": "分科会"
+  },
+  {
+    "href": "/2025/05/recreation/",
+    "icon": "mdi:shoe-sneaker",
+    "en": "Recreation",
+    "ja": "レクリエーション"
+  },
+  {
+    "href": "/2025/05/venue/",
+    "icon": "mdi:house-city",
+    "en": "Venue Information",
+    "ja": "施設紹介"
+  },
+  {
+    "href": "/2025/05/access/",
+    "icon": "mdi:transportation",
+    "en": "Access",
+    "ja": "アクセス"
+  },
+  {
+    "href": "/2025/05/application/",
+    "icon": "mdi:google-spreadsheet",
+    "en": "Application Guide",
+    "ja": "お申し込み"
+  },
+  {
+    "href": "/2025/05/contact/",
+    "icon": "mdi:chat",
+    "en": "Contact Information",
+    "ja": "お問い合わせ"
+  }
+]

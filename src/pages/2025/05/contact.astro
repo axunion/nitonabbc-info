@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="お問い合わせ - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Contact Information</span>
+      <span slot="ja">お問い合わせ</span>
+    </H2>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:chat" />
+        <span>LINE オープンチャット</span>
+      </H3>
+      <p>
+        ご質問やお問い合わせは LINE
+        オープンチャットにて受け付けております。ご不明な点がございましたら、お気軽にお問い合わせください。
+      </p>
+
+      <h4 class="h4">参加方法</h4>
+      <p>
+        下記のリンクから LINE
+        アプリでオープンチャットを開き、参加コードを入力してご参加ください。
+        <br />
+        参加コード：<b>0333</b>
+        <a
+          href="https://line.me/ti/g2/wRs4XLjUaDXWW6Nm3MWHWFOMoDdaGgkZALeL8w"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span>
+            LINE オープンチャット
+            <Icon name="mdi:external-link" />
+          </span>
+        </a>
+      </p>
+
+      <h4 class="h4">オープンチャットとは</h4>
+      <p>
+        LINE
+        オープンチャットは、アカウントを公開せずに参加ができる空間です。簡単にご利用いただけますので、お気軽にご利用ください。
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .h4 {
+    font-size: 110%;
+    font-weight: bolder;
+    margin: 2em 0 0;
+  }
+
+  .link {
+    display: flex;
+    margin: 1em 0 0;
+    justify-content: center;
+    text-decoration: underline;
+  }
+</style>
+
+<script src="../../../scripts/bubble.ts"></script>

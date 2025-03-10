@@ -1,0 +1,182 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="お申し込み - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Application Guide</span>
+      <span slot="ja">お申し込み</span>
+    </H2>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:google-spreadsheet" />
+        <span>お申し込み方法</span>
+      </H3>
+      <p>
+        下記の Web
+        フォームから教会名をご入力いただき送信してください。送信後、表示されるリンクから
+        Google
+        スプレッドシートを開き、必要事項をご記入ください。お申し込みは教会ごとにお願いいたします。
+        <br />
+        入力情報は自動保存されますので、入力後の別途連絡は不要です。
+      </p>
+      <p>
+        <a
+          href="https://form.nitonabbc.org/apply/202505"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          <span>
+            2025 JBBF全国青年フェローシップキャンプ申し込み
+            <Icon name="mdi:external-link" />
+          </span>
+        </a>
+      </p>
+    </section>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:calendar-end-outline" />
+        <span>期限</span>
+      </H3>
+      <p>
+        参加のお申し込みは
+        <strong class="deadline">4月6日</strong>
+        までにご入力をお願いいたします。
+      </p>
+      <p>
+        また、参加費は教会ごとにまとめて
+        <strong class="deadline">4月11日</strong>
+        までにお振込をいただけますよう、お願い申し上げます。
+      </p>
+    </section>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:card-text-outline" />
+        <span>お申し込みの注意点</span>
+      </H3>
+
+      <h4 class="h4">分科会</h4>
+      <p>
+        第二希望まで選択してください。定員を超えた場合はご希望にお応えできない場合がございます。その際は先着順での調整とさせていただきます。
+      </p>
+
+      <h4 class="h4">レクリエーション</h4>
+      <p>
+        第二希望まで選択してください。参加人数不足や過多により開催不可となる場合は、ご希望にお応えできない場合がございます。その際は先着順での調整とさせていただきます。
+      </p>
+      <p>
+        なお、テニス、ハイキング、山中湖釣り体験につきましては、天候等により実施できない場合がございます。その場合は、他のレクリエーションからお選びいただきます。
+      </p>
+
+      <h4 class="h4">アンケート</h4>
+      <p>
+        今回の青年キャンプでは多くの交わりの機会を作り、大切にしたいと思っています。そのためアンケートにご協力をお願いいたします。
+      </p>
+      <p>
+        申し込み書に下記アンケートの解答欄を設けていますので、当てはまるものを選択してください。
+      </p>
+      <dl class="dl">
+        <dt class="dt">あなたが最も活発に動ける時間帯はどちらですか？</dt>
+        <dd class="dd">朝派</dd>
+        <dd class="dd">夜派</dd>
+        <dd class="dd">どちらとも言えない</dd>
+        <dd class="dd">秘密</dd>
+
+        <dt class="dt">あなたの趣味のタイプはどれですか？</dt>
+        <dd class="dd">インドア派</dd>
+        <dd class="dd">アウトドア派</dd>
+        <dd class="dd">どちらも（多趣味）</dd>
+        <dd class="dd">どちらでもない（無趣味）</dd>
+        <dd class="dd">秘密</dd>
+
+        <dt class="dt">好きな食べ物があるとき、あなたはいつ食べますか？</dt>
+        <dd class="dd">先に食べる</dd>
+        <dd class="dd">最後に食べる</dd>
+        <dd class="dd">その他</dd>
+        <dd class="dd">秘密</dd>
+
+        <dt class="dt">
+          あなたは旅行に行ったとします。旅行先で記念写真を撮りました。どのような記念写真を撮りましたか？
+        </dt>
+        <dd class="dd">アップ</dd>
+        <dd class="dd">みんなと</dd>
+        <dd class="dd">観光スポットで全身</dd>
+        <dd class="dd">風景</dd>
+      </dl>
+
+      <p>より楽しい青年キャンプとするため、ご協力をお願いいたします。</p>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 600px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .link {
+    display: flex;
+    justify-content: center;
+    margin: 2em 1em;
+    text-decoration: underline;
+  }
+
+  .deadline {
+    border-bottom: currentColor dashed 1px;
+    padding: 0 0.25em;
+    letter-spacing: 0.1em;
+  }
+
+  .h4 {
+    font-size: 110%;
+    font-weight: bolder;
+    margin: 1em 0 0;
+  }
+
+  .dl {
+    margin: 2em 0.5em;
+  }
+
+  .dt {
+    font-weight: bolder;
+    margin: 1.5em 0 0;
+  }
+
+  .dd {
+    margin: 0.25em 0 0 2em;
+  }
+</style>
+
+<script src="../../../scripts/bubble.ts"></script>

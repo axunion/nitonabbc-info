@@ -1,6 +1,7 @@
 const parentElement = document.querySelector(".bubble");
 
 if (parentElement) {
+  const bubbleCount = 71;
   const df = document.createDocumentFragment();
   const keyframes = [
     { opacity: 0, transform: "translate(-25vw, 25vh)" },
@@ -16,7 +17,7 @@ if (parentElement) {
     iterations: Infinity,
   };
 
-  for (let i = 0; i < 31; i++) {
+  for (let i = 0; i < bubbleCount; i++) {
     const bubble = document.createElement("div");
     const r = Math.floor(Math.random() * 128) + 64;
     const g = Math.floor(Math.random() * 128) + 64;
@@ -25,7 +26,7 @@ if (parentElement) {
     const size = Math.random() * 8 + 4;
     const x = Math.random() * 100;
     const y = Math.random() * 100;
-    const duration = Math.random() * 70001 + 35023;
+    const duration = Math.random() * 70001 + 10007;
 
     const styles = {
       background: `rgba(${r} ${g} ${b} / ${a}%)`,
