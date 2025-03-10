@@ -35,7 +35,7 @@ import navList from "@/assets/2025/05/navigation.json";
 <style>
   .menu {
     background: var(--color-text);
-    color: var(--color-text);
+    color: var(--color-background);
     inset: 0;
     overflow: auto;
     padding: 0.5em;
@@ -51,7 +51,6 @@ import navList from "@/assets/2025/05/navigation.json";
   }
 
   body.show-menu .menu {
-    color: var(--color-background);
     transform: translateX(0);
   }
 
@@ -79,7 +78,7 @@ import navList from "@/assets/2025/05/navigation.json";
   }
 
   .li {
-    margin: 0 0 3em;
+    margin: 0 0.5em 3em 0;
     transform: translateX(-100%);
     transition: ease-out 0.25s;
     transition-delay: calc(0.05s * var(--n, 0));
