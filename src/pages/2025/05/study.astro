@@ -1,0 +1,156 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+
+const list = [
+  {
+    theme: "主に喜ばれる結婚",
+    speaker: "検見川聖書バプテスト教会\n栢下基従師",
+    description:
+      "聖書が教える結婚と世の中の結婚とはどう違うのか。結婚にむけてどのような交際をしたら良いのか。そもそもどうやったら交際できるのか。結婚の疑問に講師が全て答えます！",
+  },
+  {
+    theme: "献身者の道",
+    speaker: "滝山聖書バプテスト教会\nテイエイケン師",
+    description:
+      "伝道者になりたいと祈っている人集まれ！伝道者としての召しの確信に悩んでいる人にもおすすめ。献身者としての心備えがわかります。",
+  },
+  {
+    theme: "仕事と信仰生活",
+    speaker: "横浜聖書バプテスト教会\n長江忠司師",
+    description:
+      "仕事と教会生活の両立に疲れている人はいませんか。仕事と教会生活、どちらも祝福されたいと願っている人はぜひこの講座へ！",
+  },
+  {
+    theme: "個人伝道",
+    speaker: "太田聖書バプテスト教会\n佐藤一彦師",
+    description:
+      "伝道の熱意に燃やされたい。個人伝道をしたいけどやり方がわからない。魂が熱く燃やされ、個人伝道の方法もわかる実用的な講座です。",
+  },
+  {
+    theme: "親子関係をよくしたい",
+    speaker: "つくばバイブルバプテスト教会\n小泉崇師",
+    description:
+      "親子の問題に傷ついている人はいませんか。ついついケンカがちになってしまうことはありませんか。表面的な関係で取り繕っていませんか。考えるヒントを見つけよう。",
+  },
+  {
+    theme: "将来設計どうしよう",
+    speaker: "清水聖書バプテスト教会\n浜田献師",
+    description:
+      "学生は進路、社会人は転職、どうしたら主の御心がわかるのか。より祝福がある進路を選ぶために考慮すべきポイントを学べます。",
+  },
+  {
+    theme: "青年会を盛り上げよう",
+    speaker: "滝山聖書バプテスト教会\n高木拓哉師",
+    description:
+      "青年でいられるのは今だけ！この貴重な時間をもっと有効活用したい。青年会が活性化すれば教会も活性化すること間違いなし。",
+  },
+  {
+    theme: "バプテストの特徴",
+    speaker: "平塚聖書バプテスト教会\n三谷浩司師",
+    description:
+      "バプテストは他の教派とどう違うのか、あなたは説明できますか。バプテストの特徴を知ることで私達の信仰の立場を確認しましょう。",
+  },
+  {
+    theme: "終末論入門",
+    speaker: "立川聖書バプテスト教会\n井口拓志師",
+    description:
+      "これから世界はどこへ向かうのか。黙示録の預言から終末の時系列を中心に学びます。終末論を学ぶのが初めてという人にもわかりやすい講座です。",
+  },
+  {
+    theme: "パレスチナ問題",
+    speaker: "名古屋聖書バプテスト教会\n上田平安師",
+    description:
+      "今話題のパレスチナ問題を聖書と歴史の観点から解説します。世界情勢を聖書的な視点で考える機会をあなたに。",
+  },
+  {
+    theme: "日曜学校教師あつまれ！",
+    speaker: "滝山聖書バプテスト教会\n大木愛師",
+    description:
+      "日曜学校教師をしている人、集まって色々なアイデアや悩みを分かち合いましょう。座談会形式の分科会だからたっぷり話し合えます。",
+  },
+];
+---
+
+<Layout
+  title="分科会 - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Study Workshop</span>
+      <span slot="ja">分科会</span>
+    </H2>
+
+    <section class="section">
+      {
+        list.map(({ theme, speaker, description }) => (
+          <section class="item">
+            <h3 class="theme">{theme}</h3>
+            <strong class="speaker">{speaker}</strong>
+            <p class="description">{description}</p>
+          </section>
+        ))
+      }
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 600px;
+    margin: 15vh auto;
+    padding: 0 1.5em;
+  }
+
+  .item {
+    border: #ffffff80 solid 1px;
+    border-radius: 8px;
+    margin: 10vh 0;
+    padding: 1em 1.5em;
+    position: relative;
+  }
+
+  .theme {
+    background: var(--color-text);
+    font-size: 125%;
+    left: 1em;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0 0.5em;
+    position: absolute;
+    top: -1em;
+  }
+
+  .speaker {
+    display: block;
+    margin: 0.5em 0;
+    text-align: right;
+    white-space: pre-line;
+  }
+
+  .description {
+    text-align: justify;
+  }
+</style>
+
+<script src="../../../scripts/bubble.ts"></script>

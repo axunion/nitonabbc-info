@@ -16,20 +16,37 @@ import logo from "@/assets/2025/05/logo.webp";
   <Header />
 
   <main class="main bubble">
-    <section class="section">
-      <H2>
-        <span slot="en">Event Overview</span>
-        <span slot="ja">概要</span>
-      </H2>
+    <H2>
+      <span slot="en">Event Overview</span>
+      <span slot="ja">概要</span>
+    </H2>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:calendar-month-outline" />
         <span>日時</span>
       </H3>
-      <p>2025年5月5日(月) - 7日(水)</p>
+      <p>
+        <time datetime="2025-05-05/2025-05-07">
+          2025年 5月 5日（月） - 7日（水）
+        </time>
+      </p>
+    </section>
 
+    <section class="section">
       <H3>
-        <Icon name="mdi:hoop-house" />
+        <Icon name="mdi:lectern" />
+        <span>講師</span>
+      </H3>
+      <p>
+        香港コーナーストーンバプテスト教会牧師<br />
+        吉田正治宣教師
+      </p>
+    </section>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:house-city" />
         <span>会場</span>
       </H3>
       <p>
@@ -44,16 +61,20 @@ import logo from "@/assets/2025/05/logo.webp";
           <Icon name="mdi:external-link" />
         </a>
       </p>
+    </section>
 
+    <section class="section">
       <H3>
-        <Icon name="mdi:lectern" />
-        <span>講師</span>
+        <Icon name="mdi:yen" />
+        <span>参加費</span>
       </H3>
       <p>
-        <small>香港コーナーストーンバプテスト教会牧師</small><br />
-        吉田正治宣教師
+        一般 - 23,000円<br />
+        高校生 - 22,000円
       </p>
+    </section>
 
+    <section class="section">
       <H3>
         <Icon name="mdi:bag-suitcase-outline" />
         <span>持ち物</span>
@@ -69,8 +90,6 @@ import logo from "@/assets/2025/05/logo.webp";
   <Footer />
   <Menu />
 </Layout>
-
-<script src="../../../scripts/bubble.ts"></script>
 
 <style>
   body {
@@ -93,3 +112,5 @@ import logo from "@/assets/2025/05/logo.webp";
     text-decoration: underline;
   }
 </style>
+
+<script src="../../../scripts/bubble.ts"></script>
