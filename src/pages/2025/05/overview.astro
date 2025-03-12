@@ -69,8 +69,15 @@ import logo from "@/assets/2025/05/logo.webp";
         <span>参加費</span>
       </H3>
       <p>
-        一般 - 23,000円<br />
-        高校生 - 22,000円
+        <span class="price">
+          一般 <span class="amount">23,000</span> 円、
+        </span>
+        <span>
+          高校生 <span class="amount">22,000</span> 円
+        </span>
+      </p>
+      <p>
+        部分参加も可能です。お申込みの際、申込書で希望する食事および宿泊を選択いただき、金額をご確認ください。
       </p>
     </section>
 
@@ -80,9 +87,12 @@ import logo from "@/assets/2025/05/logo.webp";
         <span>持ち物</span>
       </H3>
       <p>
-        洗面用具、タオル、バスタオル、ドライヤーなどは各自でご用意ください。
+        聖書、筆記用具、洗面用具、歯ブラシ、バスタオルやタオル、室内履き、動きやすい服装、その他宿泊に必要なものをお持ちください。
         <br />
         洗濯用洗剤、歯ブラシ、シャンプー、リンスは販売機がございます。
+      </p>
+      <p>
+        ドライヤーは施設備え付けのものを使用してください。施設の電源設備の都合上、持ち込みは禁止とさせていただきます。
       </p>
     </section>
   </main>
@@ -110,6 +120,15 @@ import logo from "@/assets/2025/05/logo.webp";
 
   .link {
     text-decoration: underline;
+  }
+
+  .price {
+    margin: 0 0.5em 0 0;
+  }
+
+  .amount {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
   }
 </style>
 
