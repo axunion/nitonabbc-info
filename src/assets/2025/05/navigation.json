@@ -1,5 +1,11 @@
 [
   {
+    "href": "/2025/05/album/",
+    "icon": "mdi:photo-camera",
+    "en": "Album",
+    "ja": "アルバム"
+  },
+  {
     "href": "/2025/05/overview/",
     "icon": "mdi:file-document-box-outline",
     "en": "Event Overview",

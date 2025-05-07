@@ -1,0 +1,79 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BlockLink from "@/components/shared/BlockLink.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="アルバム - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Album</span>
+      <span slot="ja">アルバム</span>
+    </H2>
+
+    <section class="section">
+      <ul class="link-list">
+        <li class="link-item">
+          <BlockLink href="messages">Worship Messages</BlockLink>
+        </li>
+        <li class="link-item">
+          <BlockLink href="video">Video Library</BlockLink>
+        </li>
+        <li class="link-item">
+          <BlockLink href="photo">Photo Gallery</BlockLink>
+        </li>
+        <li class="link-item">
+          <BlockLink href="share">Share Your Photo</BlockLink>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 400px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .link-list {
+    font-family: var(--font-serif);
+    font-size: 150%;
+    list-style: none;
+    padding: 0;
+  }
+
+  .link-item {
+    margin: 1em 0;
+    text-shadow: 0 0 0.5em currentColor;
+  }
+
+  .link-item:nth-child(4) {
+    color: #e6d8b3;
+  }
+</style>
+
+<script src="../../../../scripts/bubble.ts"></script>
