@@ -6,7 +6,7 @@ import logo from "@/assets/2025/05/logo.webp";
 import lakeYamanaka from "@/assets/2025/05/lake-yamanaka.webp";
 import navList from "@/assets/2025/05/navigation.json";
 
-const MEDIA_PATH = import.meta.env.VITE_MEDIA_PATH;
+const MEDIA_PATH = import.meta.env.PUBLIC_MEDIA_PATH;
 const linkTags = [
   {
     rel: "preconnect",
@@ -232,6 +232,7 @@ const linkTags = [
 
   .link-item:nth-child(1) {
     color: #e6d8b3;
+    display: none;
   }
 
   .en {
