@@ -1,0 +1,144 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+---
+
+<Layout
+  title="Share Your Photo - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Share Your Photo</span>
+      <span slot="ja">写真を共有</span>
+    </H2>
+
+    <section class="section">
+      <form class="form">
+        <p>
+          キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
+        </p>
+        <p>
+          このサイトは教会関係者のみに共有されますが、個人を特定できる情報などは写り込まないよう、ご注意をお願いいたします。
+        </p>
+
+        <label class="label-text">
+          <input type="text" class="input-text" placeholder="教会名" required />
+        </label>
+
+        <label class="label-file">
+          <input
+            type="file"
+            class="input-file"
+            accept="image/jpeg,image/png"
+            multiple
+            required
+          />
+          <span>画像を選択</span>
+        </label>
+
+        <button type="submit" class="upload-button">Upload</button>
+
+        <script>
+          import { uploadImages } from "@/scripts/uploadImages";
+
+          const $ = (selector: string) => document.querySelector(selector);
+          const form = $(".form") as HTMLFormElement;
+          const inputFile = $(".input-file") as HTMLInputElement;
+          const inputText = $(".input-text") as HTMLInputElement;
+
+          form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!inputFile.files || inputFile.files.length === 0) {
+              alert("画像を選択してください。");
+              return;
+            }
+
+            const files = Array.from(inputFile.files);
+            const path = inputText.value;
+            const resp = await uploadImages({ images: files, path });
+
+            if (resp.status === "success") {
+              alert("アップロード成功");
+            } else {
+              alert("アップロード失敗");
+            }
+          });
+        </script>
+      </form>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    max-width: 400px;
+    margin: auto;
+    padding: 0 1.5em;
+  }
+
+  .label-text {
+    background: var(--color-background);
+    color: var(--color-text);
+    border-radius: 4px;
+    display: block;
+    margin: 2em auto 1em;
+    padding: 1em;
+  }
+
+  .input-text {
+    width: 100%;
+  }
+
+  .label-file {
+    border: currentColor solid 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    text-align: center;
+    user-select: none;
+  }
+
+  .input-file {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    width: 0;
+  }
+
+  .upload-button {
+    background: inherit;
+    border: currentColor solid 1px;
+    border-radius: 3em;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-size: 125%;
+    margin: 2em auto;
+    padding: 1em 2em;
+  }
+</style>
+
+<script src="../../../../scripts/bubble.ts"></script>
