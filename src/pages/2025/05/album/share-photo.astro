@@ -24,7 +24,8 @@ import logo from "@/assets/2025/05/logo.webp";
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
         </p>
-        <p>
+
+        <p class="note">
           このサイトは教会関係者のみに共有されますが、個人を特定できる情報などは写り込まないよう、ご注意をお願いいたします。
         </p>
 
@@ -33,6 +34,10 @@ import logo from "@/assets/2025/05/logo.webp";
         </label>
 
         <label class="label-file">
+          <div class="notice-file">
+            アップロードしたい画像を選択してください。画像は1度に10枚まで選択できます。
+          </div>
+
           <input
             type="file"
             class="input-file"
@@ -40,7 +45,6 @@ import logo from "@/assets/2025/05/logo.webp";
             multiple
             required
           />
-          <span>画像を選択</span>
         </label>
 
         <button type="submit" class="upload-button">Upload</button>
@@ -52,6 +56,14 @@ import logo from "@/assets/2025/05/logo.webp";
           const form = $(".form") as HTMLFormElement;
           const inputFile = $(".input-file") as HTMLInputElement;
           const inputText = $(".input-text") as HTMLInputElement;
+          const MAX_FILES = 2;
+
+          inputFile.addEventListener("change", () => {
+            if(inputFile.files && inputFile.files.length > MAX_FILES) {
+              alert(`画像は${MAX_FILES}枚まで選択できます。`);
+              inputFile.value = "";
+            }
+          });
 
           form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -97,9 +109,16 @@ import logo from "@/assets/2025/05/logo.webp";
     padding: 0 1.5em;
   }
 
+  .note {
+    background: #ffffff20;
+    border-left: var(--color-accent) solid 2px;
+    font-size: 85%;
+    padding: 1em;
+  }
+
   .label-text {
     background: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-text);Ï
     border-radius: 4px;
     display: block;
     margin: 2em auto 1em;
@@ -117,15 +136,11 @@ import logo from "@/assets/2025/05/logo.webp";
     display: block;
     margin: 1em auto;
     padding: 1em;
-    text-align: center;
-    user-select: none;
   }
 
-  .input-file {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    width: 0;
+  .notice-file {
+    font-size: 85%;
+    margin: 0 0 1.5em;
   }
 
   .upload-button {
