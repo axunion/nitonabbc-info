@@ -20,7 +20,7 @@ import logo from "@/assets/2025/05/logo.webp";
     </H2>
 
     <section class="section">
-      <form class="form">
+      <form class="form" x-data="{ submitted: false }">
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
         </p>
@@ -47,7 +47,7 @@ import logo from "@/assets/2025/05/logo.webp";
           />
         </label>
 
-        <button type="submit" class="upload-button">Upload</button>
+        <button type="submit" class="upload-button" @click="formSubmitted = true">Upload</button>
 
         <script>
           import { uploadImages } from "@/scripts/uploadImages";
@@ -156,4 +156,5 @@ import logo from "@/assets/2025/05/logo.webp";
   }
 </style>
 
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="../../../../scripts/bubble.ts"></script>
