@@ -20,7 +20,7 @@ import logo from "@/assets/2025/05/logo.webp";
     </H2>
 
     <section class="section">
-      <form class="form" x-data="{ submitted: false }">
+      <form class="form" x-data="{ submitted: false }" @submit="submitted = true">
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
         </p>
@@ -47,43 +47,7 @@ import logo from "@/assets/2025/05/logo.webp";
           />
         </label>
 
-        <button type="submit" class="upload-button" @click="formSubmitted = true">Upload</button>
-
-        <script>
-          import { uploadImages } from "@/scripts/uploadImages";
-
-          const $ = (selector: string) => document.querySelector(selector);
-          const form = $(".form") as HTMLFormElement;
-          const inputFile = $(".input-file") as HTMLInputElement;
-          const inputText = $(".input-text") as HTMLInputElement;
-          const MAX_FILES = 2;
-
-          inputFile.addEventListener("change", () => {
-            if(inputFile.files && inputFile.files.length > MAX_FILES) {
-              alert(`画像は${MAX_FILES}枚まで選択できます。`);
-              inputFile.value = "";
-            }
-          });
-
-          form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            if (!inputFile.files || inputFile.files.length === 0) {
-              alert("画像を選択してください。");
-              return;
-            }
-
-            const files = Array.from(inputFile.files);
-            const path = inputText.value;
-            const resp = await uploadImages({ images: files, path });
-
-            if (resp.status === "success") {
-              alert("アップロード成功");
-            } else {
-              alert("アップロード失敗");
-            }
-          });
-        </script>
+        <button type="submit" class="upload-button" :disabled="submitted">Upload</button>
       </form>
     </section>
   </main>
@@ -154,7 +118,48 @@ import logo from "@/assets/2025/05/logo.webp";
     margin: 2em auto;
     padding: 1em 2em;
   }
+
+  .upload-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 </style>
 
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="../../../../scripts/bubble.ts"></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+  import { uploadImages } from "@/scripts/uploadImages";
+
+  const $ = (selector: string) => document.querySelector(selector);
+  const form = $(".form") as HTMLFormElement;
+  const inputFile = $(".input-file") as HTMLInputElement;
+  const inputText = $(".input-text") as HTMLInputElement;
+  const MAX_FILES = 2;
+
+  inputFile.addEventListener("change", () => {
+    if(inputFile.files && inputFile.files.length > MAX_FILES) {
+      alert(`画像は${MAX_FILES}枚まで選択できます。`);
+      inputFile.value = "";
+    }
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!inputFile.files || inputFile.files.length === 0) {
+      alert("画像を選択してください。");
+      return;
+    }
+
+    const files = Array.from(inputFile.files);
+    const path = inputText.value;
+    console.log(path, files);
+    const resp = await uploadImages({ images: files, path });
+
+    if (resp.status === "success") {
+      alert("アップロード成功");
+    } else {
+      alert("アップロード失敗");
+    }
+  });
+</script>
