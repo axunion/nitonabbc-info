@@ -4,6 +4,7 @@ import Footer from "@/components/2025/05/Footer.astro";
 import H2 from "@/components/2025/05/H2.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
+import Loading from "@/components/shared/Loading.astro";
 import logo from "@/assets/2025/05/logo.webp";
 ---
 
@@ -20,7 +21,11 @@ import logo from "@/assets/2025/05/logo.webp";
     </H2>
 
     <section class="section">
-      <form class="form" x-data="{ submitted: false }" @submit="submitted = true">
+      <form
+        class="form"
+        x-data="{ submitted: false }"
+        @submit="submitted = true"
+      >
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
         </p>
@@ -47,7 +52,13 @@ import logo from "@/assets/2025/05/logo.webp";
           />
         </label>
 
-        <button type="submit" class="upload-button" :disabled="submitted">Upload</button>
+        <button type="submit" class="upload-button" :disabled="submitted">
+          Upload
+        </button>
+
+        <div x-show="submitted" style="display: none;">
+          <Loading />
+        </div>
       </form>
     </section>
   </main>
@@ -82,7 +93,7 @@ import logo from "@/assets/2025/05/logo.webp";
 
   .label-text {
     background: var(--color-background);
-    color: var(--color-text);Ï
+    color: var(--color-text);
     border-radius: 4px;
     display: block;
     margin: 2em auto 1em;
@@ -137,7 +148,7 @@ import logo from "@/assets/2025/05/logo.webp";
   const MAX_FILES = 2;
 
   inputFile.addEventListener("change", () => {
-    if(inputFile.files && inputFile.files.length > MAX_FILES) {
+    if (inputFile.files && inputFile.files.length > MAX_FILES) {
       alert(`画像は${MAX_FILES}枚まで選択できます。`);
       inputFile.value = "";
     }
