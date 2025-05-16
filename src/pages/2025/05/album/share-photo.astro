@@ -25,6 +25,7 @@ import logo from "@/assets/2025/05/logo.webp";
         class="form"
         x-data="{ submitted: false }"
         @submit="submitted = true"
+        @submitted="submitted = false"
       >
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
@@ -163,14 +164,26 @@ import logo from "@/assets/2025/05/logo.webp";
     }
 
     const files = Array.from(inputFile.files);
-    const path = inputText.value;
-    console.log(path, files);
-    const resp = await uploadImages({ images: files, path });
+    const name = inputText.value
+      .trim()
+      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+      .replace(/^\.+|\.+$/g, "");
+    const path = `youth-fellowship-camp-2025/photo-gallery/${name}/`;
 
-    if (resp.status === "success") {
-      alert("アップロード成功");
-    } else {
-      alert("アップロード失敗");
+    try {
+      const resp = await uploadImages({ images: files, path });
+
+      if (resp.status === "success") {
+        alert("アップロードしました");
+      } else {
+        alert("アップロードに失敗しました\n恐れ入りますが、再度お試しください");
+      }
+    } catch (err) {
+      alert("アップロードに失敗しました\n恐れ入りますが、再度お試しください");
     }
+
+    setTimeout(() => {
+      form.dispatchEvent(new CustomEvent("submitted"));
+    }, 100);
   });
 </script>

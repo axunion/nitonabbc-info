@@ -8,7 +8,7 @@ export const uploadImages = async (
 ): Promise<UploadImagesResponse> => {
   const form = new FormData();
 
-  form.append("path", `youth-fellowship-camp-2025/photo-gallery/${data.path}/`);
+  form.append("path", data.path);
 
   data.images.forEach((file) => {
     form.append("images[]", file);
