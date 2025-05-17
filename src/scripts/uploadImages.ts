@@ -1,7 +1,5 @@
+import { ENDPOINT_UPLOAD_IMAGES } from "@/constants/config";
 import type { UploadImagesRequest, UploadImagesResponse } from "@/types/api";
-
-const MEDIA_API = import.meta.env.PUBLIC_MEDIA_API ?? "";
-const ENDPOINT = `${MEDIA_API}upload-images/`;
 
 export const uploadImages = async (
   data: UploadImagesRequest,
@@ -14,7 +12,7 @@ export const uploadImages = async (
     form.append("images[]", file);
   });
 
-  const res = await fetch(ENDPOINT, {
+  const res = await fetch(ENDPOINT_UPLOAD_IMAGES, {
     method: "POST",
     body: form,
   });
