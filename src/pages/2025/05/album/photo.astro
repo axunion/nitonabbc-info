@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import AlbumItem from "@/components/2025/05/AlbumItem.astro";
 import Footer from "@/components/2025/05/Footer.astro";
 import H2 from "@/components/2025/05/H2.astro";
 import Header from "@/components/2025/05/Header.astro";
@@ -20,13 +21,7 @@ import logo from "@/assets/2025/05/logo.webp";
     </H2>
 
     <section class="section">
-      <ul class="gallery-list">
-        <template id="gallery-item-template">
-          <li>
-            <img src="" alt="" class="gallery-image" />
-          </li>
-        </template>
-      </ul>
+      <AlbumItem type="photo" />
     </section>
   </main>
 
@@ -49,62 +44,6 @@ import logo from "@/assets/2025/05/logo.webp";
     margin: auto;
     padding: 0 2em;
   }
-
-  .gallery-list {
-    display: grid;
-    gap: 0.5em;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    list-style: none;
-    padding: 0;
-  }
-
-  .gallery-image {
-    object-fit: cover;
-  }
 </style>
 
 <script src="../../../../scripts/bubble.ts"></script>
-<script>
-  import { ENDPOINT_MEDIA_PATH } from "@/constants/config";
-  import { fetchFileList } from "@/scripts/fetchFileList";
-
-  const GALLERY_PATH = "youth-fellowship-camp-2025/photo-gallery/";
-  const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH}`;
-
-  async function createGallery() {
-    const ul = document.querySelector(".gallery-list") as HTMLUListElement;
-    const tpl = document.getElementById(
-      "gallery-item-template"
-    ) as HTMLTemplateElement;
-
-    try {
-      const res = await fetchFileList(GALLERY_PATH);
-
-      if (res.status !== "success") {
-        console.error("fetchFileList error:", res.message);
-        return;
-      }
-
-      const files = res.list.filter((item) => item.type === "file");
-      const fragment = document.createDocumentFragment();
-
-      for (const file of files) {
-        const clone = tpl.content.cloneNode(true) as DocumentFragment;
-        const img = clone.querySelector<HTMLImageElement>("img")!;
-        img.src = `${ENDPOINT}${file.name}`;
-        img.alt = file.name;
-        fragment.appendChild(clone);
-      }
-
-      ul.appendChild(fragment);
-    } catch (err) {
-      console.error("Unexpected error in createGallery:", err);
-    }
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", createGallery);
-  } else {
-    createGallery();
-  }
-</script>
