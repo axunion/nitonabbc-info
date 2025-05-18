@@ -1,0 +1,79 @@
+---
+type Props = {
+  type: "photo" | "video";
+};
+
+const { type } = Astro.props;
+---
+
+<ul class="album-item-list" data-type={type}>
+  <template id="template-photo">
+    <li>
+      <img src="" alt="" class="image src" />
+    </li>
+  </template>
+
+  <template id="template-video">
+    <li>
+      <video controls class="video">
+        <source src="" type="video/mp4" class="src" />
+      </video>
+    </li>
+  </template>
+</ul>
+
+<style>
+  .album-item-list {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    list-style: none;
+    min-height: 50vh;
+    padding: 0;
+  }
+
+  .image {
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  import { ENDPOINT_MEDIA_PATH } from "@/constants/config";
+  import { fetchFileList } from "@/scripts/fetchFileList";
+
+  const GALLERY_PATH = "youth-fellowship-camp-2025/photo-gallery/";
+  const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH}`;
+
+  (async () => {
+    const ul = document.querySelector(".album-item-list") as HTMLUListElement;
+    const type = ul.dataset.type;
+    const tpl = document.getElementById(
+      `template-${type}`
+    ) as HTMLTemplateElement;
+
+    try {
+      const res = await fetchFileList(GALLERY_PATH);
+
+      if (res.status !== "success") {
+        console.error("fetchFileList error:", res.message);
+        return;
+      }
+
+      const files = res.list.filter((item) => item.type === "file");
+      const fragment = document.createDocumentFragment();
+
+      for (const file of files) {
+        const clone = tpl.content.cloneNode(true) as DocumentFragment;
+        const src = clone.querySelector(".src") as
+          | HTMLImageElement
+          | HTMLSourceElement;
+        src.src = `${ENDPOINT}${file.name}`;
+        fragment.appendChild(clone);
+      }
+
+      ul.appendChild(fragment);
+    } catch (err) {
+      console.error("Unexpected error in createAlbum:", err);
+    }
+  })();
+</script>
