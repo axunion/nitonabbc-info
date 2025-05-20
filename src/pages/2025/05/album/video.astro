@@ -1,0 +1,141 @@
+---
+import { Icon } from "astro-icon/components";
+import { YouTube } from "@astro-community/astro-embed-youtube";
+import Layout from "@/layouts/Layout.astro";
+import BlockLink from "@/components/shared/BlockLink.astro";
+import Footer from "@/components/2025/05/Footer.astro";
+import H2 from "@/components/2025/05/H2.astro";
+import H3 from "@/components/2025/05/H3.astro";
+import Header from "@/components/2025/05/Header.astro";
+import Menu from "@/components/2025/05/Menu.astro";
+import logo from "@/assets/2025/05/logo.webp";
+
+const videoIdList = [
+  { name: "第一集会", id: "ttlcp4FBqiI" },
+  { name: "第二集会", id: "VVRIhPKGhbY" },
+  { name: "第三集会", id: "lIOOtVtBnpc" },
+];
+
+const linkList = [
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StatIipLIqyJWxU913rqvZySN",
+    text: "開会集会",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StavPDjUjjCQN8AEzC9tbFnUG",
+    text: "第一集会",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StasTyf18lMm29Qg26Heo-Xcx",
+    text: "早天祈祷会1",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StauyRwtf4p9sIX0-aDCn2IbB",
+    text: "第二集会",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StatntHjzu05eHgPaHqhg2Bdt",
+    text: "早天祈祷会2",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StaupFt7y3po5RzoHO0LH2xHe",
+    text: "第三集会",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7StatsgUkTUKNq4Gf8bJ_cxhqH",
+    text: "閉会集会",
+  },
+  {
+    href: "https://www.youtube.com/playlist?list=PLVZA9_v7Stavc11UaTTo0nhpkhwc4qaCN",
+    text: "全体レク",
+  },
+];
+---
+
+<Layout
+  title="Video Library - 2025 第56回JBBF全国青年フェローシップキャンプ"
+  favicon={logo.src}
+>
+  <Header />
+
+  <main class="main bubble">
+    <H2>
+      <span slot="en">Video Library</span>
+      <span slot="ja">ビデオライブラリー</span>
+    </H2>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:lectern" />
+        <span>メッセージ</span>
+      </H3>
+
+      {
+        videoIdList.map(({ name, id }) => (
+          <h4 class="h4">{name}</h4>
+            <YouTube id={id} />
+        ))
+      }
+    </section>
+
+    <section class="section">
+      <H3>
+        <Icon name="mdi:video-youtube" />
+        <span>その他の動画</span>
+      </H3>
+      <p>全ての動画は以下よりご覧いただけます。</p>
+
+      <ul class="link-list">
+        {
+          linkList.map(({ href, text }) => (
+            <li class="link-item">
+              <BlockLink href={href} target="_blank">
+                {text}
+              </BlockLink>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+
+  <Footer />
+  <Menu />
+</Layout>
+
+<style>
+  body {
+    background: var(--color-text);
+    color: var(--color-background);
+  }
+
+  .main {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section {
+    margin: auto;
+    max-width: 600px;
+    padding: 0 1em;
+  }
+
+  .h4 {
+    margin: 2em 0 1em;
+    text-align: center;
+  }
+
+  .link-list {
+    font-family: var(--font-serif);
+    font-size: 125%;
+    list-style: none;
+    padding: 0;
+  }
+
+  .link-item {
+    margin: 1em 0;
+    text-shadow: 0 0 0.5em currentColor;
+  }
+</style>
+
+<script src="../../../../scripts/bubble.ts"></script>
