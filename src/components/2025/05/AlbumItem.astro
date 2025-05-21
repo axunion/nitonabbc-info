@@ -1,23 +1,7 @@
----
-type Props = {
-  type: "photo" | "video";
-};
-
-const { type } = Astro.props;
----
-
-<ul class="album-item-list" data-type={type}>
-  <template id="template-photo">
+<ul class="album-item-list">
+  <template id="template">
     <li>
-      <img src="" alt="" class="image src" />
-    </li>
-  </template>
-
-  <template id="template-video">
-    <li>
-      <video controls class="video">
-        <source src="" type="video/mp4" class="src" />
-      </video>
+      <img src="" alt="" class="image" />
     </li>
   </template>
 </ul>
@@ -45,11 +29,9 @@ const { type } = Astro.props;
   const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH}`;
 
   (async () => {
+    const template = document.getElementById("template") as HTMLTemplateElement;
     const ul = document.querySelector(".album-item-list") as HTMLUListElement;
-    const type = ul.dataset.type;
-    const tpl = document.getElementById(
-      `template-${type}`
-    ) as HTMLTemplateElement;
+    const fragment = document.createDocumentFragment();
 
     try {
       const res = await fetchFileList(GALLERY_PATH);
@@ -59,15 +41,16 @@ const { type } = Astro.props;
         return;
       }
 
-      const files = res.list.filter((item) => item.type === "file");
-      const fragment = document.createDocumentFragment();
+      const files = res.list
+        .filter((item) => item.type === "file")
+        .sort(() => Math.random() - 0.5);
 
       for (const file of files) {
-        const clone = tpl.content.cloneNode(true) as DocumentFragment;
-        const src = clone.querySelector(".src") as
+        const clone = template.content.cloneNode(true) as DocumentFragment;
+        const image = clone.querySelector(".image") as
           | HTMLImageElement
           | HTMLSourceElement;
-        src.src = `${ENDPOINT}${file.name}`;
+        image.src = `${ENDPOINT}${file.name}`;
         fragment.appendChild(clone);
       }
 

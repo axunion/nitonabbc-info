@@ -6,6 +6,7 @@ import H2 from "@/components/2025/05/H2.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
 import logo from "@/assets/2025/05/logo.webp";
+import Note from "@/components/2025/05/Note.astro";
 ---
 
 <Layout
@@ -21,6 +22,10 @@ import logo from "@/assets/2025/05/logo.webp";
     </H2>
 
     <section class="section">
+      <Note>
+        こちらのページのコンテンツは、教会内での共有を目的としております。SNSなど外部へのリンク共有や動画・写真の投稿はご遠慮ください。
+      </Note>
+
       <AlbumItem type="photo" />
     </section>
   </main>
@@ -42,7 +47,8 @@ import logo from "@/assets/2025/05/logo.webp";
 
   .section {
     margin: auto;
-    padding: 0 2em;
+    max-width: 900px;
+    padding: 0 1em;
   }
 </style>
 
