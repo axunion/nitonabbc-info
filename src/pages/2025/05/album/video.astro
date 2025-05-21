@@ -9,6 +9,7 @@ import H3 from "@/components/2025/05/H3.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
 import logo from "@/assets/2025/05/logo.webp";
+import Note from "@/components/2025/05/Note.astro";
 
 const videoIdList = [
   { name: "第一集会", id: "ttlcp4FBqiI" },
@@ -65,6 +66,10 @@ const linkList = [
     </H2>
 
     <section class="section">
+      <Note>
+        こちらのページのコンテンツは、教会内での共有を目的としております。SNSなど外部へのリンク共有や動画・写真の投稿はご遠慮ください。
+      </Note>
+
       <H3>
         <Icon name="mdi:lectern" />
         <span>メッセージ</span>
@@ -83,7 +88,7 @@ const linkList = [
         <Icon name="mdi:video-youtube" />
         <span>その他の動画</span>
       </H3>
-      <p>全ての動画は以下よりご覧いただけます。</p>
+      <p>メッセージ以外の動画は以下よりご覧いただけます。</p>
 
       <ul class="link-list">
         {
@@ -121,7 +126,10 @@ const linkList = [
   }
 
   .h4 {
-    margin: 2em 0 1em;
+    border-bottom: currentColor solid 1px;
+    border-top: currentColor solid 1px;
+    margin: 3em auto 1em;
+    padding: 0.5em 0 ;
     text-align: center;
   }
 

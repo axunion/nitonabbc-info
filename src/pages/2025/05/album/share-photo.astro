@@ -1,11 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Loading from "@/components/shared/Loading.astro";
+import logo from "@/assets/2025/05/logo.webp";
 import Footer from "@/components/2025/05/Footer.astro";
 import H2 from "@/components/2025/05/H2.astro";
 import Header from "@/components/2025/05/Header.astro";
 import Menu from "@/components/2025/05/Menu.astro";
-import Loading from "@/components/shared/Loading.astro";
-import logo from "@/assets/2025/05/logo.webp";
+import Note from "@/components/2025/05/Note.astro";
 ---
 
 <Layout
@@ -31,9 +32,9 @@ import logo from "@/assets/2025/05/logo.webp";
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
         </p>
 
-        <p class="note">
+        <Note>
           このサイトは教会関係者のみに共有されますが、個人を特定できる情報などは写り込まないよう、ご注意をお願いいたします。
-        </p>
+        </Note>
 
         <label class="label-text">
           <input type="text" class="input-text" placeholder="教会名" required />
@@ -80,16 +81,9 @@ import logo from "@/assets/2025/05/logo.webp";
   }
 
   .section {
-    max-width: 400px;
     margin: auto;
+    max-width: 400px;
     padding: 0 1.5em;
-  }
-
-  .note {
-    background: #ffffff20;
-    border-left: var(--color-accent) solid 2px;
-    font-size: 85%;
-    padding: 1em;
   }
 
   .label-text {
