@@ -22,9 +22,11 @@ import Note from "@/components/2025/05/Note.astro";
     </H2>
 
     <section class="section">
-      <Note>
-        こちらのページのコンテンツは、教会内での共有を目的としております。SNSなど外部へのリンク共有や動画・写真の投稿はご遠慮ください。
-      </Note>
+      <div class="note">
+        <Note>
+          こちらのページのコンテンツは、教会内での共有を目的としております。SNSなど外部へのリンク共有や動画・写真の投稿はご遠慮ください。
+        </Note>
+      </div>
 
       <AlbumItem type="photo" />
     </section>
@@ -49,6 +51,11 @@ import Note from "@/components/2025/05/Note.astro";
     margin: auto;
     max-width: 900px;
     padding: 0 1em;
+  }
+
+  .note {
+    margin: 0 auto 2em;
+    max-width: 600px;
   }
 </style>
 

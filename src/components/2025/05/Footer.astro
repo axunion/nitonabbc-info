@@ -3,9 +3,9 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer class="footer">
-  <a class="a" href="/2025/05/">
+  <a class="a" href="#">
     <Icon name="mdi:arrow-back-circle" />
-    <span class="text">Top</span>
+    <span class="text">Back</span>
   </a>
 </footer>
 
@@ -32,3 +32,12 @@ import { Icon } from "astro-icon/components";
     font-size: 125%;
   }
 </style>
+
+<script>
+  const a = document.querySelector(".a") as HTMLAnchorElement;
+
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    history.back();
+  });
+</script>
