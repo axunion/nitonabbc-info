@@ -1,27 +1,51 @@
-<ul class="album-item-list">
+<div class="album-item-gallery">
   <template id="template">
-    <li>
-      <img src="" alt="" class="image" />
-    </li>
+    <a
+      href=""
+      data-pswp-width=""
+      data-pswp-height=""
+      target="_blank"
+      class="album-item"
+    >
+      <img src="" alt="" loading="lazy" class="image" />
+    </a>
   </template>
-</ul>
+</div>
 
 <style>
-  .album-item-list {
+  .album-item-gallery {
     display: grid;
-    gap: 0.5em;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     list-style: none;
     min-height: 50vh;
     padding: 0;
   }
 
-  .image {
-    object-fit: cover;
+  .album-item {
+    aspect-ratio: 1 / 1;
+
+    .image {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .album-item-gallery {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
   }
 </style>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.min.css"
+/>
+
 <script>
+  import PhotoSwipeLightbox from "@/assets/shared/photoswipe-lightbox.esm.min.js";
+  import PhotoSwipe from "@/assets/shared/photoswipe.esm.min.js";
   import { ENDPOINT_MEDIA_PATH } from "@/constants/config";
   import { fetchFileList } from "@/scripts/fetchFileList";
 
@@ -30,7 +54,7 @@
 
   (async () => {
     const template = document.getElementById("template") as HTMLTemplateElement;
-    const ul = document.querySelector(".album-item-list") as HTMLUListElement;
+    const div = document.querySelector(".album-item-gallery") as HTMLDivElement;
     const fragment = document.createDocumentFragment();
 
     try {
@@ -41,20 +65,32 @@
         return;
       }
 
-      const files = res.list
-        .filter((item) => item.type === "file")
-        .sort(() => Math.random() - 0.5);
+      const files = res.list.filter((item) => item.type === "file");
 
       for (const file of files) {
         const clone = template.content.cloneNode(true) as DocumentFragment;
-        const image = clone.querySelector(".image") as
-          | HTMLImageElement
-          | HTMLSourceElement;
-        image.src = `${ENDPOINT}${file.name}`;
+        const a = clone.querySelector(".album-item") as HTMLAnchorElement;
+        const image = clone.querySelector(".image") as HTMLImageElement;
+
+        image.src = `${ENDPOINT}thumb/${file.name}`;
+        image.onload = () => {
+          a.href = `${ENDPOINT}${file.name}`;
+          a.dataset.pswpWidth = `${image.naturalWidth}`;
+          a.dataset.pswpHeight = `${image.naturalHeight}`;
+        };
+
         fragment.appendChild(clone);
       }
 
-      ul.appendChild(fragment);
+      div.appendChild(fragment);
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: ".album-item-gallery",
+        children: ".album-item",
+        pswpModule: PhotoSwipe,
+      });
+
+      lightbox.init();
     } catch (err) {
       console.error("Unexpected error in createAlbum:", err);
     }
