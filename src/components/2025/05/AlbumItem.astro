@@ -31,7 +31,7 @@
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 600px) {
     .album-item-gallery {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
@@ -65,7 +65,7 @@
         return;
       }
 
-      const files = res.list.filter((item) => item.type === "file");
+      const files = res.list.filter((item) => item.type === "file").reverse();
 
       for (const file of files) {
         const clone = template.content.cloneNode(true) as DocumentFragment;
@@ -75,8 +75,8 @@
         image.src = `${ENDPOINT}thumb/${file.name}`;
         image.onload = () => {
           a.href = `${ENDPOINT}${file.name}`;
-          a.dataset.pswpWidth = `${image.naturalWidth}`;
-          a.dataset.pswpHeight = `${image.naturalHeight}`;
+          a.dataset.pswpWidth = `${image.naturalWidth * 2}`;
+          a.dataset.pswpHeight = `${image.naturalHeight * 2}`;
         };
 
         fragment.appendChild(clone);
