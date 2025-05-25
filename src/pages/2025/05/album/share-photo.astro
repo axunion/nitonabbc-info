@@ -140,7 +140,7 @@ import Note from "@/components/2025/05/Note.astro";
   const form = $(".form") as HTMLFormElement;
   const inputFile = $(".input-file") as HTMLInputElement;
   const inputText = $(".input-text") as HTMLInputElement;
-  const MAX_FILES = 2;
+  const MAX_FILES = 10;
 
   inputFile.addEventListener("change", () => {
     if (inputFile.files && inputFile.files.length > MAX_FILES) {
@@ -163,6 +163,12 @@ import Note from "@/components/2025/05/Note.astro";
       .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
       .replace(/^\.+|\.+$/g, "");
     const path = `youth-fellowship-camp-2025/photo-gallery/${name}/`;
+    const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
+
+    const newFiles = files.map((file) => {
+      const newName = `${timestamp}-${file.name.replace(/[<>:"/\\|?*\x00-\x1F]/g, "")}`;
+      return new File([file], newName, { type: file.type });
+    });
 
     try {
       const resp = await uploadImages({ images: files, path });
