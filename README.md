@@ -1,54 +1,76 @@
-# Astro Starter Kit: Basics
+# Nitonabbc Info
 
-```sh
-npm create astro@latest -- --template basics
+このリポジトリは、Astroフレームワークを用いて構築された、教会向け案内Webサイトのソースコードです。
+
+## 🚀 プロジェクト概要
+
+- イベントや活動情報、会場案内、スケジュール、写真アルバムなどを提供する静的Webサイトです。
+- ページは `src/pages/year/month/` のように、年と月ごとにディレクトリ分けして整理されています。
+- 画像やPDFなどの静的アセットは `src/assets/` および `public/` 配下に配置されています。
+- 再利用可能なUIコンポーネントは `src/components/` 配下にまとめられています。
+
+## 📁 ディレクトリ構成
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
+├── public/                # 静的ファイル（favicon、画像など）
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/            # 年・月ごとの画像・PDF等
+│   ├── components/        # Astroコンポーネント
+│   ├── layouts/           # レイアウトコンポーネント
+│   ├── pages/             # 各ページ（年・月ごとに整理）
+│   ├── scripts/           # 補助スクリプト
+│   ├── styles/            # グローバルCSS
+│   └── types/             # 型定義
+├── package.json           # 依存パッケージ・スクリプト
+├── astro.config.mjs       # Astro設定
+├── tsconfig.json          # TypeScript設定
+└── README.md              # このファイル
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧑‍💻 開発・ビルド方法
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. 依存パッケージのインストール
 
-Any static assets, like images, can be placed in the `public/` directory.
+   ```sh
+   npm install
+   ```
 
-## 🧞 Commands
+2. 開発サーバーの起動
 
-All commands are run from the root of the project, from a terminal:
+   ```sh
+   npm run dev
+   # http://localhost:4321 で確認できます
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+3. 本番ビルド
 
-## 👀 Want to learn more?
+   ```sh
+   npm run build
+   # dist/ に静的ファイルが出力されます
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+4. ビルドのプレビュー
+
+   ```sh
+   npm run preview
+   ```
+
+## 主要コマンド一覧
+
+| コマンド        | 説明                               |
+| --------------- | ---------------------------------- |
+| npm install     | 依存パッケージのインストール       |
+| npm run dev     | 開発サーバー起動（localhost:4321） |
+| npm run build   | 本番用静的ファイルのビルド         |
+| npm run preview | ビルド結果のローカルプレビュー     |
+
+## 依存技術
+
+- [Astro](https://astro.build/)
+- [iconify-json](https://iconify.design/)
+
+## デプロイ
+
+本サイトは Cloudflare Pages でホスティングされています。
+GitHub リポジトリと Cloudflare Pages を連携しており、main ブランチへの push をトリガーに自動でビルド・デプロイが実行されます。
