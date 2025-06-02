@@ -24,9 +24,9 @@ import Note from "@/components/2025/05/Note.astro";
     <section class="section">
       <form
         class="form"
-        x-data="{ submitted: false }"
-        @submit="submitted = true"
-        @submitted="submitted = false"
+        x-data="{ status: '' }"
+        @submit="status = 'submitting'"
+        @submitted="status = ''"
       >
         <p>
           キャンプの思い出の写真をご投稿いただき、みなさまと心温まるひとときを分かち合いましょう。
@@ -54,13 +54,17 @@ import Note from "@/components/2025/05/Note.astro";
           />
         </label>
 
-        <button type="submit" class="upload-button" :disabled="submitted">
+        <button
+          type="submit"
+          class="upload-button"
+          :disabled="status === 'submitting'"
+        >
           Upload
         </button>
 
-        <div x-show="submitted" style="display: none;">
+        <template x-if="status === 'submitting'" x-transition>
           <Loading />
-        </div>
+        </template>
       </form>
     </section>
   </main>
@@ -116,13 +120,13 @@ import Note from "@/components/2025/05/Note.astro";
   .upload-button {
     background: inherit;
     border: currentColor solid 1px;
-    border-radius: 3em;
+    border-radius: 4em;
     color: inherit;
     cursor: pointer;
     display: block;
     font-size: 125%;
     margin: 2em auto;
-    padding: 1em 2em;
+    padding: 1em 1.5em;
   }
 
   .upload-button:disabled {
@@ -171,7 +175,7 @@ import Note from "@/components/2025/05/Note.astro";
     });
 
     try {
-      const resp = await uploadImages({ images: files, path });
+      const resp = await uploadImages({ images: newFiles, path });
 
       if (resp.status === "success") {
         alert("アップロードしました");
