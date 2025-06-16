@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-// import ButtonLink from "@/components/shared/ButtonLink.astro";
+import ButtonLink from "@/components/shared/ButtonLink.astro";
 import MapFrame from "@/components/shared/MapFrame.astro";
-// import TimeTable from "@/components/shared/TimeTable.astro";
+import TimeTable from "@/components/shared/TimeTable.astro";
 import hero from "@/assets/2025/09/hero.webp";
 
 const overview = {
@@ -11,31 +11,31 @@ const overview = {
   themeVerse: "マタイの福音書 11:29",
 };
 
-// const timetable1 = {
-//   caption: "Day 1",
-//   rows: [
-//     { th: "15:00", td: "受付開始" },
-//     { th: "16:00", td: "開会式" },
-//     { th: "17:15", td: "夕食" },
-//     { th: "19:30", td: "集会" },
-//     { th: "21:30", td: "入浴" },
-//     { th: "22:00", td: "就寝" },
-//   ],
-// };
+const timetable1 = {
+  caption: "Day 1",
+  rows: [
+    { th: "15:00", td: "受付開始" },
+    { th: "16:00", td: "開会式" },
+    { th: "17:15", td: "夕食" },
+    { th: "19:30", td: "集会" },
+    { th: "21:30", td: "入浴" },
+    { th: "22:00", td: "就寝" },
+  ],
+};
 
-// const timetable2 = {
-//   caption: "Day 2",
-//   rows: [
-//     { th: "7:00", td: "デボーション" },
-//     { th: "7:30", td: "朝食" },
-//     { th: "9:00", td: "レクリエーション" },
-//     { th: "11:00", td: "集会" },
-//     { th: "12:00", td: "昼食" },
-//     { th: "14:30", td: "分科会" },
-//     { th: "16:30", td: "閉会式" },
-//     { th: "17:30", td: "解散" },
-//   ],
-// };
+const timetable2 = {
+  caption: "Day 2",
+  rows: [
+    { th: "7:00", td: "デボーション" },
+    { th: "7:30", td: "朝食" },
+    { th: "9:00", td: "レクリエーション" },
+    { th: "11:00", td: "集会" },
+    { th: "12:00", td: "昼食" },
+    { th: "14:30", td: "分科会" },
+    { th: "16:30", td: "閉会式" },
+    { th: "17:30", td: "解散" },
+  ],
+};
 ---
 
 <Layout title={overview.title}>
@@ -53,49 +53,113 @@ const overview = {
       <small class="verse">- {overview.themeVerse} -</small>
     </div>
   </header>
+
+  <main class="main">
+    <section class="section">
+      <p>主の御名を賛美いたします。</p>
+      <p>
+        今年もまた、京葉地区青年キャンプを開催する運びとなりましたことを、皆様にご案内申し上げます。
+      </p>
+      <p>
+        美しい自然の中で、祈りや賛美、分かち合いの時を通して、主からの新しい気づきと励ましを受け取る素晴らしい機会となることを願っています。
+      </p>
+      <p>
+        新しい出会いと再会の喜びの中で、信仰の歩みをともに励まし合えるこのキャンプへのご参加を、心よりお待ち申し上げております。
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        <div class="en">Event Overview</div>
+        <div class="ja">概要</div>
+      </h2>
+
+      <h3 class="head-2">日程</h3>
+      <p>2025年9月14日(日) - 15日(月・祝)</p>
+
+      <h3 class="head-2">会場</h3>
+      <p>
+        千葉市少年自然の家<br />
+        <a
+          href="https://https://www.chiba-shizen.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          Official website
+        </a>
+      </p>
+
+      <h3 class="head-2">講師</h3>
+      <p>希望バプテスト教会 井垣勇基伝道師</p>
+
+      <h3 class="head-2">参加費</h3>
+      <p>一般 9,500円、高校生 8,500円</p>
+    </section>
+
+    <section class="section">
+      <h2 class="head-1">
+        <div class="en">Program</div>
+        <div class="ja">プログラム</div>
+      </h2>
+
+      <h3 class="head-2">タイムテーブル</h3>
+      <TimeTable {...timetable1} />
+      <TimeTable {...timetable2} />
+    </section>
+  </main>
+
+  <style>
+    .header {
+      background: var(--color-text) no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100svh;
+    }
+
+    .h1 {
+      background: #00000080;
+      backdrop-filter: blur(3px);
+      border-radius: 0 2px 2px 0;
+      color: var(--color-background);
+      font-size: 1rem;
+      margin: 0.5em auto 0 0;
+      padding: 1em;
+    }
+
+    .theme {
+      margin: 1em;
+      text-align: right;
+    }
+
+    .theme-text {
+      display: inline-flex;
+      gap: 0.2em;
+    }
+
+    .char-square {
+      background: var(--color-background);
+      border-radius: 2px;
+      display: inline-block;
+      font-weight: bold;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      width: 2em;
+    }
+
+    .verse {
+      color: var(--color-background);
+    }
+
+    .main {
+      margin: auto;
+      max-width: 600px;
+    }
+
+    .section {
+      padding: 10vh 1.5em;
+    }
+  </style>
 </Layout>
-
-<style>
-  .header {
-    background: var(--color-text) no-repeat center center / cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100svh;
-  }
-
-  .h1 {
-    background: #00000080;
-    backdrop-filter: blur(3px);
-    border-radius: 4px;
-    color: var(--color-background);
-    font-size: 1rem;
-    margin: 0.5em auto 0 0.5em;
-    padding: 1em 1.5em;
-  }
-
-  .theme {
-    margin: 1em;
-    text-align: right;
-  }
-
-  .theme-text {
-    display: inline-flex;
-    gap: 0.2em;
-  }
-
-  .char-square {
-    background: var(--color-background);
-    border-radius: 2px;
-    display: inline-block;
-    font-weight: bold;
-    height: 2em;
-    line-height: 2em;
-    text-align: center;
-    width: 2em;
-  }
-
-  .verse {
-    color: var(--color-background);
-  }
-</style>
