@@ -1,0 +1,22 @@
+<h2 class="h2">
+  <div class="en"><slot name="en" /></div>
+  <div class="ja"><slot name="ja" /></div>
+</h2>
+
+<style>
+  .h2 {
+    color: var(--color-primary);
+    font-size: 125%;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .en {
+    font-family: var(--font-serif);
+    font-size: 125%;
+  }
+
+  .ja {
+    letter-spacing: 0.05em;
+  }
+</style>
