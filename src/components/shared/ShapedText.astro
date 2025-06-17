@@ -1,0 +1,44 @@
+---
+type Props = {
+  text: string;
+  type?: "square" | "circle" | "diamond";
+};
+
+const { text, type = "square" } = Astro.props;
+---
+
+<span class="text">
+  {text.split("").map((letter) => <span class={type}>{letter}</span>)}
+</span>
+
+<style>
+  .text {
+    display: inline-flex;
+    gap: 0.2em;
+  }
+
+  .square,
+  .circle,
+  .diamond {
+    background: var(--color-background);
+    color: var(--color-text);
+    display: inline-block;
+    font-weight: bold;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+  }
+
+  .square {
+    border-radius: 2px;
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+
+  .diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+</style>

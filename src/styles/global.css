@@ -1,10 +1,14 @@
 :root {
-  --color-background: #ebebeb;
-  --color-primary: #566df0;
-  --color-text: #282928;
-  --color-subtext: #7d807d;
-  --color-accent: #f0566e;
-  --color-divider: #4b4d4b;
+  --color-background: #f8fafc;
+  --color-primary: #3b82f6;
+  --color-secondary: #6366f1;
+  --color-text: #1e293b;
+  --color-subtext: #64748b;
+  --color-accent: #ec4899;
+  --color-divider: #cbd5e1;
+  --color-success: #22c55e;
+  --color-warning: #f97316;
+  --color-special: #a855f7;
   --font-serif: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
 }
 

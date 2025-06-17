@@ -9,18 +9,38 @@ const { icon } = Astro.props;
 ---
 
 <h3 class="h3">
-  {icon && <Icon name={icon} />}
+  {
+    icon && (
+      <span class="icon">
+        <Icon name={icon} />
+      </span>
+    )
+  }
   <span><slot /></span>
 </h3>
 
 <style>
   .h3 {
     align-items: center;
-    color: var(--color-primary);
+    border-bottom: 2px solid;
+    border-image: linear-gradient(
+        to right,
+        var(--color-secondary) 0%,
+        var(--color-secondary) 25%,
+        var(--color-divider) 25%,
+        var(--color-divider) 100%
+      )
+      1;
     display: flex;
     font-size: 120%;
     gap: 0.25em;
-    letter-spacing: 0.05em;
     margin: 2em 0 0;
+    padding: 0 0 0.5em;
+  }
+
+  .icon {
+    color: var(--color-secondary);
+    display: flex;
+    font-size: 120%;
   }
 </style>
