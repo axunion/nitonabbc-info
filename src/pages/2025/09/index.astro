@@ -2,10 +2,11 @@
 import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/shared/ButtonLink.astro";
 import MapFrame from "@/components/shared/MapFrame.astro";
-import SquareLetter from "@/components/shared/SquareLetter.astro";
+import ShapedText from "@/components/shared/ShapedText.astro";
 import TimeTable from "@/components/shared/TimeTable.astro";
 import H2 from "@/components/2025/09/H2.astro";
 import H3 from "@/components/2025/09/H3.astro";
+import Summary from "@/components/2025/09/Summary.astro";
 import hero from "@/assets/2025/09/hero.webp";
 
 const overview = {
@@ -13,6 +14,33 @@ const overview = {
   theme: "キリストに倣いて",
   themeVerse: "マタイの福音書 11:29",
 };
+
+const summaryItems = [
+  {
+    icon: "mdi:calendar-month-outline",
+    label: "日程",
+    text: "2025年9月14日(日) - 15日(月・祝)",
+  },
+  {
+    icon: "mdi:lectern",
+    label: "講師",
+    text: "希望バプテスト教会 井垣勇基伝道師",
+  },
+  {
+    icon: "mdi:house-city",
+    label: "会場",
+    text: "千葉市少年自然の家",
+    link: {
+      url: "https://www.chiba-shizen.jp/",
+      text: "Official Website",
+    },
+  },
+  {
+    icon: "mdi:money",
+    label: "参加費",
+    text: "一般 9,500円、高校生 8,500円",
+  },
+];
 
 const timetable1 = {
   caption: "Day 1",
@@ -46,7 +74,7 @@ const timetable2 = {
     <h1 class="h1">{overview.title}</h1>
 
     <div class="theme">
-      <SquareLetter letters={overview.theme} /><br />
+      <ShapedText text={overview.theme} type="square" /><br />
       <small>- {overview.themeVerse} -</small>
     </div>
   </header>
@@ -71,27 +99,7 @@ const timetable2 = {
         <div slot="ja">概要</div>
       </H2>
 
-      <H3 icon="mdi:calendar-month-outline">日程</H3>
-      <p>2025年9月14日(日) - 15日(月・祝)</p>
-
-      <H3 icon="mdi:lectern">講師</H3>
-      <p>希望バプテスト教会 井垣勇基伝道師</p>
-
-      <H3 icon="mdi:house-city">会場</H3>
-      <p>
-        千葉市少年自然の家<br />
-        <a
-          href="https://www.chiba-shizen.jp/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
-          Official website
-        </a>
-      </p>
-
-      <H3 icon="mdi:money">参加費</H3>
-      <p>一般 9,500円、高校生 8,500円</p>
+      <Summary items={summaryItems} />
     </section>
 
     <section class="section">
@@ -101,7 +109,9 @@ const timetable2 = {
       </H2>
 
       <H3 icon="mdi:timetable">タイムテーブル</H3>
-      <p>※ <small>他の団体との調整で時間が前後する可能性があります</small></p>
+      <p>
+        ※ <small>他団体との兼ね合いで時間が前後する可能性があります</small>
+      </p>
       <TimeTable {...timetable1} />
       <TimeTable {...timetable2} />
     </section>
@@ -138,10 +148,5 @@ const timetable2 = {
 
   .section {
     padding: 1.5em;
-  }
-
-  .link {
-    color: var(--color-primary);
-    text-decoration: underline;
   }
 </style>

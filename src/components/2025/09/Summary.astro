@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface SummaryItem {
+  icon?: string;
+  label: string;
+  text: string;
+  link?: {
+    url: string;
+    text: string;
+  };
+}
+
+interface Props {
+  items: SummaryItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="summary">
+  {
+    items.map((item) => (
+      <div class="item">
+        <dt class="label">
+          {item.icon && (
+            <span class="icon">
+              <Icon name={item.icon} />
+            </span>
+          )}
+          {item.label}
+        </dt>
+        <dd class="text">
+          {item.text}
+          {item.link && (
+            <div>
+              <a
+                href={item.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link"
+              >
+                {item.link.text}
+                <Icon name="mdi:external-link" />
+              </a>
+            </div>
+          )}
+        </dd>
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin: 0;
+  }
+
+  .item {
+    border: var(--color-divider) solid 1px;
+    border-left: var(--color-secondary) solid 4px;
+    border-radius: 0 4px 4px 0;
+    padding: 1.5em 1em;
+  }
+
+  .label {
+    align-items: center;
+    display: flex;
+    font-weight: bolder;
+    gap: 0.5em;
+    margin: 0 0 0.5em;
+  }
+
+  .icon {
+    color: var(--color-secondary);
+    display: flex;
+    font-size: 120%;
+  }
+
+  .text {
+    margin: 0;
+  }
+
+  .link {
+    align-items: center;
+    color: var(--color-primary);
+    display: inline-flex;
+    gap: 0.25em;
+    text-decoration: underline;
+  }
+</style>
