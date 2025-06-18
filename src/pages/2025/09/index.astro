@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import ButtonLink from "@/components/shared/ButtonLink.astro";
 import MapFrame from "@/components/shared/MapFrame.astro";
+import PriceTable from "@/components/shared/PriceTable.astro";
 import ShapedText from "@/components/shared/ShapedText.astro";
 import TimeTable from "@/components/shared/TimeTable.astro";
 import H2 from "@/components/2025/09/H2.astro";
@@ -38,7 +39,26 @@ const summaryItems = [
   {
     icon: "mdi:money",
     label: "参加費",
-    text: "一般 9,500円、高校生 8,500円",
+    text: "一般 ¥9,500、高校生 ¥8,500",
+  },
+];
+
+const partialParticipation = [
+  {
+    label: "1日目 夕食",
+    price: "1,100",
+  },
+  {
+    label: "1日目 宿泊",
+    price: "5,200",
+  },
+  {
+    label: "2日目 朝食",
+    price: "800",
+  },
+  {
+    label: "2日目 昼食",
+    price: "900",
   },
 ];
 
@@ -57,6 +77,7 @@ const timetable1 = {
 const timetable2 = {
   caption: "Day 2",
   rows: [
+    { th: "6:30", td: "起床" },
     { th: "7:00", td: "デボーション" },
     { th: "7:30", td: "朝食" },
     { th: "9:00", td: "レクリエーション" },
@@ -115,6 +136,32 @@ const timetable2 = {
       <TimeTable {...timetable1} />
       <TimeTable {...timetable2} />
     </section>
+
+    <section>
+      <H2>
+        <div slot="en">Detailed information</div>
+        <div slot="ja">詳細情報</div>
+      </H2>
+
+      <H3 icon="mdi:money">部分参加</H3>
+      <p>
+        部分参加を希望される場合、利用される食事および宿泊の料金は以下の通りです。参加費は共通で一般¥1,500、高校生¥500です。
+      </p>
+      <PriceTable rows={partialParticipation} />
+
+      <H3 icon="mdi:bag-suitcase">持ち物</H3>
+      <p>
+        聖書、筆記用具、着替えなど、宿泊に必要なものをお持ちください。施設にはリンスインシャンプーとボディーソープを備えています。タオルやドライヤーはありませんので、持参してください。
+      </p>
+
+      <H3 icon="mdi:map-marker">アクセス</H3>
+      <MapFrame
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3250.345592157749!2d140.2122842757466!3d35.44623774284719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022bcf0679da9e5%3A0x2537fc962f5ae882!2z5Y2D6JGJ5biC5bCR5bm06Ieq54S244Gu5a62!5e0!3m2!1sja!2sjp!4v1750258262525!5m2!1sja!2sjp"
+      />
+      <p>
+        自動車は正門横の駐車場に停め、サービスセンー棟までは徒歩での移動をお願いします。
+      </p>
+    </section>
   </main>
 </Layout>
 
@@ -144,9 +191,10 @@ const timetable2 = {
   .main {
     margin: auto;
     max-width: 600px;
+    padding: 0 1.5em;
   }
 
   .section {
-    padding: 1.5em;
+    margin: 15vh 0;
   }
 </style>
