@@ -1,0 +1,41 @@
+---
+interface Props {
+  rows: { label: string; price: string }[];
+}
+
+const { rows } = Astro.props;
+---
+
+<table class="table">
+  {
+    rows.map((row) => (
+      <tr>
+        <th class="th">{row.label}</th>
+        <td class="td">&yen{row.price}</td>
+      </tr>
+    ))
+  }
+</table>
+
+<style>
+  .table {
+    border-collapse: collapse;
+    margin: auto;
+  }
+
+  th,
+  td {
+    font-weight: normal;
+    padding: 0.25em 0;
+  }
+
+  th {
+    padding: 0 1.5em 0 0;
+    text-align: left;
+  }
+
+  td {
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+</style>
