@@ -131,16 +131,18 @@ const timetable2 = {
 
       <H3 icon="mdi:timetable">タイムテーブル</H3>
       <p>
-        ※ <small>他団体との兼ね合いで時間が前後する可能性があります</small>
+        ※ <small
+          >他団体との兼ね合いで時間が前後する可能性があります。変更がありましたら更新いたします。</small
+        >
       </p>
       <TimeTable {...timetable1} />
       <TimeTable {...timetable2} />
     </section>
 
-    <section>
+    <section class="section">
       <H2>
-        <div slot="en">Detailed information</div>
-        <div slot="ja">詳細情報</div>
+        <div slot="en">Additional Information</div>
+        <div slot="ja">追加情報</div>
       </H2>
 
       <H3 icon="mdi:money">部分参加</H3>
@@ -149,20 +151,63 @@ const timetable2 = {
       </p>
       <PriceTable rows={partialParticipation} />
 
+      <H3 icon="mdi:medical-bag">アレルギー対応</H3>
+      <p>
+        アレルギー体質による食事制限等のある方がいましたら、申し込み時の備考欄にご記入ください。施設へアレルギー対応申込書を提出する必要がありますので、個別にご連絡をさせていただく場合があります。
+      </p>
+
       <H3 icon="mdi:bag-suitcase">持ち物</H3>
       <p>
-        聖書、筆記用具、着替えなど、宿泊に必要なものをお持ちください。施設にはリンスインシャンプーとボディーソープを備えています。タオルやドライヤーはありませんので、持参してください。
+        施設にはリンスインシャンプーとボディーソープを備えています。タオルやドライヤーはありませんので、聖書、筆記用具、着替えなど、宿泊に必要なものと合わせてお持ちください。
       </p>
 
       <H3 icon="mdi:map-marker">アクセス</H3>
       <MapFrame
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3250.345592157749!2d140.2122842757466!3d35.44623774284719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022bcf0679da9e5%3A0x2537fc962f5ae882!2z5Y2D6JGJ5biC5bCR5bm06Ieq54S244Gu5a62!5e0!3m2!1sja!2sjp!4v1750258262525!5m2!1sja!2sjp"
       />
+      <h4>駐車場について</h4>
       <p>
         自動車は正門横の駐車場に停め、サービスセンー棟までは徒歩での移動をお願いします。
       </p>
     </section>
+
+    <section class="section">
+      <H2>
+        <div slot="en">Application</div>
+        <div slot="ja">お申し込み</div>
+      </H2>
+
+      <H3 icon="mdi:file-document-edit-outline">お申し込み方法</H3>
+      <p>次のリンクより、Webフォームからお申し込みください。</p>
+      <ButtonLink
+        href="https://form.nitonabbc.org/apply/20209/"
+        target="_blank"
+      >
+        参加申し込み
+      </ButtonLink>
+
+      <H3 icon="mdi:calendar-clock">お申し込み期限</H3>
+      <p class="deadline">
+        <strong>2025年8月3日（日）</strong>
+      </p>
+
+      <H3 icon="mdi:help-circle-outline">お問い合わせ</H3>
+      <p>
+        ご質問やご不明な点がございましたら、LINEオープンチャットからお気軽にお問い合わせください。以下のリンクからご参加いただけます。
+      </p>
+      <p>
+        <strong class="strong">🔐 参加コード: 0333</strong>
+      </p>
+      <ButtonLink
+        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+        target="_blank"
+      >
+        オープンチャット
+      </ButtonLink>
+    </section>
   </main>
+
+  <footer class="footer"><small>京葉地区合同青年会</small></footer>
 </Layout>
 
 <style>
@@ -196,5 +241,22 @@ const timetable2 = {
 
   .section {
     margin: 15vh 0;
+  }
+
+  .strong {
+    color: var(--color-accent);
+  }
+
+  .deadline {
+    border: currentColor solid 1px;
+    border-radius: 4px;
+    color: var(--color-accent);
+    padding: 1em;
+    text-align: center;
+  }
+
+  .footer {
+    margin: 20vh 0 5vh;
+    text-align: center;
   }
 </style>
