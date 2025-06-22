@@ -1,6 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Bracket from "@/components/shared/Bracket.astro";
 import ButtonLink from "@/components/shared/ButtonLink.astro";
+import ClippedImage from "@/components/shared/ClippedImage.astro";
 import MapFrame from "@/components/shared/MapFrame.astro";
 import PriceTable from "@/components/shared/PriceTable.astro";
 import ShapedText from "@/components/shared/ShapedText.astro";
@@ -10,6 +12,7 @@ import H3 from "@/components/2025/09/H3.astro";
 import H4 from "@/components/2025/09/H4.astro";
 import Summary from "@/components/2025/09/Summary.astro";
 import hero from "@/assets/2025/09/hero.webp";
+import speaker from "@/assets/2025/09/speaker.webp";
 
 const overview = {
   title: "京葉地区青年キャンプ 2025",
@@ -44,25 +47,6 @@ const summaryItems = [
   },
 ];
 
-const partialParticipation = [
-  {
-    label: "1日目 夕食",
-    price: "1,100",
-  },
-  {
-    label: "1日目 宿泊",
-    price: "5,200",
-  },
-  {
-    label: "2日目 朝食",
-    price: "800",
-  },
-  {
-    label: "2日目 昼食",
-    price: "900",
-  },
-];
-
 const timetable1 = {
   caption: "Day 1",
   rows: [
@@ -89,6 +73,25 @@ const timetable2 = {
     { th: "17:30", td: "解散" },
   ],
 };
+
+const partialParticipation = [
+  {
+    label: "1日目 夕食",
+    price: "1,100",
+  },
+  {
+    label: "1日目 宿泊",
+    price: "5,200",
+  },
+  {
+    label: "2日目 朝食",
+    price: "800",
+  },
+  {
+    label: "2日目 昼食",
+    price: "900",
+  },
+];
 ---
 
 <Layout title={overview.title}>
@@ -126,6 +129,79 @@ const timetable2 = {
 
     <section class="section">
       <H2>
+        <div slot="en">Speaker Introduction</div>
+        <div slot="ja">講師紹介</div>
+      </H2>
+
+      <H3>井垣勇基伝道師</H3>
+      <div class="speaker">
+        <ClippedImage src={speaker} alt="井垣勇基伝道師" shape="ellipse" />
+      </div>
+      <Bracket>
+        ある時一人の友人がこう言いました。「誰かをゴールにすると、その人に制限をかけてしまうんだって。それなら、僕には、制限はない。僕のゴールはイエス・キリストだから。」
+        <br />
+        「キリストにならう」人の人生は、まさにそのようです。人にではなく、神にしかできないことが起こるのです。今回のキャンプでみことばを学ぶことを通して、「キリストにならう」幸いをともに味わいましょう。
+      </Bracket>
+
+      <H4>プロフィール</H4>
+      <p>
+        <b>名前：</b> 井垣勇基（いがきゆうき）<br />
+        <b>家族：</b> 妻と息子（1歳半）の三人家族<br />
+        <b>趣味：</b> オカリナ<br />
+        <b>特技：</b> スイカの早食い<br />
+        <b>好きな聖句：</b> 箴言4:18<br />
+        正しい人の進む道は、あけぼのの光のようだ。いよいよ輝きを増して真昼となる。
+      </p>
+      <table class="profile-table">
+        <tr>
+          <th class="profile-th">1995年</th>
+          <td>9月13日生まれ</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2000年</th>
+          <td>イエス・キリストの救いに与る</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2004年</th>
+          <td>バプテスマ</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2005年</th>
+          <td>献身に導かれる</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2008年-2013年</th>
+          <td>ホームスクールで教育を受ける</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2015年</th>
+          <td>都内の日本語学校に就職</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2017年9月</th>
+          <td>日本バプテスト聖書神学校 入学</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2021年6月</th>
+          <td>日本バプテスト聖書神学校 卒業</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2021年8月</th>
+          <td>調布聖書バプテスト教会にて奉仕</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2023年2月</th>
+          <td>結婚</td>
+        </tr>
+        <tr>
+          <th class="profile-th">2024年4月</th>
+          <td>希望バプテスト教会にて奉仕</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <H2>
         <div slot="en">Program</div>
         <div slot="ja">プログラム</div>
       </H2>
@@ -148,11 +224,6 @@ const timetable2 = {
       <H3 icon="mdi:account-group">分科会</H3>
       <p>
         分科会では４つのテーマをご用意しております。ご関心のあるテーマを選択の上、ご参加ください。
-      </p>
-
-      <H4>結婚</H4>
-      <p>
-        神様に祝福された結婚生活を望んでいるものの、どのように進めていけばよいか分からないという悩みをお持ちではありませんか。
       </p>
     </section>
 
@@ -258,6 +329,23 @@ const timetable2 = {
 
   .section {
     margin: 15vh 0;
+  }
+
+  .speaker {
+    margin: 2em 3em;
+  }
+
+  .profile-table {
+    border-collapse: collapse;
+    font-size: 85%;
+    margin: 1em 0;
+    table-layout: fixed;
+  }
+
+  .profile-th {
+    font-weight: normal;
+    padding: 0 1em 0 0;
+    text-align: left;
   }
 
   .strong {
