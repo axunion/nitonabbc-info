@@ -5,6 +5,7 @@ import ButtonLink from "@/components/shared/ButtonLink.astro";
 import ClippedImage from "@/components/shared/ClippedImage.astro";
 import MapFrame from "@/components/shared/MapFrame.astro";
 import PriceTable from "@/components/shared/PriceTable.astro";
+import QAList from "@/components/shared/QAList.astro";
 import ShapedText from "@/components/shared/ShapedText.astro";
 import TimeTable from "@/components/shared/TimeTable.astro";
 import H2 from "@/components/2025/09/H2.astro";
@@ -111,10 +112,7 @@ const partialParticipation = [
         今年もまた、京葉地区青年キャンプを開催する運びとなりましたことを、皆様にご案内申し上げます。
       </p>
       <p>
-        美しい自然環境の中で、祈りと賛美、参加者間での分かち合いを通じて、主からの新たな気づきと励ましを受け取る貴重な機会となることを期待しております。
-      </p>
-      <p>
-        新たな出会いと再会の喜びの中で、信仰の歩みを共に励まし合うこの機会へのご参加を、心よりお待ち申し上げております。
+        美しい自然環境の中で、祈りと賛美、参加者間での交わりを通じて、信仰の歩みを共に励まし合うこの機会へのご参加を、心よりお待ち申し上げております。
       </p>
     </section>
 
@@ -144,14 +142,20 @@ const partialParticipation = [
       </Bracket>
 
       <H4>プロフィール</H4>
-      <p>
-        <b>名前：</b> 井垣勇基（いがきゆうき）<br />
-        <b>家族：</b> 妻と息子（1歳半）の三人家族<br />
-        <b>趣味：</b> オカリナ<br />
-        <b>特技：</b> スイカの早食い<br />
-        <b>好きな聖句：</b> 箴言4:18<br />
-        「正しい人の進む道は、あけぼのの光のようだ。いよいよ輝きを増して真昼となる。」
-      </p>
+      <QAList
+        list={[
+          { q: "名前", a: "井垣勇基（いがきゆうき）" },
+          { q: "家族", a: "妻と息子（1歳半）の三人家族" },
+          { q: "趣味", a: "オカリナ" },
+          { q: "特技", a: "スイカの早食い" },
+          {
+            q: "好きな聖句",
+            a: "正しい人の進む道は、あけぼのの光のようだ。いよいよ輝きを増して真昼となる。ー 箴言4:18",
+          },
+        ]}
+      />
+
+      <H4>略歴</H4>
       <table class="profile-table">
         <tr>
           <th class="profile-th">1995年</th>
@@ -237,17 +241,6 @@ const partialParticipation = [
         この分科会では、御言葉に立ち返りながら、神様に喜ばれる出会い方や、健全な交際の始め方について学びます。
       </p>
 
-      <H4>神に喜ばれる働き方</H4>
-      <p>
-        私たちの日常生活の大部分を占める仕事。クリスチャンにとって仕事は単なる生活の糧を得る手段ではなく、神様から与えられた大切な使命でもあります。
-      </p>
-      <p>
-        しかし実際には「どのような基準で仕事を選ぶべきか」「忙しい仕事と教会生活をどうバランスを取るか」など、多くの課題に直面しているのではないでしょうか。
-      </p>
-      <p>
-        この分科会では、聖書の価値観をもとに、自分に与えられた賜物を活かした仕事の選び方や、働きながら信仰を保ち教会生活を充実させるための工夫や実践例を学びます。
-      </p>
-
       <H4>献身の意味とその歩み</H4>
       <p>
         神様への愛と感謝から生まれる献身への思い。しかし「自分は本当に召されているのか」「どのように献身の道を歩めば良いのか」と戸惑いを感じておられる方も多いのではないでしょうか。
@@ -257,6 +250,17 @@ const partialParticipation = [
       </p>
       <p>
         この分科会では、すべてのクリスチャンが、それぞれの生活の場で神様に自分自身をささげ、主の栄光を現すための献身について考えます。
+      </p>
+
+      <H4>神様に喜ばれる働き方</H4>
+      <p>
+        私たちの日常生活の大部分を占める仕事。クリスチャンにとって仕事は単なる生活の糧を得る手段ではなく、神様から与えられた大切な使命でもあります。
+      </p>
+      <p>
+        しかし実際には「どのような基準で仕事を選ぶべきか」「忙しい仕事と教会生活をどうバランスを取るか」など、多くの課題に直面しているのではないでしょうか。
+      </p>
+      <p>
+        この分科会では、聖書の価値観をもとに、自分に与えられた賜物を活かした仕事の選び方や、働きながら信仰を保ち教会生活を充実させるための工夫や実践例を学びます。
       </p>
 
       <H4>奉仕を通して受ける豊かな祝福</H4>
@@ -287,9 +291,9 @@ const partialParticipation = [
       </ButtonLink>
 
       <H3 icon="mdi:calendar-clock">お申し込み期限</H3>
-      <p class="deadline">
+      <div class="deadline">
         <strong>2025年8月3日（日）</strong>
-      </p>
+      </div>
     </section>
 
     <section class="section">
@@ -300,7 +304,7 @@ const partialParticipation = [
 
       <H3 icon="mdi:money">部分参加</H3>
       <p>
-        部分参加をご希望の場合、ご利用になる食事および宿泊の料金は以下の通りです。なお、参加費につきましては、一般¥1,500、高校生¥500となっております。
+        部分参加をご希望の場合、共通の参加費は一般1,500円、高校生500円です。これに加えて、ご利用になる食事および宿泊の料金は以下の通りです。
       </p>
       <PriceTable rows={partialParticipation} />
 
@@ -311,7 +315,7 @@ const partialParticipation = [
 
       <H3 icon="mdi:bag-suitcase">持ち物</H3>
       <p>
-        施設にはリンスインシャンプーとボディーソープをご用意しております。タオルやドライヤーの備えはございませんので、聖書、筆記用具、着替え等、宿泊に必要なものと併せてご持参ください。
+        施設にはリンスインシャンプーとボディーソープをご用意されています。タオルやドライヤーの備えはございませんので、聖書、筆記用具、着替え等、宿泊に必要なものと併せてご持参ください。
       </p>
 
       <H3 icon="mdi:map-marker">アクセス</H3>
@@ -410,12 +414,13 @@ const partialParticipation = [
     border: currentColor solid 3px;
     border-radius: 4px;
     color: var(--color-accent);
+    margin: 1em 0;
     padding: 2em;
     text-align: center;
   }
 
   .footer {
-    margin: 20vh 0 5vh;
+    padding: 20vh 0 5vh;
     text-align: center;
   }
 </style>

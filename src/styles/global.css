@@ -2,7 +2,7 @@
   --color-background: #f8fafc;
   --color-primary: #3b82f6;
   --color-secondary: #6366f1;
-  --color-text: #1e293b;
+  --color-text: #282928;
   --color-subtext: #64748b;
   --color-accent: #ec4899;
   --color-divider: #cbd5e1;
@@ -19,6 +19,7 @@
 }
 
 html {
+  background: black;
   font:
     100%/1.5 -apple-system,
     BlinkMacSystemFont,
