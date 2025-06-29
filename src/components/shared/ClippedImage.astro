@@ -10,19 +10,16 @@ type Props = {
 const { src, alt = "", shape = "rect" } = Astro.props;
 ---
 
-<Image
-  src={src}
-  alt={alt}
-  class:list={["image", shape]}
-  aria-hidden={alt ? "false" : "true"}
-/>
+<div class:list={["clipped-image", shape]}>
+  <Image
+    src={src}
+    alt={alt}
+    class="image"
+    aria-hidden={alt ? "false" : "true"}
+  />
+</div>
 
 <style>
-  .image {
-    height: 100%;
-    object-fit: cover;
-  }
-
   .rect {
     border-radius: 12px;
   }
@@ -37,5 +34,15 @@ const { src, alt = "", shape = "rect" } = Astro.props;
 
   .ellipse {
     clip-path: ellipse(50% 50% at center);
+  }
+
+  .clipped-image {
+    overflow: hidden;
+  }
+
+  .image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 </style>
