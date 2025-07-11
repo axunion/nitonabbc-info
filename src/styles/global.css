@@ -19,7 +19,6 @@
 }
 
 html {
-  background: black;
   font:
     100%/1.5 -apple-system,
     BlinkMacSystemFont,
@@ -36,8 +35,6 @@ html {
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-text);
   margin: 0;
 }
 

@@ -21,15 +21,27 @@ const { title, favicon, linkTags } = Astro.props;
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="icon" type="image/svg+xml" href={favicon || "/favicon.ico"} />
     <title>{title}</title>
 
     {linkTags && linkTags.map((linkTag) => <link {...linkTag} />)}
   </head>
   <body>
-    <slot />
+    <div class="viewport">
+      <slot />
+    </div>
   </body>
 </html>
+
+<style>
+  body {
+    background: var(--color-text);
+  }
+
+  .viewport {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+</style>
