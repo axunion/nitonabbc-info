@@ -116,12 +116,14 @@ import logo from "./_assets/logo.webp";
   <Menu />
 </Layout>
 
-<style>
-  body {
+<style is:global>
+  .viewport {
     background: var(--color-text);
     color: var(--color-background);
   }
+</style>
 
+<style>
   .main {
     overflow: hidden;
     position: relative;

@@ -99,12 +99,14 @@ import syukuhakuHeimenzu from "./_assets/syukuhaku_heimenzu.pdf";
   <Menu />
 </Layout>
 
-<style>
-  body {
+<style is:global>
+  .viewport {
     background: var(--color-text);
     color: var(--color-background);
   }
+</style>
 
+<style>
   .main {
     overflow: hidden;
     position: relative;
