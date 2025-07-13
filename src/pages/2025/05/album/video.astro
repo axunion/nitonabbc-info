@@ -108,12 +108,14 @@ const linkList = [
   <Menu />
 </Layout>
 
-<style>
-  body {
+<style is:global>
+  .viewport {
     background: var(--color-text);
     color: var(--color-background);
   }
+</style>
 
+<style>
   .main {
     overflow: hidden;
     position: relative;
@@ -128,7 +130,7 @@ const linkList = [
   .h4 {
     border-bottom: currentColor solid 1px;
     border-top: currentColor solid 1px;
-    margin: 3em auto 1em;
+    margin: 4em 4em 2em;
     padding: 0.5em 0 ;
     text-align: center;
   }
