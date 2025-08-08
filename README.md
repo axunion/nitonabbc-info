@@ -1,6 +1,6 @@
 # Nitonabbc Info
 
-このリポジトリは、Astroフレームワークを用いて構築された、教会向け案内Webサイトのソースコードです。
+このリポジトリは、Astroフレームワークを用いて構築されたWebサイトのソースコードです。
 
 ## 🚀 プロジェクト概要
 
@@ -15,17 +15,14 @@
 /
 ├── public/                # 静的ファイル（favicon、画像など）
 ├── src/
-│   ├── assets/            # 年・月ごとの画像・PDF等
+│   ├── assets/            # 画像・スクリプト等
 │   ├── components/        # Astroコンポーネント
+│   ├── constants/         # 定数
 │   ├── layouts/           # レイアウトコンポーネント
 │   ├── pages/             # 各ページ（年・月ごとに整理）
 │   ├── scripts/           # 補助スクリプト
 │   ├── styles/            # グローバルCSS
 │   └── types/             # 型定義
-├── package.json           # 依存パッケージ・スクリプト
-├── astro.config.mjs       # Astro設定
-├── tsconfig.json          # TypeScript設定
-└── README.md              # このファイル
 ```
 
 ## 🧑‍💻 開発・ビルド方法
