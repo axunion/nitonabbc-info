@@ -77,8 +77,10 @@ const linkList = [
 
       {
         videoIdList.map(({ name, id }) => (
-          <h4 class="h4">{name}</h4>
+          <>
+            <h4 class="h4">{name}</h4>
             <YouTube id={id} />
+          </>
         ))
       }
     </section>
@@ -131,7 +133,7 @@ const linkList = [
     border-bottom: currentColor solid 1px;
     border-top: currentColor solid 1px;
     margin: 4em 4em 2em;
-    padding: 0.5em 0 ;
+    padding: 0.5em 0;
     text-align: center;
   }
 
