@@ -36,23 +36,38 @@ import logo from "../_assets/logo.webp";
           このサイトは教会関係者のみに共有されますが、個人を特定できる情報などは写り込まないよう、ご注意をお願いいたします。
         </Note>
 
-        <label class="label-text">
-          <input type="text" class="input-text" placeholder="教会名" required />
-        </label>
-
-        <label class="label-file">
-          <div class="notice-file">
-            アップロードしたい画像を選択してください。画像は1度に10枚まで選択できます。
-          </div>
-
+        <label for="church-name-input" class="label-text">
+          <span class="visually-hidden">教会名</span>
           <input
-            type="file"
-            class="input-file"
-            accept="image/jpeg,image/png"
-            multiple
+            id="church-name-input"
+            type="text"
+            class="input-text"
+            placeholder="教会名"
+            aria-label="教会名を入力してください"
             required
           />
         </label>
+
+        <div class="label-file">
+          <label for="image-upload-input" class="notice-file">
+            アップロードしたい画像を選択してください。画像は1度に10枚まで選択できます。
+          </label>
+
+          <input
+            id="image-upload-input"
+            type="file"
+            class="input-file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            required
+            aria-label="画像ファイルを選択(JPEG、PNG、WebP形式、最大10枚)"
+            aria-describedby="file-upload-description"
+          />
+
+          <div id="file-upload-description" class="visually-hidden">
+            JPEG、PNG、WebP形式の画像を最大10枚まで選択できます。各ファイルは10MB以下である必要があります。
+          </div>
+        </div>
 
         <button
           type="submit"
@@ -135,17 +150,36 @@ import logo from "../_assets/logo.webp";
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>
 
 <script src="../../../../scripts/bubble.ts"></script>
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"
+  integrity="sha384-JqFoqlF3F5xqGzaQZV5hY8pK9PxFQhvL5TJ7FpJz7OJL2g/f0aZ6rKXa4Mf4qYHb"
+  crossorigin="anonymous"
+  defer
+></script>
 <script>
   import { uploadImages } from "@/scripts/uploadImages";
+  import { sanitizeFileName } from "@/scripts/sanitizeFileName";
 
   const $ = (selector: string) => document.querySelector(selector);
   const form = $(".form") as HTMLFormElement;
-  const inputFile = $(".input-file") as HTMLInputElement;
-  const inputText = $(".input-text") as HTMLInputElement;
+  const inputFile = $("#image-upload-input") as HTMLInputElement;
+  const inputText = $("#church-name-input") as HTMLInputElement;
   const MAX_FILES = 10;
 
   inputFile.addEventListener("change", () => {
@@ -164,28 +198,66 @@ import logo from "../_assets/logo.webp";
     }
 
     const files = Array.from(inputFile.files);
-    const name = inputText.value
-      .trim()
-      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
-      .replace(/^\.+|\.+$/g, "");
-    const path = `youth-fellowship-camp-2025/photo-gallery/${name}/`;
+
+    // 教会名のサニタイズ(tryでエラーハンドリング)
+    let sanitizedName: string;
+    try {
+      sanitizedName = sanitizeFileName(inputText.value);
+    } catch (error) {
+      alert(
+        error instanceof Error ? `教会名が不正です: ${error.message}` : "教会名が不正です"
+      );
+      return;
+    }
+
+    // パス構築(年度を動的に取得)
+    const currentYear = new Date().getFullYear();
+    const path = `youth-fellowship-camp-${currentYear}/photo-gallery/${sanitizedName}/`;
+
+    // タイムスタンプ生成
     const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
 
+    // ファイル名のサニタイズと再構築
     const newFiles = files.map((file) => {
-      const newName = `${timestamp}-${file.name.replace(/[<>:"/\\|?*\x00-\x1F]/g, "")}`;
-      return new File([file], newName, { type: file.type });
+      try {
+        // 拡張子を取得
+        const extensionMatch = file.name.match(/\.([^.]+)$/);
+        const extension = extensionMatch ? extensionMatch[1] : "";
+
+        // ファイル名本体をサニタイズ
+        const baseName = file.name.replace(/\.[^.]+$/, "");
+        const sanitizedBaseName = sanitizeFileName(baseName);
+
+        // 新しいファイル名
+        const newName = `${timestamp}-${sanitizedBaseName}${extension ? "." + extension : ""}`;
+
+        return new File([file], newName, { type: file.type });
+      } catch {
+        throw new Error(`ファイル名 "${file.name}" の処理に失敗しました`);
+      }
     });
 
     try {
       const resp = await uploadImages({ images: newFiles, path });
 
       if (resp.status === "success") {
-        alert("アップロードしました");
+        alert("アップロードに成功しました");
+        // フォームをリセット
+        inputFile.value = "";
+        inputText.value = "";
       } else {
-        alert("アップロードに失敗しました\n恐れ入りますが、再度お試しください");
+        // エラーメッセージをより具体的に表示
+        alert(
+          `アップロードに失敗しました\n\n${resp.message}\n\n恐れ入りますが、再度お試しください`
+        );
       }
     } catch (err) {
-      alert("アップロードに失敗しました\n恐れ入りますが、再度お試しください");
+      console.error("Upload error:", err);
+      alert(
+        `アップロード中にエラーが発生しました\n\n${
+          err instanceof Error ? err.message : "不明なエラー"
+        }\n\n恐れ入りますが、再度お試しください`
+      );
     }
 
     setTimeout(() => {
@@ -193,5 +265,3 @@ import logo from "../_assets/logo.webp";
     }, 100);
   });
 </script>
-
-<script src="../../../../scripts/bubble.ts"></script>
