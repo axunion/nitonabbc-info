@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint . --ext .ts,.astro",
+    "lint:fix": "eslint . --ext .ts,.astro --fix",
+    "format": "prettier --write \"**/*.{ts,astro,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,astro,css,json,md}\""
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.6",
@@ -15,8 +19,15 @@
     "astro": "5.15.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
     "@iconify-json/mdi": "^1.2.3",
-    "astro-icon": "^1.1.5"
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "astro-icon": "^1.1.5",
+    "eslint": "^9.0.0",
+    "eslint-plugin-astro": "^1.0.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.14.0"
   },
   "volta": {
     "node": "24.11.0"

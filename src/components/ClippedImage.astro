@@ -11,12 +11,7 @@ const { src, alt = "", shape = "rect" } = Astro.props;
 ---
 
 <div class:list={["clipped-image", shape]}>
-  <Image
-    src={src}
-    alt={alt}
-    class="image"
-    aria-hidden={alt ? "false" : "true"}
-  />
+  <Image src={src} alt={alt} class="image" aria-hidden={alt ? "false" : "true"} />
 </div>
 
 <style>

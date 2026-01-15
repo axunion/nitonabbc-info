@@ -34,12 +34,7 @@ const { items } = Astro.props;
           {item.text}
           {item.link && (
             <div>
-              <a
-                href={item.link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link"
-              >
+              <a href={item.link.url} target="_blank" rel="noopener noreferrer" class="link">
                 {item.link.text}
                 <Icon name="mdi:external-link" />
               </a>
