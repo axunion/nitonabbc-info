@@ -1,3 +1,8 @@
+/**
+ * 2025年5月イベント専用のエンドポイント設定
+ * このイベントでのみ使用される環境変数とエンドポイントを管理
+ */
+
 function getRequiredEnv(key: string): string {
   const value = import.meta.env[key];
 
