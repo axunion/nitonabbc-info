@@ -1,4 +1,4 @@
-import { ENDPOINT_LIST } from "@/constants/config";
+import { ENDPOINT_LIST } from "@/pages/2025/05/_config/endpoints";
 import type { FetchFileListResponse } from "@/types/api";
 
 function isValidFetchFileListResponse(data: unknown): data is FetchFileListResponse {
