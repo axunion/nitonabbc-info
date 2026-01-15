@@ -1,4 +1,4 @@
-import { ENDPOINT_UPLOAD_IMAGES } from "@/constants/config";
+import { ENDPOINT_UPLOAD_IMAGES } from "@/pages/2025/05/_config/endpoints";
 import type { UploadImagesRequest, UploadImagesResponse } from "@/types/api";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
