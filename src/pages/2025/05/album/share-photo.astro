@@ -9,10 +9,7 @@ import Note from "../_components/Note.astro";
 import logo from "../_assets/logo.webp";
 ---
 
-<Layout
-  title="Share Your Photo - 2025 第56回JBBF全国青年フェローシップキャンプ"
-  favicon={logo.src}
->
+<Layout title="Share Your Photo - 2025 第56回JBBF全国青年フェローシップキャンプ" favicon={logo.src}>
   <Header />
 
   <main class="main bubble">
@@ -69,11 +66,7 @@ import logo from "../_assets/logo.webp";
           </div>
         </div>
 
-        <button
-          type="submit"
-          class="upload-button"
-          :disabled="status === 'submitting'"
-        >
+        <button type="submit" class="upload-button" :disabled="status === 'submitting'">
           Upload
         </button>
 
@@ -170,8 +163,7 @@ import logo from "../_assets/logo.webp";
   src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"
   integrity="sha384-JqFoqlF3F5xqGzaQZV5hY8pK9PxFQhvL5TJ7FpJz7OJL2g/f0aZ6rKXa4Mf4qYHb"
   crossorigin="anonymous"
-  defer
-></script>
+  defer></script>
 <script>
   import { uploadImages } from "@/scripts/uploadImages";
   import { sanitizeFileName } from "@/scripts/sanitizeFileName";
@@ -204,9 +196,7 @@ import logo from "../_assets/logo.webp";
     try {
       sanitizedName = sanitizeFileName(inputText.value);
     } catch (error) {
-      alert(
-        error instanceof Error ? `教会名が不正です: ${error.message}` : "教会名が不正です"
-      );
+      alert(error instanceof Error ? `教会名が不正です: ${error.message}` : "教会名が不正です");
       return;
     }
 

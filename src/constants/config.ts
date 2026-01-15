@@ -3,8 +3,7 @@ function getRequiredEnv(key: string): string {
 
   if (!value || typeof value !== "string" || value.trim().length === 0) {
     throw new Error(
-      `Environment variable ${key} is required but not set. ` +
-        `Please set it in your .env file.`
+      `Environment variable ${key} is required but not set. ` + `Please set it in your .env file.`
     );
   }
 
@@ -21,8 +20,7 @@ function validateUrl(url: string, varName: string): string {
       return url;
     }
     throw new Error(
-      `Environment variable ${varName} must be a valid URL or absolute path. ` +
-        `Received: ${url}`
+      `Environment variable ${varName} must be a valid URL or absolute path. ` + `Received: ${url}`
     );
   }
 }

@@ -18,9 +18,7 @@ export type FetchFileListErrorResponse = {
   code?: string; // エラーコード(例: "NOT_FOUND", "PERMISSION_DENIED")
 };
 
-export type FetchFileListResponse =
-  | FetchFileListSuccessResponse
-  | FetchFileListErrorResponse;
+export type FetchFileListResponse = FetchFileListSuccessResponse | FetchFileListErrorResponse;
 
 export type UploadImagesRequest = {
   path: string;
@@ -40,6 +38,4 @@ export type UploadImagesErrorResponse = {
   failedFiles?: string[]; // 失敗したファイル名のリスト
 };
 
-export type UploadImagesResponse =
-  | UploadImagesSuccessResponse
-  | UploadImagesErrorResponse;
+export type UploadImagesResponse = UploadImagesSuccessResponse | UploadImagesErrorResponse;
