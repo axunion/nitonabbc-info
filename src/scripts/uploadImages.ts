@@ -20,9 +20,7 @@ function isValidUploadImagesResponse(data: unknown): data is UploadImagesRespons
   return false;
 }
 
-export const uploadImages = async (
-  data: UploadImagesRequest
-): Promise<UploadImagesResponse> => {
+export const uploadImages = async (data: UploadImagesRequest): Promise<UploadImagesResponse> => {
   // ファイルサイズとMIMEタイプの事前検証
   for (const file of data.images) {
     if (file.size > MAX_FILE_SIZE) {
