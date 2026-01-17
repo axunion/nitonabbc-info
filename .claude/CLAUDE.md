@@ -29,25 +29,47 @@ npm run format:check # 整形チェック
 - 共通化よりも各イベントの独自性・柔軟性を優先する
 - 過去のイベントを参考にしてよいが、コピーして独自に改変する
 
-### ページ構成（時系列管理）
+### イベントディレクトリ構成
 
 ```
 src/pages/{year}/{month}/
-├── _assets/           # 画像、PDF、navigation.json、スタイル
-├── _components/       # レイアウト、Header、Footer、見出し等すべて
+├── _assets/           # 画像、PDF、navigation.json
+├── _components/       # Layout.astro、Header、Footer、見出し等
 ├── _config/           # 設定ファイル（endpoints.ts等）
+├── _scripts/          # イベント固有のTypeScript/JavaScript
+├── _styles/
+│   └── variables.css  # イベント固有のCSS変数（配色定義）
 └── *.astro            # ページファイル
 ```
 
-### グローバルリソース（参考・補助用）
+### グローバルリソース（共有利用可）
 
-| 場所 | 用途 |
-|------|------|
-| `src/layouts/Layout.astro` | 最小限のベースHTML構造（必要に応じて使用） |
-| `src/components/` | 汎用UIパーツ（必要な場合のみ利用可） |
-| `src/styles/global.css` | 基本リセット程度（イベント固有スタイルは`_assets/`に配置） |
+| 場所                       | 用途                                                   |
+| -------------------------- | ------------------------------------------------------ |
+| `src/layouts/Layout.astro` | ベースHTML構造（イベント固有Layoutがない場合に使用可） |
+| `src/components/`          | 汎用UIパーツ（ButtonLink, MapFrame, TimeTable等）      |
+| `src/styles/global.css`    | 基本リセット・CSS変数デフォルト値                      |
 
-**注意**: グローバルリソースの使用は任意。イベントごとに独自のレイアウトやスタイルを持つことを推奨。
+**使い分け**:
+
+- グローバルコンポーネントは`@/components/`からインポートして使用可能
+- イベント固有のレイアウト・スタイルを使いたい場合は`_components/Layout.astro`と`_styles/variables.css`を作成
+- グローバルコンポーネントの配色はCSS変数で定義されており、イベント固有の`variables.css`で上書き可能
+
+### テンプレート
+
+新規イベント作成用のテンプレートが用意されています。
+
+```
+src/templates/event/
+├── _assets/.gitkeep
+├── _components/
+│   └── Layout.astro      # テンプレートレイアウト
+├── _scripts/.gitkeep
+├── _styles/
+│   └── variables.css     # CSS変数テンプレート（配色カスタマイズ用）
+└── index.astro           # サンプルページ
+```
 
 ### パスエイリアス
 
@@ -55,19 +77,19 @@ src/pages/{year}/{month}/
 
 ## コード規約
 
-| 項目 | 言語 |
-|------|------|
-| コミットメッセージ | 英語 |
-| コードコメント | 英語（自明なコメントは不要） |
-| コンソール出力 | 英語 |
-| チャット・レスポンス | 日本語 |
+| 項目                 | 言語                         |
+| -------------------- | ---------------------------- |
+| コミットメッセージ   | 英語                         |
+| コードコメント       | 英語（自明なコメントは不要） |
+| コンソール出力       | 英語                         |
+| チャット・レスポンス | 日本語                       |
 
 ### スタイリング
 
-- イベント固有のスタイルは`_assets/`または`_components/`内に配置
+- イベント固有の配色は`_styles/variables.css`で定義
 - コンポーネント内でスコープ付き`<style>`ブロックを使用
 - CSSフレームワークは未使用
-- `src/styles/global.css`は基本リセット程度（依存しない設計を推奨）
+- グローバルコンポーネントはCSS変数を使用しており、イベント側で上書き可能
 
 ### アイコン
 
@@ -75,10 +97,24 @@ src/pages/{year}/{month}/
 
 ## 新規イベント追加手順
 
-1. `src/pages/{year}/{month}/`ディレクトリを作成
-2. `_components/`にレイアウト、Header、Footer、見出しコンポーネント等を作成
-3. `_assets/`にnavigation.json、画像、イベント固有のスタイルを配置
-4. 必要に応じて`_config/`に設定ファイルを追加
-5. ページファイル（`.astro`）を作成
+1. `src/templates/event/`を`src/pages/{year}/{month}/`にコピー
+2. `_styles/variables.css`でイベントの配色をカスタマイズ
+3. `_components/Layout.astro`を必要に応じて調整
+4. `_assets/`に画像、PDF、navigation.json等を配置
+5. `index.astro`を編集してイベント内容を作成
+6. 必要に応じて追加のページやコンポーネントを作成
 
-**ポイント**: 過去のイベントからコピーして改変するのが効率的。ただし、グローバルリソースへの依存は最小限に抑え、イベント内で完結させる。
+**インポートパターン**:
+
+```astro
+---
+// イベント固有のレイアウト
+import Layout from "./_components/Layout.astro";
+
+// グローバルコンポーネント（必要に応じて使用）
+import ButtonLink from "@/components/ButtonLink.astro";
+import MapFrame from "@/components/MapFrame.astro";
+---
+```
+
+**ポイント**: テンプレートまたは過去のイベントからコピーして改変するのが効率的。グローバルコンポーネントは併用可能だが、レイアウトとスタイルはイベント固有のものを使用する。

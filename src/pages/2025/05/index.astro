@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { ENDPOINT_MEDIA_PATH } from "./_config/endpoints";
-import Layout from "@/layouts/Layout.astro";
+// import { ENDPOINT_MEDIA_PATH } from "./_config/endpoints";
+import Layout from "./_components/Layout.astro";
 import BlockLink from "@/components/BlockLink.astro";
 import logo from "./_assets/logo.webp";
 import lakeYamanaka from "./_assets/lake-yamanaka.webp";
@@ -60,14 +60,14 @@ const linkTags = [
       </div>
     </section>
 
-    <section class="video-container">
+    <!-- <section class="video-container">
       <video controls class="video">
         <source
           src=`${ENDPOINT_MEDIA_PATH}/youth-fellowship-camp-2025/promotional-720p.mp4`
           type="video/mp4"
         />
       </video>
-    </section>
+    </section> -->
 
     <section class="content">
       <ul class="link-list">

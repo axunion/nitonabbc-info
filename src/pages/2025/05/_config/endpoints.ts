@@ -1,8 +1,3 @@
-/**
- * 2025年5月イベント専用のエンドポイント設定
- * このイベントでのみ使用される環境変数とエンドポイントを管理
- */
-
 function getRequiredEnv(key: string): string {
   const value = import.meta.env[key];
 
@@ -20,7 +15,6 @@ function validateUrl(url: string, varName: string): string {
     new URL(url);
     return url;
   } catch {
-    // 相対URLの場合はそのまま返す(開発環境用)
     if (url.startsWith("/")) {
       return url;
     }
