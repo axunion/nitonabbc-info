@@ -11,13 +11,13 @@ importers:
       '@astro-community/astro-embed-youtube':
         specifier: ^0.5.6
         version: 0.5.7(astro@5.15.4(@types/node@24.10.0)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1))
-      '@astrojs/check':
-        specifier: 0.9.5
-        version: 0.9.5(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)
       astro:
         specifier: 5.15.4
         version: 5.15.4(@types/node@24.10.0)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
     devDependencies:
+      '@astrojs/check':
+        specifier: 0.9.5
+        version: 0.9.5(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.39.2

@@ -1,6 +1,7 @@
 const parentElement = document.querySelector(".bubble");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (parentElement) {
+if (parentElement && !prefersReducedMotion) {
   const bubbleCount = 71;
   const df = document.createDocumentFragment();
   const keyframes = [

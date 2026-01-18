@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.6",
-    "@astrojs/check": "0.9.5",
     "astro": "5.15.4"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.5",
     "@eslint/js": "^9.0.0",
     "@iconify-json/mdi": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^8.0.0",

@@ -9,13 +9,13 @@ Astroベースの静的Webサイト。イベント情報、スケジュール、
 ## コマンド
 
 ```bash
-npm run dev          # 開発サーバー起動（localhost:4321）
-npm run build        # 型チェック + 本番ビルド
-npm run preview      # ビルド結果のプレビュー
-npm run lint         # ESLint実行
-npm run lint:fix     # ESLint自動修正
-npm run format       # Prettier整形
-npm run format:check # 整形チェック
+pnpm run dev          # 開発サーバー起動（localhost:4321）
+pnpm run build        # 型チェック + 本番ビルド
+pnpm run preview      # ビルド結果のプレビュー
+pnpm run lint         # ESLint実行
+pnpm run lint:fix     # ESLint自動修正
+pnpm run format       # Prettier整形
+pnpm run format:check # 整形チェック
 ```
 
 ## アーキテクチャ
@@ -49,6 +49,8 @@ src/pages/{year}/{month}/
 | `src/layouts/Layout.astro` | ベースHTML構造（イベント固有Layoutがない場合に使用可） |
 | `src/components/`          | 汎用UIパーツ（ButtonLink, MapFrame, TimeTable等）      |
 | `src/styles/global.css`    | 基本リセット・CSS変数デフォルト値                      |
+| `src/types/`               | 共通型定義（LinkTag等）                                |
+| `src/scripts/`             | 共通スクリプト（uploadImages等）                       |
 
 **使い分け**:
 
@@ -90,6 +92,13 @@ src/templates/event/
 - コンポーネント内でスコープ付き`<style>`ブロックを使用
 - CSSフレームワークは未使用
 - グローバルコンポーネントはCSS変数を使用しており、イベント側で上書き可能
+- CSS変数にはフォールバック値を設定する（例：`var(--color-primary, #3b82f6)`）
+
+### アクセシビリティ
+
+- アニメーションには`prefers-reduced-motion`対応を追加する
+- CSSアニメーション: `@media (prefers-reduced-motion: reduce)`で無効化
+- JSアニメーション: `window.matchMedia("(prefers-reduced-motion: reduce)").matches`でスキップ
 
 ### アイコン
 
@@ -118,3 +127,36 @@ import MapFrame from "@/components/MapFrame.astro";
 ```
 
 **ポイント**: テンプレートまたは過去のイベントからコピーして改変するのが効率的。グローバルコンポーネントは併用可能だが、レイアウトとスタイルはイベント固有のものを使用する。
+
+## 実装パターン
+
+### 共通スクリプトとイベント固有設定
+
+共通スクリプト（`src/scripts/`）はイベント固有の設定に依存しない。設定値は呼び出し元から引数で渡す。
+
+```typescript
+// src/scripts/uploadImages.ts - エンドポイントを引数で受け取る
+export const uploadImages = async (data: UploadImagesRequest, endpoint: string) => { ... }
+
+// イベント側で呼び出し時にエンドポイントを渡す
+import { ENDPOINT_UPLOAD_IMAGES } from "../_config/endpoints";
+const resp = await uploadImages(data, ENDPOINT_UPLOAD_IMAGES);
+```
+
+### 共通型定義
+
+Layoutで使用する型など、複数ファイルで共有する型は`src/types/`に定義する。
+
+```typescript
+// src/types/layout.ts
+export type LinkTag = {
+  rel: string;
+  href: string;
+  type?: string;
+  sizes?: string;
+  crossorigin?: string;
+};
+
+// 各Layoutでインポート
+import type { LinkTag } from "@/types/layout";
+```
