@@ -167,6 +167,7 @@ import logo from "../_assets/logo.webp";
 <script>
   import { uploadImages } from "@/scripts/uploadImages";
   import { sanitizeFileName } from "@/scripts/sanitizeFileName";
+  import { ENDPOINT_UPLOAD_IMAGES } from "../_config/endpoints";
 
   const $ = (selector: string) => document.querySelector(selector);
   const form = $(".form") as HTMLFormElement;
@@ -228,7 +229,7 @@ import logo from "../_assets/logo.webp";
     });
 
     try {
-      const resp = await uploadImages({ images: newFiles, path });
+      const resp = await uploadImages({ images: newFiles, path }, ENDPOINT_UPLOAD_IMAGES);
 
       if (resp.status === "success") {
         alert("アップロードに成功しました");

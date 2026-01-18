@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-// import { ENDPOINT_MEDIA_PATH } from "./_config/endpoints";
 import Layout from "./_components/Layout.astro";
 import BlockLink from "@/components/BlockLink.astro";
 import logo from "./_assets/logo.webp";
@@ -59,15 +58,6 @@ const linkTags = [
         <time datetime="2025-05-07">2025.5.7<span class="week">WED</span></time>
       </div>
     </section>
-
-    <!-- <section class="video-container">
-      <video controls class="video">
-        <source
-          src=`${ENDPOINT_MEDIA_PATH}/youth-fellowship-camp-2025/promotional-720p.mp4`
-          type="video/mp4"
-        />
-      </video>
-    </section> -->
 
     <section class="content">
       <ul class="link-list">
@@ -198,16 +188,6 @@ const linkTags = [
 
   .svg {
     vertical-align: top;
-  }
-
-  .video-container {
-    background: white;
-    padding: 0.5em;
-  }
-
-  .video {
-    display: block;
-    width: 100%;
   }
 
   .content {

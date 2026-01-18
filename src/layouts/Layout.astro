@@ -1,12 +1,6 @@
 ---
 import "@/styles/global.css";
-
-type LinkTag = {
-  rel: string;
-  href: string;
-  type?: string;
-  sizes?: string;
-};
+import type { LinkTag } from "@/types/layout";
 
 type Props = {
   title: string;
@@ -28,7 +22,6 @@ const { title, favicon, linkTags } = Astro.props;
     <!-- セキュリティヘッダー -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <link rel="icon" type="image/svg+xml" href={favicon || "/favicon.ico"} />
@@ -45,11 +38,11 @@ const { title, favicon, linkTags } = Astro.props;
 
 <style is:global>
   body {
-    background: var(--color-text);
+    background: var(--color-text, #282928);
   }
 
   .viewport {
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--color-background, #f8fafc);
+    color: var(--color-text, #282928);
   }
 </style>

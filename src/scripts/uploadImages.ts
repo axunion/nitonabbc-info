@@ -1,4 +1,3 @@
-import { ENDPOINT_UPLOAD_IMAGES } from "@/pages/2025/05/_config/endpoints";
 import type { UploadImagesRequest, UploadImagesResponse } from "@/types/api";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -20,7 +19,10 @@ function isValidUploadImagesResponse(data: unknown): data is UploadImagesRespons
   return false;
 }
 
-export const uploadImages = async (data: UploadImagesRequest): Promise<UploadImagesResponse> => {
+export const uploadImages = async (
+  data: UploadImagesRequest,
+  endpoint: string
+): Promise<UploadImagesResponse> => {
   // ファイルサイズとMIMEタイプの事前検証
   for (const file of data.images) {
     if (file.size > MAX_FILE_SIZE) {
@@ -49,7 +51,7 @@ export const uploadImages = async (data: UploadImagesRequest): Promise<UploadIma
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 60000); // 60秒タイムアウト
 
-    const res = await fetch(ENDPOINT_UPLOAD_IMAGES, {
+    const res = await fetch(endpoint, {
       method: "POST",
       body: form,
       signal: controller.signal,
