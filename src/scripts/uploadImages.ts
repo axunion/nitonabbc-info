@@ -28,19 +28,18 @@ export const uploadImages = async (
   data: UploadImagesRequest,
   endpoint: string,
 ): Promise<UploadImagesResponse> => {
-  // ファイルサイズとMIMEタイプの事前検証
   for (const file of data.images) {
     if (file.size > MAX_FILE_SIZE) {
       return {
         status: "error",
-        message: `ファイル "${file.name}" のサイズが大きすぎます(最大10MB)`,
+        message: `File "${file.name}" exceeds maximum size (10MB)`,
       };
     }
 
     if (!ALLOWED_MIME_TYPES.includes(file.type)) {
       return {
         status: "error",
-        message: `ファイル "${file.name}" の形式が対応していません(JPEG、PNG、WebPのみ)`,
+        message: `File "${file.name}" has unsupported format (JPEG, PNG, WebP only)`,
       };
     }
   }
@@ -48,13 +47,13 @@ export const uploadImages = async (
   const form = new FormData();
   form.append("path", data.path);
 
-  data.images.forEach((file) => {
+  for (const file of data.images) {
     form.append("images[]", file);
-  });
+  }
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60秒タイムアウト
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
 
     const res = await fetch(endpoint, {
       method: "POST",
@@ -67,7 +66,7 @@ export const uploadImages = async (
     if (!res.ok) {
       return {
         status: "error",
-        message: `アップロードエラー: ${res.status}`,
+        message: `Upload error: ${res.status}`,
       };
     }
 
@@ -75,33 +74,31 @@ export const uploadImages = async (
     if (!contentType || !contentType.includes("application/json")) {
       return {
         status: "error",
-        message: "サーバーからの応答が不正です",
+        message: "Invalid server response",
       };
     }
 
     const responseData = await res.json();
 
-    // 型ガードによる検証
     if (isValidUploadImagesResponse(responseData)) {
       return responseData;
     }
 
     return {
       status: "error",
-      message: "サーバーからの応答形式が不正です",
+      message: "Invalid response structure",
     };
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
       return {
         status: "error",
-        message: "アップロードがタイムアウトしました",
+        message: "Upload timeout",
       };
     }
 
     return {
       status: "error",
-      message:
-        error instanceof Error ? error.message : "アップロードに失敗しました",
+      message: error instanceof Error ? error.message : "Upload failed",
     };
   }
 };
