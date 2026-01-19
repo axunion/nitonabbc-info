@@ -35,10 +35,8 @@ pnpm install         # 依存パッケージのインストール
 pnpm run dev         # 開発サーバー起動（localhost:4321）
 pnpm run build       # 型チェック + 本番ビルド
 pnpm run preview     # ビルド結果のプレビュー
-pnpm run lint        # ESLint実行
-pnpm run lint:fix    # ESLint自動修正
-pnpm run format      # Prettier整形
-pnpm run format:check # 整形チェック
+pnpm run check       # Biomeでリント・フォーマットチェック
+pnpm run check:write # Biomeで自動修正
 ```
 
 ## 新規イベント追加
