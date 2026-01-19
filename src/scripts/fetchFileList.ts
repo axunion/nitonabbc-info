@@ -1,7 +1,9 @@
 import { ENDPOINT_LIST } from "@/pages/2025/05/_config/endpoints";
 import type { FetchFileListResponse } from "@/types/api";
 
-function isValidFetchFileListResponse(data: unknown): data is FetchFileListResponse {
+function isValidFetchFileListResponse(
+  data: unknown,
+): data is FetchFileListResponse {
   if (typeof data !== "object" || data === null) return false;
 
   const obj = data as Record<string, unknown>;
@@ -20,7 +22,7 @@ function isValidFetchFileListResponse(data: unknown): data is FetchFileListRespo
           "type" in item &&
           (item.type === "file" || item.type === "directory") &&
           "name" in item &&
-          typeof item.name === "string"
+          typeof item.name === "string",
       )
     );
   }
@@ -28,7 +30,9 @@ function isValidFetchFileListResponse(data: unknown): data is FetchFileListRespo
   return false;
 }
 
-export const fetchFileList = async (path: string): Promise<FetchFileListResponse> => {
+export const fetchFileList = async (
+  path: string,
+): Promise<FetchFileListResponse> => {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
 
   try {

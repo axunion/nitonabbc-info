@@ -3,7 +3,8 @@ function getRequiredEnv(key: string): string {
 
   if (!value || typeof value !== "string" || value.trim().length === 0) {
     throw new Error(
-      `Environment variable ${key} is required but not set. ` + `Please set it in your .env file.`
+      `Environment variable ${key} is required but not set. ` +
+        `Please set it in your .env file.`,
     );
   }
 
@@ -19,19 +20,20 @@ function validateUrl(url: string, varName: string): string {
       return url;
     }
     throw new Error(
-      `Environment variable ${varName} must be a valid URL or absolute path. ` + `Received: ${url}`
+      `Environment variable ${varName} must be a valid URL or absolute path. ` +
+        `Received: ${url}`,
     );
   }
 }
 
 export const ENDPOINT_MEDIA_PATH = validateUrl(
   getRequiredEnv("PUBLIC_MEDIA_PATH"),
-  "PUBLIC_MEDIA_PATH"
+  "PUBLIC_MEDIA_PATH",
 );
 
 export const ENDPOINT_MEDIA_API = validateUrl(
   getRequiredEnv("PUBLIC_MEDIA_API"),
-  "PUBLIC_MEDIA_API"
+  "PUBLIC_MEDIA_API",
 );
 
 export const ENDPOINT_LIST = `${ENDPOINT_MEDIA_API}list/`;
