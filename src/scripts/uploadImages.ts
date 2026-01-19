@@ -3,7 +3,9 @@ import type { UploadImagesRequest, UploadImagesResponse } from "@/types/api";
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_MIME_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
-function isValidUploadImagesResponse(data: unknown): data is UploadImagesResponse {
+function isValidUploadImagesResponse(
+  data: unknown,
+): data is UploadImagesResponse {
   if (typeof data !== "object" || data === null) return false;
 
   const obj = data as Record<string, unknown>;
@@ -13,7 +15,10 @@ function isValidUploadImagesResponse(data: unknown): data is UploadImagesRespons
   }
 
   if (obj.status === "success") {
-    return Array.isArray(obj.files) && obj.files.every((file) => typeof file === "string");
+    return (
+      Array.isArray(obj.files) &&
+      obj.files.every((file) => typeof file === "string")
+    );
   }
 
   return false;
@@ -21,7 +26,7 @@ function isValidUploadImagesResponse(data: unknown): data is UploadImagesRespons
 
 export const uploadImages = async (
   data: UploadImagesRequest,
-  endpoint: string
+  endpoint: string,
 ): Promise<UploadImagesResponse> => {
   // ファイルサイズとMIMEタイプの事前検証
   for (const file of data.images) {
@@ -95,7 +100,8 @@ export const uploadImages = async (
 
     return {
       status: "error",
-      message: error instanceof Error ? error.message : "アップロードに失敗しました",
+      message:
+        error instanceof Error ? error.message : "アップロードに失敗しました",
     };
   }
 };
