@@ -43,7 +43,7 @@
 <script>
   import PhotoSwipeLightbox from "@/assets/photoswipe-lightbox.esm.min.js";
   import PhotoSwipe from "@/assets/photoswipe.esm.min.js";
-  import { ENDPOINT_MEDIA_PATH } from "../_config/endpoints";
+  import { ENDPOINT_MEDIA_PATH, ENDPOINT_LIST } from "../_config/endpoints";
   import { fetchFileList } from "@/scripts/fetchFileList";
 
   const GALLERY_PATH = "青年キャンプ 2025/photo-gallery/";
@@ -55,7 +55,7 @@
     const fragment = document.createDocumentFragment();
 
     try {
-      const res = await fetchFileList(GALLERY_PATH);
+      const res = await fetchFileList(GALLERY_PATH, ENDPOINT_LIST);
 
       if (res.status !== "success") {
         console.error("fetchFileList error:", res.message);

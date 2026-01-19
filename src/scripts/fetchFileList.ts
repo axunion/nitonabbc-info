@@ -1,4 +1,3 @@
-import { ENDPOINT_LIST } from "@/pages/2025/05/_config/endpoints";
 import type { FetchFileListResponse } from "@/types/api";
 
 function isValidFetchFileListResponse(
@@ -32,14 +31,15 @@ function isValidFetchFileListResponse(
 
 export const fetchFileList = async (
   path: string,
+  endpoint: string,
 ): Promise<FetchFileListResponse> => {
   const query = path ? `?path=${encodeURIComponent(path)}` : "";
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒タイムアウト
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    const res = await fetch(`${ENDPOINT_LIST}${query}`, {
+    const res = await fetch(`${endpoint}${query}`, {
       signal: controller.signal,
     });
 
@@ -62,7 +62,6 @@ export const fetchFileList = async (
 
     const data = await res.json();
 
-    // 型ガードによる実行時検証
     if (isValidFetchFileListResponse(data)) {
       return data;
     }
