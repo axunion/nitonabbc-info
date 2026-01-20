@@ -35,7 +35,13 @@ html {
 }
 
 body {
+  background: var(--color-text, #282928);
   margin: 0;
+}
+
+.viewport {
+  background: var(--color-background, #f8fafc);
+  color: var(--color-text, #282928);
 }
 
 hr {
