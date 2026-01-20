@@ -19,7 +19,6 @@ const { title, favicon, linkTags } = Astro.props;
     <meta name="robots" content="noindex" />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- セキュリティヘッダー -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -35,14 +34,3 @@ const { title, favicon, linkTags } = Astro.props;
     </div>
   </body>
 </html>
-
-<style is:global>
-  body {
-    background: var(--color-text, #282928);
-  }
-
-  .viewport {
-    background: var(--color-background, #f8fafc);
-    color: var(--color-text, #282928);
-  }
-</style>

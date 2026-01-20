@@ -18,21 +18,17 @@ pnpm run check:write  # Biomeで自動修正
 
 ## アーキテクチャ
 
-### 設計原則：イベントディレクトリの独立性
+### 設計原則
 
-**各イベントディレクトリ（`src/pages/{year}/{month}/`）は完全に独立した単位として扱う。**
-
-- レイアウト、スタイル、コンポーネントはイベントごとに個別に定義する
-- 他のイベントディレクトリのコードに依存しない
-- 共通化よりも各イベントの独自性・柔軟性を優先する
-- 過去のイベントを参考にしてよいが、コピーして独自に改変する
+- **共通Layout + イベント固有スタイル**: 全ページで共通の`Layout.astro`を使用し、イベント固有の配色は`variables.css`で定義
+- **コンポーネントの独立性**: イベント固有のコンポーネント（Header、Footer等）は各イベントディレクトリ内で定義
 
 ### イベントディレクトリ構成
 
 ```
 src/pages/{year}/{month}/
 ├── _assets/           # 画像、PDF、navigation.json
-├── _components/       # Layout.astro、Header、Footer、見出し等
+├── _components/       # Header、Footer、見出し等（Layout.astroは不要）
 ├── _config/           # 設定ファイル（endpoints.ts等）
 ├── _scripts/          # イベント固有のTypeScript/JavaScript
 ├── _styles/
@@ -40,21 +36,24 @@ src/pages/{year}/{month}/
 └── *.astro            # ページファイル
 ```
 
-### グローバルリソース（共有利用可）
+### グローバルリソース
 
-| 場所                       | 用途                                                   |
-| -------------------------- | ------------------------------------------------------ |
-| `src/layouts/Layout.astro` | ベースHTML構造（イベント固有Layoutがない場合に使用可） |
-| `src/components/`          | 汎用UIパーツ（ButtonLink, MapFrame, TimeTable等）      |
-| `src/styles/global.css`    | 基本リセット・CSS変数デフォルト値                      |
-| `src/types/`               | 共通型定義（LinkTag等）                                |
-| `src/scripts/`             | 共通スクリプト（uploadImages等）                       |
+| 場所                       | 用途                                             |
+| -------------------------- | ------------------------------------------------ |
+| `src/layouts/Layout.astro` | 共通HTML構造（全ページで使用）                   |
+| `src/components/`          | 汎用UIパーツ（ButtonLink, MapFrame, TimeTable等）|
+| `src/styles/global.css`    | ベーススタイル・CSS変数デフォルト値・`.viewport` |
+| `src/types/`               | 共通型定義（LinkTag等）                          |
+| `src/scripts/`             | 共通スクリプト（uploadImages等）                 |
 
-**使い分け**:
+### スタイル構成
 
-- グローバルコンポーネントは`@/components/`からインポートして使用可能
-- イベント固有のレイアウト・スタイルを使いたい場合は`_components/Layout.astro`と`_styles/variables.css`を作成
-- グローバルコンポーネントの配色はCSS変数で定義されており、イベント固有の`variables.css`で上書き可能
+| ファイル | 役割 |
+|---------|------|
+| `global.css` | ベーススタイル（タグ + `.viewport`クラス） |
+| `Layout.astro` | HTML構造のみ（スタイルなし） |
+| `variables.css` | CSS変数の上書き（配色カスタマイズ） |
+| ページの`<style is:global>` | `.viewport`スタイルの上書き（暗い背景など） |
 
 ### テンプレート
 
@@ -63,8 +62,8 @@ src/pages/{year}/{month}/
 ```
 src/templates/event/
 ├── _assets/.gitkeep
-├── _components/
-│   └── Layout.astro      # テンプレートレイアウト
+├── _components/.gitkeep
+├── _config/.gitkeep
 ├── _scripts/.gitkeep
 ├── _styles/
 │   └── variables.css     # CSS変数テンプレート（配色カスタマイズ用）
@@ -106,25 +105,35 @@ src/templates/event/
 
 1. `src/templates/event/`を`src/pages/{year}/{month}/`にコピー
 2. `_styles/variables.css`でイベントの配色をカスタマイズ
-3. `_components/Layout.astro`を必要に応じて調整
-4. `_assets/`に画像、PDF、navigation.json等を配置
-5. `index.astro`を編集してイベント内容を作成
-6. 必要に応じて追加のページやコンポーネントを作成
+3. `_assets/`に画像、PDF、navigation.json等を配置
+4. `index.astro`を編集してイベント内容を作成
+5. 必要に応じて追加のページやコンポーネントを作成
 
 **インポートパターン**:
 
 ```astro
 ---
-// イベント固有のレイアウト
-import Layout from "./_components/Layout.astro";
+// 共通Layout + イベント固有のCSS変数
+import Layout from "@/layouts/Layout.astro";
+import "./_styles/variables.css";
 
-// グローバルコンポーネント（必要に応じて使用）
+// グローバルコンポーネント
 import ButtonLink from "@/components/ButtonLink.astro";
 import MapFrame from "@/components/MapFrame.astro";
+
+// イベント固有コンポーネント
+import Header from "./_components/Header.astro";
+import Footer from "./_components/Footer.astro";
 ---
+
+<Layout title="イベント名">
+  <Header />
+  <main>...</main>
+  <Footer />
+</Layout>
 ```
 
-**ポイント**: テンプレートまたは過去のイベントからコピーして改変するのが効率的。グローバルコンポーネントは併用可能だが、レイアウトとスタイルはイベント固有のものを使用する。
+**ポイント**: テンプレートまたは過去のイベントからコピーして改変するのが効率的。共通Layoutを使用し、配色は`variables.css`で上書きする。
 
 ## 実装パターン
 
@@ -143,7 +152,7 @@ const resp = await uploadImages(data, ENDPOINT_UPLOAD_IMAGES);
 
 ### 共通型定義
 
-Layoutで使用する型など、複数ファイルで共有する型は`src/types/`に定義する。
+複数ファイルで共有する型は`src/types/`に定義する。
 
 ```typescript
 // src/types/layout.ts
@@ -155,6 +164,6 @@ export type LinkTag = {
   crossorigin?: string;
 };
 
-// 各Layoutでインポート
+// Layout.astroでインポート
 import type { LinkTag } from "@/types/layout";
 ```
