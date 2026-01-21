@@ -10,12 +10,15 @@
   --color-success: #22c55e;
   --color-warning: #f97316;
   --color-special: #a855f7;
+  --color-loading-overlay: #00000080;
+  --color-loading-spinner: #ccc;
+  --color-qa-background: #80808020;
   --font-serif: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
 }
 
 ::selection {
-  background: var(--color-primary, #3b82f6);
-  color: var(--color-background, #f8fafc);
+  background: var(--color-primary);
+  color: var(--color-background);
   text-shadow: none;
 }
 
@@ -36,13 +39,13 @@ html {
 }
 
 body {
-  background: var(--color-overscroll, #282928);
+  background: var(--color-overscroll);
   margin: 0;
 }
 
 .viewport {
-  background: var(--color-background, #f8fafc);
-  color: var(--color-text, #282928);
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 hr {
