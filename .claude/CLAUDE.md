@@ -25,14 +25,16 @@ pnpm run check:write  # Biomeで自動修正
 
 ### イベントディレクトリ構成
 
+必要なディレクトリ・ファイルのみ作成する。
+
 ```
 src/pages/{year}/{month}/
-├── _assets/           # 画像、PDF、navigation.json
-├── _components/       # Header、Footer、見出し等（Layout.astroは不要）
-├── _config/           # 設定ファイル（endpoints.ts等）
-├── _scripts/          # イベント固有のTypeScript/JavaScript
+├── _assets/           # 画像、PDF、navigation.json（必要な場合）
+├── _components/       # Header、Footer、見出し等（必要な場合）
+├── _config/           # 設定ファイル（必要な場合）
+├── _scripts/          # イベント固有スクリプト（必要な場合）
 ├── _styles/
-│   └── variables.css  # イベント固有のCSS変数（配色定義）
+│   └── variables.css  # CSS変数の上書き（テーマ変更時のみ）
 └── *.astro            # ページファイル
 ```
 
@@ -55,21 +57,6 @@ src/pages/{year}/{month}/
 | `variables.css` | CSS変数の上書き（配色カスタマイズ） |
 | ページの`<style is:global>` | `.viewport`スタイルの上書き（暗い背景など） |
 
-### テンプレート
-
-新規イベント作成用のテンプレートが用意されています。
-
-```
-src/templates/event/
-├── _assets/.gitkeep
-├── _components/.gitkeep
-├── _config/.gitkeep
-├── _scripts/.gitkeep
-├── _styles/
-│   └── variables.css     # CSS変数テンプレート（配色カスタマイズ用）
-└── index.astro           # サンプルページ
-```
-
 ### パスエイリアス
 
 `@/*` → `./src/*`（tsconfig.jsonで設定）
@@ -89,7 +76,12 @@ src/templates/event/
 - コンポーネント内でスコープ付き`<style>`ブロックを使用
 - CSSフレームワークは未使用
 - グローバルコンポーネントはCSS変数を使用しており、イベント側で上書き可能
-- CSS変数にはフォールバック値を設定する（例：`var(--color-primary, #3b82f6)`）
+
+### CSS変数
+
+- **デフォルト値**: `global.css`の`:root`で全変数を定義
+- **イベント固有の上書き**: `variables.css`には上書きする変数のみ定義（デフォルトと同じ値は不要）
+- **フォールバック**: `global.css`で定義済みの変数にはフォールバック不要（`var(--color-primary)`）
 
 ### アクセシビリティ
 
@@ -103,37 +95,11 @@ src/templates/event/
 
 ## 新規イベント追加手順
 
-1. `src/templates/event/`を`src/pages/{year}/{month}/`にコピー
-2. `_styles/variables.css`でイベントの配色をカスタマイズ
-3. `_assets/`に画像、PDF、navigation.json等を配置
-4. `index.astro`を編集してイベント内容を作成
-5. 必要に応じて追加のページやコンポーネントを作成
-
-**インポートパターン**:
-
-```astro
----
-// 共通Layout + イベント固有のCSS変数
-import Layout from "@/layouts/Layout.astro";
-import "./_styles/variables.css";
-
-// グローバルコンポーネント
-import ButtonLink from "@/components/ButtonLink.astro";
-import MapFrame from "@/components/MapFrame.astro";
-
-// イベント固有コンポーネント
-import Header from "./_components/Header.astro";
-import Footer from "./_components/Footer.astro";
----
-
-<Layout title="イベント名">
-  <Header />
-  <main>...</main>
-  <Footer />
-</Layout>
-```
-
-**ポイント**: テンプレートまたは過去のイベントからコピーして改変するのが効率的。共通Layoutを使用し、配色は`variables.css`で上書きする。
+1. 過去のイベント（`src/pages/2024/09/`等）を参考に`src/pages/{year}/{month}/index.astro`を作成
+2. 必要に応じてディレクトリを追加:
+   - `_assets/`: 画像、PDF等
+   - `_components/`: イベント固有コンポーネント
+   - `_styles/variables.css`: テーマをカスタマイズする場合のみ
 
 ## 実装パターン
 
