@@ -23,21 +23,6 @@ pnpm run check:write  # Biomeで自動修正
 - **共通Layout + イベント固有スタイル**: 全ページで共通の`Layout.astro`を使用し、イベント固有の配色は`variables.css`で定義
 - **コンポーネントの独立性**: イベント固有のコンポーネント（Header、Footer等）は各イベントディレクトリ内で定義
 
-### イベントディレクトリ構成
-
-必要なディレクトリ・ファイルのみ作成する。
-
-```
-src/pages/{year}/{month}/
-├── _assets/           # 画像、PDF、navigation.json（必要な場合）
-├── _components/       # Header、Footer、見出し等（必要な場合）
-├── _config/           # 設定ファイル（必要な場合）
-├── _scripts/          # イベント固有スクリプト（必要な場合）
-├── _styles/
-│   └── variables.css  # CSS変数の上書き（テーマ変更時のみ）
-└── *.astro            # ページファイル
-```
-
 ### グローバルリソース
 
 | 場所                       | 用途                                             |
@@ -93,13 +78,9 @@ src/pages/{year}/{month}/
 
 `@iconify-json/mdi`を`astro-icon`経由で使用（例：`mdi:menu`、`mdi:photo-camera`）
 
-## 新規イベント追加手順
+## 新規イベント追加
 
-1. 過去のイベント（`src/pages/2024/09/`等）を参考に`src/pages/{year}/{month}/index.astro`を作成
-2. 必要に応じてディレクトリを追加:
-   - `_assets/`: 画像、PDF等
-   - `_components/`: イベント固有コンポーネント
-   - `_styles/variables.css`: テーマをカスタマイズする場合のみ
+`/create-event` skillを使用。
 
 ## 実装パターン
 
