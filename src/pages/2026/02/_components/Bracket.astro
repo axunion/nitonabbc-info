@@ -1,0 +1,37 @@
+<p class="p">
+  <slot />
+</p>
+
+<style>
+  .p {
+    letter-spacing: 0.05em;
+    padding: 1em 1.5em;
+    position: relative;
+    text-align: justify;
+  }
+
+  .p::before,
+  .p::after {
+    content: "";
+    height: 1.5em;
+    position: absolute;
+    width: 1.5em;
+    z-index: 0;
+  }
+
+  .p::before {
+    border-left: currentColor solid 1px;
+    border-radius: 2px 0 0 0;
+    border-top: currentColor solid 1px;
+    left: 0;
+    top: 0;
+  }
+
+  .p::after {
+    border-bottom: currentColor solid 1px;
+    border-radius: 0 0 2px 0;
+    border-right: currentColor solid 1px;
+    bottom: 0;
+    right: 0;
+  }
+</style>
