@@ -1,10 +1,3 @@
-/**
- * Event-specific CSS variable overrides
- *
- * Green and pink theme for this event.
- */
-
 :root {
-  --color-primary: #2e8b57;
-  --color-accent: #cc0074;
+  --brand: #2e8b57;
 }

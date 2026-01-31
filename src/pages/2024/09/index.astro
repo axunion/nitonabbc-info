@@ -2,13 +2,13 @@
 import Layout from "@/layouts/Layout.astro";
 import "./_styles/variables.css";
 import { Image } from "astro:assets";
-import ButtonLink from "@/components/ButtonLink.astro";
-import MapFrame from "@/components/MapFrame.astro";
-import TimeTable from "@/components/TimeTable.astro";
 import breakfastAllergenInformation from "./_assets/Breakfast_Allergen_Information.pdf";
 import dinnerAllergenInformation from "./_assets/Dinner_Allergy_Information.pdf";
 import hero from "./_assets/hero.webp";
 import speaker from "./_assets/speaker.webp";
+import ButtonLink from "./_components/ButtonLink.astro";
+import MapFrame from "./_components/MapFrame.astro";
+import TimeTable from "./_components/TimeTable.astro";
 
 const ja = {
   title: "京葉地区一泊お泊まり会のご案内",
@@ -474,7 +474,7 @@ const timetable2 = {
 <style>
   .welcome {
     align-items: center;
-    background: var(--color-text) no-repeat center center / cover;
+    background: var(--text-1) no-repeat center center / cover;
     display: flex;
     flex-direction: column;
     font-family: var(--font-serif);
@@ -520,7 +520,7 @@ const timetable2 = {
   }
 
   .head-1 {
-    color: var(--color-primary);
+    color: var(--brand);
     font-size: 150%;
     font-style: italic;
     margin: 2em 0 1em;
@@ -529,7 +529,7 @@ const timetable2 = {
   }
 
   .head-2 {
-    border-left: var(--color-primary) solid 2px;
+    border-left: var(--brand) solid 2px;
     font-size: 125%;
     font-style: italic;
     margin: 2em 0 1em;
@@ -537,15 +537,15 @@ const timetable2 = {
   }
 
   .head-3 {
-    border-bottom: var(--color-primary) solid 1px;
-    border-image: linear-gradient(to right, var(--color-primary), transparent) 1;
+    border-bottom: var(--brand) solid 1px;
+    border-image: linear-gradient(to right, var(--brand), transparent) 1;
     font-size: 110%;
     margin: 2em 0 1em;
     padding: 0 0.25em 0.25em;
   }
 
   .notice {
-    border: var(--color-accent) solid 1px;
+    border: #cc0074 solid 1px;
     border-radius: 0.5em;
     margin: 1em 0;
     padding: 0.5em;
@@ -563,7 +563,7 @@ const timetable2 = {
   }
 
   .strong {
-    color: var(--color-accent);
+    color: #cc0074;
   }
 
   .no-wrap {
@@ -572,7 +572,7 @@ const timetable2 = {
   }
 
   .link {
-    color: var(--color-primary);
+    color: var(--brand);
     text-decoration: underline;
   }
 

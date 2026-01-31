@@ -1,12 +1,6 @@
-/**
- * Event-specific CSS variable overrides
- *
- * Dark theme for this event.
- */
-
 :root {
-  --color-background: #282928;
-  --color-text: #f8fafc;
-  --color-subtext: #94a3b8;
-  --color-divider: #475569;
+  --surface: #282928;
+  --text-1: #f8fafc;
+  --text-2: #94a3b8;
+  --line: #475569;
 }

@@ -1,19 +1,20 @@
 ---
-import Bracket from "@/components/Bracket.astro";
-import ButtonLink from "@/components/ButtonLink.astro";
-import ClippedImage from "@/components/ClippedImage.astro";
-import MapFrame from "@/components/MapFrame.astro";
-import PriceTable from "@/components/PriceTable.astro";
-import QAList from "@/components/QAList.astro";
-import ShapedText from "@/components/ShapedText.astro";
-import TimeTable from "@/components/TimeTable.astro";
 import Layout from "@/layouts/Layout.astro";
 import hero from "./_assets/hero.webp";
 import speaker from "./_assets/speaker.webp";
+import "./_styles/variables.css";
+import Bracket from "./_components/Bracket.astro";
+import ButtonLink from "./_components/ButtonLink.astro";
+import ClippedImage from "./_components/ClippedImage.astro";
 import H2 from "./_components/H2.astro";
 import H3 from "./_components/H3.astro";
 import H4 from "./_components/H4.astro";
+import MapFrame from "./_components/MapFrame.astro";
+import PriceTable from "./_components/PriceTable.astro";
+import QAList from "./_components/QAList.astro";
+import ShapedText from "./_components/ShapedText.astro";
 import Summary from "./_components/Summary.astro";
+import TimeTable from "./_components/TimeTable.astro";
 
 const overview = {
   title: "京葉地区青年キャンプ 2025",
@@ -357,7 +358,7 @@ const partialParticipation = [
 
 <style>
   .header {
-    background: var(--color-text) no-repeat center center / cover;
+    background: var(--text-1) no-repeat center center / cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -373,7 +374,7 @@ const partialParticipation = [
   }
 
   .theme {
-    color: var(--color-background);
+    color: var(--surface);
     margin: 1em;
     text-align: right;
   }
@@ -389,7 +390,7 @@ const partialParticipation = [
   }
 
   .strong {
-    color: var(--color-accent);
+    color: #ec4899;
   }
 
   .speaker {
@@ -428,7 +429,7 @@ const partialParticipation = [
     );
     border: currentColor solid 3px;
     border-radius: 4px;
-    color: var(--color-accent);
+    color: #ec4899;
     margin: 1em 0;
     padding: 2em;
     text-align: center;

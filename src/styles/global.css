@@ -1,24 +1,15 @@
 :root {
-  --color-overscroll: #282928;
-  --color-background: #f8fafc;
-  --color-primary: #3b82f6;
-  --color-secondary: #6366f1;
-  --color-text: #282928;
-  --color-subtext: #64748b;
-  --color-accent: #ec4899;
-  --color-divider: #cbd5e1;
-  --color-success: #22c55e;
-  --color-warning: #f97316;
-  --color-special: #a855f7;
-  --color-loading-overlay: #00000080;
-  --color-loading-spinner: #ccc;
-  --color-qa-background: #80808020;
+  --brand: var(--blue-6);
+  --surface: var(--gray-0);
+  --text-1: var(--gray-9);
+  --text-2: var(--gray-6);
+  --line: var(--gray-4);
   --font-serif: "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho", serif;
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: var(--color-background);
+  background: var(--brand);
+  color: var(--surface);
   text-shadow: none;
 }
 
@@ -39,13 +30,13 @@ html {
 }
 
 body {
-  background: var(--color-overscroll);
+  background: var(--gray-9);
   margin: 0;
 }
 
 .viewport {
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--surface);
+  color: var(--text-1);
 }
 
 hr {

@@ -1,0 +1,26 @@
+---
+type Props = {
+  src: string;
+};
+
+const { src } = Astro.props;
+---
+
+<iframe
+  class="iframe"
+  src={src}
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+>
+</iframe>
+
+<style>
+  .iframe {
+    border: 0;
+    display: block;
+    height: 50vh;
+    margin: 1em 0;
+    width: 100%;
+  }
+</style>
