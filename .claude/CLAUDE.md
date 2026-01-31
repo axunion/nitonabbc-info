@@ -21,25 +21,26 @@ pnpm run check:write  # Biomeで自動修正
 ### 設計原則
 
 - **共通Layout + イベント固有スタイル**: 全ページで共通の`Layout.astro`を使用し、イベント固有の配色は`variables.css`で定義
-- **コンポーネントの独立性**: イベント固有のコンポーネント（Header、Footer等）は各イベントディレクトリ内で定義
+- **コンポーネント完全独立**: すべてのコンポーネントは各イベントの`_components/`内に定義。共有コンポーネントディレクトリは存在しない
 
 ### グローバルリソース
 
-| 場所                       | 用途                                             |
-| -------------------------- | ------------------------------------------------ |
-| `src/layouts/Layout.astro` | 共通HTML構造（全ページで使用）                   |
-| `src/components/`          | 汎用UIパーツ（ButtonLink, MapFrame, TimeTable等）|
-| `src/styles/global.css`    | ベーススタイル・CSS変数デフォルト値・`.viewport` |
-| `src/types/`               | 共通型定義（LinkTag等）                          |
-| `src/scripts/`             | 共通スクリプト（uploadImages等）                 |
+| 場所                       | 用途                                        |
+| -------------------------- | ------------------------------------------- |
+| `src/layouts/Layout.astro` | 共通HTML構造（全ページで使用）              |
+| `src/styles/palette.css`   | カラートークン定義                          |
+| `src/styles/global.css`    | テーマ変数・リセットスタイル・`.viewport`   |
+| `src/types/`               | 共通型定義（LinkTag等）                     |
+| `src/scripts/`             | 共通スクリプト（uploadImages等）            |
 
 ### スタイル構成
 
 | ファイル | 役割 |
 |---------|------|
-| `global.css` | ベーススタイル（タグ + `.viewport`クラス） |
+| `palette.css` | カラートークン（`--gray-0`〜`--gray-9`, `--blue-2`〜`--blue-8` 等） |
+| `global.css` | テーマ変数（`--brand`, `--surface` 等） + リセットスタイル |
 | `Layout.astro` | HTML構造のみ（スタイルなし） |
-| `variables.css` | CSS変数の上書き（配色カスタマイズ） |
+| `variables.css` | テーマ変数の上書き（配色カスタマイズ） |
 | ページの`<style is:global>` | `.viewport`スタイルの上書き（暗い背景など） |
 
 ### パスエイリアス
@@ -60,13 +61,30 @@ pnpm run check:write  # Biomeで自動修正
 - イベント固有の配色は`_styles/variables.css`で定義
 - コンポーネント内でスコープ付き`<style>`ブロックを使用
 - CSSフレームワークは未使用
-- グローバルコンポーネントはCSS変数を使用しており、イベント側で上書き可能
 
-### CSS変数
+### カラーパレット
 
-- **デフォルト値**: `global.css`の`:root`で全変数を定義
+`src/styles/palette.css` にプロジェクト共通のカラートークンを定義:
+
+- **Gray**: `--gray-0`(最も明るい) 〜 `--gray-9`(最も暗い) の10段階
+- **色**: 各色4段階（`--{color}-2`, `--{color}-4`, `--{color}-6`, `--{color}-8`）
+- 色の種類: blue, green, red, orange, violet, pink, indigo
+
+### テーマ変数
+
+`global.css` の `:root` で6つのテーマ変数を定義:
+
+| 変数 | 用途 | デフォルト値 |
+|------|------|-------------|
+| `--brand` | メインカラー | `var(--blue-6)` |
+| `--surface` | 背景色 | `var(--gray-0)` |
+| `--text-1` | 本文テキスト | `var(--gray-9)` |
+| `--text-2` | サブテキスト | `var(--gray-6)` |
+| `--line` | ボーダー・区切り線 | `var(--gray-4)` |
+| `--font-serif` | セリフフォント | Times New Roman系 |
+
 - **イベント固有の上書き**: `variables.css`には上書きする変数のみ定義（デフォルトと同じ値は不要）
-- **フォールバック**: `global.css`で定義済みの変数にはフォールバック不要（`var(--color-primary)`）
+- **追加の色**: コンポーネント内でパレットの色を直接参照（`var(--green-6)`等）。テーマ変数を増やさない
 
 ### アクセシビリティ
 

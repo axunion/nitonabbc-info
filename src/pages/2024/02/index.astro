@@ -1,11 +1,11 @@
 ---
-import ButtonLink from "@/components/ButtonLink.astro";
-import EventDetailTable from "@/components/EventDetailTable.astro";
-import MapFrame from "@/components/MapFrame.astro";
 import Layout from "@/layouts/Layout.astro";
 import qr202402 from "./_assets/qr-202402.png";
 import qrKeiyo from "./_assets/qr-openchat-keiyo.webp";
 import hero from "./_assets/simple-resurrection-theme.webp";
+import ButtonLink from "./_components/ButtonLink.astro";
+import EventDetailTable from "./_components/EventDetailTable.astro";
+import MapFrame from "./_components/MapFrame.astro";
 
 const title = "京葉地区合同青年会のご案内";
 const eventDetails = {
@@ -111,7 +111,7 @@ const eventDetails = {
 
 <style>
   body {
-    background: var(--color-background);
+    background: var(--surface);
     font-size: 14px;
     padding: 80px 40px;
   }

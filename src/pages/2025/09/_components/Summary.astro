@@ -55,8 +55,8 @@ const { items } = Astro.props;
   }
 
   .item {
-    border: var(--color-divider) solid 1px;
-    border-left: var(--color-secondary) solid 4px;
+    border: var(--line) solid 1px;
+    border-left: #6366f1 solid 4px;
     border-radius: 0 4px 4px 0;
     padding: 1.5em 1em;
   }
@@ -70,7 +70,7 @@ const { items } = Astro.props;
   }
 
   .icon {
-    color: var(--color-secondary);
+    color: #6366f1;
     display: flex;
     font-size: 120%;
   }
@@ -81,7 +81,7 @@ const { items } = Astro.props;
 
   .link {
     align-items: center;
-    color: var(--color-primary);
+    color: var(--brand);
     display: inline-flex;
     gap: 0.25em;
     text-decoration: underline;

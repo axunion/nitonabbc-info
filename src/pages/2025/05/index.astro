@@ -2,10 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import "./_styles/variables.css";
 import { Image } from "astro:assets";
-import BlockLink from "@/components/BlockLink.astro";
 import lakeYamanaka from "./_assets/lake-yamanaka.webp";
 import logo from "./_assets/logo.webp";
 import navList from "./_assets/navigation.json";
+import BlockLink from "./_components/BlockLink.astro";
 
 const linkTags = [
   {
@@ -192,8 +192,8 @@ const linkTags = [
   }
 
   .content {
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--surface);
+    color: var(--text-1);
     padding: 80px 0;
   }
 
@@ -225,8 +225,8 @@ const linkTags = [
   }
 
   .footer {
-    background: var(--color-background);
-    color: var(--color-text);
+    background: var(--surface);
+    color: var(--text-1);
     font-size: 90%;
     padding: 40px 1em;
     text-align: center;

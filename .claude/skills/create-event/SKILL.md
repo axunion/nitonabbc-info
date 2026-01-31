@@ -14,20 +14,62 @@ description: 新しいイベントページを作成する。配色テーマと�
 ```
 src/pages/{year}/{month}/
 ├── _assets/           # 画像（hero.webp等）、PDF
-├── _components/       # ページ内で繰り返す要素のコンポーネント
+├── _components/       # 全コンポーネント（共有なし、すべてイベント固有）
 ├── _config/           # 設定ファイル（必要な場合）
 ├── _scripts/          # イベント固有スクリプト（必要な場合）
 ├── _styles/
-│   └── variables.css  # CSS変数の上書き（テーマ変更時のみ）
+│   └── variables.css  # テーマ変数の上書き（テーマ変更時のみ）
 └── *.astro            # ページファイル
 ```
 
 ## コンポーネント化の方針
 
+- **すべてのコンポーネントはイベント固有**: `src/components/` は使用しない。
 - ページ作成時、繰り返し使われる要素（見出し、カード等）は `_components/` に切り出す
 - スタイルはイベントごとに毎回少しずつ変える（固定テンプレートにしない）
 - フォーマルかつシンプルなデザインをベースに、自由にアレンジする
-- CSS変数（`--color-primary` 等）を活用してテーマに適応させる
+- テーマ変数（`--brand`, `--surface` 等）とパレット（`--blue-6` 等）を活用
+
+## コンポーネントテンプレート
+
+`.claude/skills/create-event/templates/` に汎用コンポーネントのリファレンス実装がある。
+
+| テンプレート | 用途 |
+|-------------|------|
+| `ButtonLink.astro` | CTAボタンリンク（`--brand`, `--surface` 使用） |
+| `MapFrame.astro` | Google Maps埋め込み |
+| `TimeTable.astro` | スケジュール表 |
+| `Bracket.astro` | 装飾括弧テキスト（`currentColor` 使用） |
+
+使い方:
+- テンプレートの内容をイベントの `_components/` にコピーする
+- そのまま使うか、イベントのデザインに応じてカスタマイズする
+- テンプレートにないコンポーネント（Header, Footer, 見出し等）はスキルが新規作成する
+
+## カラーパレット
+
+`src/styles/palette.css` に定義されたカラートークンを使用する。
+
+- **Gray**: `--gray-0`(明) 〜 `--gray-9`(暗) の10段階
+- **色**: `--{color}-2`(明), `--{color}-4`, `--{color}-6`, `--{color}-8`(暗) の4段階
+- 色の種類: blue, green, red, orange, violet, pink, indigo
+
+## テーマ変数
+
+`global.css` で定義されるデフォルト値:
+
+```css
+:root {
+  --brand: var(--blue-6);     /* メインカラー */
+  --surface: var(--gray-0);   /* 背景色 */
+  --text-1: var(--gray-9);    /* 本文テキスト */
+  --text-2: var(--gray-6);    /* サブテキスト */
+  --line: var(--gray-4);      /* ボーダー・区切り線 */
+  --font-serif: ...;          /* セリフフォント */
+}
+```
+
+追加の色はパレットトークンをコンポーネント内で直接参照する（`var(--pink-6)` 等）。テーマ変数を増やさない。
 
 ## イベント形式
 
@@ -43,30 +85,6 @@ src/pages/{year}/{month}/
 | ライト（デフォルト） | variables.css不要 |
 | ダーク | 暗い背景、白文字。variables.cssで上書き |
 | カスタム | メインカラーと背景を追加で質問 |
-
-### ダークテーマ例
-
-```css
-:root {
-  --color-primary: #60a5fa;
-  --color-secondary: #818cf8;
-  --color-accent: #f472b6;
-  --color-text: #ffffff;
-  --color-subtext: #94a3b8;
-  --color-background: #1e293b;
-  --color-overscroll: #0f172a;
-}
-```
-
-### カスタム例（オレンジ系・明るい背景）
-
-```css
-:root {
-  --color-primary: #ea580c;
-  --color-secondary: #f97316;
-  --color-accent: #dc2626;
-}
-```
 
 ## 実行手順
 
@@ -101,7 +119,7 @@ AskUserQuestionツールで以下を質問：
 以下の順序でファイルを作成する：
 
 1. **`_assets/` ディレクトリ**: ヒーロー画像用に空のディレクトリを作成
-2. **`_components/`**: ページ内で繰り返す要素をコンポーネントとして作成
+2. **`_components/`**: テンプレート（`templates/`）があるコンポーネントはコピーして配置し、必要に応じてカスタマイズ。その他はスキルが新規作成
 3. **`_styles/variables.css`**: テーマ変更時のみ
 4. **`index.astro`**: メインページ（コンポーネントをインポートして使用）
 
@@ -131,4 +149,5 @@ AskUserQuestionツールで以下を質問：
 - 日本語でコミュニケーション
 - ページ内で繰り返す要素は `_components/` に切り出す
 - `_assets/` ディレクトリは常に作成する（ヒーロー画像の追加先として）
-- `src/components/` の共通コンポーネントを活用する
+- すべてのコンポーネントをイベント固有の `_components/` に作成する（`src/components/` は使用しない）
+- テーマ変数にはパレットの値を使用する（例: `--brand: var(--green-6);`）
