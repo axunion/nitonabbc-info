@@ -1,0 +1,30 @@
+<h2 class="h2">
+  <span class="text"><slot /></span>
+</h2>
+
+<style>
+  .h2 {
+    align-items: center;
+    color: var(--brand);
+    display: flex;
+    gap: 0.75em;
+    letter-spacing: 0.1em;
+    margin: 40px 0;
+  }
+
+  .h2::before,
+  .h2::after {
+    background: linear-gradient(to right, var(--brand), transparent);
+    content: "";
+    flex: 1;
+    height: 1px;
+  }
+
+  .h2::after {
+    background: linear-gradient(to left, var(--brand), transparent);
+  }
+
+  .text {
+    flex-shrink: 0;
+  }
+</style>

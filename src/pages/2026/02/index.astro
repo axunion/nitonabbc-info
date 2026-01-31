@@ -1,0 +1,224 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import hero from "./_assets/hero.webp";
+import "./_styles/variables.css";
+import Bracket from "./_components/Bracket.astro";
+import ButtonLink from "./_components/ButtonLink.astro";
+import H2 from "./_components/H2.astro";
+import MapFrame from "./_components/MapFrame.astro";
+
+const overview = {
+  title: "京葉地区合同青年会",
+  theme: "キリストに倣いて",
+  themeVerse: "マタイの福音書 11:29",
+};
+---
+
+<Layout title={overview.title}>
+  <header class="header" style={{ backgroundImage: `url(${hero.src})` }}>
+    <p class="subtitle">{overview.title}</p>
+    <div class="header-inner">
+      <h1 class="h1">{overview.theme}</h1>
+      <p class="verse">- {overview.themeVerse} -</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <p>主の御名を賛美いたします。</p>
+      <p>
+        このたび、京葉地区合同青年会を開催する運びとなりましたことを、皆様にご案内申し上げます。
+      </p>
+      <p>
+        祈りと交わりを通じて、信仰の歩みを共に励まし合うこの機会へのご参加を、心よりお待ち申し上げております。
+      </p>
+    </section>
+
+    <section class="section">
+      <H2>概要</H2>
+
+      <div class="overview">
+        <div class="overview-item">
+          <span class="overview-label">Date</span>
+          <span class="overview-value"
+            >2026.2.22<small class="overview-sub">（日）</small></span
+          >
+          <span class="overview-detail">16:00 - 18:00</span>
+        </div>
+
+        <hr class="overview-divider" />
+
+        <div class="overview-item">
+          <span class="overview-label">Speaker</span>
+          <span class="overview-value">川島実成師</span>
+          <span class="overview-detail">浦和聖書バプテスト教会牧師</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <H2>講師挨拶</H2>
+
+      <Bracket>
+        『キリストに倣いて』というテーマを頂き、考えさせられています。みことばの準備のためにお祈りしてくださると感謝です。兄姉とお会いできますこと楽しみにしています
+      </Bracket>
+    </section>
+
+    <section class="section">
+      <H2>お申し込み</H2>
+
+      <p>下記のリンクより、Webフォームからお申し込みください。</p>
+      <ButtonLink
+        href="https://form.nitonabbc.org/2026/02/apply/"
+        target="_blank"
+      >
+        参加申し込み
+      </ButtonLink>
+    </section>
+
+    <section class="section">
+      <H2>会場</H2>
+
+      <p class="venue-name">高洲コミュニティセンター</p>
+      <p class="venue-address">千葉市美浜区高洲3丁目12番1号</p>
+      <MapFrame
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7255.967099470254!2d140.07041705846083!3d35.62664631411742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602283a63e6a58d3%3A0xdd2f64db3cace14e!2z5Y2D6JGJ5biCIOmrmOa0suOCs-ODn-ODpeODi-ODhuOCo-OCu-ODs-OCv-ODvA!5e0!3m2!1sja!2sjp!4v1769844186886!5m2!1sja!2sjp"
+      />
+
+    </section>
+
+    <section class="section">
+      <H2>お問い合わせ</H2>
+
+      <p>
+        ご質問やご不明な点がございましたら、LINEオープンチャットからお気軽にお問い合わせください。
+      </p>
+      <p class="passcode">🔐 参加コード: 0333</p>
+      <ButtonLink
+        href="https://line.me/ti/g2/WYr1mnNiAIT7mb_pyn2T5JoEMcZXyGUPchf7IA"
+        target="_blank"
+      >
+        オープンチャット
+      </ButtonLink>
+    </section>
+  </main>
+
+  <footer class="footer"><small>京葉地区合同青年会</small></footer>
+</Layout>
+
+<style>
+  .header {
+    background: var(--text-1) no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100svh;
+  }
+
+  .header-inner {
+    background: linear-gradient(transparent, #00000088 30%, #000000cc);
+    color: var(--surface);
+    padding: 6em 1.5em 2em;
+    text-align: right;
+  }
+
+  .h1 {
+    font-size: 200%;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .verse {
+    font-family: var(--font-serif);
+    font-style: italic;
+    margin: 0.75em 0 0;
+    opacity: 0.8;
+  }
+
+  .subtitle {
+    color: var(--surface);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    margin: 0;
+    padding: 0.75em 1em;
+    text-shadow: 0 1px 4px #00000080;
+  }
+
+  .main {
+    margin: auto;
+    max-width: 600px;
+    padding: 0 1.5em;
+  }
+
+  .section {
+    margin: 12vh 0;
+  }
+
+  .overview {
+    margin: 2em 0;
+    text-align: center;
+  }
+
+  .overview-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1em 0;
+  }
+
+  .overview-label {
+    color: var(--brand);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: bolder;
+    letter-spacing: 0.2em;
+  }
+
+  .overview-value {
+    font-size: 150%;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+
+  .overview-sub {
+    font-size: 75%;
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+  .overview-detail {
+    color: var(--text-2);
+  }
+
+  .overview-divider {
+    border: none;
+    border-top: var(--line) solid 1px;
+    margin: auto;
+    width: 3em;
+  }
+
+  .venue-name {
+    font-size: 110%;
+    font-weight: bold;
+    margin: 0 0 0.25em;
+    text-align: center;
+  }
+
+  .venue-address {
+    color: var(--text-2);
+    font-size: 90%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .passcode {
+    color: var(--pink-6);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  .footer {
+    padding: 15vh 0 5vh;
+    text-align: center;
+  }
+</style>
