@@ -6,28 +6,15 @@ import lakeYamanaka from "./_assets/lake-yamanaka.webp";
 import logo from "./_assets/logo.webp";
 import navList from "./_assets/navigation.json";
 import BlockLink from "./_components/BlockLink.astro";
-
-const linkTags = [
-  {
-    rel: "preconnect",
-    href: "https://fonts.googleapis.com",
-  },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossorigin: "",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ『起きよ！輝け』イザヤ60:1.25MON7WED",
-  },
-];
 ---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=テーマ『起きよ！輝け』イザヤ60:1.25MON7WED" />
 
 <Layout
   title="2025 第56回JBBF全国青年フェローシップキャンプ"
   favicon={logo.src}
-  linkTags={linkTags}
 >
   <header class="block">
     <h1 class="h1 gradient-text">

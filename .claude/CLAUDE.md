@@ -30,7 +30,7 @@ pnpm run check:write  # Biomeで自動修正
 | `src/layouts/Layout.astro` | 共通HTML構造（全ページで使用）              |
 | `src/styles/palette.css`   | カラートークン定義                          |
 | `src/styles/global.css`    | テーマ変数・リセットスタイル・`.viewport`   |
-| `src/types/`               | 共通型定義（LinkTag等）                     |
+| `src/types/`               | 共通型定義（API型等）                       |
 | `src/scripts/`             | 共通スクリプト（uploadImages等）            |
 
 ### スタイル構成
@@ -120,15 +120,9 @@ const resp = await uploadImages(data, ENDPOINT_UPLOAD_IMAGES);
 複数ファイルで共有する型は`src/types/`に定義する。
 
 ```typescript
-// src/types/layout.ts
-export type LinkTag = {
-  rel: string;
-  href: string;
-  type?: string;
-  sizes?: string;
-  crossorigin?: string;
+// src/types/api.ts - API関連の型定義
+export type UploadImagesRequest = {
+  path: string;
+  images: File[];
 };
-
-// Layout.astroでインポート
-import type { LinkTag } from "@/types/layout";
 ```
