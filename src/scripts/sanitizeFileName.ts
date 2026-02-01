@@ -45,20 +45,3 @@ export function sanitizeFileName(input: string): string {
 
   return sanitized;
 }
-
-/**
- * Sanitize a full file path by sanitizing each segment individually.
- */
-export function sanitizePath(path: string): string {
-  const segments = path.split("/").filter((s) => s.length > 0);
-
-  const sanitizedSegments = segments.map((segment) => {
-    try {
-      return sanitizeFileName(segment);
-    } catch {
-      throw new Error(`Invalid path segment: "${segment}"`);
-    }
-  });
-
-  return sanitizedSegments.join("/");
-}
