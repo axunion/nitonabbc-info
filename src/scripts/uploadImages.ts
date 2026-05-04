@@ -71,7 +71,7 @@ export const uploadImages = async (
     }
 
     const contentType = res.headers.get("content-type");
-    if (!contentType || !contentType.includes("application/json")) {
+    if (!contentType?.includes("application/json")) {
       return {
         status: "error",
         message: "Invalid server response",
