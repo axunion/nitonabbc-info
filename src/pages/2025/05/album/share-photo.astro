@@ -186,7 +186,6 @@ import Note from "../_components/Note.astro";
 
     const files = Array.from(inputFile.files);
 
-    // 教会名のサニタイズ(tryでエラーハンドリング)
     let sanitizedName: string;
     try {
       sanitizedName = sanitizeFileName(inputText.value);
@@ -195,25 +194,19 @@ import Note from "../_components/Note.astro";
       return;
     }
 
-    // パス構築(年度を動的に取得)
     const currentYear = new Date().getFullYear();
     const path = `youth-fellowship-camp-${currentYear}/photo-gallery/${sanitizedName}/`;
 
-    // タイムスタンプ生成
     const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
 
-    // ファイル名のサニタイズと再構築
     const newFiles = files.map((file) => {
       try {
-        // 拡張子を取得
         const extensionMatch = file.name.match(/\.([^.]+)$/);
         const extension = extensionMatch ? extensionMatch[1] : "";
 
-        // ファイル名本体をサニタイズ
         const baseName = file.name.replace(/\.[^.]+$/, "");
         const sanitizedBaseName = sanitizeFileName(baseName);
 
-        // 新しいファイル名
         const newName = `${timestamp}-${sanitizedBaseName}${extension ? "." + extension : ""}`;
 
         return new File([file], newName, { type: file.type });
@@ -227,11 +220,9 @@ import Note from "../_components/Note.astro";
 
       if (resp.status === "success") {
         alert("アップロードに成功しました");
-        // フォームをリセット
         inputFile.value = "";
         inputText.value = "";
       } else {
-        // エラーメッセージをより具体的に表示
         alert(
           `アップロードに失敗しました\n\n${resp.message}\n\n恐れ入りますが、再度お試しください`
         );

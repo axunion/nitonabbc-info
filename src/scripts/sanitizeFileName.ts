@@ -1,7 +1,3 @@
-/**
- * Sanitize file/directory names for safe filesystem operations.
- * Prevents path traversal attacks and allows only safe characters.
- */
 export function sanitizeFileName(input: string): string {
   let sanitized = input.normalize("NFC");
   sanitized = sanitized.trim();
@@ -24,7 +20,6 @@ export function sanitizeFileName(input: string): string {
   // biome-ignore lint/suspicious/noControlCharactersInRegex: intentionally matching control characters for sanitization
   sanitized = sanitized.replace(/[<>:"/\\|?*\x00-\x1F]/g, "");
 
-  // Remove directory separators
   sanitized = sanitized.replace(/[/\\]/g, "");
 
   // Remove leading/trailing dots and spaces (Windows requirement)

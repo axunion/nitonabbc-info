@@ -3,19 +3,19 @@ import { readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const pages = readdirSync(fileURLToPath(new URL("../pages", import.meta.url)), {
-	recursive: true,
-	encoding: "utf8",
+  recursive: true,
+  encoding: "utf8",
 })
-	.reduce<string[]>((acc, f) => {
-		if (!f.endsWith(".astro")) return acc;
-		const normalized = f.replace(/\\/g, "/");
-		if (normalized.split("/").some((s) => s.startsWith("_"))) return acc;
-		const path = `/${normalized.replace(/\.astro$/, "").replace(/\/index$/, "")}`;
-		if (path === "/404" || /^\/\d{4}\/\d{2}\/.+/.test(path)) return acc;
-		acc.push(path);
-		return acc;
-	}, [])
-	.sort();
+  .reduce<string[]>((acc, f) => {
+    if (!f.endsWith(".astro")) return acc;
+    const normalized = f.replace(/\\/g, "/");
+    if (normalized.split("/").some((s) => s.startsWith("_"))) return acc;
+    const path = `/${normalized.replace(/\.astro$/, "").replace(/\/index$/, "")}`;
+    if (path === "/404" || /^\/\d{4}\/\d{2}\/.+/.test(path)) return acc;
+    acc.push(path);
+    return acc;
+  }, [])
+  .sort();
 ---
 
 <!doctype html>

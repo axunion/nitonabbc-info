@@ -38,3 +38,9 @@
     stroke: #ccc;
   }
 </style>
+
+<script>
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelector(".loading animateTransform")?.remove();
+  }
+</script>

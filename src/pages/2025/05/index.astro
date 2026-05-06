@@ -88,6 +88,13 @@ import BlockLink from "./_components/BlockLink.astro";
     transition: background-color 2s linear;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    body,
+    body.light {
+      transition: none;
+    }
+  }
+
   .block {
     align-items: center;
     display: flex;
@@ -228,21 +235,25 @@ import BlockLink from "./_components/BlockLink.astro";
 </style>
 
 <script>
-  const theme = document.querySelector(".theme");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-          document.body.classList.add("light");
-        } else {
-          document.body.classList.remove("light");
-        }
-      });
-    },
-    { rootMargin: "0px 0px -50%" }
-  );
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.body.classList.add("light");
+  } else {
+    const theme = document.querySelector(".theme");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+            document.body.classList.add("light");
+          } else {
+            document.body.classList.remove("light");
+          }
+        });
+      },
+      { rootMargin: "0px 0px -50%" }
+    );
 
-  if (theme) {
-    observer.observe(theme);
+    if (theme) {
+      observer.observe(theme);
+    }
   }
 </script>

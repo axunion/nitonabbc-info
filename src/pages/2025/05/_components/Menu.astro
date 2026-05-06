@@ -87,6 +87,13 @@ import Button from "./Button.astro";
     transform: translateX(0);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .menu,
+    .li {
+      transition: none;
+    }
+  }
+
   .li:nth-child(1) {
     --n: 1;
   }
