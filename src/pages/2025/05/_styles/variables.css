@@ -1,6 +1,6 @@
 :root {
-  --surface: #282928;
-  --text-1: #f8fafc;
-  --text-2: #94a3b8;
-  --line: #475569;
+  --surface: var(--gray-9);
+  --text-1: var(--gray-0);
+  --text-2: var(--gray-5);
+  --line: var(--gray-7);
 }

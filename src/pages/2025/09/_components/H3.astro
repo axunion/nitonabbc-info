@@ -25,8 +25,8 @@ const { icon } = Astro.props;
     border-bottom: 2px solid;
     border-image: linear-gradient(
         to right,
-        #6366f1 0%,
-        #6366f1 25%,
+        var(--indigo-6) 0%,
+        var(--indigo-6) 25%,
         var(--line) 25%,
         var(--line) 100%
       )
@@ -39,7 +39,7 @@ const { icon } = Astro.props;
   }
 
   .icon {
-    color: #6366f1;
+    color: var(--indigo-6);
     display: flex;
     font-size: 125%;
   }
