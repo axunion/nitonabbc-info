@@ -16,12 +16,8 @@ function validateUrl(url: string, varName: string): string {
     new URL(url);
     return url;
   } catch {
-    if (url.startsWith("/")) {
-      return url;
-    }
     throw new Error(
-      `Environment variable ${varName} must be a valid URL or absolute path. ` +
-        `Received: ${url}`,
+      `Environment variable ${varName} must be a valid URL. Received: ${url}`,
     );
   }
 }

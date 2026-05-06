@@ -39,7 +39,7 @@
   import { ENDPOINT_MEDIA_PATH, ENDPOINT_LIST } from "../_config/endpoints";
   import { fetchFileList } from "@/scripts/fetchFileList";
 
-  const GALLERY_PATH = "青年キャンプ 2025/photo-gallery/";
+  const GALLERY_PATH = "youth-fellowship-camp-2025/photo-gallery/";
   const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH}`;
 
   (async () => {
@@ -57,16 +57,19 @@
 
       const files = res.list.filter((item) => item.type === "file").reverse();
 
+      // Server stores thumbnails at 50% of original size; multiply back for PhotoSwipe dimensions.
+      const THUMB_SCALE = 2;
       for (const file of files) {
         const clone = template.content.cloneNode(true) as DocumentFragment;
         const a = clone.querySelector(".album-item") as HTMLAnchorElement;
         const image = clone.querySelector(".image") as HTMLImageElement;
 
-        image.src = `${ENDPOINT}thumb/${file.name}`;
+        const encoded = encodeURIComponent(file.name);
+        image.src = `${ENDPOINT}thumb/${encoded}`;
         image.onload = () => {
-          a.href = `${ENDPOINT}${file.name}`;
-          a.dataset.pswpWidth = `${image.naturalWidth * 2}`;
-          a.dataset.pswpHeight = `${image.naturalHeight * 2}`;
+          a.href = `${ENDPOINT}${encoded}`;
+          a.dataset.pswpWidth = `${image.naturalWidth * THUMB_SCALE}`;
+          a.dataset.pswpHeight = `${image.naturalHeight * THUMB_SCALE}`;
         };
 
         fragment.appendChild(clone);
