@@ -77,7 +77,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pnpm run check:write 2>&1 | tail -10"
+            "command": "pnpm run fix 2>&1 | tail -10"
           }
         ]
       }

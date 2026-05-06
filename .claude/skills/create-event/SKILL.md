@@ -83,7 +83,7 @@ src/pages/{year}/{month}/
 | テーマ | 対応 |
 |--------|------|
 | ライト（デフォルト） | variables.css不要 |
-| ダーク | 暗い背景、白文字。variables.cssで上書き |
+| ダーク | 暗い背景、白文字。`variables.css`で `--surface`/`--text-1`/`--text-2` を上書き。さらに `color-scheme: dark` を `:root` に追加するとスクロールバー・フォーム要素等もダーク化される |
 | カスタム | メインカラーと背景を追加で質問 |
 
 ## 実行手順
@@ -115,6 +115,8 @@ AskUserQuestionツールで以下を質問：
 **サンプル**: 年月のみ質問
 
 ### Step 3: ファイル生成
+
+**ブランチの提案**: ファイル生成前に、新しいブランチで作業することを提案する。このプロジェクトは main push で自動デプロイされるため、ブランチを分けることでページ完成前の公開を防ぎ、レビュー後にマージできる。ブランチ名の例: `git checkout -b event/{year}-{month}`
 
 以下の順序でファイルを作成する：
 
@@ -150,4 +152,5 @@ AskUserQuestionツールで以下を質問：
 - ページ内で繰り返す要素は `_components/` に切り出す
 - `_assets/` ディレクトリは常に作成する（ヒーロー画像の追加先として）
 - すべてのコンポーネントをイベント固有の `_components/` に作成する（`src/components/` は使用しない）
-- テーマ変数にはパレットの値を使用する（例: `--brand: var(--green-6);`）
+- `variables.css` ではパレットトークンのみ使用する（例: `--brand: var(--green-6);`）。hex値（`#2f9e44` 等）は使わない
+- アニメーションには `prefers-reduced-motion` 対応を追加する（`@media (prefers-reduced-motion: reduce)` で無効化）

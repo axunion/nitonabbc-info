@@ -1,7 +1,7 @@
 ---
 type Props = {
   src: string;
-  title: string;
+  title?: string;
 };
 
 const { src, title } = Astro.props;
@@ -10,7 +10,7 @@ const { src, title } = Astro.props;
 <iframe
   class="iframe"
   src={src}
-  title={title}
+  title={title || "Google マップ"}
   allowfullscreen=""
   loading="lazy"
   referrerpolicy="no-referrer-when-downgrade"

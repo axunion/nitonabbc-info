@@ -13,7 +13,7 @@ pnpm run dev          # 開発サーバー起動（localhost:4321）
 pnpm run build        # 型チェック + 本番ビルド
 pnpm run preview      # ビルド結果のプレビュー
 pnpm run check        # Biomeでリント・フォーマットチェック
-pnpm run check:write  # Biomeで自動修正
+pnpm run fix          # Biomeで自動修正
 ```
 
 ## アーキテクチャ
