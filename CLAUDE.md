@@ -10,9 +10,9 @@ Astroベースの静的Webサイト。イベント情報、スケジュール、
 
 ```bash
 pnpm run dev          # 開発サーバー起動（localhost:4321）
-pnpm run build        # 型チェック + 本番ビルド
+pnpm run build        # 本番ビルド
 pnpm run preview      # ビルド結果のプレビュー
-pnpm run check        # Biomeでリント・フォーマットチェック
+pnpm run check        # Biomeリント + astro check（型チェック）
 pnpm run fix          # Biomeで自動修正
 ```
 
@@ -31,7 +31,7 @@ pnpm run fix          # Biomeで自動修正
 | `src/styles/palette.css`   | カラートークン定義                          |
 | `src/styles/global.css`    | テーマ変数・リセットスタイル・`.viewport`   |
 | `src/types/`               | 共通型定義（API型等）                       |
-| `src/scripts/`             | 共通スクリプト（uploadImages等）            |
+| `src/scripts/`             | 共通スクリプト（`uploadImages`, `fetchFileList`, `sanitizeFileName`） |
 
 ### スタイル構成
 
@@ -104,25 +104,8 @@ pnpm run fix          # Biomeで自動修正
 
 ### 共通スクリプトとイベント固有設定
 
-共通スクリプト（`src/scripts/`）はイベント固有の設定に依存しない。設定値は呼び出し元から引数で渡す。
-
-```typescript
-// src/scripts/uploadImages.ts - エンドポイントを引数で受け取る
-export const uploadImages = async (data: UploadImagesRequest, endpoint: string) => { ... }
-
-// イベント側で呼び出し時にエンドポイントを渡す
-import { ENDPOINT_UPLOAD_IMAGES } from "../_config/endpoints";
-const resp = await uploadImages(data, ENDPOINT_UPLOAD_IMAGES);
-```
+共通スクリプト（`src/scripts/`）はイベント固有の設定に依存しない。エンドポイントURLなどの設定値はイベント側の`_config/`から引数で渡す。
 
 ### 共通型定義
 
 複数ファイルで共有する型は`src/types/`に定義する。
-
-```typescript
-// src/types/api.ts - API関連の型定義
-export type UploadImagesRequest = {
-  path: string;
-  images: File[];
-};
-```
