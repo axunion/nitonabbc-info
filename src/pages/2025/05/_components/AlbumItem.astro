@@ -39,8 +39,8 @@
   import { ENDPOINT_MEDIA_PATH, ENDPOINT_LIST } from "../_config/endpoints";
   import { fetchFileList } from "@/scripts/fetchFileList";
 
-  const GALLERY_PATH = "youth-fellowship-camp-2025/photo-gallery/";
-  const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH}`;
+  const GALLERY_PATH = "青年キャンプ 2025/photo-gallery/";
+  const ENDPOINT = `${ENDPOINT_MEDIA_PATH}${GALLERY_PATH.split("/").map(encodeURIComponent).join("/")}`;
 
   (async () => {
     const template = document.getElementById("template") as HTMLTemplateElement;
