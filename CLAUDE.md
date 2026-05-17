@@ -1,111 +1,119 @@
 # CLAUDE.md
 
-このファイルは、Claude Code (claude.ai/code) がこのリポジトリで作業する際のガイダンスを提供します。
+This file provides guidance for Claude Code (claude.ai/code) when working in this repository.
 
-## プロジェクト概要
+## Project Overview
 
-Astroベースの静的Webサイト。イベント情報、スケジュール、写真アルバム、会場案内などを提供。Cloudflare Pagesでホスティングされ、mainブランチへのpushで自動デプロイ。
+Astro-based static website providing event information, schedules, photo albums, and venue details. Hosted on Cloudflare Pages with automatic deployment on push to main.
 
-## コマンド
+## Commands
 
 ```bash
-pnpm run dev          # 開発サーバー起動（localhost:4321）
-pnpm run build        # 本番ビルド
-pnpm run preview      # ビルド結果のプレビュー
-pnpm run check        # Biomeリント + astro check（型チェック）
-pnpm run fix          # Biomeで自動修正
+pnpm run dev          # Start dev server (localhost:4321)
+pnpm run build        # Production build
+pnpm run preview      # Preview the production build
+pnpm run check        # Biome lint + astro check (type checking)
+pnpm run fix          # Auto-fix with Biome
 ```
 
-## アーキテクチャ
+## Architecture
 
-### 設計原則
+### Design Principles
 
-- **共通Layout + イベント固有スタイル**: 全ページで共通の`Layout.astro`を使用し、イベント固有の配色は`variables.css`で定義
-- **コンポーネント完全独立**: すべてのコンポーネントは各イベントの`_components/`内に定義。共有コンポーネントディレクトリは存在しない
+- **Shared Layout + event-specific styles**: All pages use the common `Layout.astro`; event-specific color schemes are defined in `variables.css`
+- **Fully isolated components**: All components are defined in each event's `_components/`. No shared component directory exists
 
-### グローバルリソース
+### Global Resources
 
-| 場所                       | 用途                                        |
-| -------------------------- | ------------------------------------------- |
-| `src/layouts/Layout.astro` | 共通HTML構造（全ページで使用）              |
-| `src/styles/palette.css`   | カラートークン定義                          |
-| `src/styles/global.css`    | テーマ変数・リセットスタイル・`.viewport`   |
-| `src/types/`               | 共通型定義（API型等）                       |
-| `src/scripts/`             | 共通スクリプト（`uploadImages`, `fetchFileList`, `sanitizeFileName`） |
+| Location | Purpose |
+| -------- | ------- |
+| `src/layouts/Layout.astro` | Common HTML structure (used by all pages) |
+| `src/styles/palette.css` | Color token definitions |
+| `src/styles/global.css` | Theme variables, reset styles, `.viewport` |
+| `src/types/` | Shared type definitions (API types, etc.) |
+| `src/scripts/` | Shared scripts (`uploadImages`, `fetchFileList`, `sanitizeFileName`) |
 
-### スタイル構成
+### Style Structure
 
-| ファイル | 役割 |
-|---------|------|
-| `palette.css` | カラートークン（`--gray-0`〜`--gray-9`, `--blue-2`〜`--blue-8` 等） |
-| `global.css` | テーマ変数（`--brand`, `--surface` 等） + リセットスタイル |
-| `Layout.astro` | HTML構造のみ（スタイルなし） |
-| `variables.css` | テーマ変数の上書き（配色カスタマイズ） |
-| ページの`<style is:global>` | `.viewport`スタイルの上書き（暗い背景など） |
+| File | Role |
+| ---- | ---- |
+| `palette.css` | Color tokens (`--gray-0`–`--gray-9`, `--blue-2`–`--blue-8`, etc.) |
+| `global.css` | Theme variables (`--brand`, `--surface`, etc.) + reset styles |
+| `Layout.astro` | HTML structure only (no styles) |
+| `variables.css` | Theme variable overrides (color customization) |
+| `<style is:global>` in pages | `.viewport` style overrides (dark backgrounds, etc.) |
 
-### パスエイリアス
+### Path Aliases
 
-`@/*` → `./src/*`（tsconfig.jsonで設定）
+`@/*` → `./src/*` (configured in tsconfig.json)
 
-## コード規約
+## Code Conventions
 
-| 項目                 | 言語                         |
-| -------------------- | ---------------------------- |
-| コミットメッセージ   | 英語                         |
-| コードコメント       | 英語（自明なコメントは不要） |
-| コンソール出力       | 英語                         |
-| チャット・レスポンス | 日本語                       |
+| Item | Language |
+| ---- | -------- |
+| Commit messages | English |
+| Code comments | English (omit self-evident comments) |
+| Console output | English |
+| Chat / responses | Japanese |
 
-### スタイリング
+### Styling
 
-- イベント固有の配色は`_styles/variables.css`で定義
-- コンポーネント内でスコープ付き`<style>`ブロックを使用
-- CSSフレームワークは未使用
+See `.claude/rules/css.md` for detailed CSS conventions. Key rules:
 
-### カラーパレット
+- Event-specific color schemes defined in `_styles/variables.css`
+- Use scoped `<style>` blocks inside Astro components
+- Always use palette tokens — never hardcoded hex, rgb, or hsl values
+- Do not add new theme variables; reference palette tokens directly in components
 
-`src/styles/palette.css` にプロジェクト共通のカラートークンを定義:
+### Color Palette
 
-- **Gray**: `--gray-0`(最も明るい) 〜 `--gray-9`(最も暗い) の10段階
-- **色**: 各色4段階（`--{color}-2`, `--{color}-4`, `--{color}-6`, `--{color}-8`）
-- 色の種類: blue, green, red, orange, violet, pink, indigo
+Color tokens defined in `src/styles/palette.css`:
 
-### テーマ変数
+- **Gray**: `--gray-0` (lightest) to `--gray-9` (darkest), 10 steps
+- **Colors**: 4 steps each (`--{color}-2`, `--{color}-4`, `--{color}-6`, `--{color}-8`)
+- Available colors: blue, green, red, orange, violet, pink, indigo
 
-`global.css` の `:root` で6つのテーマ変数を定義:
+### Theme Variables
 
-| 変数 | 用途 | デフォルト値 |
-|------|------|-------------|
-| `--brand` | メインカラー | `var(--blue-6)` |
-| `--surface` | 背景色 | `var(--gray-0)` |
-| `--text-1` | 本文テキスト | `var(--gray-9)` |
-| `--text-2` | サブテキスト | `var(--gray-6)` |
-| `--line` | ボーダー・区切り線 | `var(--gray-4)` |
-| `--font-serif` | セリフフォント | Times New Roman系 |
+Six theme variables defined in `:root` in `global.css`:
 
-- **イベント固有の上書き**: `variables.css`には上書きする変数のみ定義（デフォルトと同じ値は不要）
-- **追加の色**: コンポーネント内でパレットの色を直接参照（`var(--green-6)`等）。テーマ変数を増やさない
+| Variable | Purpose | Default |
+| -------- | ------- | ------- |
+| `--brand` | Main color | `var(--blue-6)` |
+| `--surface` | Background | `var(--gray-0)` |
+| `--text-1` | Body text | `var(--gray-9)` |
+| `--text-2` | Subtext | `var(--gray-6)` |
+| `--line` | Borders and dividers | `var(--gray-4)` |
+| `--font-serif` | Serif font | Times New Roman family |
 
-### アクセシビリティ
+- **Event-specific overrides**: Define only the variables that differ from defaults in `variables.css`
+- **Additional colors**: Reference palette tokens directly in components (`var(--green-6)`, etc.) — do not add new theme variables
 
-- アニメーションには`prefers-reduced-motion`対応を追加する
-- CSSアニメーション: `@media (prefers-reduced-motion: reduce)`で無効化
-- JSアニメーション: `window.matchMedia("(prefers-reduced-motion: reduce)").matches`でスキップ
+### Accessibility
 
-### アイコン
+See `.claude/rules/a11y.md` for detailed accessibility requirements. Key rules:
 
-`@iconify-json/mdi`を`astro-icon`経由で使用（例：`mdi:menu`、`mdi:photo-camera`）
+- All animations must include `prefers-reduced-motion` support
+- CSS animations: disable inside `@media (prefers-reduced-motion: reduce)`
+- JS animations: skip if `window.matchMedia("(prefers-reduced-motion: reduce)").matches`
 
-## 新規イベント追加
+### Icons
 
-`/create-event` skillを使用。
+Uses `@iconify-json/mdi` via `astro-icon` (e.g., `mdi:menu`, `mdi:photo-camera`)
 
-## 実装パターン
+## Skills
 
-### 共通スクリプトとイベント固有設定
+| Skill | Usage |
+| ----- | ----- |
+| `/create-event` | Create a new event page interactively |
+| `/event-review` | Pre-deploy review (a11y + CSS + build check) before merging to main |
 
-共通スクリプト（`src/scripts/`）はイベント固有の設定に依存しない。エンドポイントURLなどの設定値はイベント側の`_config/`から引数で渡す。
+## Implementation Patterns
 
-### 共通型定義
+### Shared Scripts and Event-Specific Config
 
-複数ファイルで共有する型は`src/types/`に定義する。
+Shared scripts (`src/scripts/`) do not depend on event-specific config. Values such as endpoint URLs are passed as arguments from the event's `_config/`.
+
+### Shared Type Definitions
+
+Types shared across multiple files are defined in `src/types/`.

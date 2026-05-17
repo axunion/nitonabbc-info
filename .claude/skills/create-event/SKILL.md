@@ -1,156 +1,156 @@
 ---
 name: create-event
-description: 新しいイベントページを作成する。「イベントを追加したい」「新しいページを作りたい」「〇〇年〇〇月のイベントを作成」といった要求で使用する。配色テーマと基本情報を対話的に設定。
+description: Create a new event page. Use when asked to "add an event", "create a new page", "create an event for YYYY/MM", "イベントページを作って", or "新しいイベントを追加". Interactively sets color theme and basic information.
 ---
 
-# イベントページ作成
+# Event Page Creation
 
-新しいイベントページを対話的に作成します。
+Interactively create a new event page.
 
-## ディレクトリ構成
+## Directory Structure
 
-`_assets/` は常に作成する。その他は必要な場合のみ。
+`_assets/` is always created. Others are created only when needed.
 
 ```
 src/pages/{year}/{month}/
-├── _assets/           # 画像（hero.webp等）、PDF
-├── _components/       # 全コンポーネント（共有なし、すべてイベント固有）
-├── _config/           # 設定ファイル（必要な場合）
-├── _scripts/          # イベント固有スクリプト（必要な場合）
+├── _assets/           # Images (hero.webp, etc.), PDFs
+├── _components/       # All components (no sharing — all event-specific)
+├── _config/           # Config files (when needed)
+├── _scripts/          # Event-specific scripts (when needed)
 ├── _styles/
-│   └── variables.css  # テーマ変数の上書き（テーマ変更時のみ）
-└── *.astro            # ページファイル
+│   └── variables.css  # Theme variable overrides (only when customizing theme)
+└── *.astro            # Page files
 ```
 
-## コンポーネント化の方針
+## Component Guidelines
 
-- **すべてのコンポーネントはイベント固有**: `src/components/` は使用しない。
-- ページ作成時、繰り返し使われる要素（見出し、カード等）は `_components/` に切り出す
-- スタイルはイベントごとに毎回少しずつ変える（固定テンプレートにしない）
-- フォーマルかつシンプルなデザインをベースに、自由にアレンジする
-- テーマ変数（`--brand`, `--surface` 等）とパレット（`--blue-6` 等）を活用
+- **All components are event-specific**: Do not use `src/components/`.
+- Extract repeated elements (headings, cards, etc.) into `_components/`
+- Vary styles slightly per event — avoid fixed templates
+- Base on a formal, simple design and customize freely
+- Use theme variables (`--brand`, `--surface`, etc.) and palette tokens (`--blue-6`, etc.)
 
-## コンポーネントテンプレート
+## Component Templates
 
-`.claude/skills/create-event/templates/` に汎用コンポーネントのリファレンス実装がある。
+Reference implementations in `.claude/skills/create-event/templates/`:
 
-| テンプレート | 用途 |
-|-------------|------|
-| `ButtonLink.astro` | CTAボタンリンク（`--brand`, `--surface` 使用） |
-| `MapFrame.astro` | Google Maps埋め込み |
-| `TimeTable.astro` | スケジュール表 |
-| `Bracket.astro` | 装飾括弧テキスト（`currentColor` 使用） |
+| Template | Purpose |
+|----------|---------|
+| `ButtonLink.astro` | CTA button link (uses `--brand`, `--surface`) |
+| `MapFrame.astro` | Google Maps embed |
+| `TimeTable.astro` | Schedule table |
+| `Bracket.astro` | Decorative bracket text (uses `currentColor`) |
 
-使い方:
-- テンプレートの内容をイベントの `_components/` にコピーする
-- そのまま使うか、イベントのデザインに応じてカスタマイズする
-- テンプレートにないコンポーネント（Header, Footer, 見出し等）はスキルが新規作成する
+Usage:
+- Copy template content into the event's `_components/` directory
+- Use as-is or customize to match the event's design
+- Components not in templates (Header, Footer, headings, etc.) are created from scratch
 
-## カラーパレット
+## Color Palette
 
-`src/styles/palette.css` に定義されたカラートークンを使用する。
+Use color tokens defined in `src/styles/palette.css`:
 
-- **Gray**: `--gray-0`(明) 〜 `--gray-9`(暗) の10段階
-- **色**: `--{color}-2`(明), `--{color}-4`, `--{color}-6`, `--{color}-8`(暗) の4段階
-- 色の種類: blue, green, red, orange, violet, pink, indigo
+- **Gray**: `--gray-0` (lightest) to `--gray-9` (darkest), 10 steps
+- **Color scales**: `--{color}-2` (light), `--{color}-4`, `--{color}-6`, `--{color}-8` (dark)
+- Available colors: blue, green, red, orange, violet, pink, indigo
 
-## テーマ変数
+## Theme Variables
 
-`global.css` で定義されるデフォルト値:
+Defaults defined in `global.css`:
 
 ```css
 :root {
-  --brand: var(--blue-6);     /* メインカラー */
-  --surface: var(--gray-0);   /* 背景色 */
-  --text-1: var(--gray-9);    /* 本文テキスト */
-  --text-2: var(--gray-6);    /* サブテキスト */
-  --line: var(--gray-4);      /* ボーダー・区切り線 */
-  --font-serif: ...;          /* セリフフォント */
+  --brand: var(--blue-6);     /* main color */
+  --surface: var(--gray-0);   /* background */
+  --text-1: var(--gray-9);    /* body text */
+  --text-2: var(--gray-6);    /* subtext */
+  --line: var(--gray-4);      /* borders and dividers */
+  --font-serif: ...;          /* serif font */
 }
 ```
 
-追加の色はパレットトークンをコンポーネント内で直接参照する（`var(--pink-6)` 等）。テーマ変数を増やさない。
+For additional colors, reference palette tokens directly in components (`var(--pink-6)`, etc.). Do not add new theme variables.
 
-## イベント形式
+## Event Format
 
-| 形式 | 内容 |
-|------|------|
-| 宿泊あり | 2日間タイムテーブル、講師紹介、交流会、部分参加、持ち物 |
-| 宿泊なし | 日時、講師、会場、申込リンクのみ。タイムテーブル不要 |
+| Format | Description |
+|--------|-------------|
+| Overnight | 2-day timetable, speaker intro, social event, partial attendance, packing list |
+| Day-only | Date/time, speaker, venue, registration link only — no timetable needed |
 
-## 配色テーマ
+## Color Theme
 
-| テーマ | 対応 |
-|--------|------|
-| ライト（デフォルト） | variables.css不要 |
-| ダーク | 暗い背景、白文字。`variables.css`で `--surface`/`--text-1`/`--text-2` を上書き。さらに `color-scheme: dark` を `:root` に追加するとスクロールバー・フォーム要素等もダーク化される |
-| カスタム | メインカラーと背景を追加で質問 |
+| Theme | Approach |
+|-------|----------|
+| Light (default) | No `variables.css` needed |
+| Dark | Dark background, light text. Override `--surface`/`--text-1`/`--text-2` in `variables.css`. Add `color-scheme: dark` to `:root` to also darken scrollbars and form elements |
+| Custom | Ask about main color and background additionally |
 
-## 実行手順
+## Steps
 
-### Step 1: 基本情報の収集
+### Step 1: Gather Basic Information
 
-AskUserQuestionツールで以下を質問：
+Use AskUserQuestion to ask (use Japanese labels for all options):
 
-1. **形式**（ヘッダー: "形式"）
-   - 宿泊あり（お泊まり会） - 2日間、タイムテーブルあり
-   - 宿泊なし（日帰り） - 日時・講師・会場・申込のみ
+1. **Format** (header: "形式")
+   - 宿泊あり（お泊まり会） — 2 days, with timetable
+   - 宿泊なし（日帰り） — date/speaker/venue/registration only
 
-2. **配色**（ヘッダー: "配色"）
+2. **Color theme** (header: "配色")
    - ライト（デフォルト）
    - ダーク
    - カスタム
 
-3. **内容**（ヘッダー: "内容"）
-   - サンプルで作成 - 仮データで雛形を生成
-   - 直接入力 - 詳細をテキストで入力
+3. **Content** (header: "内容")
+   - サンプルで作成 — generate with placeholder data
+   - 直接入力 — user provides details as text
 
-### Step 2: 追加情報（必要な場合）
+### Step 2: Gather Additional Information (if needed)
 
-**カスタム配色**: メインカラー（ブルー/グリーン/オレンジ/パープル系）と背景（明るい/暗い）を質問
+**Custom theme**: Ask about main color (blue/green/orange/purple) and background (light/dark)
 
-**直接入力**: ユーザーにテキストで以下を入力してもらう
-- 年月、イベント名、開催日時、会場名、講師名（任意）、申込リンク（任意）
+**Direct input**: Ask the user to provide as text:
+- Year/month, event name, date/time, venue, speaker name (optional), registration link (optional)
 
-**サンプル**: 年月のみ質問
+**Sample**: Ask for year/month only
 
-### Step 3: ファイル生成
+### Step 3: Generate Files
 
-**ブランチの提案**: ファイル生成前に、新しいブランチで作業することを提案する。このプロジェクトは main push で自動デプロイされるため、ブランチを分けることでページ完成前の公開を防ぎ、レビュー後にマージできる。ブランチ名の例: `git checkout -b event/{year}-{month}`
+**Branch suggestion**: Before generating files, suggest working on a new branch. This project auto-deploys on push to main — a separate branch prevents publishing an unfinished page and allows review before merging. Example: `git checkout -b event/{year}-{month}`
 
-以下の順序でファイルを作成する：
+Generate files in this order:
 
-1. **`_assets/` ディレクトリ**: ヒーロー画像用に `.gitkeep` ファイルを配置して作成（空ディレクトリは git に追跡されないため）
-2. **`_components/`**: テンプレート（`templates/`）があるコンポーネントはコピーして配置し、必要に応じてカスタマイズ。その他はスキルが新規作成
-3. **`_styles/variables.css`**: テーマ変更時のみ
-4. **`index.astro`**: メインページ（コンポーネントをインポートして使用）
+1. **`_assets/` directory**: Place a `.gitkeep` file (empty directories are not tracked by git)
+2. **`_components/`**: Copy from `templates/` and customize as needed; create other components from scratch
+3. **`_styles/variables.css`**: Only when changing the theme
+4. **`index.astro`**: Main page that imports and uses the components
 
-**宿泊あり**:
-- ヒーローセクション（テーマ聖句）
-- 概要（日時、会場、講師、参加費）
-- 講師紹介
-- プログラム（2日間のタイムテーブル）
-- 交流会・レクリエーション案内
-- 申し込み（フォームリンク、期限）
-- その他情報（部分参加、持ち物、アクセス、問い合わせ）
+**Overnight format sections**:
+- Hero section (theme verse)
+- Overview (date/time, venue, speaker, fee)
+- Speaker introduction
+- Program (2-day timetable)
+- Social/recreation info
+- Registration (form link, deadline)
+- Other (partial attendance, packing list, access, contact)
 
-**宿泊なし**: シンプルな構成
-- ヒーローセクション
-- 概要（日時、会場、講師）
-- 申し込み（フォームリンク）
-- アクセス・問い合わせ
+**Day-only format sections**:
+- Hero section
+- Overview (date/time, venue, speaker)
+- Registration (form link)
+- Access and contact
 
-### Step 4: 完了報告
+### Step 4: Report Completion
 
-1. 作成したファイル一覧
-2. 確認方法: `pnpm run dev` → `http://localhost:4321/{year}/{month}/`
-3. 次のステップ（`_assets/` にヒーロー画像を追加、内容編集など）
+1. List of created files
+2. How to verify: `pnpm run dev` → `http://localhost:4321/{year}/{month}/`
+3. Next steps (add hero image to `_assets/`, edit content, etc.)
 
-## 注意事項
+## Notes
 
-- 日本語でコミュニケーション
-- ページ内で繰り返す要素は `_components/` に切り出す
-- `_assets/` ディレクトリは常に作成する（ヒーロー画像の追加先として）
-- すべてのコンポーネントをイベント固有の `_components/` に作成する（`src/components/` は使用しない）
-- `variables.css` ではパレットトークンのみ使用する（例: `--brand: var(--green-6);`）。hex値（`#2f9e44` 等）は使わない
-- アニメーションには `prefers-reduced-motion` 対応を追加する（`@media (prefers-reduced-motion: reduce)` で無効化）
+- Chat with the user in Japanese
+- Extract repeated elements into `_components/`
+- Always create the `_assets/` directory (as the target location for the hero image)
+- All components go in the event-specific `_components/` — never use `src/components/`
+- In `variables.css`, use only palette tokens (e.g., `--brand: var(--green-6);`) — no hex values
+- Add `prefers-reduced-motion` support to all animations (`@media (prefers-reduced-motion: reduce)`)

@@ -1,0 +1,57 @@
+---
+paths:
+  - "**/*.css"
+  - "**/*.astro"
+---
+
+# CSS Conventions
+
+## Color Values
+
+- **Always** use palette tokens — never hardcoded hex, rgb, or hsl values
+  - Correct: `color: var(--blue-6);`
+  - Wrong: `color: #1971c2;`
+- Available palette tokens: `--gray-0` to `--gray-9`, and `--{color}-2/4/6/8` for blue, green, red, orange, violet, pink, indigo
+
+## Theme Variables
+
+Six theme variables are defined in `global.css`. Override them in `_styles/variables.css` only:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `--brand` | `var(--blue-6)` | Main color |
+| `--surface` | `var(--gray-0)` | Background |
+| `--text-1` | `var(--gray-9)` | Body text |
+| `--text-2` | `var(--gray-6)` | Subtext |
+| `--line` | `var(--gray-4)` | Borders and dividers |
+| `--font-serif` | Times New Roman | Serif font |
+
+- **Do not add new theme variables** — use palette tokens directly in components instead
+- `variables.css` must only contain overrides that differ from the defaults above
+
+## Scoping
+
+- Use scoped `<style>` blocks inside Astro components
+- Only use `<style is:global>` for intentional global overrides (e.g., `.viewport` background on a specific page)
+- Never use `!important`
+
+## Animations
+
+Every CSS animation must have a `prefers-reduced-motion` counterpart:
+
+```css
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.element {
+  animation: fadeIn 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none;
+  }
+}
+```
