@@ -21,13 +21,14 @@ pnpm run fix          # Auto-fix with Biome
 ### Design Principles
 
 - **Shared Layout + event-specific styles**: All pages use the common `Layout.astro`; event-specific color schemes are defined in `variables.css`
-- **Fully isolated components**: All components are defined in each event's `_components/`. No shared component directory exists
+- **Isolated components by default**: All components are defined in each event's `_components/`. A shared `src/components/` directory exists only for thin wrappers with a minimal interface (e.g., `MapFrame`) where divergence across events is unlikely. When in doubt, keep it page-local.
 
 ### Global Resources
 
 | Location | Purpose |
 | -------- | ------- |
 | `src/layouts/Layout.astro` | Common HTML structure (used by all pages) |
+| `src/components/` | Shared thin-wrapper components (e.g., `MapFrame`) — only when the interface is minimal and divergence across events is unlikely |
 | `src/styles/palette.css` | Color token definitions |
 | `src/styles/global.css` | Theme variables, reset styles, `.viewport` |
 | `src/types/` | Shared type definitions (API types, etc.) |

@@ -1,14 +1,16 @@
 ---
 type Props = {
   src: string;
+  title: string;
 };
 
-const { src } = Astro.props;
+const { src, title } = Astro.props;
 ---
 
 <iframe
   class="iframe"
   src={src}
+  title={title}
   allowfullscreen=""
   loading="lazy"
   referrerpolicy="no-referrer-when-downgrade"

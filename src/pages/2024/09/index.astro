@@ -2,12 +2,12 @@
 import Layout from "@/layouts/Layout.astro";
 import "./_styles/variables.css";
 import { Image } from "astro:assets";
+import MapFrame from "@/components/MapFrame.astro";
 import breakfastAllergenInformation from "./_assets/Breakfast_Allergen_Information.pdf";
 import dinnerAllergenInformation from "./_assets/Dinner_Allergy_Information.pdf";
 import hero from "./_assets/hero.webp";
 import speaker from "./_assets/speaker.webp";
 import ButtonLink from "./_components/ButtonLink.astro";
-import MapFrame from "./_components/MapFrame.astro";
 import TimeTable from "./_components/TimeTable.astro";
 
 const ja = {
@@ -408,6 +408,7 @@ const timetable2 = {
       <h3 class="head-2">アクセス<br /><span class="en">Access</span></h3>
       <MapFrame
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12968.426070133624!2d139.8299139!3d35.6497472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018883c5dbb0623%3A0xc26f94a6ff247d1a!2zQnVtQiDmnbHkuqzjgrnjg53jg7zjg4TmlofljJbppKg!5e0!3m2!1sja!2sjp!4v1718553573811!5m2!1sja!2sjp"
+        title="BumB 東京スポーツ文化館へのアクセスマップ"
       />
 
       <h4 class="head-3">駐車場 - Parking Information</h4>
