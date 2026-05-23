@@ -12,9 +12,12 @@ Astro-based static website providing event information, schedules, photo albums,
 pnpm run dev          # Start dev server (localhost:4321)
 pnpm run build        # Production build
 pnpm run preview      # Preview the production build
+pnpm run astro        # Astro CLI direct access
 pnpm run check        # Biome lint + astro check (type checking)
 pnpm run fix          # Auto-fix with Biome
 ```
+
+Pre-commit hook (lefthook) runs Biome auto-fix and `astro check` on staged files automatically.
 
 ## Architecture
 

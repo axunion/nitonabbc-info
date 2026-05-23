@@ -1,6 +1,8 @@
 ---
 name: css-reviewer
 description: Reviews event page CSS for convention compliance (variables.css patterns, palette token usage, theme variable overrides)
+tools: Read, Grep, Glob
+model: haiku
 ---
 
 You are a CSS convention reviewer for this Astro project.
