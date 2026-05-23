@@ -1,13 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import "../_styles/variables.css";
-import logo from "../_assets/logo.webp";
-import Footer from "../_components/Footer.astro";
-import H2 from "../_components/H2.astro";
-import Header from "../_components/Header.astro";
-import Loading from "../_components/Loading.astro";
-import Menu from "../_components/Menu.astro";
-import Note from "../_components/Note.astro";
+import "../../_styles/variables.css";
+import logo from "../../_assets/logo.webp";
+import Footer from "../../_components/Footer.astro";
+import H2 from "../../_components/H2.astro";
+import Header from "../../_components/Header.astro";
+import Loading from "../../_components/Loading.astro";
+import Menu from "../../_components/Menu.astro";
+import Note from "../../_components/Note.astro";
 ---
 
 <Layout title="Share Your Photo - 2025 第56回JBBF全国青年フェローシップキャンプ" favicon={logo.src}>
@@ -151,17 +151,17 @@ import Note from "../_components/Note.astro";
   }
 </style>
 
-<script src="../_scripts/bubble.ts"></script>
+<script src="../../_scripts/bubble.ts"></script>
 <script
   is:inline
   src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"
-  integrity="sha384-JqFoqlF3F5xqGzaQZV5hY8pK9PxFQhvL5TJ7FpJz7OJL2g/f0aZ6rKXa4Mf4qYHb"
+  integrity="sha384-iZD2X8o1Zdq0HR5H/7oa8W30WS4No+zWCKUPD7fHRay9I1Gf+C4F8sVmw7zec1wW"
   crossorigin="anonymous"
   defer></script>
 <script>
   import { uploadImages } from "@/scripts/uploadImages";
   import { sanitizeFileName } from "@/scripts/sanitizeFileName";
-  import { ENDPOINT_UPLOAD_IMAGES } from "../_config/endpoints";
+  import { ENDPOINT_UPLOAD_IMAGES } from "../../_config/endpoints";
 
   const $ = (selector: string) => document.querySelector(selector);
   const form = $(".form") as HTMLFormElement;
@@ -198,15 +198,18 @@ import Note from "../_components/Note.astro";
 
     const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
 
-    const newFiles = files.map((file) => {
+    const newFiles = files.map((file, index) => {
       try {
         const extensionMatch = file.name.match(/\.([^.]+)$/);
-        const extension = extensionMatch ? extensionMatch[1] : "";
+        const extension = extensionMatch
+          ? extensionMatch[1].replace(/[^a-zA-Z0-9]/g, "")
+          : "";
 
         const baseName = file.name.replace(/\.[^.]+$/, "");
         const sanitizedBaseName = sanitizeFileName(baseName);
 
-        const newName = `${timestamp}-${sanitizedBaseName}${extension ? "." + extension : ""}`;
+        const seq = String(index + 1).padStart(2, "0");
+        const newName = `${timestamp}-${seq}-${sanitizedBaseName}${extension ? "." + extension : ""}`;
 
         return new File([file], newName, { type: file.type });
       } catch {
