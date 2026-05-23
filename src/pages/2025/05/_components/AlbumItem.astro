@@ -59,23 +59,34 @@
 
       // Server stores thumbnails at 50% of original size; multiply back for PhotoSwipe dimensions.
       const THUMB_SCALE = 2;
+      const loadPromises: Promise<void>[] = [];
+
       for (const file of files) {
         const clone = template.content.cloneNode(true) as DocumentFragment;
         const a = clone.querySelector(".album-item") as HTMLAnchorElement;
         const image = clone.querySelector(".image") as HTMLImageElement;
 
         const encoded = encodeURIComponent(file.name);
-        image.src = `${ENDPOINT}thumb/${encoded}`;
-        image.onload = () => {
-          a.href = `${ENDPOINT}${encoded}`;
-          a.dataset.pswpWidth = `${image.naturalWidth * THUMB_SCALE}`;
-          a.dataset.pswpHeight = `${image.naturalHeight * THUMB_SCALE}`;
-        };
+        const promise = new Promise<void>((resolve) => {
+          image.onload = () => {
+            a.href = `${ENDPOINT}${encoded}`;
+            a.dataset.pswpWidth = `${image.naturalWidth * THUMB_SCALE}`;
+            a.dataset.pswpHeight = `${image.naturalHeight * THUMB_SCALE}`;
+            resolve();
+          };
+          image.onerror = () => {
+            a.remove();
+            resolve();
+          };
+          image.src = `${ENDPOINT}thumb/${encoded}`;
+        });
+        loadPromises.push(promise);
 
         fragment.appendChild(clone);
       }
 
       div.appendChild(fragment);
+      await Promise.all(loadPromises);
 
       const lightbox = new PhotoSwipeLightbox({
         gallery: ".album-item-gallery",

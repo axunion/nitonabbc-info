@@ -1,9 +1,7 @@
 const parentElement = document.querySelector(".bubble");
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)",
-).matches;
+const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (parentElement && !prefersReducedMotion) {
+if (parentElement && !mediaQuery.matches) {
   const bubbleCount = 71;
   const df = document.createDocumentFragment();
   const keyframes = [
@@ -19,6 +17,7 @@ if (parentElement && !prefersReducedMotion) {
     easing: "linear",
     iterations: Infinity,
   };
+  const animations: Animation[] = [];
 
   for (let i = 0; i < bubbleCount; i++) {
     const bubble = document.createElement("div");
@@ -45,9 +44,30 @@ if (parentElement && !prefersReducedMotion) {
     };
 
     Object.assign(bubble.style, styles);
-    bubble.animate(keyframes, { ...options, duration });
+    const animation = bubble.animate(keyframes, { ...options, duration });
+    animations.push(animation);
     df.appendChild(bubble);
   }
 
   parentElement.appendChild(df);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      animations.forEach((a) => {
+        a.pause();
+      });
+    } else {
+      animations.forEach((a) => {
+        a.play();
+      });
+    }
+  });
+
+  mediaQuery.addEventListener("change", () => {
+    if (mediaQuery.matches) {
+      animations.forEach((a) => {
+        a.cancel();
+      });
+    }
+  });
 }

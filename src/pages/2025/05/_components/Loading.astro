@@ -9,16 +9,7 @@
       stroke-width="4"
       stroke-linecap="round"
       stroke-dasharray="31.415,31.415"
-      transform="rotate(0 25 25)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        from="0 25 25"
-        to="360 25 25"
-        dur="1s"
-        repeatCount="indefinite"></animateTransform>
-    </circle>
+    ></circle>
   </svg>
 </div>
 
@@ -34,13 +25,22 @@
     z-index: 9999;
   }
 
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   .spinner {
     stroke: var(--gray-4);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: spin 1s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation: none;
+    }
   }
 </style>
-
-<script>
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelector(".loading animateTransform")?.remove();
-  }
-</script>
