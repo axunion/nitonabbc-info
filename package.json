@@ -2,21 +2,35 @@
   "name": "nitonabbc-info",
   "type": "module",
   "version": "0.0.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.16.0",
+      "onFail": "warn"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.2.2",
+      "onFail": "warn"
+    }
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "biome check ./src && astro check",
-    "fix": "biome check --write ./src"
+    "fix": "biome check --write ./src",
+    "prepare": "lefthook install"
   },
   "dependencies": {
-    "astro": "6.2.1"
+    "astro": "^6.3.7"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.9",
-    "@biomejs/biome": "^2.4.14",
+    "@biomejs/biome": "2.4.15",
     "@iconify-json/mdi": "^1.2.3",
-    "astro-icon": "^1.1.5"
+    "astro-icon": "^1.1.5",
+    "lefthook": "^2.1.8"
   }
 }

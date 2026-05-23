@@ -11,6 +11,8 @@
       "Bash(pnpm build)",
       "Bash(pnpm check)",
       "Bash(pnpm fix)",
+      "Bash(pnpm test)",
+      "Bash(pnpm test *)",
       "Bash(pnpm astro *)",
       "Bash(curl *)",
       "Bash(pnpm list *)",
@@ -22,12 +24,16 @@
       "Bash(which *)",
       "Bash(wc *)",
       "Bash(file *)",
+      "Bash(mkdir *)",
+      "Bash(chmod *)",
       "Bash(tree *)",
       "Bash(jq *)",
       "Bash(rg *)",
       "Bash(fd *)",
       "Bash(awk *)",
       "Bash(sed -n *)",
+      "Bash(git add *)",
+      "Bash(git switch *)",
       "Bash(git status *)",
       "Bash(git diff *)",
       "Bash(git log *)",
@@ -184,25 +190,6 @@
       "Write(~/.zprofile)",
       "Write(~/.zshenv)",
       "Write(~/.profile)"
-    ]
-  },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "if": "Edit(src/**)",
-            "command": "pnpm run fix 2>&1 | tail -10"
-          },
-          {
-            "type": "command",
-            "if": "Write(src/**)",
-            "command": "pnpm run fix 2>&1 | tail -10"
-          }
-        ]
-      }
     ]
   }
 }
