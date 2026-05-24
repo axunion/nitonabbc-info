@@ -154,3 +154,4 @@ Generate files in this order:
 - All components go in the event-specific `_components/` — never use `src/components/`
 - In `variables.css`, use only palette tokens (e.g., `--brand: var(--green-6);`) — no hex values
 - Add `prefers-reduced-motion` support to all animations (`@media (prefers-reduced-motion: reduce)`)
+- Components may look identical across events — this is intentional. Copying keeps each event independent and free to diverge; shared components create coupling that constrains future customization

@@ -24,7 +24,7 @@ Pre-commit hook (lefthook) runs Biome auto-fix and `astro check` on staged files
 ### Design Principles
 
 - **Shared Layout + event-specific styles**: All pages use the common `Layout.astro`; event-specific color schemes are defined in `variables.css`
-- **Isolated components by default**: All components are defined in each event's `_components/`. A shared `src/components/` directory exists only for thin wrappers with a minimal interface (e.g., `MapFrame`) where divergence across events is unlikely. When in doubt, keep it page-local.
+- **Isolated components by default**: All components are defined in each event's `_components/`. A shared `src/components/` directory exists only for thin wrappers with a minimal interface (e.g., `MapFrame`) where divergence across events is unlikely. Promote a component to `src/components/` only when it has been copied unchanged across 2+ events with no foreseeable need for per-event customization. When in doubt, keep it page-local.
 
 ### Global Resources
 
