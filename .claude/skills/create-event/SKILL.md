@@ -16,15 +16,17 @@ src/pages/{year}/{month}/
 ├── _assets/           # Images (hero.webp, etc.), PDFs
 ├── _components/       # All components (no sharing — all event-specific)
 ├── _config/           # Config files (when needed)
+├── _layouts/          # Event Layout wrapper (multi-page events only)
 ├── _scripts/          # Event-specific scripts (when needed)
 ├── _styles/
 │   └── variables.css  # Theme variable overrides (only when customizing theme)
+├── _types/            # Event-specific type definitions (when needed)
 └── *.astro            # Page files
 ```
 
 ## Component Guidelines
 
-- **All components are event-specific**: Do not use `src/components/`.
+- **All components are event-specific**, with one exception: `MapFrame` (Google Maps embed) is imported from the shared `@/components/MapFrame.astro`. Never add new components to `src/components/`.
 - Extract repeated elements (headings, cards, etc.) into `_components/`
 - Vary styles slightly per event — avoid fixed templates
 - Base on a formal, simple design and customize freely
@@ -37,14 +39,32 @@ Reference implementations in `.claude/skills/create-event/templates/`:
 | Template | Purpose |
 |----------|---------|
 | `ButtonLink.astro` | CTA button link (uses `--brand`, `--surface`) |
-| `MapFrame.astro` | Google Maps embed |
 | `TimeTable.astro` | Schedule table |
 | `Bracket.astro` | Decorative bracket text (uses `currentColor`) |
+| `QAList.astro` | Q&A definition list |
 
 Usage:
 - Copy template content into the event's `_components/` directory
 - Use as-is or customize to match the event's design
 - Components not in templates (Header, Footer, headings, etc.) are created from scratch
+- When a component has been copied unchanged across 2+ events, add it here as a new template (do not promote it to `src/components/` — past events are frozen archives)
+
+## Multi-Page Events
+
+A single-page event imports `variables.css` directly in `index.astro`. When an event has multiple pages, create a thin wrapper in `_layouts/Layout.astro` instead, so each page has one import and the theme cannot be forgotten:
+
+```astro
+---
+import Layout from "@/layouts/Layout.astro";
+import "../_styles/variables.css";
+
+type Props = { title: string; favicon?: string };
+---
+
+<Layout {...Astro.props}><slot /></Layout>
+```
+
+Pages then use `import Layout from "./_layouts/Layout.astro";` (adjust relative depth for subdirectories) and never import `variables.css` themselves.
 
 ## Color Palette
 
@@ -151,7 +171,7 @@ Generate files in this order:
 - Chat with the user in Japanese
 - Extract repeated elements into `_components/`
 - Always create the `_assets/` directory (as the target location for the hero image)
-- All components go in the event-specific `_components/` — never use `src/components/`
+- All components go in the event-specific `_components/` — never add to `src/components/` (see Component Guidelines for the sole `MapFrame` exception)
 - In `variables.css`, use only palette tokens (e.g., `--brand: var(--green-6);`) — no hex values
 - Add `prefers-reduced-motion` support to all animations (`@media (prefers-reduced-motion: reduce)`)
 - Components may look identical across events — this is intentional. Copying keeps each event independent and free to diverge; shared components create coupling that constrains future customization
