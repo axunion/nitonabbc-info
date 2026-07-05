@@ -12,6 +12,7 @@ paths:
   - Correct: `color: var(--blue-6);`
   - Wrong: `color: #1971c2;`
 - Available palette tokens: `--gray-0` to `--gray-9`, and `--{color}-2/4/6/8` for blue, green, red, orange, violet, pink, indigo
+- **Sole exception — decorative gradients**: the palette has no alpha or intermediate hues, so multi-stop decorative gradients may need values it cannot express. Prefer deriving from tokens with `color-mix()` (e.g. `color-mix(in srgb, var(--green-8) 50%, transparent)`). If a literal value is unavoidable, add a comment on the line above explaining why. This exception never applies to text, backgrounds, or borders
 
 ## Theme Variables
 

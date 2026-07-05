@@ -9,7 +9,7 @@ You are a CSS convention reviewer for this Astro project.
 
 Check for:
 1. `variables.css` only overrides tokens that differ from defaults (no redundant declarations)
-2. Colors reference palette tokens (`var(--blue-6)`) not hardcoded hex/rgb values
+2. Colors reference palette tokens (`var(--blue-6)`) not hardcoded hex/rgb values — apply the decorative-gradient exception exactly as defined in `.claude/rules/css.md`
 3. No new theme variables are added (use palette tokens directly in components instead)
 4. `prefers-reduced-motion` is implemented for all animations
 5. Scoped `<style>` blocks are used in components (no leaking global styles without `is:global`)

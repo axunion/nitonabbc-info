@@ -47,7 +47,7 @@ pnpm run astro      # Astro CLI への直接呼び出し
 
 ```
 src/
-├── components/        # 共有の薄いラッパーのみ（例: MapFrame）
+├── components/        # 共有の薄いラッパーのみ（現状 MapFrame のみ）
 ├── dev/               # 開発時のみ有効なページインデックス
 ├── layouts/           # 共通レイアウト（Layout.astro）
 ├── pages/             # ページ（イベントごとに独立）
@@ -58,10 +58,9 @@ src/
 │       ├── _config/       # エンドポイントなどイベント固有設定
 │       ├── _scripts/      # イベント固有スクリプト
 │       ├── _styles/       # variables.css（テーマ変数の上書き）
+│       ├── _types/        # イベント固有の型定義
 │       └── index.astro
-├── scripts/           # 共有スクリプト（uploadImages, fetchFileList, sanitizeFileName）
-├── styles/            # グローバル CSS（palette.css, global.css）
-└── types/             # 共有型定義
+└── styles/            # グローバル CSS（palette.css, global.css）
 ```
 
 `_` で始まるディレクトリは Astro のルーティング対象外です。
@@ -70,10 +69,10 @@ src/
 
 このプロジェクトの中心となる設計方針は **「イベントページ同士が互いに影響しない」** ことです。
 
-- **イベントごとに完結する**: そのイベントで使うコンポーネント・アセット・設定・スクリプト・スタイルはすべて `src/pages/{year}/{month}/` 配下に閉じ込める
+- **イベントごとに完結する**: そのイベントで使うコンポーネント・アセット・設定・スクリプト・型・スタイルはすべて `src/pages/{year}/{month}/` 配下に閉じ込める
 - **共有はレイアウトとパレットのみ**: `Layout.astro`, `palette.css`, `global.css` だけが全イベント共通の基盤。これらへの変更は全イベントに波及するため慎重に行う
-- **`src/components/` は最小限**: イベント間で確実に分岐しない薄いラッパー（`MapFrame` など）に限る。迷ったらページローカルに置く
-- **`src/scripts/` はイベント設定に依存しない**: エンドポイント URL などイベント固有の値は、各イベントの `_config/` から引数として渡す
+- **`src/components/` は最小限**: イベント間で確実に分岐しない薄いラッパーに限る（現状 `MapFrame` のみ）。新たな昇格はせず、再利用したいコンポーネントは `/create-event` のテンプレートに追加する
+- **スクリプトはイベント設定に依存しない**: エンドポイント URL などイベント固有の値は、各イベントの `_config/` から引数として渡す
 - **配色は `_styles/variables.css` の上書きで**: デフォルトのテーマ変数（`--brand`, `--surface` など）と異なる値のみを上書きする。新たなテーマ変数は追加しない
 
 この方針により、新しいイベントを追加・修正しても過去イベントのページに影響しません。

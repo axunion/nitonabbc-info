@@ -42,18 +42,19 @@ These apply to every task in this repository, before any code-specific conventio
 ### Design Principles
 
 - **Shared Layout + event-specific styles**: All pages use the common `Layout.astro`; event-specific color schemes are defined in `variables.css`
-- **Isolated components by default**: All components are defined in each event's `_components/`. A shared `src/components/` directory exists only for thin wrappers with a minimal interface (e.g., `MapFrame`) where divergence across events is unlikely. Promote a component to `src/components/` only when it has been copied unchanged across 2+ events with no foreseeable need for per-event customization. When in doubt, keep it page-local.
+- **Isolated components by default**: All components are defined in each event's `_components/`. A shared `src/components/` directory exists only for thin wrappers with a minimal interface where divergence across events is unlikely — currently only `MapFrame`. When in doubt, keep it page-local.
+- **Copy, don't promote**: Past event pages are frozen archives — shared code must never change how they render. When a component has been copied unchanged across 2+ events, do not move it to `src/components/`; add it to the `/create-event` skill's `templates/` directory instead, so future events start from it while past events stay untouched.
 
 ### Global Resources
 
 | Location | Purpose |
 | -------- | ------- |
 | `src/layouts/Layout.astro` | Common HTML structure (used by all pages) |
-| `src/components/` | Shared thin-wrapper components (e.g., `MapFrame`) — only when the interface is minimal and divergence across events is unlikely |
+| `src/components/` | Shared thin-wrapper components — currently only `MapFrame`; do not add more (use `/create-event` templates instead) |
 | `src/styles/palette.css` | Color token definitions |
 | `src/styles/global.css` | Theme variables, reset styles, `.viewport` |
-| `src/types/` | Shared type definitions (API types, etc.) |
-| `src/scripts/` | Shared scripts (`uploadImages`, `fetchFileList`, `sanitizeFileName`) |
+
+Everything else (components, scripts, types, config, assets, styles) lives under the owning event's `src/pages/{year}/{month}/_*` directories.
 
 ### Style Structure
 
@@ -75,7 +76,7 @@ See `.claude/rules/css.md` for detailed CSS conventions. Enforced by the `css-re
 
 - Event-specific color schemes defined in `_styles/variables.css`
 - Use scoped `<style>` blocks inside Astro components
-- Always use palette tokens — never hardcoded hex, rgb, or hsl values
+- Always use palette tokens — never hardcoded hex, rgb, or hsl values (sole exception: decorative gradients, see `.claude/rules/css.md`)
 - Do not add new theme variables; reference palette tokens directly in components
 
 ### Color Palette
@@ -160,10 +161,6 @@ This project currently has no automated test framework — verification relies o
 
 ## Implementation Patterns
 
-### Shared Scripts and Event-Specific Config
+### Event-Local Scripts, Types, and Config
 
-Shared scripts (`src/scripts/`) do not depend on event-specific config. Values such as endpoint URLs are passed as arguments from the event's `_config/`.
-
-### Shared Type Definitions
-
-Types shared across multiple files are defined in `src/types/`.
+Scripts and type definitions belong to the event that uses them (`_scripts/`, `_types/`). Values such as endpoint URLs are not hardcoded in scripts; they are passed as arguments from the event's `_config/`. There are currently no cross-event shared scripts or types — if a future event needs an existing script, copy it (same policy as components).
