@@ -24,4 +24,9 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   integrations: [icon(), devPagesIndex()],
+  vite: {
+    css: {
+      transformer: "lightningcss",
+    },
+  },
 });

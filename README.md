@@ -8,7 +8,8 @@ Astroフレームワークを用いた静的イベント情報サイトです。
 
 ## 技術スタック
 
-- [Astro](https://astro.build/) 6.x
+- [Astro](https://astro.build/) 7.x
+- [Lightning CSS](https://lightningcss.dev/)（CSS トランスフォーマー。`astro.config.mjs` の `vite.css.transformer` で有効化）
 - [astro-icon](https://github.com/natemoo-re/astro-icon) + [@iconify-json/mdi](https://iconify.design/)
 - [Biome](https://biomejs.dev/)（lint / format）
 - [lefthook](https://github.com/evilmartians/lefthook)（pre-commit）
