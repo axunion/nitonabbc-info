@@ -5,23 +5,23 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.16.0",
-      "onFail": "warn"
+      "version": "^24",
+      "onFail": "download"
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "11.2.2",
-      "onFail": "warn"
+      "version": "11.9.0",
+      "onFail": "download"
     }
   },
   "scripts": {
+    "prepare": "lefthook install",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "biome check ./src && astro check",
-    "fix": "biome check --write ./src",
-    "prepare": "lefthook install"
+    "check": "biome check . && astro check",
+    "fix": "biome check --write ."
   },
   "dependencies": {
     "astro": "^6.3.7"

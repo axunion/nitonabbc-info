@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig, passthroughImageService } from "astro/config";
 
 import icon from "astro-icon";
 
@@ -21,7 +21,7 @@ function devPagesIndex() {
 // https://astro.build/config
 export default defineConfig({
   image: {
-    service: passthroughImageService()
+    service: passthroughImageService(),
   },
-  integrations: [icon(), devPagesIndex()]
+  integrations: [icon(), devPagesIndex()],
 });

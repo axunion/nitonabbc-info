@@ -15,8 +15,8 @@ Astroフレームワークを用いた静的イベント情報サイトです。
 
 ## 動作要件
 
-- Node.js 24.16.0 以上
-- pnpm 11.2.2 以上
+- Node.js 24 系（`.node-version` で指定。Cloudflare Pages のビルドもこのファイルを参照します）
+- pnpm 11.9.0（`package.json` の `devEngines` により、バージョン不一致時は自動ダウンロードされます）
 
 ## セットアップ
 
@@ -109,6 +109,7 @@ Claude Code の `/create-event` スキルを使用して対話的に作成しま
 
 - ビルドコマンド: `pnpm run build`
 - 出力ディレクトリ: `dist/`
+- Node バージョン: リポジトリ直下の `.node-version` を Cloudflare Pages が参照します
 - 環境変数は Cloudflare Pages のプロジェクト設定に登録してください（上記「環境変数」参照）
 
 ## 開発時の補助
