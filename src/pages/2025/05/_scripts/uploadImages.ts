@@ -1,4 +1,4 @@
-import type { UploadImagesRequest, UploadImagesResponse } from "@/types/api";
+import type { UploadImagesRequest, UploadImagesResponse } from "../_types/api";
 
 export const uploadImages = async (
   data: UploadImagesRequest,

@@ -1,4 +1,4 @@
-import type { FetchFileListResponse } from "@/types/api";
+import type { FetchFileListResponse } from "../_types/api";
 
 export const fetchFileList = async (
   path: string,

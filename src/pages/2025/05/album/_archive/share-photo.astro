@@ -159,8 +159,8 @@ import Note from "../../_components/Note.astro";
   crossorigin="anonymous"
   defer></script>
 <script>
-  import { uploadImages } from "@/scripts/uploadImages";
-  import { sanitizeFileName } from "@/scripts/sanitizeFileName";
+  import { uploadImages } from "../../_scripts/uploadImages";
+  import { sanitizeFileName } from "../../_scripts/sanitizeFileName";
   import { ENDPOINT_UPLOAD_IMAGES } from "../../_config/endpoints";
 
   const $ = (selector: string) => document.querySelector(selector);
