@@ -66,30 +66,9 @@ type Props = { title: string; favicon?: string };
 
 Pages then use `import Layout from "./_layouts/Layout.astro";` (adjust relative depth for subdirectories) and never import `variables.css` themselves.
 
-## Color Palette
+## Colors
 
-Use color tokens defined in `src/styles/palette.css`:
-
-- **Gray**: `--gray-0` (lightest) to `--gray-9` (darkest), 10 steps
-- **Color scales**: `--{color}-2` (light), `--{color}-4`, `--{color}-6`, `--{color}-8` (dark)
-- Available colors: blue, green, red, orange, violet, pink, indigo
-
-## Theme Variables
-
-Defaults defined in `global.css`:
-
-```css
-:root {
-  --brand: var(--blue-6);     /* main color */
-  --surface: var(--gray-0);   /* background */
-  --text-1: var(--gray-9);    /* body text */
-  --text-2: var(--gray-6);    /* subtext */
-  --line: var(--gray-4);      /* borders and dividers */
-  --font-serif: ...;          /* serif font */
-}
-```
-
-For additional colors, reference palette tokens directly in components (`var(--pink-6)`, etc.). Do not add new theme variables.
+Palette tokens and the six theme variables are documented in CLAUDE.md and `.claude/rules/css.md` (sources: `src/styles/palette.css`, `global.css`). For additional colors, reference palette tokens directly in components (`var(--pink-6)`, etc.) — do not add new theme variables.
 
 ## Event Format
 
@@ -168,10 +147,5 @@ Generate files in this order:
 
 ## Notes
 
-- Chat with the user in Japanese
-- Extract repeated elements into `_components/`
-- Always create the `_assets/` directory (as the target location for the hero image)
-- All components go in the event-specific `_components/` — never add to `src/components/` (see Component Guidelines for the sole `MapFrame` exception)
-- In `variables.css`, use only palette tokens (e.g., `--brand: var(--green-6);`) — no hex values
-- Add `prefers-reduced-motion` support to all animations (`@media (prefers-reduced-motion: reduce)`)
+- Follow `.claude/rules/css.md` and `.claude/rules/a11y.md` (palette tokens only in `variables.css`, `prefers-reduced-motion` on all animations)
 - Components may look identical across events — this is intentional. Copying keeps each event independent and free to diverge; shared components create coupling that constrains future customization

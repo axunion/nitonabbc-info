@@ -72,44 +72,11 @@ Everything else (components, scripts, types, config, assets, styles) lives under
 
 ## Styling
 
-See `.claude/rules/css.md` for detailed CSS conventions. Enforced by the `css-reviewer` agent via `/event-review` before every merge to main. Key rules:
-
-- Event-specific color schemes defined in `_styles/variables.css`
-- Use scoped `<style>` blocks inside Astro components
-- Always use palette tokens — never hardcoded hex, rgb, or hsl values (sole exception: decorative gradients, see `.claude/rules/css.md`)
-- Do not add new theme variables; reference palette tokens directly in components
-
-### Color Palette
-
-Color tokens defined in `src/styles/palette.css`:
-
-- **Gray**: `--gray-0` (lightest) to `--gray-9` (darkest), 10 steps
-- **Colors**: 4 steps each (`--{color}-2`, `--{color}-4`, `--{color}-6`, `--{color}-8`)
-- Available colors: blue, green, red, orange, violet, pink, indigo
-
-### Theme Variables
-
-Six theme variables defined in `:root` in `global.css`:
-
-| Variable | Purpose | Default |
-| -------- | ------- | ------- |
-| `--brand` | Main color | `var(--blue-6)` |
-| `--surface` | Background | `var(--gray-0)` |
-| `--text-1` | Body text | `var(--gray-9)` |
-| `--text-2` | Subtext | `var(--gray-6)` |
-| `--line` | Borders and dividers | `var(--gray-4)` |
-| `--font-serif` | Serif font | Times New Roman family |
-
-- **Event-specific overrides**: Define only the variables that differ from defaults in `variables.css`
-- **Additional colors**: Reference palette tokens directly in components (`var(--green-6)`, etc.) — do not add new theme variables
+See `.claude/rules/css.md` for CSS conventions — palette tokens (`src/styles/palette.css`), the six theme variables and their defaults (`global.css`), `variables.css` overrides, scoping, and the decorative-gradient exception. Enforced by the `css-reviewer` agent via `/event-review` before every merge to main.
 
 ## Accessibility
 
-See `.claude/rules/a11y.md` for detailed accessibility requirements. Enforced by the `a11y-reviewer` agent via `/event-review` before every merge to main. Key rules:
-
-- All animations must include `prefers-reduced-motion` support
-- CSS animations: disable inside `@media (prefers-reduced-motion: reduce)`
-- JS animations: skip if `window.matchMedia("(prefers-reduced-motion: reduce)").matches`
+See `.claude/rules/a11y.md` for accessibility requirements — reduced motion, alt text, heading hierarchy, keyboard access, and color contrast. Enforced by the `a11y-reviewer` agent via `/event-review` before every merge to main.
 
 ## Code Conventions
 

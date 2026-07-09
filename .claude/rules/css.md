@@ -38,21 +38,4 @@ Six theme variables are defined in `global.css`. Override them in `_styles/varia
 
 ## Animations
 
-Every CSS animation must have a `prefers-reduced-motion` counterpart:
-
-```css
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.element {
-  animation: fadeIn 0.3s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .element {
-    animation: none;
-  }
-}
-```
+Every CSS animation must have a `prefers-reduced-motion` counterpart — see "Reduced Motion" in `.claude/rules/a11y.md` for the required pattern.
