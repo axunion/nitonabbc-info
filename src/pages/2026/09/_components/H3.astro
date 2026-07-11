@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  icon: string;
+};
+
+const { icon } = Astro.props;
+---
+
+<h3 class="h3">
+  <span class="icon">
+    <Icon name={icon} />
+  </span>
+  <span><slot /></span>
+</h3>
+
+<style>
+  .h3 {
+    align-items: center;
+    border-bottom: var(--line) solid 1px;
+    color: var(--text-1);
+    display: flex;
+    font-size: 112%;
+    gap: 0.5em;
+    letter-spacing: 0.03em;
+    margin: 2.5em 0 1em;
+    padding: 0 0 0.5em;
+  }
+
+  .icon {
+    color: var(--brand);
+    display: flex;
+    font-size: 105%;
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Sprig from "./Sprig.astro";
+---
+
+<h2 class="h2">
+  <span class="text"><slot /></span>
+  <span class="ornament"><Sprig /></span>
+</h2>
+
+<style>
+  .h2 {
+    margin: 0 0 1.75em;
+    text-align: center;
+  }
+
+  .text {
+    color: var(--text-1);
+    display: block;
+    font-size: 128%;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+  }
+
+  .ornament {
+    color: var(--brand);
+    display: block;
+    margin: 0.7em auto 0;
+  }
+</style>
