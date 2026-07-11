@@ -29,4 +29,9 @@ const { href } = Astro.props;
   .a::after {
     content: "→";
   }
+
+  .a:focus-visible {
+    outline: var(--brand) solid 2px;
+    outline-offset: 2px;
+  }
 </style>

@@ -8,6 +8,7 @@ import ButtonLink from "./_components/ButtonLink.astro";
 import H2 from "./_components/H2.astro";
 import H3 from "./_components/H3.astro";
 import H4 from "./_components/H4.astro";
+import HistoryTable from "./_components/HistoryTable.astro";
 import QAList from "./_components/QAList.astro";
 import Sprig from "./_components/Sprig.astro";
 import Summary from "./_components/Summary.astro";
@@ -40,18 +41,55 @@ const summaryItems = [
   {
     icon: "mdi:money",
     label: "参加費",
-    lines: ["一般 ¥20,000", "22歳以下 ¥18,000"],
+    lines: ["一般 ¥17,600", "青年（22歳以下） ¥15,300"],
   },
 ];
 
+const day1Schedule = {
+  caption: "Day 1",
+  rows: [
+    { th: "15:00", td: "受付開始" },
+    { th: "16:00", td: "開会集会" },
+    { th: "17:00", td: "夕食" },
+    { th: "19:00", td: "第一集会" },
+    { th: "21:00", td: "入浴" },
+    { th: "22:00", td: "ディボーション" },
+    { th: "23:00", td: "就寝" },
+  ],
+};
+
+const day2Schedule = {
+  caption: "Day 2",
+  rows: [
+    { th: "07:00", td: "ディボーション" },
+    { th: "08:00", td: "朝食" },
+    { th: "09:00", td: "分科会" },
+    { th: "12:00", td: "昼食" },
+    { th: "13:00", td: "レクリエーション" },
+    { th: "17:00", td: "夕食" },
+    { th: "19:00", td: "第二集会" },
+    { th: "21:00", td: "入浴" },
+    { th: "22:00", td: "ディボーション" },
+    { th: "23:00", td: "就寝" },
+  ],
+};
+
+const day3Schedule = {
+  caption: "Day 3",
+  rows: [
+    { th: "07:00", td: "ディボーション" },
+    { th: "08:00", td: "朝食" },
+    { th: "09:00", td: "第三集会" },
+    { th: "11:30", td: "閉会集会" },
+    { th: "12:00", td: "解散" },
+  ],
+};
+
 const odaibaSchedule = {
-  caption: "①お台場観光",
   rows: [
     { th: "12:30", td: "新木場駅 集合" },
-    { th: "12:40", td: "東京テレポート駅" },
-    { th: "12:50", td: "デックス東京ビーチ（自由・各自昼食）" },
-    { th: "15:00", td: "ゆりかもめ台場駅" },
-    { th: "15:20", td: "テレコムセンター展望室（500円）" },
+    { th: "12:50", td: "デックス東京ビーチ" },
+    { th: "15:20", td: "テレコムセンター展望室" },
     { th: "17:00", td: "新木場駅 到着" },
   ],
 };
@@ -60,7 +98,7 @@ const careerHistory = [
   { th: "1969年1月", td: "東京にて誕生" },
   { th: "小学4年生", td: "滝山教会で救いを受ける" },
   { th: "20歳", td: "献身、神学校へ" },
-  { th: "1993年（24歳）", td: "神学校卒業後、滝山教会にて伝道師に就任" },
+  { th: "1993年", td: "滝山教会の伝道師に就任" },
   { th: "1997年", td: "立川教会の伝道師に就任" },
   { th: "2003年", td: "教会独立・牧師に就任" },
   { th: "2011年", td: "新会堂を献堂" },
@@ -82,7 +120,7 @@ const careerHistory = [
       <p>主の御名を賛美いたします。</p>
       <p>2026年、京葉地区青年キャンプを開催する運びとなりましたことをご案内申し上げます。</p>
       <p>
-        今回のテーマは「喜望あふれて！」。神様が与えてくださる希望と喜びを、ともに見つめる時としたいと願っています。皆様のご参加を心よりお待ち申し上げております。
+        神様が与えてくださる希望と喜びを、ともに見つめる時としたいと願っています。皆様のご参加を心よりお待ち申し上げております。
       </p>
     </section>
 
@@ -109,79 +147,63 @@ const careerHistory = [
       />
 
       <H4>略歴</H4>
-      <table class="profile-table">
-        {
-          careerHistory.map(({ th, td }) => (
-            <tr>
-              <th class="profile-th">{th}</th>
-              <td>{td}</td>
-            </tr>
-          ))
-        }
-      </table>
+      <HistoryTable rows={careerHistory} />
     </section>
 
     <section class="section">
       <H2>プログラム</H2>
 
-      <H3 icon="mdi:calendar-range">日程について</H3>
+      <H3 icon="mdi:calendar-range">タイムテーブル</H3>
+      <TimeTable {...day1Schedule} />
+      <TimeTable {...day2Schedule} />
+      <TimeTable {...day3Schedule} />
       <p>
-        2026年9月20日（日）から22日（火）まで、2泊3日の日程で開催いたします。詳しいタイムテーブルは、決まり次第あらためてご案内いたします。
-      </p>
-
-      <H3 icon="mdi:run">レクリエーション</H3>
-      <p>2日目の午後は、以下の3つから選んでご参加いただけます。</p>
-
-      <H4>①お台場観光</H4>
-      <TimeTable {...odaibaSchedule} />
-      <p>
-        参加費の目安は1,500円＋昼食代（交通費1,000円、テレコムセンター入場料500円）です。テレコムセンター入場料のみ当日集金し、交通費は乗車の都度お支払いください。昼食は各自でご用意ください。
-      </p>
-
-      <H4>②夢の島熱帯植物館</H4>
-      <p>
-        施設敷地内にある夢の島熱帯植物館で植物鑑賞をします。館内のカフェでゆっくりくつろぐこともできます。参加費250円（入園料）。昼食は施設でお召し上がりいただきます。
-      </p>
-
-      <H4>③映画</H4>
-      <p>
-        映画鑑賞（内容は当日のお楽しみ）をしてまったり過ごします。参加費は無料です。昼食は施設でお召し上がりいただきます。
+        食事の時間は施設側が他団体と調整の上で決定するため、前後のプログラムも含めて30分〜1時間程度前後する場合がございます。
       </p>
 
       <H3 icon="mdi:account-group">分科会</H3>
       <p>分科会では4つのテーマをご用意しております。ご関心のあるテーマを選択の上、ご参加ください。</p>
 
-      <H4>
-        結婚
-        <span class="workshop-speaker">講師：安藤修司師</span>
-      </H4>
+      <H4 subtitle="講師：安藤修司師">結婚</H4>
       <p>
         結婚に乗り気でない方は結婚の祝福を知ることができます。結婚を祈っている方は祝福される家庭の築き方を学べます。相手探しに悩んでいる方にも多くのヒントが与えられる分科会です。
       </p>
 
-      <H4>
-        次世代との関り
-        <span class="workshop-speaker">講師：齋藤光彦師</span>
-      </H4>
+      <H4 subtitle="講師：齋藤光彦師">次世代との関り</H4>
       <p>
         青年でいられるのはあっという間です。この限られた時間を次世代のために用いましょう。若い世代とどう関わったらよいか、どうしたらよい証しができるのかを学びます。
       </p>
 
-      <H4>
-        熱心さの持続
-        <span class="workshop-speaker">講師：所炎師</span>
-      </H4>
+      <H4 subtitle="講師：所炎師">熱心さの持続</H4>
       <p>
         キャンプで燃えても決心が続かない方、信仰生活に疲れを感じる方、教会生活が形式的になっている気がする方などにおすすめの分科会です。いつも熱心に主に仕えていくために大切なことを学びます。
       </p>
 
-      <H4>
-        宣教
-        <span class="workshop-speaker">講師：佐藤一彦師</span>
-      </H4>
+      <H4 subtitle="講師：佐藤一彦師">宣教</H4>
       <p>
         イエス様は天に帰られる前に、弟子達に世界宣教を命じられました。信仰者にとって世界宣教は重要な使命であるにもかかわらず、身近に感じられないこともあります。宣教をもっと身近なものにしていくために、JBBF海外宣教委員長が語ります。
       </p>
+
+      <H3 icon="mdi:run">レクリエーション</H3>
+      <p>レクリエーションは、以下の3つから気になるものを選んでご参加ください！</p>
+
+      <H4>お台場観光</H4>
+      <p>
+        新木場駅からひとっとび、お台場でお買い物やグルメ、海辺のお散歩を満喫！テレコムセンター展望室からは東京湾の絶景も広がります。
+      </p>
+      <TimeTable {...odaibaSchedule} />
+      <p>
+        参加費とは別に、昼食代・電車代・入場料（500円）がかかります。施設の昼食は取らず、観光中に各自でお取りください。
+      </p>
+
+      <H4>夢の島熱帯植物館</H4>
+      <p>
+        施設のすぐそばにある夢の島熱帯植物館で、南国気分の植物鑑賞はいかが？館内カフェでのんびりくつろぐのもおすすめです。
+      </p>
+      <p>参加費とは別に、入園料（250円）がかかります。</p>
+
+      <H4>映画</H4>
+      <p>何が上映されるかは当日のお楽しみ！みんなでまったり映画鑑賞タイムです。</p>
     </section>
 
     <section class="section">
@@ -201,9 +223,7 @@ const careerHistory = [
       <H2>その他の情報</H2>
 
       <H3 icon="mdi:bag-suitcase">持ち物</H3>
-      <p>
-        聖書、筆記用具、着替えなど、宿泊に必要なものをご持参ください。レクリエーションで「①お台場観光」を選ばれる方は、歩きやすい靴をご用意ください。
-      </p>
+      <p>聖書、筆記用具、着替えなど、宿泊に必要なものをご持参ください。</p>
       <p>
         施設にはWiFi、ドライヤー、ナイトウェア、バスタオル、フェイスタオル、歯ブラシ、ボディーソープ、シャンプー、リンスをご用意いただいております。
       </p>
@@ -261,16 +281,12 @@ const careerHistory = [
   }
 
   .header::before {
-    background:
-      radial-gradient(
-        ellipse 70% 55% at 50% 50%,
-        color-mix(in srgb, var(--gray-9) 62%, transparent) 0%,
-        transparent 72%
-      ),
-      linear-gradient(
-        color-mix(in srgb, var(--green-8) 12%, transparent),
-        color-mix(in srgb, var(--green-8) 12%, transparent)
-      );
+    background: radial-gradient(
+      ellipse 70% 55% at 50% 50%,
+      color-mix(in srgb, var(--gray-9) 62%, transparent) 0%,
+      transparent 72%
+    );
+    background-color: color-mix(in srgb, var(--green-8) 12%, transparent);
     content: "";
     inset: 0;
     position: absolute;
@@ -326,40 +342,15 @@ const careerHistory = [
     margin: 15vh 0;
   }
 
-  .profile-table {
-    border-collapse: collapse;
-    font-size: 90%;
-    margin: 1em 0;
-    table-layout: fixed;
-  }
-
-  .profile-th {
-    color: var(--text-2);
-    font-weight: normal;
-    padding: 0 1em 0.5em 0;
-    text-align: left;
-    vertical-align: top;
-    white-space: nowrap;
-  }
-
-  .workshop-speaker {
-    color: var(--text-2);
-    display: block;
-    font-size: 70%;
-    font-weight: normal;
-    margin: 0.3em 0 0;
-  }
-
   .deadline {
-    background: var(--red-8);
-    border-radius: 2px;
-    color: var(--surface);
+    border: var(--red-8) solid 1px;
+    border-left-width: 3px;
+    color: var(--red-8);
     font-size: 115%;
     font-weight: bold;
     letter-spacing: 0.08em;
     margin: 1em 0;
-    padding: 1em;
-    text-align: center;
+    padding: 0.9em 1.2em;
   }
 
   .strong {

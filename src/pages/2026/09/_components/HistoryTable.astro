@@ -1,0 +1,38 @@
+---
+type Props = {
+  rows: { th: string; td: string }[];
+};
+
+const { rows } = Astro.props;
+---
+
+<table class="table">
+  <tbody>
+    {
+      rows.map(({ th, td }) => (
+        <tr>
+          <th class="th">{th}</th>
+          <td class="td">{td}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  .table {
+    border-collapse: collapse;
+    margin: 1em auto;
+  }
+
+  .th {
+    color: var(--text-2);
+    padding: 0 1em 0.5em 0;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .td {
+    padding: 0.25em 0.5em;
+  }
+</style>

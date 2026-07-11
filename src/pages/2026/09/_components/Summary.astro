@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 interface SummaryItem {
-  icon?: string;
+  icon: string;
   label: string;
   text?: string;
   detail?: string;
@@ -21,11 +21,9 @@ const { items } = Astro.props;
     items.map((item) => (
       <div class="item">
         <dt class="label">
-          {item.icon && (
-            <span class="icon">
-              <Icon name={item.icon} />
-            </span>
-          )}
+          <span class="icon">
+            <Icon name={item.icon} />
+          </span>
           {item.label}
         </dt>
         {item.lines ? (
