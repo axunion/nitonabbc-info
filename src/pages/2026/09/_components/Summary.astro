@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface SummaryItem {
+  icon?: string;
+  label: string;
+  text?: string;
+  detail?: string;
+  lines?: string[];
+}
+
+type Props = {
+  items: SummaryItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<dl class="summary">
+  {
+    items.map((item) => (
+      <div class="item">
+        <dt class="label">
+          {item.icon && (
+            <span class="icon">
+              <Icon name={item.icon} />
+            </span>
+          )}
+          {item.label}
+        </dt>
+        {item.lines ? (
+          <dd class="lines">
+            {item.lines.map((line, i) => (
+              <>
+                {i > 0 && <span class="tick" aria-hidden="true" />}
+                <span class="line">{line}</span>
+              </>
+            ))}
+          </dd>
+        ) : (
+          <dd class="text">
+            {item.text}
+            {item.detail && <span class="detail">{item.detail}</span>}
+          </dd>
+        )}
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .summary {
+    border: var(--line) solid 1px;
+    border-radius: 4px;
+    margin: 0;
+  }
+
+  .item {
+    padding: 1.25em 1.5em;
+  }
+
+  .item + .item {
+    border-top: var(--line) solid 1px;
+  }
+
+  .label {
+    align-items: center;
+    color: var(--brand);
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: 700;
+    gap: 0.4em;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.5em;
+  }
+
+  .icon {
+    display: flex;
+    font-size: 105%;
+  }
+
+  .text {
+    color: var(--text-1);
+    font-size: 105%;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .detail {
+    color: var(--text-2);
+    display: block;
+    font-size: 85%;
+    margin: 0.2em 0 0;
+  }
+
+  .lines {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    margin: 0;
+  }
+
+  .line {
+    color: var(--text-1);
+    font-size: 105%;
+    line-height: 1.4;
+  }
+
+  .tick {
+    border-left: var(--line) solid 2px;
+    display: block;
+    height: 0.7em;
+    margin: 0 0 0 0.5em;
+  }
+</style>

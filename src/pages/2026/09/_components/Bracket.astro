@@ -1,0 +1,31 @@
+---
+---
+
+<p class="p">
+  <slot />
+</p>
+
+<style>
+  .p {
+    color: var(--brand);
+    letter-spacing: 0.03em;
+    line-height: 2;
+    margin: 1.5em 0;
+    padding: 0 0.5em;
+    position: relative;
+    text-align: justify;
+  }
+
+  .p::before {
+    color: var(--text-1);
+    content: "“";
+    font-family: var(--font-serif);
+    font-size: 250%;
+    font-style: italic;
+    left: -0.15em;
+    line-height: 1;
+    opacity: 0.5;
+    position: absolute;
+    top: -0.15em;
+  }
+</style>

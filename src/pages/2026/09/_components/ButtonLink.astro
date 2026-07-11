@@ -1,0 +1,32 @@
+---
+type Props = {
+  href: string;
+};
+
+const { href } = Astro.props;
+---
+
+<a class="a" href={href} target="_blank" rel="noopener noreferrer">
+  <slot />
+</a>
+
+<style>
+  .a {
+    align-items: center;
+    background: var(--brand);
+    border-radius: 2px;
+    color: var(--surface);
+    display: flex;
+    font-weight: bold;
+    gap: 0.6em;
+    justify-content: center;
+    letter-spacing: 0.15em;
+    margin: 1em 0;
+    padding: 1em;
+    text-align: center;
+  }
+
+  .a::after {
+    content: "→";
+  }
+</style>

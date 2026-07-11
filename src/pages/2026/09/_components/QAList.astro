@@ -1,0 +1,36 @@
+---
+type Props = {
+  list: { q: string; a: string }[];
+};
+
+const { list } = Astro.props;
+---
+
+<dl class="dl">
+  {
+    list.map(({ q, a }) => (
+      <>
+        <dt class="dt">{q}</dt>
+        <dd class="dd">{a}</dd>
+      </>
+    ))
+  }
+</dl>
+
+<style>
+  .dl {
+    margin: 1em 0;
+  }
+
+  .dt {
+    color: var(--brand);
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  .dd {
+    border-bottom: var(--line) solid 1px;
+    margin: 0.25em 0 1.25em;
+    padding: 0 0 0.75em;
+  }
+</style>
