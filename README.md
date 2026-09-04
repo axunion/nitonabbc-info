@@ -17,12 +17,12 @@ Astroフレームワークを用いた静的イベント情報サイトです。
 ## 動作要件
 
 - Node.js 24 系（`.node-version` で指定。Cloudflare Pages のビルドもこのファイルを参照します）
-- pnpm 11.9.0（`package.json` の `devEngines` により、バージョン不一致時は自動ダウンロードされます）
+- pnpm 11.25.0（`package.json` の `devEngines` により、バージョン不一致時は自動ダウンロードされます）
 
 ## セットアップ
 
 ```bash
-pnpm install        # lefthook の pre-commit フックも自動でインストールされます
+pnpm install        # lefthook の pre-commit フック（Biome 自動修正 + astro check）も自動でインストールされます
 ```
 
 バックエンドと連携するページを開発する場合は、プロジェクトルートに `.env` を作成して[環境変数](#環境変数)を設定してください。
@@ -78,14 +78,7 @@ src/
 
 この方針により、新しいイベントを追加・修正しても過去イベントのページに影響しません。
 
-以下のいずれかが発生した場合に、この方針の見直しを検討する：
-
-- イベント数が 15〜20 を超え、`/create-event` の雛形だけでは追いつかなくなった
-- 同一コンポーネントを 3 イベント以上で「全く同じまま」修正する事案が繰り返し発生した
-- 異なる Astro バージョンや異なるデプロイターゲットを必要とするイベントが現れた
-- 定型告知ページ（構造が一定）が四半期に複数生まれるようになった
-
-詳細な CSS / アクセシビリティ規約は `CLAUDE.md` および `.claude/rules/` を参照してください。
+詳細な設計原則・CSS / アクセシビリティ規約は `CLAUDE.md` および `.claude/rules/` を参照してください。
 
 ## 環境変数
 
@@ -112,7 +105,3 @@ Claude Code の `/create-event` スキルを使用して対話的に作成しま
 - 出力ディレクトリ: `dist/`
 - Node バージョン: リポジトリ直下の `.node-version` を Cloudflare Pages が参照します
 - 環境変数は Cloudflare Pages のプロジェクト設定に登録してください（上記「環境変数」参照）
-
-## 開発時の補助
-
-pre-commit フック（lefthook）により、ステージングされたファイルに対して Biome の自動修正と `astro check` が実行されます。手動で実行する場合は `pnpm run check` / `pnpm run fix` を使用してください。
