@@ -1,25 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance for Claude Code (claude.ai/code) when working in this repository.
-
-> **Keep in sync:** This file's content is mirrored in `AGENTS.md`. When you update one, update the other to match.
-
 ## Project Overview
 
 Astro-based static website providing event information, schedules, photo albums, and venue details. Hosted on Cloudflare Pages with automatic deployment on push to main.
-
-## Commands
-
-```bash
-pnpm run dev          # Start dev server (localhost:4321)
-pnpm run build        # Production build
-pnpm run preview      # Preview the production build
-pnpm run astro        # Astro CLI direct access
-pnpm run check        # Biome lint + astro check (type checking)
-pnpm run fix          # Auto-fix with Biome
-```
-
-Pre-commit hook (lefthook) runs Biome auto-fix and `astro check` on staged files automatically.
 
 ## Skills
 
@@ -28,14 +11,13 @@ Pre-commit hook (lefthook) runs Biome auto-fix and `astro check` on staged files
 | `/create-event` | Create a new event page interactively |
 | `/event-review` | Pre-deploy review (a11y + CSS + build check) before merging to main |
 
-## Working Principles
+## Approach
 
 These apply to every task in this repository, before any code-specific convention below. Bias toward caution over speed; on trivial tasks, use judgment.
 
-- **Think before coding.** State assumptions; if uncertain, ask. When multiple interpretations exist, surface them rather than silently picking one. If a simpler path exists, say so and push back when warranted.
-- **Simplest thing that works.** Write the minimum code that solves the stated problem — nothing speculative. No unasked-for abstractions, flexibility, or error handling for impossible cases. If 200 lines could be 50, rewrite it.
-- **Surgical changes.** Every changed line should trace to the request. Don't refactor, reformat, or "improve" adjacent code that isn't broken; match the surrounding style. Remove only the imports and symbols your change orphaned; leave unrelated dead code alone and mention it.
-- **Goal-driven.** Turn each task into a verifiable outcome ("fix the bug" → "write a failing case that reproduces it, then make it pass"). For multi-step work, state a brief plan with a verification check per step, then loop until it passes.
+- **Change scope.** Change only what was requested. Don't "improve" adjacent code, comments, or formatting; match the existing style. Delete code your own change makes unused, never leave it commented out. Point out pre-existing dead code only; don't delete, split, or refactor it unless asked.
+- **Implementation size.** Don't add unrequested features, abstractions, or configurability. Extract a helper only when it's used in 3+ places; otherwise inline it. Don't write error handling for cases that can't happen.
+- **Uncertainty.** When more than one interpretation is possible, present the options instead of silently picking one.
 
 ## Architecture
 
@@ -66,10 +48,6 @@ Everything else (components, scripts, types, config, assets, styles) lives under
 | `variables.css` | Theme variable overrides (color customization) |
 | `<style is:global>` in pages | `.viewport` style overrides (dark backgrounds, etc.) |
 
-### Path Aliases
-
-`@/*` → `./src/*` (configured in tsconfig.json)
-
 ## Styling
 
 See `.claude/rules/css.md` for CSS conventions — palette tokens (`src/styles/palette.css`), the six theme variables and their defaults (`global.css`), `variables.css` overrides, scoping, and the decorative-gradient exception. Enforced by the `css-reviewer` agent via `/event-review` before every merge to main.
@@ -82,47 +60,33 @@ See `.claude/rules/a11y.md` for accessibility requirements — reduced motion, a
 
 ### Language
 
-| Item | Language |
-| ---- | ---- |
-| Commit messages | English |
-| Code comments | English (omit self-evident comments) |
-| Console output | English |
-| AI config files (CLAUDE.md, AGENT.md, etc.) | English |
-| Chat / responses | Japanese |
+Default to Japanese for everything interactive — chat replies, plan-mode proposals, clarifying questions, and any other back-and-forth during the session.
+
+Switch to English for durable artifacts: things other people or tools will read after the session ends — commit messages, code comments (omit self-evident ones), console/log/error output, AI-readable instruction files (CLAUDE.md and the like), and reader-facing docs (README and the like). Scratch notes and other throwaway dev artifacts stay in Japanese.
 
 ### Code Structure
 
 - Name variables, functions, and files to communicate intent.
 - One concern per file; split when a file exceeds ~300 lines.
-- Extract a helper only when used in 3+ places; otherwise inline it.
-- Delete dead code you create; never comment it out.
 
 ## Commits
 
 ```
-<one-line summary>
+<summary: imperative mood, ≤70 chars, no trailing period, no prefix tags (`feat:`, `fix:`, etc.)>
 
-<Why: one sentence — motivation or problem>
+<motivation: one sentence, only when not evident from the diff>
 
-- <change 1>
-- <change 2>
+- <change bullets: only for 2+ distinct changes>
 ```
 
-- Summary: imperative mood, ≤70 chars, no trailing period, no prefix tags (`feat:`, `fix:`, etc.).
-- Why line: include only when motivation is not evident from the diff alone.
-- Bullets: include only for 2+ distinct changes.
 - Never commit secrets (`*.key`, `*.pem`, `credentials*`).
-- Never use `--no-verify` or `--amend`; always create a new commit.
-
-## Icons
-
-Uses `@iconify-json/mdi` via `astro-icon` (e.g., `mdi:menu`, `mdi:photo-camera`)
+- Never use `--no-verify`. Use `--amend` only when explicitly asked; default to a new commit.
 
 ## Testing
 
 This project currently has no automated test framework — verification relies on `pnpm run check` (Biome + astro check) and manual browser testing. Once a test framework is introduced:
 
-- Write tests before or alongside implementation — they are the success criteria.
+- Write tests before or alongside implementation — they are your success criteria.
 - Test observable outcomes and edge cases, not implementation details.
 - Each test is fully self-contained; no shared mutable state between tests.
 
